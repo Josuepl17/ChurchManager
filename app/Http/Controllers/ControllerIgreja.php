@@ -46,13 +46,14 @@ class ControllerIgreja extends Controller
 
 
     public function regdizimo(request $request){
-        $criar = $request->all();
+        $user_id = $request->user_id;
         $post = new dizimos;
-        $post->dizimos()->associate($criar);
-        $post->save;
-        dd($post);
-        
-        return redirect('/inserir/');
+        $post->user_id = $user_id;
+        $post->data = $request->data;
+        $post->valor = $request->valor;
+        $post->save();
+        $dizimos = dizimos::all();
+        return view('pagina.dizimo')->with('$dizimos', $dizimos);
 
     }
 
