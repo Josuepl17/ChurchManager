@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerIgreja;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/*Route::get('/registrar/dizimo', [ControllerIgreja::class, 'regdizimo']);*/
 
 Route::get('/', [ControllerIgreja::class, 'index']);
+Route::get('/membro', [ControllerIgreja::class, 'formulario']);
+Route::get('/create', [ControllerIgreja::class, 'create']);
+Route::get('/destroy/{id}', [ControllerIgreja::class, 'destroy']);
+Route::get('/destroy/dizimos/{id}', [ControllerIgreja::class, 'destroydizimo']);
+Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'inserir']);
+Route::get('/dizimo', [ControllerIgreja::class, 'dizimo']);
+Route::get('/registrar/dizimo', [ControllerIgreja::class, 'regdizimo']);
+
+Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
