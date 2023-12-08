@@ -11,6 +11,6 @@ class dizimos extends Model
     protected $fillable = ['id', 'nome', 'data', 'valor'];
 
     public function usuarios(){
-        return $this->belongsTo('App\Models\usuarios');
+        return $this->belongsTo(usuarios::class);
     }
 }

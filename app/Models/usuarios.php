@@ -11,6 +11,6 @@ class usuarios extends Model
     protected $fillable = ['id', 'nome', 'funcao', 'endereco', 'telefone'];
 
     public function dizimos(){
-        return $this->hasMany('App\Models\dizimos');
+        return $this->hasMany(dizimos::class);
     }
 }

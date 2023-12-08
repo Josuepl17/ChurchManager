@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dizimos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->references('id')->on('usuarios');
             $table->date('data');
             $table->string('valor');
             $table->timestamps();
