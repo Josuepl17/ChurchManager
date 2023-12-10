@@ -201,32 +201,30 @@ a:hover {
       <span>Login</span>
     </div>
 
-    <div class="input_box">
-      <input type="text" id="user" class="input-field" required>
-      <label for="user" class="label">Username</label>
-      <i class="bx bx-user icon"></i>
-    </div>
-
-    <div class="input_box">
-      <input type="password" id="pass" class="input-field" required>
-      <label for="pass" class="label">Password</label>
-      <i class="bx bx-lock-alt icon"></i>
-    </div>
-
-    <div class="remember-forgot">
-      <div class="remember-me">
-        <input type="checkbox" id="remember">
-        <label for="remember">Remember me</label>
+    <form action="/login/if">
+      <div class="input_box">
+        <input type="text" id="email" class="input-field" required>
+        <label for="email" class="label">Username</label>
+        <i class="bx bx-user icon"></i>
       </div>
-
-      <div class="forgot">
-        <a href="#">Forgot password?</a>
+      <div class="input_box">
+        <input type="password" id="pass" class="input-field" required>
+        <label for="pass" class="label">Password</label>
+        <i class="bx bx-lock-alt icon"></i>
       </div>
-    </div>
-
-    <div class="input_box">
-      <input type="submit" class="input-submit" value="Login">
-    </div>
+      <div class="remember-forgot">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <div class="forgot">
+          <a href="#">Forgot password?</a>
+        </div>
+      </div>
+      <div class="input_box">
+        <input type="submit" class="input-submit" value="Login">
+      </div>
+    </form>
 
     <div class="register">
       <span>Don't have an account? <a href="#">Register</a></span>

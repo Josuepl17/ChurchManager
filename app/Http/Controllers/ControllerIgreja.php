@@ -48,9 +48,11 @@ class ControllerIgreja extends Controller
     
     public function verificar( request $request){
         
-     if ($request->email === 'josuep.l@utlook.com' && $request->senha  === '123'){
-        return redirect('/');
-     }
+        if(Auth::attempt($request->only('email', 'password'))){
+         return redirect('/');
+        } else{
+            return redirect('/login');
+        }
 
     }
 

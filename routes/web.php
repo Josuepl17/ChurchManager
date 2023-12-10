@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 /*Route::get('/registrar/dizimo', [ControllerIgreja::class, 'regdizimo']);*/
 
-Route::get('/', [ControllerIgreja::class, 'index'])->meddleware('auth');
+Route::get('/', [ControllerIgreja::class, 'index'])->middleware('auth');
 Route::get('/cadastro/membro', [ControllerIgreja::class, 'cadastro_membro']);
 Route::get('//inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
 Route::get('/destroy/{id}', [ControllerIgreja::class, 'destroy']);
