@@ -14,13 +14,12 @@ class ControllerIgreja extends Controller
         return view('pagina.index')->with('index',  $index);
     }
 
-    public function formulario(){
+    public function cadastro_membro(){
         return view('pagina.formulario');
     }
 
-    public function create(request $request){
+    public function botao_inserir_membro(request $request){
         $dados = $request->all();
-        
         usuarios::create($dados);
            return redirect('/');
 
@@ -35,8 +34,10 @@ class ControllerIgreja extends Controller
 
     public function destroydizimo(request $request){
         $destroy = $request->id;
+        $user_id = $request->user_id;
         dizimos::destroy($destroy);
-        return redirect('/dizimo');
+        $dizimos = dizimos::where('user_id', $user_id)->get();
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
     }
 
     public function login(){
@@ -44,28 +45,35 @@ class ControllerIgreja extends Controller
         return view('login.index');
     }
 
+    
+    public function verificar( request $request){
+        
+     if ($request->email === 'josuep.l@utlook.com' && $request->senha  === '123'){
+        return redirect('/');
+     }
+
+    }
+
 
     public function regdizimo(request $request){
         $user_id = $request->user_id;
+        
         $post = new dizimos;
         $post->user_id = $user_id;
         $post->data = $request->data;
         $post->valor = $request->valor;
         $post->save();
-        $dizimos = dizimos::all();
-        return view('pagina.dizimo')->with('$dizimos', $dizimos);
+        $dizimos = dizimos::where('user_id', $user_id)->get();
+       
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
 
     }
 
-    public function dizimo(){
-        $dizimos = dizimos::all();
-
-        return view('pagina.dizimo')->with('dizimos', $dizimos);
-    }
 
     public function inserir(request $request){
-        $dizimos = dizimos::all();
+        
         $user_id = $request->id;
+        $dizimos = dizimos::where('user_id', $user_id)->get();
         return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos);
     }
 

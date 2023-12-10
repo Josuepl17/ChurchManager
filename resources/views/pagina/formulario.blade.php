@@ -64,7 +64,7 @@
 
 </style>
 
-<form action="/create" method="get">
+<form action="/inserir/membro" method="get">
 
 <h1 class="h1m">Cadastro de Membros</h1>
     <label for="nome">Nome:</label>

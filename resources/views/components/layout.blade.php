@@ -189,7 +189,7 @@
             <div class="menu-esquerdo">
                 <h1 class="h1-menu">Menu</h1>
                 <a href="/">Home</a>
-                <a href="/membro">Cadastro Membro</a>
+                <a href="/cadastro/membro">Cadastro Membro</a>
                 <a href="/dizimo">Cadastro Dizimo</a>
                 <a href="#">Cadastro Oferta</a>
                 <a href="#">Cadastro Despesas</a>

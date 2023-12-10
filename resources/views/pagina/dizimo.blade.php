@@ -159,15 +159,15 @@
 
                             
                         </tr>
-                        @foreach ($dizimos as $dizimos)
+                        @foreach ($dizimos as $dizimo)
 
 
                         <tr>
-                            <td>{{$dizimos->id}}</td>
-                            <td>{{$dizimos->data}}</td>
-                            <td>{{$dizimos->valor}}</td>
+                            <td>{{$dizimo->id}}</td>
+                            <td>{{$dizimo->data}}</td>
+                            <td>{{$dizimo->valor}}</td>
 
-                            <td ><form class="formx" action="/destroy/dizimos/{{$dizimos->id}}"><button class="excluir">X</button></form></td>
+                            <td ><form class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}"><button class="excluir">X</button></form></td>
                         </tr>
 
                     @endforeach
