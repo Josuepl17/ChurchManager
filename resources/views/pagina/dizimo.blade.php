@@ -171,9 +171,8 @@
                         </tr>
 
                     @endforeach
-                    <h1>Valor Total: {{ $soma}}
-                    </h1>
-                    </table>
+                   
+                  </table>
 
 
                 </div>

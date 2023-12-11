@@ -29,7 +29,7 @@ return new class extends Migration
     {
         Schema::create('dizimos', function (Blueprint $table) {
 
-            $table->foreignId('user_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->dropForeign('user_id');
             
         });
     }

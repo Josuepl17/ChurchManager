@@ -67,10 +67,10 @@ class ControllerIgreja extends Controller
         
         $user_id = $request->id;
         $dizimos = dizimos::where('user_id', $user_id)->get();
-        $select = dizimos::select('valor')->where('user_id', '=', $user_id)->get();
-        $soma = sum($select);
-        dd($soma);
-        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos)->with('soma', $soma);
+        /*$select = dizimos::select('valor')->where('user_id', '=', $user_id)->get();*/
+        
+    
+        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos);
     }
 
 
