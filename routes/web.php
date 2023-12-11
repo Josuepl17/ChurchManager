@@ -20,10 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ControllerIgreja::class, 'index']);
 Route::get('/cadastro/membro', [ControllerIgreja::class, 'cadastro_membro']);
 Route::get('//inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
+
 Route::get('/destroy/{id}', [ControllerIgreja::class, 'destroy']);
 Route::get('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'destroydizimo']);
 Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'inserir']);
-Route::get('/dizimo', [ControllerIgreja::class, 'dizimo']);
+
 Route::get('/registrar/dizimo', [ControllerIgreja::class, 'regdizimo']);
 
 Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
