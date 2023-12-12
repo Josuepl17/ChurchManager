@@ -27,9 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('dizimos', function (Blueprint $table) {
+        Schema::table('dizimos', function (Blueprint $table) {
 
-            $table->dropForeign('user_id');
+            $table->dropForeign('user_id')->references('id')->on('usuarios')->onDelete('cascade');
             
         });
     }

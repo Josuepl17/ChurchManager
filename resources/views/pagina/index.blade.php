@@ -15,7 +15,7 @@
 
             border: 1px solid black;
             text-align: center;
-            font-size: 25px;
+            font-size: 18px;
 
         }
 
@@ -29,7 +29,7 @@
 
         th {
             border: 1px solid black;
-            font-size: 25px;
+            font-size: 20px;
             color: white;
             background-color: #025951;
             position: sticky;
@@ -52,6 +52,14 @@
             
             
            
+        }
+
+        .inserir{
+            margin: auto;
+            background-color: green;
+            font-size: 20px;
+            height: 100%;
+            width: 100%;
         }
 </style>
 
@@ -80,7 +88,7 @@
                             <td>{{ $ind->endereco }}</td>
                             <td>{{ $ind->funcao }}</td>
                             <td>{{ $ind->telefone }}</td>
-                            <td ><form class="formx" action="/inserir/dizimos/{{ $ind->id }}"><button class="excluir">Inserir</button></form></td>
+                            <td ><form class="formx" action="/inserir/dizimos/{{ $ind->id }}"><button class="inserir">Inserir</button></form></td>
                             <td>
                                 <form action="/destroy/{{$ind->id}}"><button class="excluir">X</button></form>
                             </td>

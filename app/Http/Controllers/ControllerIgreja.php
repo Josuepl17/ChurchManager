@@ -20,14 +20,16 @@ class ControllerIgreja extends Controller
 
     public function botao_inserir_membro(request $request){
         $dados = $request->all();
-        usuarios::create($dados);
+        $DADOS1 =  array_map('strtoupper' , array_map('strval' , $dados));
+        usuarios::create($DADOS1);
            return redirect('/');
 
     }
 
 
-    public function destroy(request $request){
+    public function excluir_usuario(request $request){
         $destroy = $request->id;
+        dizimos::destroy($destroy);
         usuarios::destroy($destroy);
         return redirect('/');
     }

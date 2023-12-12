@@ -25,7 +25,7 @@
 
         .conteiner-geral {
             margin: auto;
-            height: 80vh;
+            height: 70vh;
             width: 100%;
 
         }
@@ -89,7 +89,7 @@
             width: 100%;
 
             padding-bottom: 6px;
-            font-size: 25px;
+            font-size: 20px;
             color: white;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             border-bottom: #025951 solid 1px;
@@ -133,7 +133,7 @@
         }
 
         input {
-            font-size: 25px;
+            font-size: 20px;
             width: 20%;
             margin-top: 2px;
             height: 75%;
@@ -150,7 +150,7 @@
             height: 94.5%;
             background-color: white;
             border: 1px solid black;
-            font-size: 25px;
+            font-size: 20px;
             overflow: auto;
         }
 

@@ -4,7 +4,7 @@
     .table2{
             display: flex;
             width: 100%;
-            height: 55%;
+            height: 80%;
             border: 1px solid black;
             border-bottom: #025951 5px solid;
             overflow: auto;
@@ -14,15 +14,17 @@
 
         .id{
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-top: 20px;
-            justify-content: space-between;
+            margin-top: 15px;
+            
+            
+            
            
         }
 
         label{
-            font-size: 40px;
+            font-size: 20px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             padding: 10px;
             
@@ -31,9 +33,9 @@
 
 
         .cad{
-            width: 40%;
+            width: 30%;
             text-transform: uppercase;
-            font-size: 30px;
+            font-size: 20px;
             padding: 2px;
             border: 3px solid black;
             text-align: center;
@@ -52,9 +54,9 @@
             text-decoration: none;
             
             padding-bottom: 0;
-            font-size: 30px;
-            width: 300px;
-            height: 50px;
+            font-size: 20px;
+            width: 180px;
+            height: 40px;
             border: 3px solid black;
             background-color: #177373;
             color: white;
@@ -65,7 +67,7 @@
         .id button:hover{
             background-color: #025951;
             color: white;
-            
+           
             transition: 0.6s;
             
         }
@@ -104,7 +106,7 @@
 
             border: 1px solid black;
             text-align: center;
-            font-size: 25px;
+            font-size: 18px;
             margin-top: 0px;
             margin-bottom: 0px;
         }
@@ -119,7 +121,7 @@
 
         th {
             border: 1px solid black;
-            font-size: 25px;
+            font-size: 20px;
             color: white;
             background-color: #025951;
             position: sticky;
@@ -181,16 +183,13 @@
                 <form class="id" action="/registrar/dizimo" method="get">
 
  <input type="hidden" name="user_id" value="{{ $user_id }}">               
-<label for="data">Data Conferencia:</label>
+<label for="data">Data:</label>
 <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
 
 <label for="valor">Valor:</label>
 <input class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
 
-
 <br>
-<br>
-
 
     <button type="submit">Registar Dizimo</button>
 </form>
