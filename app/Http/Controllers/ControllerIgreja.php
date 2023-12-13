@@ -17,7 +17,15 @@ class ControllerIgreja extends Controller
                    /*Usuarios*/
     public function index(){
         $index = usuarios::all();
+        
         return view('pagina.index')->with('index',  $index);
+
+
+
+
+
+
+
     }
 
     public function cadastro_membro(){
@@ -61,6 +69,7 @@ class ControllerIgreja extends Controller
         $post->data = $request->data;
         $post->valor = $request->valor;
         $post->save();
+
         $dizimos = dizimos::where('user_id', $user_id)->get();
         return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
 
@@ -87,6 +96,9 @@ class ControllerIgreja extends Controller
     public function oferta(){
         $ofertas = ofertas::all();
         $totalofertas = ofertas::select('valor')->get();
+        $total = $this->somaArray($totalofertas);
+         $geral = array_sum($total)->int;
+        dd($geral);
         return view('pagina.oferta')->with('ofertas', $ofertas);
     }
 
@@ -108,6 +120,20 @@ class ControllerIgreja extends Controller
         $ofertas = ofertas::all();
         return view('pagina.oferta')->with('ofertas', $ofertas);
     }
+
+
+    function somaArray($array)
+    {
+        $soma = 0;
+    
+        foreach ($array as $valor) {
+            $soma .= $valor;
+         
+        }
+    
+        return $soma;
+    }
+
 
 
 

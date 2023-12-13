@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ofertas', function (Blueprint $table) {
             $table->id();;
             $table->date('data');
-            $table->string('valor');
+            $table->Integer('valor');
             $table->timestamps();
 
             
