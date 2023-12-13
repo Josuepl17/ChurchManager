@@ -17,15 +17,21 @@ use Illuminate\Support\Facades\Route;
 */
 /*Route::get('/registrar/dizimo', [ControllerIgreja::class, 'regdizimo']);*/
 
+
+
+                            /*Usuarios*/
 Route::get('/', [ControllerIgreja::class, 'index']);
 Route::get('/cadastro/membro', [ControllerIgreja::class, 'cadastro_membro']);
 Route::get('//inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
+Route::get('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
 
-Route::get('/destroy/{id}', [ControllerIgreja::class, 'excluir_usuario']);
-Route::get('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'destroydizimo']);
-Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'inserir']);
+                            /*Dizimos Por Usuario*/
+Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'botao_inserir']);
+Route::get('/registrar/dizimo', [ControllerIgreja::class, 'botao_registrar_dizimo']);
+Route::get('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'botao_excluir_dizimo']);
 
-Route::get('/registrar/dizimo', [ControllerIgreja::class, 'regdizimo']);
 
-Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
-Route::get('/login/if', [ControllerIgreja::class, 'verificar']);
+                             /*Ofertas*/
+Route::get('/oferta', [ControllerIgreja::class, 'oferta']);
+Route::get('/registrar/oferta', [ControllerIgreja::class, 'botao_registrar_oferta']);
+Route::post('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_oferta']);

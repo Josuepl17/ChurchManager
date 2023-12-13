@@ -169,15 +169,15 @@
 
                             
                         </tr>
-                        @foreach ($dizimos as $dizimo)
+                        @foreach ($ofertas as $oferta)
 
 
                         <tr>
-                            <td>{{$dizimo->id}}</td>
-                            <td>{{$dizimo->data}}</td>
-                            <td>R${{$dizimo->valor}}</td>
+                            <td>{{$oferta->id}}</td>
+                            <td>{{$oferta->data}}</td>
+                            <td>R${{$oferta->valor}}</td>
 
-                            <td ><form class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}"><button class="excluir">X</button></form></td>
+                            <td ><form class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button></form></td>
                         </tr>
 
                     @endforeach
@@ -188,9 +188,9 @@
                 </div>
 
 
-                <form class="id" action="/registrar/dizimo" method="get">
+                <form class="id" action="/registrar/oferta" method="get">
 
- <input type="hidden" name="user_id" value="{{ $user_id }}">               
+            
 <label for="data">Data:</label>
 <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
 
@@ -199,6 +199,6 @@
 
 <br>
 
-    <button type="submit">Registar Dizimo</button>
+    <button type="submit">Registar Oferta</button>
 </form>
 </x-layout>

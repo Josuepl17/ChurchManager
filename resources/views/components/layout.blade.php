@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gerencimento de Igrejas</title>
     <style>
         .troywell-avia {
             border: none;
@@ -20,7 +20,7 @@
         }
 
         body {
-            background-color: rgba(0, 0, 0, 0.053);
+            background-color: white;
         }
 
         .conteiner-geral {
@@ -120,17 +120,7 @@
         }
 
 
-        .pesquisa {
-            display: flex;
-            height: 5%;
-            width: 100%;
-            justify-content: flex-end;
-            background-color: #177373;
-            border: 1px solid black;
 
-
-
-        }
 
         input {
             font-size: 20px;
@@ -173,6 +163,10 @@
 
         }
 
+
+
+
+
     </style>
 
 </head>
@@ -182,6 +176,7 @@
     <div class="conteiner-geral">
 
         <div class="conteiner-titulo">
+            
             <h1>Igreja Prebiteriana da Renovação</h1>
         </div>
 
@@ -190,14 +185,14 @@
                 <h1 class="h1-menu">Menu</h1>
                 <a href="/">Home</a>
                 <a href="/cadastro/membro">Cadastro Membro</a>
-                <a href="/dizimo">Cadastro Dizimo</a>
-                <a href="#">Cadastro Oferta</a>
+                <a href="/oferta">Cadastro Oferta</a>
                 <a href="#">Cadastro Despesas</a>
             </div>
 
             <div class="conteiner-navtable">
+                
+           
 
-                <div class="pesquisa"><input type="text" placeholder="Pesquisar"></div>
 
           
 

@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ofertas;
 use App\Models\usuarios;
 
 use App\Models\dizimos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ControllerIgreja extends Controller
 {
+
+
+
+                   /*Usuarios*/
     public function index(){
         $index = usuarios::all();
         return view('pagina.index')->with('index',  $index);
@@ -27,14 +33,40 @@ class ControllerIgreja extends Controller
     }
 
 
-    public function excluir_usuario(request $request){
+    public function excluir_membro(request $request){
         $destroy = $request->id;
         dizimos::destroy($destroy);
         usuarios::destroy($destroy);
         return redirect('/');
     }
 
-    public function destroydizimo(request $request){
+
+
+
+                     /*Dizimos Por Usuario*/
+
+    public function botao_inserir(request $request){
+        
+        $user_id = $request->id;
+        $dizimos = dizimos::where('user_id', $user_id)->get();
+        
+       return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos);
+        
+    }
+
+    public function botao_registrar_dizimo(request $request){
+        $user_id = $request->user_id;
+        $post = new dizimos;
+        $post->user_id = $user_id;
+        $post->data = $request->data;
+        $post->valor = $request->valor;
+        $post->save();
+        $dizimos = dizimos::where('user_id', $user_id)->get();
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
+
+    }
+
+    public function botao_excluir_dizimo(request $request){
         $destroy = $request->id;
         $user_id = $request->user_id;
         dizimos::destroy($destroy);
@@ -42,38 +74,41 @@ class ControllerIgreja extends Controller
         return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
     }
 
-    public function login(){
-        
-        return view('login.index');
-    }
+
 
     
 
 
-    public function regdizimo(request $request){
-        $user_id = $request->user_id;
-        
-        $post = new dizimos;
-        $post->user_id = $user_id;
+
+
+                                     /*Ofertas*/
+
+
+    public function oferta(){
+        $ofertas = ofertas::all();
+        $totalofertas = ofertas::select('valor')->get();
+        return view('pagina.oferta')->with('ofertas', $ofertas);
+    }
+
+
+    public function botao_registrar_oferta(request $request){
+        $post = new ofertas;
         $post->data = $request->data;
         $post->valor = $request->valor;
         $post->save();
-        $dizimos = dizimos::where('user_id', $user_id)->get();
-       
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
+        $ofertas = ofertas::all();
+        return view('pagina.oferta')->with('ofertas', $ofertas);
 
     }
 
 
-    public function inserir(request $request){
-        
-        $user_id = $request->id;
-        $dizimos = dizimos::where('user_id', $user_id)->get();
-        /*$select = dizimos::select('valor')->where('user_id', '=', $user_id)->get();*/
-        
-    
-        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos);
+    public function botao_excluir_oferta(request $request){
+        $destroy = $request->id;
+        ofertas::destroy($destroy);
+        $ofertas = ofertas::all();
+        return view('pagina.oferta')->with('ofertas', $ofertas);
     }
+
 
 
 }
