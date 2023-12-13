@@ -96,9 +96,7 @@ class ControllerIgreja extends Controller
     public function oferta(){
         $ofertas = ofertas::all();
         $totalofertas = ofertas::query()->sum('valor');
-        
-     
-        return view('pagina.oferta')->with('ofertas', $ofertas);
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
     }
 
 
@@ -108,7 +106,8 @@ class ControllerIgreja extends Controller
         $post->valor = $request->valor;
         $post->save();
         $ofertas = ofertas::all();
-        return view('pagina.oferta')->with('ofertas', $ofertas);
+        $totalofertas = ofertas::query()->sum('valor');
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
 
     }
 
@@ -117,22 +116,9 @@ class ControllerIgreja extends Controller
         $destroy = $request->id;
         ofertas::destroy($destroy);
         $ofertas = ofertas::all();
-        return view('pagina.oferta')->with('ofertas', $ofertas);
+        $totalofertas = ofertas::query()->sum('valor');
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
     }
-
-
-    function somaArray($array)
-    {
-        $soma = 0;
-    
-        foreach ($array as $valor) {
-            $soma .= $valor;
-         
-        }
-    
-        return $soma;
-    }
-
 
 
 

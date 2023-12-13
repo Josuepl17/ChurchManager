@@ -137,7 +137,7 @@
 
             border: 1px solid black;
             width: 100%;
-            height: 94.5%;
+            height: 97.5%;
             background-color: white;
             border: 1px solid black;
             font-size: 20px;

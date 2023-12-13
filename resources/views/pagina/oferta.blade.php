@@ -3,8 +3,9 @@
 <style>
     .table2{
             display: flex;
+            flex-direction: column;
             width: 100%;
-            height: 75%;
+            height: 80%;
             border: 1px solid black;
             border-bottom: #025951 5px solid;
             overflow: auto;
@@ -17,6 +18,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 15px;
+            
             
             
             
@@ -93,6 +95,9 @@
 
         table {
             border-collapse: collapse;
+            
+           
+            
             margin: auto;
             border-radius: 50px;
             width: 100%;
@@ -150,6 +155,21 @@
             
         }
 
+        .valortotal{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 9%;
+            width: 100%;
+            background-color: #025951;
+        }
+
+        .valortotal p{
+            color: white;
+            margin-right: 20px;
+        }
+
+
 
 
         
@@ -183,6 +203,8 @@
                     @endforeach
                    
                   </table>
+
+                  <div class="valortotal"><p>VALOR TOTAL: R$ {{$totalofertas}},00</p></div>
 
 
                 </div>
