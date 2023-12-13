@@ -95,10 +95,9 @@ class ControllerIgreja extends Controller
 
     public function oferta(){
         $ofertas = ofertas::all();
-        $totalofertas = ofertas::select('valor')->get();
-        $total = $this->somaArray($totalofertas);
-         $geral = array_sum($total)->int;
-        dd($geral);
+        $totalofertas = ofertas::query()->sum('valor');
+        
+     
         return view('pagina.oferta')->with('ofertas', $ofertas);
     }
 
