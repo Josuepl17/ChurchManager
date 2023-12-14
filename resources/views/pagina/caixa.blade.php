@@ -5,6 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerencimento de Igrejas</title>
+
+    <?php
+    $totalofertas = $totalofertas;
+    $totaldizimos =  $totaldizimos;
+    $totaldespesas = $totaldespesas;
+
+    
+    
+ ?>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            
+          ['Task', 'Hours per Day'],
+          ['DIZMOS',   <?= $totaldizimos ?>],
+          ['DESPESAS',  <?= $totaldespesas ?>],
+          ['OFERTAS',      <?= $totalofertas ?>],
+          
+          
+          
+        ]);
+
+        var options = {
+          title: 'Caixa IPDR',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
     
     <style>
         .troywell-avia {
@@ -135,7 +171,10 @@
 
                                                 /* Tabela*/
         .conteiner-tabela {
-
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
             border: 1px solid black;
             width: 100%;
             height: 97.5%;
@@ -178,7 +217,7 @@
 
         <div class="conteiner-titulo">
             
-            <h1>Igreja Prebiteriana da Renovação</h1>
+        <h1>Caixa Financeiro</h1>
         </div>
 
         <main class="conteiner-menu-pesquisa-conteudo">
@@ -193,15 +232,20 @@
 
             <div class="conteiner-navtable">
                 
-           
-
+            
+                
 
           
 
                 <div class="conteiner-tabela">
 
 
-                {{ $slot }}
+                <div id="donutchart" style="width: 60%; height: 500px;"></div>
+                <div><h1 style="color: black;">Entradas: <span style="color: green;">{{$totaldizimos + $totalofertas}},00</span></h1>
+                <h1 style="color: black;">Saidas: <span style="color: red;">{{$totaldespesas}},00</span></h1>
+                <h1 style="color: black;">Caixa Atual: <span style="color: blue;">{{$totaldizimos + $totalofertas - $totaldespesas}},00</span></h1>
+            
+            </div>
 
 
                 </div>

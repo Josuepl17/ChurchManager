@@ -35,3 +35,11 @@ Route::get('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'botao_e
 Route::get('/oferta', [ControllerIgreja::class, 'oferta']);
 Route::get('/registrar/oferta', [ControllerIgreja::class, 'botao_registrar_oferta']);
 Route::get('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_oferta']);
+
+                            /* Despesas */
+Route::get('/despesas', [ControllerIgreja::class, 'despesas']);
+Route::get('/registrar/despesas', [ControllerIgreja::class, 'botao_registrar_despesas']);
+Route::get('/destroy/despesas/{id}', [ControllerIgreja::class, 'botao_excluir_despesas']);
+
+                                /*Caixa*/
+Route::get('/caixa', [ControllerIgreja::class, 'caixa']);

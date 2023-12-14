@@ -162,7 +162,6 @@
             height: 9%;
             width: 100%;
             background-color: #025951;
-            
         }
 
         .valortotal p{
@@ -190,43 +189,48 @@
                     <tr>
                             <th>ID</th>
                             <th>DATA</th>
+                            <th>DESCRIÇÃO</th>
                             <th>VALOR</th>
                             <th>X</th>
 
                             
                         </tr>
-                        @foreach ($ofertas as $oferta)
+                        @foreach ($despesas as $despesa)
 
 
                         <tr>
-                            <td>{{$oferta->id}}</td>
-                            <td>{{$oferta->data}}</td>
-                            <td>R${{$oferta->valor}}</td>
+                            <td>{{$despesa->id}}</td>
+                            <td>{{$despesa->data}}</td>
+                            <td>{{$despesa->descricao}}</td>
+                            <td>R${{$despesa->valor}}</td>
 
-                            <td ><form class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button></form></td>
+                            <td ><form class="formx" action="/destroy/despesas/{{$despesa->id}}"><button class="excluir">X</button></form></td>
                         </tr>
 
                     @endforeach
                    
                   </table>
 
-                  <div class="valortotal"><p>VALOR TOTAL: R$ <p style="color: green; margin-right: 20px; font-weight: bold;">{{$totalofertas}},00</p></p></div>
+                  <div class="valortotal"><p>VALOR TOTAL: R$ <p style="color: red; margin-right: 20px; font-weight: bold;">{{$totaldespesas}},00</p></p></div>
 
 
                 </div>
 
 
-                <form class="id" action="/registrar/oferta" method="get">
+                <form class="id" action="/registrar/despesas" method="get">
 
-            
+
 <label for="data">Data:</label>
-<input class="cad" type="date" name="data" id="data" autocomplete="off" required>
+<input  class="cad" type="date" name="data" id="data" autocomplete="off" required>
+
+<label for="descricao">Desc:</label>
+<input type="text" class="cad" name="descricao" id="descricao" autocomplete="off" required>
 
 <label for="valor">Valor:</label>
-<input class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
+<input style="width: 10%;" class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
 
 <br>
 
-    <button type="submit">Registar Oferta</button>
+    <button style="height: 50px;" type="submit">Registar Despesa</button>
 </form>
 </x-layout>

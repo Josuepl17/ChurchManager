@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ofertas', function (Blueprint $table) {
+        Schema::create('despesas', function (Blueprint $table) {
             $table->id();
             $table->date('data');
+            $table->string('descricao');
             $table->Integer('valor');
             $table->timestamps();
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('usuarios');
             $table->date('data');
-            $table->string('valor');
+            $table->integer('valor');
             $table->timestamps();
 
             

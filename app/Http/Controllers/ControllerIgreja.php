@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\despesas;
 use App\Models\ofertas;
 use App\Models\usuarios;
 
@@ -120,6 +121,43 @@ class ControllerIgreja extends Controller
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
     }
 
+                                    /* Despesas */
+
+    public function despesas(){
+        $despesas = despesas::all();
+        $totalodespesas = despesas::query()->sum('valor');
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totalodespesas);
+    }
 
 
+    public function botao_registrar_despesas(request $request){
+        $post = new despesas;
+        $post->data = $request->data;
+        $post->descricao = $request->descricao;
+        $post->valor = $request->valor;
+        $post->save();
+        $despesas = despesas::all();
+        $totaldespesas = despesas::query()->sum('valor');
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
+
+    }
+
+
+    public function botao_excluir_despesas(request $request){
+        $destroy = $request->id;
+        despesas::destroy($destroy);
+        $despesas = despesas::all();
+        $totaldespesas = despesas::query()->sum('valor');
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
+    }
+
+                            /*Caixa*/
+    public function caixa(){
+        $totalofertas = ofertas::query()->sum('valor');
+        $totaldespesas = despesas::query()->sum('valor');
+        $totaldizimos = dizimos::query()->sum('valor');
+
+        
+        return view('pagina.caixa')->with('totalofertas', $totalofertas)->with('totaldespesas', $totaldespesas)->with('totaldizimos', $totaldizimos);
+    }                        
 }
