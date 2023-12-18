@@ -199,7 +199,7 @@
 
 
                         <tr>
-                            <td>{{$oferta->id}}</td>
+                            <td style="background-color: grey; color:white">{{$oferta->id}}</td>
                             <td>{{$oferta->data}}</td>
                             <td>R${{$oferta->valor}}</td>
 

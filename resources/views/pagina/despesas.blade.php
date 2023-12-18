@@ -199,7 +199,7 @@
 
 
                         <tr>
-                            <td>{{$despesa->id}}</td>
+                            <td style="background-color: grey; color:white">{{$despesa->id}}</td>
                             <td>{{$despesa->data}}</td>
                             <td>{{$despesa->descricao}}</td>
                             <td>R${{$despesa->valor}}</td>

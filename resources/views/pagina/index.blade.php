@@ -85,7 +85,7 @@
 
                         <tr>
 
-                            <td>{{ $ind->id }}</td>
+                            <td style="background-color: grey; color:white">{{ $ind->id }}</td>
                             <td>{{ $ind->nome }}</td>
                             <td>{{ $ind->endereco }}</td>
                             <td>{{ $ind->funcao }}</td>

@@ -173,7 +173,7 @@
 
 
                         <tr>
-                            <td>{{$dizimo->id}}</td>
+                            <td style="background-color: grey; color:white">{{$dizimo->id}}</td>
                             <td>{{$dizimo->data}}</td>
                             <td>R${{$dizimo->valor}}</td>
 
