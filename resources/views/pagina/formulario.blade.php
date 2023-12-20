@@ -1,17 +1,17 @@
 <x-layout>
 
-<style>
-        .geral{
+    <style>
+        .geral {
             display: flex;
             width: 100%;
             height: 100%;
             justify-content: center;
             align-items: center;
-            
-            
+
+
         }
 
-    form{
+        form {
             display: flex;
             flex-direction: column;
             width: 50%;
@@ -19,21 +19,21 @@
             padding-bottom: 5px;
             border: 3px solid black;
             align-items: center;
-            
-           
-           
+
+
+
         }
 
-        label{
+        label {
             font-size: 20px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             padding-bottom: 5px;
-            
+
         }
 
 
 
-        .cad{
+        .cad {
             width: 60%;
             height: 5%;
             text-transform: uppercase;
@@ -41,16 +41,16 @@
             padding: 2px;
             border: 3px solid black;
             text-align: center;
-            
-            
+
+
         }
 
-        .h1m{
+        .h1m {
             color: black;
             font-size: 30px;
         }
 
-        .btn{
+        .btn {
             margin-top: 10px;
             color: black;
             text-decoration: none;
@@ -63,42 +63,41 @@
             background-color: #177373;
             color: white;
             margin-bottom: 9px;
-            
-           
-           
+
+
+
         }
 
-        .btn:hover{
+        .btn:hover {
             background-color: #025951;
             color: white;
             border: 1px solid black;
             transition: 0.6s;
-            
+
         }
+    </style>
 
-</style>
+    <div class="geral">
+        <form action="/inserir/membro" method="post">
+            @csrf
+            <h1 class="h1m">Cadastro de Membros</h1>
+            <label for="nome">Nome:</label>
+            <input class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
 
-<div class="geral">
-    <form action="/inserir/membro" method="post">
-    @csrf
-    <h1 class="h1m">Cadastro de Membros</h1>
-        <label for="nome">Nome:</label>
-        <input class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
-    
-       <label for="funcao">Função</label>
-       <input class="cad" type="text" name="funcao" id="funcao" autocomplete="off" required>
-    
-        <label for="endereco">Endereço:</label>
-        <input class="cad" type="text" name="endereco" id="endereco" autocomplete="off" required>
-    
-        <label for="telefone">Telefone:</label>
-        <input class="cad" type="number" name="telefone" id="telefone" autocomplete="off" required>
-      
-    <br>
-    
-    
+            <label for="funcao">Função</label>
+            <input class="cad" type="text" name="funcao" id="funcao" autocomplete="off" required>
+
+            <label for="endereco">Endereço:</label>
+            <input class="cad" type="text" name="endereco" id="endereco" autocomplete="off" required>
+
+            <label for="telefone">Telefone:</label>
+            <input class="cad" type="number" name="telefone" id="telefone" autocomplete="off" required>
+
+            <br>
+
+
             <button class="btn" type="submit">Enviar</button>
-    </form>
-</div>
+        </form>
+    </div>
 
 </x-layout>

@@ -1,7 +1,7 @@
 <x-layout>
 
-<style>
-            table {
+    <style>
+        table {
             border-collapse: collapse;
             margin: auto;
             border-radius: 50px;
@@ -49,63 +49,65 @@
             font-size: 20px;
             height: 100%;
             width: 100%;
-            
-            
-           
+
+
+
         }
 
-        .inserir{
+        .inserir {
             margin: auto;
             background-color: green;
             font-size: 20px;
             height: 100%;
             width: 100%;
         }
-</style>
+    </style>
 
 
 
-<table>
-                        <tr>
-                            <th>ID</th>
-                            <th>NOME</th>
-                            <th>ENDEREÇO</th>
-                            <th>FUNÇÃO</th>
-                            <th>TELEFONE</th>
-                            <th>X</th>
-                            <th>X</th>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>ENDEREÇO</th>
+            <th>FUNÇÃO</th>
+            <th>TELEFONE</th>
+            <th>X</th>
+            <th>X</th>
 
-                        </tr>
-
-
-
-                        @foreach ($index as $ind)
+        </tr>
 
 
 
-                        <tr>
-
-                            <td style="background-color: grey; color:white">{{ $ind->id }}</td>
-                            <td>{{ $ind->nome }}</td>
-                            <td>{{ $ind->endereco }}</td>
-                            <td>{{ $ind->funcao }}</td>
-                            <td>{{ $ind->telefone }}</td>
-                            <td ><form class="formx" action="/inserir/dizimos/{{ $ind->id }}"><button class="inserir">Inserir</button></form></td>
-                            <td>
-                            
-                        <form action="/destroy/{{$ind->id}}" method="post"><button class="excluir">X</button>
-                        @csrf
-                            </form>
-                            </td>
-
-                        </tr>
-
-
-                        @endforeach
+        @foreach ($index as $ind)
 
 
 
+        <tr>
 
-                    </table>
-                    
+            <td style="background-color: grey; color:white">{{ $ind->id }}</td>
+            <td>{{ $ind->nome }}</td>
+            <td>{{ $ind->endereco }}</td>
+            <td>{{ $ind->funcao }}</td>
+            <td>{{ $ind->telefone }}</td>
+            <td>
+                <form class="formx" action="/inserir/dizimos/{{ $ind->id }}"><button class="inserir">Inserir</button></form>
+            </td>
+            <td>
+
+                <form action="/destroy/{{$ind->id}}" method="post"><button class="excluir">X</button>
+                    @csrf
+                </form>
+            </td>
+
+        </tr>
+
+
+        @endforeach
+
+
+
+
+    </table>
+
 </x-layout>

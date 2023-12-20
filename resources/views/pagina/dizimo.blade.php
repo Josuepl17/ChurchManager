@@ -1,58 +1,58 @@
 <x-layout>
 
-<style>
-    .table2{
+    <style>
+        .table2 {
             display: flex;
             width: 100%;
             height: 75%;
             border: 1px solid black;
             border-bottom: #025951 5px solid;
             overflow: auto;
-            
-            
+
+
         }
 
-        .id{
+        .id {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 15px;
-            
-            
-            
-           
+
+
+
+
         }
 
-        label{
+        label {
             font-size: 20px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             padding: 10px;
-            
+
         }
 
 
 
-        .cad{
+        .cad {
             width: 30%;
             text-transform: uppercase;
             font-size: 20px;
             padding: 2px;
             border: 3px solid black;
             text-align: center;
-            
-            
+
+
         }
 
-        .h1m{
+        .h1m {
             color: black;
             font-size: 50px;
         }
 
-        .id button{
+        .id button {
             margin: 0px;
             color: black;
             text-decoration: none;
-            
+
             padding-bottom: 0;
             font-size: 20px;
             width: 180px;
@@ -60,16 +60,16 @@
             border: 3px solid black;
             background-color: #177373;
             color: white;
-           
-           
+
+
         }
 
-        .id button:hover{
+        .id button:hover {
             background-color: #025951;
             color: white;
-           
+
             transition: 0.6s;
-            
+
         }
 
         .excluir {
@@ -79,14 +79,14 @@
             height: 100%;
             width: 40%;
             margin-top: -2px;
-            
-           
+
+
         }
 
 
         .excluir:hover {
             color: aliceblue;
-            
+
             background-color: red;
             transition: 0.6;
         }
@@ -99,7 +99,7 @@
             background-color: white;
             margin-top: -2px;
             color: black;
-            
+
         }
 
         td {
@@ -137,7 +137,7 @@
 
 
 
-        .formx{
+        .formx {
 
             display: flex;
             width: 100%;
@@ -145,60 +145,60 @@
             align-items: none;
             margin-top: none;
             justify-content: none;
-            
-        
-            
+
+
+
         }
+    </style>
+
+
+    <div class="table2">
+        <table>
 
 
 
-        
-</style>
+            <tr>
+                <th>ID</th>
+                <th>DATA</th>
+                <th>VALOR</th>
+                <th>X</th>
 
 
-<div class="table2">
-                    <table>
-
-                        
-
-                    <tr>
-                            <th>ID</th>
-                            <th>DATA</th>
-                            <th>VALOR</th>
-                            <th>X</th>
-
-                            
-                        </tr>
-                        @foreach ($dizimos as $dizimo)
+            </tr>
+            @foreach ($dizimos as $dizimo)
 
 
-                        <tr>
-                            <td style="background-color: grey; color:white">{{$dizimo->id}}</td>
-                            <td>{{$dizimo->data}}</td>
-                            <td>R${{$dizimo->valor}}</td>
+            <tr>
+                <td style="background-color: grey; color:white">{{$dizimo->id}}</td>
+                <td>{{$dizimo->data}}</td>
+                <td>R${{$dizimo->valor}}</td>
 
-                            <td ><form class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}"><button class="excluir">X</button></form></td>
-                        </tr>
+                <td>
+                    <form class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}" method="post"><button class="excluir">X</button>
+                        @csrf
+                    </form>
+                </td>
+            </tr>
 
-                    @endforeach
-                   
-                  </table>
+            @endforeach
+
+        </table>
 
 
-                </div>
+    </div>
 
 
-                <form class="id" action="/registrar/dizimo" method="get">
+    <form class="id" action="/registrar/dizimo" method="post">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ $user_id }}">
+        <label for="data">Data:</label>
+        <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
 
- <input type="hidden" name="user_id" value="{{ $user_id }}">               
-<label for="data">Data:</label>
-<input class="cad" type="date" name="data" id="data" autocomplete="off" required>
+        <label for="valor">Valor:</label>
+        <input class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
 
-<label for="valor">Valor:</label>
-<input class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
+        <br>
 
-<br>
-
-    <button type="submit">Registar Dizimo</button>
-</form>
+        <button type="submit">Registar Dizimo</button>
+    </form>
 </x-layout>

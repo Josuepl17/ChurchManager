@@ -27,19 +27,19 @@ Route::post('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
 
                             /*Dizimos Por Usuario*/
 Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'botao_inserir']);
-Route::get('/registrar/dizimo', [ControllerIgreja::class, 'botao_registrar_dizimo']);
-Route::get('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'botao_excluir_dizimo']);
+Route::post('/registrar/dizimo', [ControllerIgreja::class, 'botao_registrar_dizimo']);
+Route::post('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'botao_excluir_dizimo']);
 
 
                              /*Ofertas*/
 Route::get('/oferta', [ControllerIgreja::class, 'oferta']);
-Route::get('/registrar/oferta', [ControllerIgreja::class, 'botao_registrar_oferta']);
-Route::get('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_oferta']);
+Route::post('/registrar/oferta', [ControllerIgreja::class, 'botao_registrar_oferta']);
+Route::post('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_oferta']);
 
                             /* Despesas */
 Route::get('/despesas', [ControllerIgreja::class, 'despesas']);
-Route::get('/registrar/despesas', [ControllerIgreja::class, 'botao_registrar_despesas']);
-Route::get('/destroy/despesas/{id}', [ControllerIgreja::class, 'botao_excluir_despesas']);
+Route::post('/registrar/despesas', [ControllerIgreja::class, 'botao_registrar_despesas']);
+Route::post('/destroy/despesas/{id}', [ControllerIgreja::class, 'botao_excluir_despesas']);
 
                                 /*Caixa*/
 Route::get('/caixa', [ControllerIgreja::class, 'caixa']);

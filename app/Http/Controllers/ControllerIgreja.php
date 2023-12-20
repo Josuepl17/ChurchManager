@@ -15,34 +15,30 @@ class ControllerIgreja extends Controller
 
 
 
-                   /*Usuarios*/
-    public function index(){
+    /*Usuarios*/
+    public function index()
+    {
         $index = usuarios::all();
-        
+
         return view('pagina.index')->with('index',  $index);
-
-
-
-
-
-
-
     }
 
-    public function cadastro_membro(){
+    public function cadastro_membro()
+    {
         return view('pagina.formulario');
     }
 
-    public function botao_inserir_membro(request $request){
+    public function botao_inserir_membro(request $request)
+    {
         $dados = $request->all();
-        $DADOS1 =  array_map('strtoupper' , array_map('strval' , $dados));
+        $DADOS1 =  array_map('strtoupper', array_map('strval', $dados));
         usuarios::create($DADOS1);
-           return redirect('/');
-
+        return redirect('/');
     }
 
 
-    public function excluir_membro(request $request){
+    public function excluir_membro(request $request)
+    {
         $destroy = $request->id;
         dizimos::destroy($destroy);
         usuarios::destroy($destroy);
@@ -52,18 +48,19 @@ class ControllerIgreja extends Controller
 
 
 
-                     /*Dizimos Por Usuario*/
+    /*Dizimos Por Usuario*/
 
-    public function botao_inserir(request $request){
-        
+    public function botao_inserir(request $request)
+    {
+
         $user_id = $request->id;
         $dizimos = dizimos::where('user_id', $user_id)->get();
-        
-       return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos);
-        
+
+        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos);
     }
 
-    public function botao_registrar_dizimo(request $request){
+    public function botao_registrar_dizimo(request $request)
+    {
         $user_id = $request->user_id;
         $post = new dizimos;
         $post->user_id = $user_id;
@@ -73,10 +70,10 @@ class ControllerIgreja extends Controller
 
         $dizimos = dizimos::where('user_id', $user_id)->get();
         return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
-
     }
 
-    public function botao_excluir_dizimo(request $request){
+    public function botao_excluir_dizimo(request $request)
+    {
         $destroy = $request->id;
         $user_id = $request->user_id;
         dizimos::destroy($destroy);
@@ -86,22 +83,24 @@ class ControllerIgreja extends Controller
 
 
 
-    
 
 
 
 
-                                     /*Ofertas*/
+
+    /*Ofertas*/
 
 
-    public function oferta(){
+    public function oferta()
+    {
         $ofertas = ofertas::all();
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
     }
 
 
-    public function botao_registrar_oferta(request $request){
+    public function botao_registrar_oferta(request $request)
+    {
         $post = new ofertas;
         $post->data = $request->data;
         $post->valor = $request->valor;
@@ -109,11 +108,11 @@ class ControllerIgreja extends Controller
         $ofertas = ofertas::all();
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
-
     }
 
 
-    public function botao_excluir_oferta(request $request){
+    public function botao_excluir_oferta(request $request)
+    {
         $destroy = $request->id;
         ofertas::destroy($destroy);
         $ofertas = ofertas::all();
@@ -121,16 +120,18 @@ class ControllerIgreja extends Controller
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
     }
 
-                                    /* Despesas */
+    /* Despesas */
 
-    public function despesas(){
+    public function despesas()
+    {
         $despesas = despesas::all();
         $totalodespesas = despesas::query()->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totalodespesas);
     }
 
 
-    public function botao_registrar_despesas(request $request){
+    public function botao_registrar_despesas(request $request)
+    {
         $post = new despesas;
         $post->data = $request->data;
         $post->descricao = $request->descricao;
@@ -139,11 +140,11 @@ class ControllerIgreja extends Controller
         $despesas = despesas::all();
         $totaldespesas = despesas::query()->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
-
     }
 
 
-    public function botao_excluir_despesas(request $request){
+    public function botao_excluir_despesas(request $request)
+    {
         $destroy = $request->id;
         despesas::destroy($destroy);
         $despesas = despesas::all();
@@ -151,13 +152,12 @@ class ControllerIgreja extends Controller
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
     }
 
-                            /*Caixa*/
-    public function caixa(){
+    /*Caixa*/
+    public function caixa()
+    {
         $totalofertas = ofertas::query()->sum('valor');
         $totaldespesas = despesas::query()->sum('valor');
         $totaldizimos = dizimos::query()->sum('valor');
-
-        
         return view('pagina.caixa')->with('totalofertas', $totalofertas)->with('totaldespesas', $totaldespesas)->with('totaldizimos', $totaldizimos);
-    }                        
+    }
 }

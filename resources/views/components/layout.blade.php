@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerencimento de Igrejas</title>
-    
+
     <style>
         .troywell-avia {
             border: none;
@@ -31,7 +31,7 @@
 
         }
 
-                                                 /* Conteiner-Titulo */
+        /* Conteiner-Titulo */
 
 
         .conteiner-titulo {
@@ -46,7 +46,8 @@
             box-shadow: black 1px 1px 1px;
 
         }
-                                                    /* Conteiner Menu-Pesquisa-Conteudo */
+
+        /* Conteiner Menu-Pesquisa-Conteudo */
         .conteiner-menu-pesquisa-conteudo {
             display: flex;
             margin-left: 10px;
@@ -61,7 +62,7 @@
 
 
 
-                                                    /* Menu Lateral Esquerdo*/
+        /* Menu Lateral Esquerdo*/
         .menu-esquerdo {
             display: flex;
             flex-direction: column;
@@ -105,9 +106,9 @@
 
 
 
-        
 
-                                            /* Conteiner-Pesquisa-Conteudo */
+
+        /* Conteiner-Pesquisa-Conteudo */
 
         .conteiner-navtable {
 
@@ -133,7 +134,7 @@
 
         }
 
-                                                /* Tabela*/
+        /* Tabela*/
         .conteiner-tabela {
 
             border: 1px solid black;
@@ -147,7 +148,7 @@
 
 
 
-                                                     /* FIM TABELA */
+        /* FIM TABELA */
 
         .barrainferior {
             display: flex;
@@ -163,11 +164,6 @@
             color: white;
 
         }
-
-
-
-
-
     </style>
 
 </head>
@@ -177,7 +173,7 @@
     <div class="conteiner-geral">
 
         <div class="conteiner-titulo">
-            
+
             <h1>Igreja Prebiteriana da Renovação</h1>
         </div>
 
@@ -192,16 +188,16 @@
             </div>
 
             <div class="conteiner-navtable">
-                
-           
 
 
-          
+
+
+
 
                 <div class="conteiner-tabela">
 
 
-                {{ $slot }}
+                    {{ $slot }}
 
 
                 </div>
