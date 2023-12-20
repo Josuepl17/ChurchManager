@@ -41,7 +41,9 @@ class ControllerIgreja extends Controller
     {
         $destroy = $request->id;
         dizimos::destroy($destroy);
+       
         usuarios::destroy($destroy);
+       
         return redirect('/');
     }
 
