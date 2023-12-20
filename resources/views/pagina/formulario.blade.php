@@ -79,8 +79,8 @@
 </style>
 
 <div class="geral">
-    <form action="/inserir/membro" method="get">
-    
+    <form action="/inserir/membro" method="post">
+    @csrf
     <h1 class="h1m">Cadastro de Membros</h1>
         <label for="nome">Nome:</label>
         <input class="cad" type="text" name="nome" id="nome" autocomplete="off" required>

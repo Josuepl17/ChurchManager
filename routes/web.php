@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
                             /*Usuarios*/
 Route::get('/', [ControllerIgreja::class, 'index']);
 Route::get('/cadastro/membro', [ControllerIgreja::class, 'cadastro_membro']);
-Route::get('//inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
-Route::get('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
+Route::post('/inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
+Route::post('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
 
                             /*Dizimos Por Usuario*/
 Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'botao_inserir']);

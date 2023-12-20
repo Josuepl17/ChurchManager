@@ -92,7 +92,10 @@
                             <td>{{ $ind->telefone }}</td>
                             <td ><form class="formx" action="/inserir/dizimos/{{ $ind->id }}"><button class="inserir">Inserir</button></form></td>
                             <td>
-                                <form action="/destroy/{{$ind->id}}"><button class="excluir">X</button></form>
+                            
+                        <form action="/destroy/{{$ind->id}}" method="post"><button class="excluir">X</button>
+                        @csrf
+                            </form>
                             </td>
 
                         </tr>
