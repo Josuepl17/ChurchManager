@@ -162,4 +162,15 @@ class ControllerIgreja extends Controller
         $totaldizimos = dizimos::query()->sum('valor');
         return view('pagina.caixa')->with('totalofertas', $totalofertas)->with('totaldespesas', $totaldespesas)->with('totaldizimos', $totaldizimos);
     }
+
+    public function filtrar(Request $request)
+    {
+      
+        $dataIni = $request->get('dataini');
+        $dataFi = $request->get('datafi');
+        $ofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->get();
+        $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
+        
+    }
 }

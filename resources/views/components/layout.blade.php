@@ -178,6 +178,7 @@
         </div>
 
         <main class="conteiner-menu-pesquisa-conteudo">
+            
             <div class="menu-esquerdo">
                 <h1 class="h1-menu">Menu</h1>
                 <a href="/">Home</a>

@@ -174,10 +174,33 @@
 
 
         }
+
+        .filtro{
+            display: flex;
+            width: 100%;
+            background-color: #177373;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            height: 7%;
+        }
+
+        .filtro form{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
     </style>
 
 
     <div class="table2">
+    <div class="filtro">
+        <form action="/filtrar" method="get">
+            <input type="date" name="dataini" id="dataini">
+            <input type="date" name="datafi" id="datafi">
+            <input type="submit" value="Filtrar" style="width: 5%;">
+        </form>
+    </div>
+
         <table>
 
 
