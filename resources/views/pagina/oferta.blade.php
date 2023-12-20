@@ -220,7 +220,6 @@
 
     <form class="id" action="/registrar/oferta" method="post">
         @csrf
-
         <label for="data">Data:</label>
         <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
 
