@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerIgreja;
+use App\Http\Controllers\User;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
                             /*Usuarios*/
-Route::get('/', [ControllerIgreja::class, 'index']);
+Route::get('/', [ControllerIgreja::class, 'index'])->middleware('auth');
 Route::get('/cadastro/membro', [ControllerIgreja::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
 Route::post('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
@@ -43,3 +44,4 @@ Route::post('/destroy/despesas/{id}', [ControllerIgreja::class, 'botao_excluir_d
 
                                 /*Caixa*/
 Route::get('/caixa', [ControllerIgreja::class, 'caixa']);
+

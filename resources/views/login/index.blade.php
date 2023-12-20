@@ -201,35 +201,12 @@ a:hover {
       <span>Login</span>
     </div>
 
-    <form action="/login/if">
-      <div class="input_box">
-        <input type="text" id="email" class="input-field" required>
-        <label for="email" class="label">Username</label>
-        <i class="bx bx-user icon"></i>
-      </div>
-      <div class="input_box">
-        <input type="password" id="pass" class="input-field" required>
-        <label for="pass" class="label">Password</label>
-        <i class="bx bx-lock-alt icon"></i>
-      </div>
-      <div class="remember-forgot">
-        <div class="remember-me">
-          <input type="checkbox" id="remember">
-          <label for="remember">Remember me</label>
-        </div>
-        <div class="forgot">
-          <a href="#">Forgot password?</a>
-        </div>
-      </div>
-      <div class="input_box">
-        <input type="submit" class="input-submit" value="Login">
-      </div>
-    </form>
+    <form action="/login/if" method="post">
+      @csrf
+    <input type="text" id="email" name="email">
+    <input type="password" id="senha" name="senha">
+    <input type="submit" value="enviar">
 
-    <div class="register">
-      <span>Don't have an account? <a href="#">Register</a></span>
-    </div>
-  </div>
 </div>
 <!-- partial -->
   
