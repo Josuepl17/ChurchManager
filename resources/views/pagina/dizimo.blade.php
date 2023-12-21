@@ -164,6 +164,26 @@
             display: flex;
             justify-content: flex-end;
         }
+
+        .valortotal {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 5%;
+            width: 100%;
+            background-color: #025951;
+
+        }
+
+        .valortotal p {
+            color: black;
+
+          
+            background-color: white;
+
+
+
+        }
     </style>
 
 <div class="filtro">
@@ -212,7 +232,16 @@
         </table>
 
 
+
+
+
     </div>
+
+    <div class="valortotal">
+            <p>VALOR TOTAL: R$
+            <p style="color: green; margin-right: 20px; font-weight: bold;">{{$totaldizimos}},00</p>
+            </p>
+        </div>
 
 
     <form class="id" action="/registrar/dizimo" method="post">

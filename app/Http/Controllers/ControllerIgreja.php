@@ -57,8 +57,8 @@ class ControllerIgreja extends Controller
 
         $user_id = $request->id;
         $dizimos = dizimos::where('user_id', $user_id)->get();
-
-        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos);
+        $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
+        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos);
     }
 
     public function botao_registrar_dizimo(request $request)
@@ -69,9 +69,11 @@ class ControllerIgreja extends Controller
         $post->data = $request->data;
         $post->valor = $request->valor;
         $post->save();
-
+        $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
         $dizimos = dizimos::where('user_id', $user_id)->get();
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id)->with('totaldizimos', $totaldizimos);
+
+        
     }
 
     public function botao_excluir_dizimo(request $request)
@@ -80,7 +82,8 @@ class ControllerIgreja extends Controller
         $user_id = $request->user_id;
         dizimos::destroy($destroy);
         $dizimos = dizimos::where('user_id', $user_id)->get();
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id);
+        $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id)->with('totaldizimos', $totaldizimos);
     }
 
 
@@ -180,8 +183,8 @@ class ControllerIgreja extends Controller
         $dataIni = $request->get('dataini');
         $dataFi = $request->get('datafi');
         $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
-        $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totalofertas', $totalofertas)->with('user_id', $user_id);
+        $totaldizimos = dizimos::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('user_id', $user_id);
         
     }
 }
