@@ -173,4 +173,15 @@ class ControllerIgreja extends Controller
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
         
     }
+
+    public function filtrar_dizimo(Request $request)
+    {
+        $user_id = $request->user_id;
+        $dataIni = $request->get('dataini');
+        $dataFi = $request->get('datafi');
+        $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
+        $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totalofertas', $totalofertas)->with('user_id', $user_id);
+        
+    }
 }

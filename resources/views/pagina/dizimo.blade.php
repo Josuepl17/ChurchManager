@@ -149,11 +149,38 @@
 
 
         }
+
+        .filtro{
+            display: flex;
+            width: 100%;
+            background-color: #177373;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            height: 5%;
+        }
+
+        .filtro form{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
     </style>
+
+<div class="filtro">
+        <form action="/filtrar/dizimo/{{$user_id}}" method="get">
+            <input type="date" name="dataini" id="dataini" value="2023-12-01">
+            <input type="date" name="datafi" id="datafi" value="2023-12-01">
+            <input type="submit" value="Filtrar" style="width: 5%;">
+        </form>
+    </div>
 
 
     <div class="table2">
+
+
+
         <table>
+            
 
 
 
