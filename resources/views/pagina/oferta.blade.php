@@ -188,7 +188,10 @@
             width: 100%;
             display: flex;
             justify-content: flex-end;
+            border-radius: 0px;
+            
         }
+
     </style>
 
 
@@ -197,7 +200,7 @@
         <form action="/filtrar" method="get">
             <input type="date" name="dataini" id="dataini" value="2023-12-01">
             <input type="date" name="datafi" id="datafi" value="2023-12-01">
-            <input type="submit" value="Filtrar" style="width: 5%;">
+            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
     </div>
 
