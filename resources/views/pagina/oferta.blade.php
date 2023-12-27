@@ -216,11 +216,13 @@
 
 
             </tr>
-            @foreach ($ofertas as $oferta)
 
+   
+            @foreach ($ofertas as $oferta)
+            
 
             <tr>
-                <td style="background-color: grey; color:white">{{$oferta->id}}</td>
+                <td style="background-color: grey; color:white">{{ $oferta->id}}</td>
                 <td>{{$oferta->data}}</td>
                 <td>R${{$oferta->valor}}</td>
 
@@ -229,7 +231,7 @@
                         @csrf</form>
                 </td>
             </tr>
-
+           
             @endforeach
 
         </table>

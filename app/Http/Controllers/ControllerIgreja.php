@@ -99,8 +99,24 @@ class ControllerIgreja extends Controller
     public function oferta()
     {
         $ofertas = ofertas::all();
+
+       
+foreach ($ofertas as $oferta) {
+    $dataFormatada = \Carbon\Carbon::parse($oferta->data)->format('d/m/Y');
+    $oferta->data = $dataFormatada;
+    $ofertas = $oferta;
+
+}
+        
+     
+        
+
         $totalofertas = ofertas::query()->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
+
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataFormatada', $dataFormatada);
+        
+
+        
     }
 
 

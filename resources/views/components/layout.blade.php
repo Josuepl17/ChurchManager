@@ -53,7 +53,7 @@
             margin-left: 10px;
             margin-right: 10px;
             justify-content: center;
-            height: 100%;
+            height: 107%;
 
 
 

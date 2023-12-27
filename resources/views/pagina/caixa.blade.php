@@ -241,9 +241,9 @@
 
 
                 <div id="donutchart" style="width: 60%; height: 500px;"></div>
-                <div><h1 style="color: black;">Entradas: <span style="color: green;">{{$totaldizimos + $totalofertas}},00</span></h1>
-                <h1 style="color: black;">Saidas: <span style="color: red;">{{$totaldespesas}},00</span></h1>
-                <h1 style="color: black;">Caixa Atual: <span style="color: blue;">{{$totaldizimos + $totalofertas - $totaldespesas}},00</span></h1>
+                <div><h1 style="color: black;">Entradas: <span style="color: green;">R${{$totaldizimos + $totalofertas}},00</span></h1>
+                <h1 style="color: black;">Saidas: <span style="color: red;">R${{$totaldespesas}},00</span></h1>
+                <h1 style="color: black;">Caixa Atual: <span style="color: blue;">R${{$totaldizimos + $totalofertas - $totaldespesas}},00</span></h1>
             
             </div>
 

@@ -4,7 +4,7 @@
         .table2 {
             display: flex;
             width: 100%;
-            height: 75%;
+            height: 74%;
             border: 1px solid black;
             border-bottom: #025951 5px solid;
             overflow: auto;
@@ -178,7 +178,7 @@
         .valortotal p {
             color: black;
 
-          
+            
             background-color: white;
 
 
