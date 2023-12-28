@@ -15,7 +15,8 @@
 
         <div class="conteiner-titulo">
 
-            <h1></h1>
+            <h1>Igreja Prebiteriana da Renovação
+            </h1>
         </div>
 
         <main class="conteiner-menu-pesquisa-conteudo">
