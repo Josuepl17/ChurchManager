@@ -86,7 +86,7 @@
             background-color: red;
             font-size: 20px;
             height: 100%;
-            width: 40%;
+            width: 100%;
             margin-top: -2px;
 
 
@@ -202,10 +202,21 @@
             border-radius: 0px;
             
         }
+
+        
     </style>
 
 
     <div class="table2">
+
+    <div class="filtro">
+        <form action="/filtrar" method="get">
+            <input type="date" name="dataini" id="dataini" value="2023-12-01">
+            <input type="date" name="datafi" id="datafi" value="2023-12-01">
+            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+        </form>
+    </div>
+
         <table>
 
 
@@ -215,7 +226,7 @@
                 <th>DATA</th>
                 <th>DESCRIÇÃO</th>
                 <th>VALOR</th>
-                <th>X</th>
+                <th style="width: 4%;" >X</th>
 
 
             </tr>

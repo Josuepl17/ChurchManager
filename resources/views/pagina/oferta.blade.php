@@ -87,7 +87,7 @@
             background-color: red;
             font-size: 20px;
             height: 100%;
-            width: 40%;
+            width: 100%;
             margin-top: -2px;
 
 
@@ -224,7 +224,7 @@
                 <th>ID</th>
                 <th>DATA</th>
                 <th>VALOR</th>
-                <th>X</th>
+                <th style="width: 4%;" >X</th>
 
 
             </tr>

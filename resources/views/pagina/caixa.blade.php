@@ -36,10 +36,24 @@
 
 <x-layout>
 
-<div id="donutchart" style="width: 60%; height: 500px;"></div>
-                <div><h1 style="color: black;">Entradas: <span style="color: green;">R${{$totaldizimos + $totalofertas}},00</span></h1>
-                <h1 style="color: black;">Saidas: <span style="color: red;">R${{$totaldespesas}},00</span></h1>
-                <h1 style="color: black;">Caixa Atual: <span style="color: blue;">R${{$totaldizimos + $totalofertas - $totaldespesas}},00</span></h1>
+<style>
+
+.conteudo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
+
+
+<div class="Conteudo">
+  <div id="donutchart" style="width: 60%; height: 500px;"></div>
+                  <div><h1 style="color: black;">Entradas: <span style="color: green;">R${{$totaldizimos + $totalofertas}},00</span></h1>
+                  <h1 style="color: black;">Saidas: <span style="color: red;">R${{$totaldespesas}},00</span></h1>
+                  <h1 style="color: black;">Caixa Atual: <span style="color: blue;">R${{$totaldizimos + $totalofertas - $totaldespesas}},00</span></h1>
+</div>
 
 
 </x-layout>

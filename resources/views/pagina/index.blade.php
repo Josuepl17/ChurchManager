@@ -84,8 +84,8 @@
             <th>ENDEREÇO</th>
             <th>FUNÇÃO</th>
             <th>TELEFONE</th>
-            <th>X</th>
-            <th>X</th>
+            <th style="width: 08%;" >X</th>
+            <th style="width: 4%;" >X</th>
 
         </tr>
 
