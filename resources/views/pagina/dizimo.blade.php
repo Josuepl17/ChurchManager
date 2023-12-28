@@ -117,7 +117,7 @@
 
         td {
 
-            border: 1px solid black;
+            border: 1px solid rgba(0, 0, 0, 0.34);
             text-align: center;
             font-size: 18px;
             margin-top: 0px;
