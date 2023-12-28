@@ -119,8 +119,7 @@ class ControllerIgreja extends Controller
         $post->valor = $request->valor;
         $post->save();
         $ofertas = ofertas::all();
-        $totalofertas = ofertas::query()->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
+        return redirect('/oferta');
     }
 
 
