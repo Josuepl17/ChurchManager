@@ -221,10 +221,10 @@
 
 
             <tr>
-                <th>ID</th>
+                <th style="width: 4%;" >ID</th>
                 <th>DATA</th>
                 <th>VALOR</th>
-                <th>X</th>
+                <th style="width: 4%;" >X</th>
 
 
             </tr>

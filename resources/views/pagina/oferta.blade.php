@@ -221,7 +221,7 @@
 
 
             <tr>
-                <th>ID</th>
+                <th style="width: 4%;" >ID</th>
                 <th>DATA</th>
                 <th>VALOR</th>
                 <th style="width: 4%;" >X</th>
@@ -234,7 +234,7 @@
             
 
             <tr>
-                <td style="background-color: grey; color:white">{{ $oferta->id}}</td>
+                <td style="background-color: var(--titulos) ; color:white">{{ $oferta->id}}</td>
                 <td>{{$oferta->data}}</td>
                 <td>R${{$oferta->valor}}</td>
 

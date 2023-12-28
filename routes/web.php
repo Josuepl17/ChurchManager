@@ -46,3 +46,5 @@ Route::post('/destroy/despesas/{id}', [ControllerIgreja::class, 'botao_excluir_d
 Route::get('/caixa', [ControllerIgreja::class, 'caixa']);
 Route::get('/filtrar', [ControllerIgreja::class, 'filtrar']);
 Route::get('/filtrar/dizimo/{user_id}', [ControllerIgreja::class, 'filtrar_dizimo']);
+
+Route::get('/filtrar/despesas', [ControllerIgreja::class, 'filtrar_despesas']);

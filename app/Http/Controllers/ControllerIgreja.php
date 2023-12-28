@@ -194,4 +194,14 @@ class ControllerIgreja extends Controller
         return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('user_id', $user_id);
         
     }
+
+
+    public function filtrar_despesas(Request $request){
+        $dataIni = $request->get('dataini');
+        $dataFi = $request->get('datafi');
+
+        $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
+        $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
+    }
 }

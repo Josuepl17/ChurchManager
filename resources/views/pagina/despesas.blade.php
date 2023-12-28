@@ -210,7 +210,7 @@
     <div class="table2">
 
     <div class="filtro">
-        <form action="/filtrar" method="get">
+        <form action="/filtrar/despesas" method="get">
             <input type="date" name="dataini" id="dataini" value="2023-12-01">
             <input type="date" name="datafi" id="datafi" value="2023-12-01">
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
@@ -222,7 +222,7 @@
 
 
             <tr>
-                <th>ID</th>
+                <th  style="width: 4%;" >ID</th>
                 <th>DATA</th>
                 <th>DESCRIÇÃO</th>
                 <th>VALOR</th>
@@ -234,7 +234,7 @@
 
 
             <tr>
-                <td style="background-color: grey; color:white">{{$despesa->id}}</td>
+                <td style="background-color: var(--titulos); color:white">{{$despesa->id}}</td>
                 <td>{{$despesa->data}}</td>
                 <td>{{$despesa->descricao}}</td>
                 <td>R${{$despesa->valor}}</td>
