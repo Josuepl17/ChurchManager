@@ -1,13 +1,21 @@
 <x-layout>
 
     <style>
+
+:root {
+    --titulos: #0A1626 ;
+    --subtitulos:#023859 ;
+    --fundos:#0D8AA6 ;
+    
+    --cor-secundaria:#313131e7 ;
+}
         .table2 {
             display: flex;
             flex-direction: column;
             width: 100%;
             height: 80%;
             border: 1px solid black;
-            border-bottom: #025951 5px solid;
+            
             overflow: auto;
 
 
@@ -60,14 +68,14 @@
             width: 180px;
             height: 40px;
             border: 3px solid black;
-            background-color: #177373;
+            background-color: var(--subtitulos);
             color: white;
 
 
         }
 
         .id button:hover {
-            background-color: #025951;
+            background-color: var(--titulos);
             color: white;
 
             transition: 0.6s;
@@ -126,9 +134,12 @@
 
         th {
             border: 1px solid black;
+            border-top: none;
+            border-left: none;
+            
             font-size: 20px;
             color: white;
-            background-color: #025951;
+            background-color: var(--subtitulos);
             position: sticky;
             top: -1px;
             padding-top: 5px;
@@ -136,8 +147,9 @@
         }
 
         tr:hover {
-            background-color: #177373;
+            background-color: var(--fundos);
             color: white;
+            transition: 0.1s;
         }
 
 
@@ -161,14 +173,14 @@
             align-items: center;
             height: 9%;
             width: 100%;
-            background-color: #025951;
+            background-color: var(--titulos);
 
         }
 
         .valortotal p {
             color: black;
 
-            margin-top: 25px;
+            
             background-color: white;
 
 
@@ -178,7 +190,7 @@
         .filtro{
             display: flex;
             width: 100%;
-            background-color: #177373;
+            background-color: var(--titulos);
             padding-top: 5px;
             padding-bottom: 5px;
             height: 7%;
@@ -237,8 +249,8 @@
         </table>
 
         <div class="valortotal">
-            <p>VALOR TOTAL: R$
-            <p style="color: green; margin-right: 20px; font-weight: bold;">{{$totalofertas}},00</p>
+            <p>VALOR TOTAL: R$ 
+            <p style="color: green; font-weight: bold;">{{$totalofertas}},00</p>
             </p>
         </div>
 

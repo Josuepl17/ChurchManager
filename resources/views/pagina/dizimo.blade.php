@@ -1,12 +1,21 @@
 <x-layout>
 
     <style>
+
+:root {
+    --titulos: #0A1626 ;
+    --subtitulos:#023859 ;
+    --fundos:#0D8AA6 ;
+    
+    --cor-secundaria:#313131e7 ;
+}
         .table2 {
             display: flex;
+            flex-direction: column;
             width: 100%;
-            height: 74%;
+            height: 80%;
             border: 1px solid black;
-            border-bottom: #025951 5px solid;
+            
             overflow: auto;
 
 
@@ -17,6 +26,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 15px;
+
 
 
 
@@ -58,14 +68,14 @@
             width: 180px;
             height: 40px;
             border: 3px solid black;
-            background-color: #177373;
+            background-color: var(--subtitulos);
             color: white;
 
 
         }
 
         .id button:hover {
-            background-color: #025951;
+            background-color: var(--titulos);
             color: white;
 
             transition: 0.6s;
@@ -93,6 +103,9 @@
 
         table {
             border-collapse: collapse;
+
+
+
             margin: auto;
             border-radius: 50px;
             width: 100%;
@@ -121,9 +134,12 @@
 
         th {
             border: 1px solid black;
+            border-top: none;
+            border-left: none;
+            
             font-size: 20px;
             color: white;
-            background-color: #025951;
+            background-color: var(--subtitulos);
             position: sticky;
             top: -1px;
             padding-top: 5px;
@@ -131,8 +147,9 @@
         }
 
         tr:hover {
-            background-color: #177373;
+            background-color: var(--fundos);
             color: white;
+            transition: 0.1s;
         }
 
 
@@ -150,28 +167,13 @@
 
         }
 
-        .filtro{
-            display: flex;
-            width: 100%;
-            background-color: #177373;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            height: 5%;
-        }
-
-        .filtro form{
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-        }
-
         .valortotal {
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            height: 5%;
+            height: 9%;
             width: 100%;
-            background-color: #025951;
+            background-color: var(--titulos);
 
         }
 
@@ -184,23 +186,37 @@
 
 
         }
+
+        .filtro{
+            display: flex;
+            width: 100%;
+            background-color: var(--titulos);
+            padding-top: 5px;
+            padding-bottom: 5px;
+            height: 7%;
+        }
+
+        .filtro form{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            border-radius: 0px;
+            
+        }
+
     </style>
 
-<div class="filtro">
-        <form action="/filtrar/dizimo/{{$user_id}}" method="get">
+
+    <div class="table2">
+    <div class="filtro">
+        <form action="/filtrar" method="get">
             <input type="date" name="dataini" id="dataini" value="2023-12-01">
             <input type="date" name="datafi" id="datafi" value="2023-12-01">
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
     </div>
 
-
-    <div class="table2">
-
-
-
         <table>
-            
 
 
 
@@ -212,36 +228,34 @@
 
 
             </tr>
-            @foreach ($dizimos as $dizimo)
 
+   
+            @foreach ($dizimos as $dizimo)
+            
 
             <tr>
-                <td style="background-color: grey; color:white">{{$dizimo->id}}</td>
+                <td style="background-color: grey; color:white">{{ $dizimo->id}}</td>
                 <td>{{$dizimo->data}}</td>
                 <td>R${{$dizimo->valor}}</td>
 
                 <td>
-                    <form class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}" method="post"><button class="excluir">X</button>
-                        @csrf
-                    </form>
+                     <form method="post" class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}"><button class="excluir">X</button>
+                        @csrf</form> 
                 </td>
             </tr>
-
+           
             @endforeach
 
         </table>
 
-
-
+        <div class="valortotal">
+            <p>VALOR TOTAL: R$ 
+            <p style="color: green; font-weight: bold;">{{$totaldizimos}},00</p>
+            </p>
+        </div>
 
 
     </div>
-
-    <div class="valortotal">
-            <p>VALOR TOTAL: R$
-            <p style="color: green; margin-right: 20px; font-weight: bold;">{{$totaldizimos}},00</p>
-            </p>
-        </div>
 
 
     <form class="id" action="/registrar/dizimo" method="post">

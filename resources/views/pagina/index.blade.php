@@ -1,6 +1,15 @@
 <x-layout>
 
     <style>
+
+:root {
+    --titulos: #0A1626 ;
+    --subtitulos:#023859 ;
+    --fundos:#0D8AA6 ;
+    
+    --cor-secundaria:#313131e7 ;
+}
+
         table {
             border-collapse: collapse;
             margin: auto;
@@ -13,7 +22,7 @@
 
         td {
 
-            border: 1px solid black;
+            border: 1px solid rgba(0, 0, 0, 0.34);
             text-align: center;
             font-size: 18px;
 
@@ -31,7 +40,7 @@
             border: 1px solid black;
             font-size: 20px;
             color: white;
-            background-color: #025951;
+            background-color: var(--subtitulos);
             position: sticky;
             top: -1px;
             padding-top: 5px;
@@ -41,6 +50,7 @@
         tr:hover {
             background-color: #177373;
             color: white;
+            transition: 0.1s;
         }
 
         .excluir {
@@ -49,6 +59,7 @@
             font-size: 20px;
             height: 100%;
             width: 100%;
+            color:white;
 
 
 
@@ -56,8 +67,9 @@
 
         .inserir {
             margin: auto;
-            background-color: green;
+            background-color: rgb(0, 48, 0);
             font-size: 20px;
+            color: white;
             height: 100%;
             width: 100%;
         }
@@ -85,7 +97,7 @@
 
         <tr>
 
-            <td style="background-color: grey; color:white">{{ $ind->id }}</td>
+            <td style="background-color:#0A1626 ; color:white">{{ $ind->id }}</td>
             <td>{{ $ind->nome }}</td>
             <td>{{ $ind->endereco }}</td>
             <td>{{ $ind->funcao }}</td>
