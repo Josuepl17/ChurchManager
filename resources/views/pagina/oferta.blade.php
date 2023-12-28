@@ -227,8 +227,8 @@
                 <td>R${{$oferta->valor}}</td>
 
                 <td>
-                    <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>
-                        @csrf</form>
+                     <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>
+                        @csrf</form> 
                 </td>
             </tr>
            

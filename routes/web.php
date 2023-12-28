@@ -35,7 +35,7 @@ Route::post('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'botao_
                              /*Ofertas*/
 Route::get('/oferta', [ControllerIgreja::class, 'oferta']);
 Route::post('/registrar/oferta', [ControllerIgreja::class, 'botao_registrar_oferta']);
-Route::post('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_oferta']);
+Route::get('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_oferta']);
 
                             /* Despesas */
 Route::get('/despesas', [ControllerIgreja::class, 'despesas']);
