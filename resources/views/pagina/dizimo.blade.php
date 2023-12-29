@@ -87,7 +87,7 @@
             background-color: red;
             font-size: 20px;
             height: 100%;
-            width: 40%;
+            width: 100%;
             margin-top: -2px;
 
 
@@ -221,7 +221,7 @@
 
 
             <tr>
-                <th style="width: 4%;" >ID</th>
+                <th style="width: 4%; " >ID</th>
                 <th>DATA</th>
                 <th>VALOR</th>
                 <th style="width: 4%;" >X</th>
@@ -234,7 +234,7 @@
             
 
             <tr>
-                <td style="background-color: grey; color:white">{{ $dizimo->id}}</td>
+                <td style="background-color: var(--titulos);; color:white">{{ $dizimo->id}}</td>
                 <td>{{$dizimo->data}}</td>
                 <td>R${{$dizimo->valor}}</td>
 
