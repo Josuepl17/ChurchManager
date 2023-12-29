@@ -225,6 +225,7 @@
                 <th>DATA</th>
                 <th>VALOR</th>
                 <th style="width: 4%;" >X</th>
+                <th>Relatorio</th>
 
 
             </tr>
@@ -242,7 +243,10 @@
                      <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>
                         @csrf</form> 
                 </td>
+                <td><a target="_blank" href="/pdf"><button>Relatorio</button></a></td>
             </tr>
+
+                
            
             @endforeach
 

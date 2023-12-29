@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\despesas;
 use App\Models\ofertas;
 use App\Models\usuarios;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -204,4 +204,12 @@ class ControllerIgreja extends Controller
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
     }
+    public function pdf(Request $request){
+        
+        $index = usuarios::all();
+        $pdf = Pdf::loadView('pagina.teste');
+        return $pdf->stream('Relatorio.pdf');
+    }
+
+
 }

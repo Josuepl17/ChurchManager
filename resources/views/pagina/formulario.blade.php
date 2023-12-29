@@ -1,6 +1,16 @@
 <x-layout  >
 
     <style>
+
+:root {
+    --titulos: #10233b ;
+    /*--titulos: #0A1626 ; */
+    --subtitulos:#023859 ;
+    --fundos:#0D8AA6 ;
+    
+    --cor-secundaria:#5353533d ;
+}
+
         .geral {
             display: flex;
             width: 100%;
@@ -60,7 +70,7 @@
             width: 190px;
             height: 40px;
             border: 3px solid black;
-            background-color: #177373;
+            background-color: var(--titulos);
             color: white;
             margin-bottom: 9px;
 
@@ -69,7 +79,7 @@
         }
 
         .btn:hover {
-            background-color: #025951;
+            background-color: var(--titulos) ;
             color: white;
             border: 1px solid black;
             transition: 0.6s;

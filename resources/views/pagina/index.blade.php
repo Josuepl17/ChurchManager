@@ -48,7 +48,7 @@
         }
 
         tr:hover {
-            background-color: #177373;
+            background-color: var(--fundos);
             color: white;
             transition: 0.1s;
         }
