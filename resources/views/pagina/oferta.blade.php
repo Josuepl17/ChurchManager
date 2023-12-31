@@ -207,16 +207,32 @@
             
         }
 
+        .relatorio{
+            display: flex;
+            width: 40%;
+            
+        }
+
+
+        
+
     </style>
 
 
     <div class="table2">
     <div class="filtro">
+
+        <div class="relatorio" >
+        
+        </div>
+   
+        <a target="_blank" href="/pdf"><button>Relatorio</button></a>
         <form action="/filtrar" method="get">
             <input type="date" name="dataini" id="dataini" value="2023-12-01">
             <input type="date" name="datafi" id="datafi" value="2023-12-01">
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
+        
     </div>
 
         <table>
@@ -228,7 +244,7 @@
                 <th>DATA</th>
                 <th>VALOR</th>
                 <th style="width: 4%;" >X</th>
-                <th>Relatorio</th>
+                
 
 
             </tr>
@@ -246,7 +262,7 @@
                      <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>
                         @csrf</form> 
                 </td>
-                <td><a target="_blank" href="/pdf"><button>Relatorio</button></a></td>
+                
             </tr>
 
                 
