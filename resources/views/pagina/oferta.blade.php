@@ -198,10 +198,11 @@
         }
 
         .filtro form{
+            display: flex;
             width: 100%;
             height: 100%;
-            display: flex;
-            
+            justify-content: flex-end;
+            margin-top: -3px;
             border-radius: 0px;
             
         }

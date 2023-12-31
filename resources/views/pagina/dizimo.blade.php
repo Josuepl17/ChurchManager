@@ -201,6 +201,7 @@
             display: flex;
             justify-content: flex-end;
             border-radius: 0px;
+            margin-top: -3px;
             
         }
 
