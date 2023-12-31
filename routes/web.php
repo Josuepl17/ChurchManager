@@ -50,3 +50,4 @@ Route::get('/filtrar/dizimo/{user_id}', [ControllerIgreja::class, 'filtrar_dizim
 Route::get('/filtrar/despesas', [ControllerIgreja::class, 'filtrar_despesas']);
 
 Route::get('/pdf', [ControllerIgreja::class, 'pdf']);
+Route::get('/page', [ControllerIgreja::class, 'page']);

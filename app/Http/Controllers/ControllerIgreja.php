@@ -211,5 +211,12 @@ class ControllerIgreja extends Controller
         return $pdf->stream('Relatorio.pdf');
     }
 
+    public function page(){
+        return view('pagina.page');
+    
+    }
+
+    
+
 
 }
