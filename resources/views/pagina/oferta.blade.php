@@ -191,6 +191,7 @@
             display: flex;
             width: 100%;
             background-color: var(--titulos);
+            align-items: center;
             padding-top: 5px;
             padding-bottom: 5px;
             height: 7%;
@@ -198,8 +199,9 @@
 
         .filtro form{
             width: 100%;
+            height: 100%;
             display: flex;
-            justify-content: flex-end;
+            
             border-radius: 0px;
             
         }
