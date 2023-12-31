@@ -191,7 +191,7 @@
             display: flex;
             width: 100%;
             background-color: var(--titulos);
-            align-items: center;
+            justify-content: flex-end;
             padding-top: 5px;
             padding-bottom: 5px;
             height: 7%;
@@ -207,11 +207,11 @@
             
         }
 
-        .relatorio{
+        /*.relatorio{
             display: flex;
             width: 40%;
             
-        }
+        }*/
 
 
         
@@ -223,15 +223,16 @@
     <div class="filtro">
 
         <div class="relatorio" >
+        <a target="_blank" href="/pdf"><button>Relatorio</button></a>
         
         </div>
-   
-        <a target="_blank" href="/pdf"><button>Relatorio</button></a>
         <form action="/filtrar" method="get">
             <input type="date" name="dataini" id="dataini" value="2023-12-01">
             <input type="date" name="datafi" id="datafi" value="2023-12-01">
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
+        
+        
         
     </div>
 
