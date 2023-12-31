@@ -110,7 +110,7 @@
             border-radius: 50px;
             width: 100%;
             background-color: white;
-            margin-top: -2px;
+            margin-top: 0px;
             color: black;
 
         }
