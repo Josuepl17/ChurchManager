@@ -212,7 +212,11 @@ class ControllerIgreja extends Controller
     }
 
     public function page(){
-        return view('pagina.page');
+        $qtymembros = usuarios::count();
+        $totalofertas = ofertas::query()->sum('valor');
+        $totaldizimos = dizimos::query()->sum('valor');
+        $totaldespesas = despesas::query()->sum('valor');
+        return view('pagina.page')->with('qtymembros', $qtymembros)->with('totalofertas', $totalofertas)->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas);
     
     }
 
