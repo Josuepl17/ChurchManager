@@ -220,6 +220,14 @@ class ControllerIgreja extends Controller
     
     }
 
+    public function fpdf(){
+        $dizimos = dizimos::all();
+        return view('pagina.fpdf')->with('dizimos', $dizimos);
+        
+    }
+
+
+
     
 
 

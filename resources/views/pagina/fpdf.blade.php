@@ -12,7 +12,7 @@
         .conteiner{
             display: flex;
             margin: auto;
-            width: 80%;
+            width: 50%;
             justify-content: center;
         }
 
@@ -22,7 +22,7 @@
 
 
             margin: auto;
-            border-radius: 50px;
+            
             width: 100%;
             background-color: white;
             margin-top: 0px;
@@ -44,7 +44,7 @@ th {
             font-size: 20px;
             color: rgb(0, 0, 0);
             background-color: var(--subtitulos);
-            position: sticky;
+           
             top: -1px;
             padding-top: 5px;
 

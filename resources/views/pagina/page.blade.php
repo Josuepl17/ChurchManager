@@ -99,18 +99,31 @@ body{
         color: white;
     }
 
-    a{
+    nav a{
+        
+        
         font-size: 20px;
         text-decoration: none;
         color: black;
         border: 1px solid black;
         padding: 6px;
         color: white;
+       
     }
 
-    a:hover{
+
+
+    nav a:hover{
         background-color: var(--titulos);
         color: white;
+    }
+
+    .box-3 a{
+        text-decoration: none;
+        color: white;
+    }
+    .box-3 a:hover{
+        background-color: var(--fundos);
     }
 
 
@@ -131,25 +144,25 @@ body{
   <div class="box">
   <div class="box-1" > <p>Membros</p> </div>
     <div class="box-2" ><h1>{{ $qtymembros }}</h1></div>
-    <div class="box-3" > <p>Relatorio => </p> </div>
+    <div class="box-3" > <a href=""><p>Relatorio -></p></a> </div>
   </div>
 
   <div class="box">
     <div class="box-1" > <p>Dizimos</p> </div>
     <div class="box-2" ><h1>R${{$totaldizimos}}</h1></div>
-    <div class="box-3" > <p>Relatorio => </p> </div>
+    <div class="box-3" > <a href=""><p>Relatorio -></p></a> </div>
   </div>
 
   <div class="box">
     <div class="box-1" > <p>Ofertas</p> </div>
     <div class="box-2" ><h1>R${{$totalofertas}}</h1></div>
-    <div class="box-3" > <p>Relatorio =></p> </div>
+    <div class="box-3" > <a href=""><p>Relatorio -></p></a> </div>
   </div>
 
   <div class="box">
     <div class="box-1" > <p>Despesas</p> </div>
     <div class="box-2" ><h1>R${{$totaldespesas}}</h1></div>
-    <div class="box-3" > <p>Relatorio =></p> </div>
+    <div class="box-3" > <a href=""><p>Relatorio -></p></a> </div>
   </div>
 
 
