@@ -70,8 +70,9 @@ body{
     .box-1{
         display: flex;
         width: 100%;
-        height: 15%;
+        height: 20%;
         border: 1px solid black;
+        font-size: 20px;
         justify-content: center;
         align-items: center;
         background-color: #0A1626;
@@ -126,6 +127,19 @@ body{
         background-color: var(--fundos);
     }
 
+    .filtro{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        
+    }
+
+    input{
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
 
 
 
@@ -139,6 +153,14 @@ body{
 <div class="titulo"> <h1>Igreja Presbiteriana da Renovação</h1> </div>
 
 <nav> <a href="#">Dashboard</a></nav>
+
+<div class="filtro" >
+    <form action="/filtro/pdf" method="post">
+        <input type="date" name="dataini" id="">
+        <input type="date" name="dataifi" id="">
+        <input style="border-radius: 0px;" type="submit" value="Filtrar">
+    </form>
+</div>
 
 <div class="conteiner-colunas">
   <div class="box">

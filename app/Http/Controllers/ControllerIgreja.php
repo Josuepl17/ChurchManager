@@ -222,9 +222,22 @@ class ControllerIgreja extends Controller
 
     public function fpdf(){
         $dizimos = dizimos::all();
+        
         return view('pagina.fpdf')->with('dizimos', $dizimos);
         
     }
+
+    public function filtrarrelatorio(){
+        
+        $dataIni = $request->get('dataini');
+        $dataFi = $request->get('datafi');
+        $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
+        $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
+        return view('pagina.fpdf')->with('dizimos', $dizimos);
+        
+    }
+
+
 
 
 

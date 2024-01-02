@@ -65,7 +65,7 @@ th {
 
             <tr>
                 <th>ID</th>
-                <th>NOME</th>
+                
                 <th>DATA</th>
                 <th>VALOR</th>
                
@@ -79,18 +79,21 @@ th {
 
             <tr>
                 <td>{{ $dizimo->id}}</td>
-                <td>khihihij</td>
+                
+                
                 <td>{{$dizimo->data}}</td>
                 <td>R${{$dizimo->valor}}</td>
 
 
             </tr>
 
+           
+           
+            @endforeach
+
             <tr>
                 <td>TOTAL:</td>
             </tr>
-           
-            @endforeach
 
         </table>
         </div>
