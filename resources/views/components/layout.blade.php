@@ -28,6 +28,7 @@
                 <a href="/oferta">Cadastro Oferta</a>
                 <a href="/despesas">Cadastro Despesas</a>
                 <a href="/caixa">Caixa</a>
+                <a href="/relatorio">Relatorios</a>
             </div>
 
             <div class="conteiner-navtable">

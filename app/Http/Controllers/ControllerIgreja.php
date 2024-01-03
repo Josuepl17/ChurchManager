@@ -204,28 +204,28 @@ class ControllerIgreja extends Controller
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
     }
-    public function pdf(Request $request){
+    /*public function pdf(Request $request){
         
         $index = usuarios::all();
         $pdf = Pdf::loadView('pagina.teste');
         return $pdf->stream('Relatorio.pdf');
-    }
+    } */
 
-    public function page(){
+    public function relatorio(){
         $qtymembros = usuarios::count();
         $totalofertas = ofertas::query()->sum('valor');
         $totaldizimos = dizimos::query()->sum('valor');
         $totaldespesas = despesas::query()->sum('valor');
-        return view('pagina.page')->with('qtymembros', $qtymembros)->with('totalofertas', $totalofertas)->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas);
+        return view('pagina.relatorio')->with('qtymembros', $qtymembros)->with('totalofertas', $totalofertas)->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas);
     
     }
 
-    public function fpdf(){
+    /*public function fpdf(){
         $dizimos = dizimos::all();
         
         return view('pagina.fpdf')->with('dizimos', $dizimos);
         
-    }
+    } */
 
     public function filtrarrelatorio(Request $request){
         
@@ -239,7 +239,7 @@ class ControllerIgreja extends Controller
         
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         $qtymembros = usuarios::count();
-        return view('pagina.page')->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas)->with('totalofertas', $totalofertas)->with('qtymembros', $qtymembros)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
+        return view('pagina.relatorio')->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas)->with('totalofertas', $totalofertas)->with('qtymembros', $qtymembros)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
         
     }
 
