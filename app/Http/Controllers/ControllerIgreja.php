@@ -204,12 +204,7 @@ class ControllerIgreja extends Controller
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
     }
-    /*public function pdf(Request $request){
-        
-        $index = usuarios::all();
-        $pdf = Pdf::loadView('pagina.teste');
-        return $pdf->stream('Relatorio.pdf');
-    } */
+
 
     public function relatorio(){
         $qtymembros = usuarios::count();
@@ -220,12 +215,7 @@ class ControllerIgreja extends Controller
     
     }
 
-    /*public function fpdf(){
-        $dizimos = dizimos::all();
-        
-        return view('pagina.fpdf')->with('dizimos', $dizimos);
-        
-    } */
+
 
     public function filtrarrelatorio(Request $request){
         
@@ -242,6 +232,24 @@ class ControllerIgreja extends Controller
         return view('pagina.relatorio')->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas)->with('totalofertas', $totalofertas)->with('qtymembros', $qtymembros)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
         
     }
+
+        public function gerar(Request $request){
+            $ok = $request->dataini;
+           
+        
+            $dataIni = $request->dataini;
+       
+            $dataFi = $request->datafi;  
+            $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
+            $totaldizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+            $variaveis = ['dizimos' => $dizimos, 'totaldizimos' => $totaldizimos];
+
+          
+
+        
+        $pdf = Pdf::loadView('pagina.fpdf', $variaveis);
+        return $pdf->stream('Relatorio.pdf');
+    } 
 
 
 

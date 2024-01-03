@@ -47,7 +47,7 @@
         }
 
         .conteiner-colunas {
-            border: 1px solid black;
+            
             width: 100%;
             height: 30vh;
             display: flex;
@@ -130,6 +130,7 @@
         }
 
         .filtro {
+            padding-top: 10px ;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -154,6 +155,19 @@
         .botao a{
             padding: 20px;
             border: #0A1626 solid 1px;
+            font-size: 20px;
+            text-decoration: none;
+            background-color: var(--titulos);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .botao a:hover{
+            background-color: var(--fundos);
+            
+            transition: 0.4s;
+
+            
         }
     </style>
 </head>
@@ -230,7 +244,7 @@
         </div>
 
         <div class="botao">
-            <a href="">Gerar Relatorio</a>
+            <a href="/gerar/{{ isset($dataIni) ? $dataIni : '' }}/{{ isset($dataFi) ? $dataFi : '' }}">Gerar Relatorio</a>
 
         </div>
 
