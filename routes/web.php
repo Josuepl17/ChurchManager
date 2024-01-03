@@ -52,3 +52,4 @@ Route::get('/filtrar/despesas', [ControllerIgreja::class, 'filtrar_despesas']);
 Route::get('/pdf', [ControllerIgreja::class, 'pdf']);
 Route::get('/page', [ControllerIgreja::class, 'page']);
 Route::get('/fpdf', [ControllerIgreja::class, 'fpdf']);
+Route::post('/filtro/pdf', [ControllerIgreja::class, 'filtrarrelatorio']);

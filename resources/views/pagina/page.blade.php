@@ -156,8 +156,11 @@ body{
 
 <div class="filtro" >
     <form action="/filtro/pdf" method="post">
-        <input type="date" name="dataini" id="">
-        <input type="date" name="dataifi" id="">
+        @csrf
+  
+        <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
+<input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
+       
         <input style="border-radius: 0px;" type="submit" value="Filtrar">
     </form>
 </div>

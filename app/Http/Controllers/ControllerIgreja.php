@@ -227,13 +227,19 @@ class ControllerIgreja extends Controller
         
     }
 
-    public function filtrarrelatorio(){
+    public function filtrarrelatorio(Request $request){
         
         $dataIni = $request->get('dataini');
+        
         $dataFi = $request->get('datafi');
-        $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
-        $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
-        return view('pagina.fpdf')->with('dizimos', $dizimos);
+    
+        $totaldizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        
+        $totalofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        
+        $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        $qtymembros = usuarios::count();
+        return view('pagina.page')->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas)->with('totalofertas', $totalofertas)->with('qtymembros', $qtymembros)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
         
     }
 
