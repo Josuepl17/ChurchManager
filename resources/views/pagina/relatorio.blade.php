@@ -244,7 +244,7 @@
         </div>
 
         <div class="botao">
-            <a href="/gerar/{{ isset($dataIni) ? $dataIni : '' }}/{{ isset($dataFi) ? $dataFi : '' }}">Gerar Relatorio</a>
+            <a target="_blank" href="/gerar/{{ isset($dataIni) ? $dataIni : '' }}/{{ isset($dataFi) ? $dataFi : '' }}">Gerar Relatorio</a>
 
         </div>
 

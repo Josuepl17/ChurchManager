@@ -50,6 +50,10 @@ th {
 
         }
 
+        tr{
+            border: 1px solid black;
+        }
+
     </style>
 </head>
 <body>
@@ -92,7 +96,7 @@ th {
             @endforeach
 
             <tr>
-                <td>TOTAL:</td>
+                <td style="font-weight: 900;" >TOTAL: R${{$totaldizimos}}</td>
             </tr>
 
         </table>
