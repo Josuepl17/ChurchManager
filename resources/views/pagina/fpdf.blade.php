@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        h1{
+        h1 {
             text-align: center;
         }
-        
-        .conteiner{
+
+        .conteiner {
             display: flex;
             margin: auto;
             width: 50%;
@@ -18,11 +19,11 @@
 
         table {
             border-collapse: collapse;
-
+            
 
 
             margin: auto;
-            
+
             width: 100%;
             background-color: white;
             margin-top: 0px;
@@ -32,75 +33,99 @@
 
         td {
 
-border: 1px solid rgba(0, 0, 0, 0.34);
-text-align: center;
-font-size: 18px;
-margin-top: 0px;
-margin-bottom: 0px;
-}
+            border: 1px solid rgba(0, 0, 0, 0.34);
+            text-align: center;
+            font-size: 18px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
 
-th {
+        th {
             border: 1px solid black;
             font-size: 20px;
             color: rgb(0, 0, 0);
             background-color: var(--subtitulos);
-           
+
             top: -1px;
             padding-top: 5px;
 
         }
 
-        tr{
+        tr {
             border: 1px solid black;
         }
 
+        p{
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <h1>Relatorio Mensal Dizimos</h1>
-        <hr>
+    <hr>
 
-        <div class="conteiner" >
-     
+    <div class="conteiner">
+
 
         <table>
 
 
 
-            <tr>
+            <tr style="border-bottom: 1px solid black;" >
                 <th>ID</th>
-                
                 <th>DATA</th>
                 <th>VALOR</th>
-               
+                
+
 
 
             </tr>
 
-   
+
             @foreach ($dizimos as $dizimo)
-            
+
 
             <tr>
                 <td>{{ $dizimo->id}}</td>
-                
-                
+
+
                 <td>{{$dizimo->data}}</td>
                 <td>R${{$dizimo->valor}}</td>
+                
 
 
             </tr>
 
-           
-           
+
+
             @endforeach
 
-            <tr>
-                <td style="font-weight: 900;" >TOTAL: R${{$totaldizimos}}</td>
-            </tr>
+            
+             <tr>
+                <td>Total: {{$totaldizimos}}</td>
+             </tr>   
+            
 
         </table>
-        </div>
+
+
+    </div>
+
+    <br>
+    <br>
+
+    <p>__________________________</p>
+                <p>Ass</p>
+
+
+
+
+
+
+
+    
 
 </body>
+
 </html>
