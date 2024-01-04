@@ -218,6 +218,7 @@
             </div>
 
             <div class="box">
+                
                 <div class="box-1">
                     <p>Ofertas</p>
                 </div>
