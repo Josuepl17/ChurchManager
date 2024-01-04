@@ -33,7 +33,7 @@
 
         td {
 
-            border: 1px solid rgba(0, 0, 0, 0.34);
+            border: 1px solid black;
             text-align: center;
             font-size: 18px;
             margin-top: 0px;
@@ -90,8 +90,8 @@
                 <td>{{ $dizimo->id}}</td>
 
 
-                <td>{{$dizimo->data}}</td>
-                <td>R${{$dizimo->valor}}</td>
+                <td>{{ \Carbon\Carbon::parse($dizimo->data)->format('d/m/Y') }}</td>
+                <td>R$ {{ number_format($dizimo->valor, 2, ',', '.') }}</td>
                 
 
 
@@ -103,7 +103,8 @@
 
             
              <tr>
-                <td>Total: {{$totaldizimos}}</td>
+                <td colspan="3" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totaldizimos, 2, ',', '.') }}</td>
+                
              </tr>   
             
 

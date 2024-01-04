@@ -210,7 +210,7 @@
                     <p>Dizimos</p>
                 </div>
                 <div class="box-2">
-                    <h1>R${{$totaldizimos}}</h1>
+                    <h1>R${{ number_format($totaldizimos, 2, ',', '.') }}</h1>
                 </div>
                 <div class="box-3"> <a href="">
                         <p>Relatorio -></p>
@@ -222,7 +222,7 @@
                     <p>Ofertas</p>
                 </div>
                 <div class="box-2">
-                    <h1>R${{$totalofertas}}</h1>
+                    <h1>R${{ number_format($totalofertas, 2, ',', '.') }}</h1>
                 </div>
                 <div class="box-3"> <a href="">
                         <p>Relatorio -></p>
@@ -234,7 +234,7 @@
                     <p>Despesas</p>
                 </div>
                 <div class="box-2">
-                    <h1>R${{$totaldespesas}}</h1>
+                    <h1>R${{ number_format($totaldespesas, 2, ',', '.') }}</h1>
                 </div>
                 <div class="box-3"> <a href="">
                         <p>Relatorio -></p>
