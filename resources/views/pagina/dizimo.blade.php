@@ -237,7 +237,7 @@
             <tr>
                 <td style="background-color: var(--titulos);; color:white">{{ $dizimo->id}}</td>
                 <td>{{$dizimo->data}}</td>
-                <td>R${{$dizimo->valor}}</td>
+                <td>R${{ number_format($dizimo->valor, 2, ',', '.') }}</td>
 
                 <td>
                      <form method="post" class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}"><button class="excluir">X</button>
@@ -251,7 +251,7 @@
 
         <div class="valortotal">
             <p>VALOR TOTAL: R$ 
-            <p style="color: green; font-weight: bold;">{{$totaldizimos}},00</p>
+            <p style="color: green; font-weight: bold;">{{ number_format($totaldizimos, 2, ',', '.') }}</p>
             </p>
         </div>
 
