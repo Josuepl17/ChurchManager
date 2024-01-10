@@ -63,12 +63,16 @@ class ControllerIgreja extends Controller
 
     public function botao_registrar_dizimo(request $request)
     {
+        $dados = $request->all();
+        
+        dizimos::create($dados);
         $user_id = $request->user_id;
-        $post = new dizimos;
+       
+         /*$post = new dizimos;
         $post->user_id = $user_id;
         $post->data = $request->data;
         $post->valor = $request->valor;
-        $post->save();
+        $post->save();*/
         $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
         $dizimos = dizimos::where('user_id', $user_id)->get();
         return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id)->with('totaldizimos', $totaldizimos);
@@ -97,22 +101,19 @@ class ControllerIgreja extends Controller
     public function oferta()
     {
         $ofertas = ofertas::all();
-
-
-
-
         $totalofertas = ofertas::query()->sum('valor');
-
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
     }
 
 
     public function botao_registrar_oferta(request $request)
     {
-        $post = new ofertas;
+        $dados = $request->all();
+        ofertas::create($dados);
+        /*$post = new ofertas;
         $post->data = $request->data;
         $post->valor = $request->valor;
-        $post->save();
+        $post->save();*/
         $ofertas = ofertas::all();
         return redirect('/oferta');
     }
@@ -138,12 +139,14 @@ class ControllerIgreja extends Controller
 
 
     public function botao_registrar_despesas(request $request)
-    {
-        $post = new despesas;
+    {   
+        $dados = $request->all();
+        despesas::create($dados);
+        /*$post = new despesas;
         $post->data = $request->data;
         $post->descricao = $request->descricao;
         $post->valor = $request->valor;
-        $post->save();
+        $post->save();*/
         $despesas = despesas::all();
         $totaldespesas = despesas::query()->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
