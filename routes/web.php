@@ -54,3 +54,4 @@ Route::get('/relatorio', [ControllerIgreja::class, 'relatorio']);
 Route::get('/fpdf', [ControllerIgreja::class, 'fpdf']);
 Route::post('/filtro/pdf', [ControllerIgreja::class, 'filtrarrelatorio']);
 Route::get('/gerar/{dataini}/{datafi}', [ControllerIgreja::class, 'gerar']);
+
