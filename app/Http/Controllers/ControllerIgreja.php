@@ -63,7 +63,8 @@ class ControllerIgreja extends Controller
 
     public function botao_registrar_dizimo(request $request)
     {
-        $dados = $request->all();
+        $dados = $request->except('_token');
+        dd($dados);
         
         dizimos::create($dados);
         $user_id = $request->user_id;
