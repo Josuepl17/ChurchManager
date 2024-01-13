@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Relatorio</title>
     <style>
         h1 {
             text-align: center;
@@ -62,7 +62,7 @@
 </head>
 
 <body>
-    <h1>Relatorio Mensal Dizimos</h1>
+    <h1>Relatorio  Dizimos</h1>
     <hr>
 
     <div class="conteiner">
@@ -110,14 +110,133 @@
 
         </table>
 
+        <br>
+    <br>
+
+
 
     </div>
 
-    <br>
-    <br>
 
-    <p>__________________________</p>
-                <p>Ass</p>
+
+    <h1>Relatorio  Ofertas</h1>
+    <hr>
+
+    <div class="conteiner">
+
+
+
+<table>
+
+
+
+    <tr style="border-bottom: 1px solid black;" >
+        <th>ID</th>
+        <th>DATA</th>
+        <th>VALOR</th>
+        
+
+
+
+    </tr>
+
+
+    @foreach ($ofertas as $oferta)
+
+
+    <tr>
+        <td>{{ $oferta->id}}</td>
+
+
+        <td>{{ \Carbon\Carbon::parse($oferta->data)->format('d/m/Y') }}</td>
+        <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
+        
+
+
+    </tr>
+
+
+
+    @endforeach
+
+    
+     <tr>
+        <td colspan="3" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totalofertas, 2, ',', '.') }}</td>
+        
+     </tr>   
+    
+
+</table>
+
+<br>
+<br>
+
+
+
+
+</div>
+
+
+
+<h1>Relatorio Despesas</h1>
+    <hr>
+
+    <div class="conteiner">
+
+
+
+<table>
+
+
+
+    <tr style="border-bottom: 1px solid black;" >
+        <th>ID</th>
+        <th>DATA</th>
+        <th>VALOR</th>
+        
+
+
+
+    </tr>
+
+
+    @foreach ($despesas as $despesa)
+
+
+    <tr>
+        <td>{{ $despesa->id}}</td>
+
+
+        <td>{{ \Carbon\Carbon::parse($despesa->data)->format('d/m/Y') }}</td>
+        <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
+        
+
+
+    </tr>
+
+
+
+    @endforeach
+
+    
+     <tr>
+        <td colspan="3" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totaldespesas, 2, ',', '.') }}</td>
+        
+     </tr>   
+    
+
+</table>
+
+<br>
+<br>
+
+<p>_____________________________________</p>
+        <p>Assinatura</p>
+
+
+</div>
+
+
 
 
 

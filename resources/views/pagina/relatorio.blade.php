@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Relatorio</title>
     <style>
         * {
             margin: 0px;
@@ -245,7 +245,7 @@
         </div>
 
         <div class="botao">
-            <a target="_blank" href="/gerar/{{ isset($dataIni) ? $dataIni : '' }}/{{ isset($dataFi) ? $dataFi : '' }}">Gerar Relatorio</a>
+            <a target="_blank" href="/gerar/{{ isset($dataIni) ? $dataIni : '1000-01-01' }}/{{ isset($dataFi) ? $dataFi : '5000-01-01' }}">Gerar Relatorio</a>
 
         </div>
 

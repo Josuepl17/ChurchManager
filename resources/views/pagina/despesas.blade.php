@@ -236,9 +236,9 @@
 
             <tr>
                 <td style="background-color: var(--titulos); color:white">{{$despesa->id}}</td>
-                <td>{{$despesa->data}}</td>
+                <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>
                 <td>{{$despesa->descricao}}</td>
-                <td>R${{$despesa->valor}}</td>
+                <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
 
                 <td>
                     <form method="post" class="formx" action="/destroy/despesas/{{$despesa->id}}"><button class="excluir">X</button>

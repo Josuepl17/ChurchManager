@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerencimento de Igrejas</title>
+    <title>Igreja Prebiteriana da Renovação</title>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 </head>

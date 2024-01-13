@@ -256,8 +256,8 @@
 
             <tr>
                 <td style="background-color: var(--titulos) ; color:white">{{ $oferta->id}}</td>
-                <td>{{$oferta->data}}</td>
-                <td>R${{$oferta->valor}}</td>
+                <td>{{\Carbon\Carbon::parse($oferta->data)->format('d/m/Y')}}</td>
+                <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
 
                 <td>
                      <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>

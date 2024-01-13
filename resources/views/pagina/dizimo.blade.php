@@ -236,7 +236,7 @@
 
             <tr>
                 <td style="background-color: var(--titulos);; color:white">{{ $dizimo->id}}</td>
-                <td>{{$dizimo->data}}</td>
+                <td>{{ \Carbon\Carbon::parse($dizimo->data)->format('d/m/Y') }}</td>
                 <td>R${{ number_format($dizimo->valor, 2, ',', '.') }}</td>
 
                 <td>

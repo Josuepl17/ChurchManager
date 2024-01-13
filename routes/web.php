@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
                             /*Usuarios*/
-Route::get('/', [ControllerIgreja::class, 'index']);
+Route::get('/', [ControllerIgreja::class, 'index'])->middleware('auth');
 Route::get('/cadastro/membro', [ControllerIgreja::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
 Route::post('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
@@ -54,4 +54,7 @@ Route::get('/relatorio', [ControllerIgreja::class, 'relatorio']);
 Route::get('/fpdf', [ControllerIgreja::class, 'fpdf']);
 Route::post('/filtro/pdf', [ControllerIgreja::class, 'filtrarrelatorio']);
 Route::get('/gerar/{dataini}/{datafi}', [ControllerIgreja::class, 'gerar']);
+
+Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
+
 

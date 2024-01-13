@@ -118,16 +118,15 @@ class ControllerIgreja extends Controller
         
         
 
-        $ofertas = new ofertas();
-        dd($ofertas);
+        
+      
+        /* $ofertas = new ofertas();
         $ofertas->nome = ofertas::all()->pluck('nome');
         $ofertas->data = ofertas::all()->pluck('data');
         $ofertas->valor = ofertas::all()->pluck('valor');
         $ofertas->id = ofertas::all()->pluck('id');
-        dd($ofertas);
-        
-        
-       
+        dd($ofertas->nome);*/
+       $ofertas = ofertas::all();
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
     }
@@ -264,10 +263,27 @@ class ControllerIgreja extends Controller
         $ok = $request->dataini;
         $dataIni = $request->dataini;
         $dataFi = $request->datafi;
+
         $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        $variaveis = ['dizimos' => $dizimos, 'totaldizimos' => $totaldizimos];
-        $pdf = Pdf::loadView('pagina.fpdf', $variaveis);
+
+        $ofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->get();
+        $totalofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+
+        $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
+        $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+
+
+        $variaveis = ['dizimos' => $dizimos, 'totaldizimos' => $totaldizimos, 'ofertas' => $ofertas, 'totalofertas' => $totalofertas, 'despesas' => $despesas, 'totaldespesas' => $totaldespesas];
+        $pdf = pdf::loadView('pagina.fpdf', $variaveis);
         return $pdf->stream('Relatorio.pdf');
     }
+
+
+        public function login(){
+            return view('login.index');
+        }
+
+
+
 }
