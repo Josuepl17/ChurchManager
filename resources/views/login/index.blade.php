@@ -6,10 +6,10 @@
   <title>Document</title>
   <style>
 
-  --black-color: #000000;
 .conteiner{
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
   
 } 
 
