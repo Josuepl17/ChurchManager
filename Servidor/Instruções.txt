@@ -1,0 +1,3 @@
+scrip chama de forma oculta o Servidor.bat iniciando o local Host 
+- colocar script no inicializar do windows "shell:startup"
+- No "services.msc" cinfigure postgrsql para "automatico" para iniciar o banco de dados
