@@ -47,9 +47,10 @@ input{
   
 <div class="conteiner" >
 
-<form action="" method="post">
+<form action="/login/if" method="post">
 <h2>Senha</h2>
-<input type="password" name="" id="">
+@csrf
+<input type="password" name="senha" id="senha">
 <input class="sub" type="submit" value="Enviar">
 
 </form>

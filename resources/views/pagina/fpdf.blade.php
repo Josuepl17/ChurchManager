@@ -192,6 +192,7 @@
     <tr style="border-bottom: 1px solid black;" >
         <th>ID</th>
         <th>DATA</th>
+        <th>DESCRIÇÃO</th>
         <th>VALOR</th>
         
 
@@ -203,11 +204,12 @@
     @foreach ($despesas as $despesa)
 
 
-    <tr>
+    <tr style="border-bottom: 1px solid black;" >
         <td>{{ $despesa->id}}</td>
 
 
         <td>{{ \Carbon\Carbon::parse($despesa->data)->format('d/m/Y') }}</td>
+        <td>{{$despesa->descricao}}</td>
         <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
         
 

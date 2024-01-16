@@ -284,6 +284,19 @@ class ControllerIgreja extends Controller
             return view('login.index');
         }
 
+            public function verificar (Request $request){
+                $senha = $request->only('senha')['senha'];
+                $index = usuarios::all();
+
+                if ($senha == 1234){
+                   
+                    return view('pagina.index')->with('index',  $index);
+                } else {
+                    echo "Falha";  
+                }
+            }
+
+
 
 
 }
