@@ -204,7 +204,7 @@
     @foreach ($despesas as $despesa)
 
 
-    <tr style="border-bottom: 1px solid black;" >
+    <tr >
         <td>{{ $despesa->id}}</td>
 
 
@@ -222,7 +222,7 @@
 
     
      <tr>
-        <td colspan="3" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totaldespesas, 2, ',', '.') }}</td>
+        <td colspan="4" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totaldespesas, 2, ',', '.') }}</td>
         
      </tr>   
     

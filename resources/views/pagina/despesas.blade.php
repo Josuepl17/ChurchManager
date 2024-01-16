@@ -46,7 +46,7 @@
             text-transform: uppercase;
             font-size: 20px;
             padding: 2px;
-            border: 3px solid black;
+            border: 1px solid black;
             text-align: center;
 
 
@@ -204,6 +204,15 @@
             
         }
 
+        select{
+            font-size: 20px;
+            border-radius: 10px ;
+        }
+
+        option{
+            font-size: 18px;
+        }
+
         
     </style>
 
@@ -268,7 +277,15 @@
         <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
 
         <label for="descricao">Desc:</label>
-        <input type="text" class="cad" name="descricao" id="descricao" autocomplete="off" required>
+        <select name="descricao" id="descricao" require autocomplete="off" >
+            <Option disabled selected ></Option>
+            <Option>LIMPEZA</Option>
+            <Option>SALARIO</Option>
+            <Option>FESTIVIDADE</Option>
+            <Option>MANUNTENÇÃO</Option>
+            <Option>DOAÇÃO</Option>
+            
+        </select>
 
         <label for="valor">Valor:</label>
         <input style="width: 10%;" class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
