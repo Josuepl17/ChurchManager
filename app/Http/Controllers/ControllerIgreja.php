@@ -302,16 +302,27 @@ class ControllerIgreja extends Controller
             }
 
 
-
             public function ver(Request $request){
+
+                $ultimoregistro = caixas::latest('datafi')->first();
+                $ultimo = $ultimoregistro->datafi;
                 $dados = $request->except('_token');
+                
            
-                caixas::create($dados);
-                $totalofertas = $request->totalofertas;
-                $totaldespesas = $request->totaldespesas;
-                $totaldizimos = $request->totaldizimos;
-                $dataIni = $request->dataini;
-                $dataFi = $request->datafi;
+                
+
+                if ($request->datafi <= $ultimo){
+                    Echo "Caixa Fechado";
+                } else {
+                    caixas::create($dados);
+                    return redirect('/relatorio');
+                }
+
+            
+                }
+
+                
+                
 
                
             }
@@ -319,4 +330,4 @@ class ControllerIgreja extends Controller
 
 
 
-}
+
