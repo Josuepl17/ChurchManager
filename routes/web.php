@@ -59,5 +59,5 @@ Route::get('/gerar/{dataini}/{datafi}', [ControllerIgreja::class, 'gerar']);
 Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
 
 Route::post('/login/if', [ControllerIgreja::class, 'verificar']);
-
+Route::post('/fechar/', [ControllerIgreja::class, 'ver']);
 

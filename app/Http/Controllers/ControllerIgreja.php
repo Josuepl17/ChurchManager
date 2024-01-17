@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
 use App\Models\usuarios;
@@ -10,6 +11,7 @@ use App\Models\dizimos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use GuzzleHttp\Promise\Create;
 
 class ControllerIgreja extends Controller
 {
@@ -126,9 +128,11 @@ class ControllerIgreja extends Controller
         $ofertas->valor = ofertas::all()->pluck('valor');
         $ofertas->id = ofertas::all()->pluck('id');
         dd($ofertas->nome);*/
-       $ofertas = ofertas::all();
+        $ofertas = ofertas::all();
+        $datanow = Carbon::now();
+         
         $totalofertas = ofertas::query()->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
     }
 
 
@@ -248,6 +252,7 @@ class ControllerIgreja extends Controller
 
     public function filtrarrelatorio(Request $request)
     {
+
         $dataIni = $request->get('dataini');
         $dataFi = $request->get('datafi');
         $totaldizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
@@ -260,7 +265,7 @@ class ControllerIgreja extends Controller
 
     public function gerar(Request $request)
     {
-        $ok = $request->dataini;
+
         $dataIni = $request->dataini;
         $dataFi = $request->datafi;
 
@@ -294,6 +299,21 @@ class ControllerIgreja extends Controller
                 } else {
                     echo "Falha";  
                 }
+            }
+
+
+
+            public function ver(Request $request){
+                $dados = $request->except('_token');
+           
+                caixas::create($dados);
+                $totalofertas = $request->totalofertas;
+                $totaldespesas = $request->totaldespesas;
+                $totaldizimos = $request->totaldizimos;
+                $dataIni = $request->dataini;
+                $dataFi = $request->datafi;
+
+               
             }
 
 
