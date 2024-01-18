@@ -102,7 +102,7 @@ class ControllerIgreja extends Controller
         $dataFi = $request->get('datafi');
         $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldizimos = dizimos::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('user_id', $user_id);
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('user_id', $user_id)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
     }
 
 
@@ -169,7 +169,7 @@ class ControllerIgreja extends Controller
         $dataFi = $request->get('datafi');
         $ofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->get();
         $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
     }
 
 
@@ -217,7 +217,7 @@ class ControllerIgreja extends Controller
 
         $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
     }
 
 

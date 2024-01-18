@@ -221,15 +221,9 @@
 
     <div class="table2">
     <div class="filtro">
-
-        <div class="relatorio" >
-        <a target="_blank" href="/pdf"><button>Relatorio</button></a>
-        
-        </div>
         <form action="/filtrar" method="get">
-        <input type="date" name="data" value="{{ $datanow->format('Y-m-d') }}" />
-
-            <input type="date" name="datafi" id="datafi" value="{{ $datanow->format('Y-m-d') }}">
+        <input  type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required >
+        <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required >
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
         
