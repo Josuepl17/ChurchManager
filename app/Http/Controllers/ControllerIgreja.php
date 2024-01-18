@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 
-class ControllerIgreja extends Controller
+class ControllerIgreja extends Controller 
 {
 
-    private $events;
+
+    
 
 
 
