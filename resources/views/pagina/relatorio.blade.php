@@ -283,8 +283,8 @@
         <div id="Caixaregistrar" >
             <form id="Caixa" action="/fechar" method="post">
             
-            <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '1000-01-01' }}">
-            <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '5000-01-01' }}">
+            <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
+            <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
             <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
             <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
             <input type="hidden" name="totalofertas" value="{{$totalofertas}}">

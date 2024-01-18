@@ -318,7 +318,7 @@ class ControllerIgreja extends Controller
 
                 if ($request->datafi <= $ultimo){
                     
-                    echo "gostei";
+                    echo "Caixa Fechado ou Data Não informada";
                    
                 } else {
                     caixas::create($dados);
