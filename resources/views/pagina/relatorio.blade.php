@@ -170,7 +170,33 @@
             
         }
 
-        
+        #Caixaregistrar{
+            display: flex;
+            width: 99%;
+            height: 10%;
+            justify-content: flex-end;
+          
+        }
+
+        #caixa{
+            
+         
+            width: 100%;
+            height: 100%;
+            margin-right: 100px;
+        }
+
+        #botao2{
+            width: 100%;
+            height: 100%;
+            font-size: 25px;
+            padding: 8px;
+            background-color: red;
+            color: white;
+            
+        }
+
+
 
 
 
@@ -254,24 +280,26 @@
 
         </div>
 
-
- 
-
-        <form action="/fechar" method="post">
-        
-        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '1000-01-01' }}">
-        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '5000-01-01' }}">
-        <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
-        <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
-        <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
-        @csrf
-        <input class="botao" type="submit" value="Registrar">
-      </form>
+        <div id="Caixaregistrar" >
+            <form id="Caixa" action="/fechar" method="post">
             
+            <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '1000-01-01' }}">
+            <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '5000-01-01' }}">
+            <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
+            <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
+            <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
+            @csrf
+            <input id="botao2" class="botao" type="submit" value="Fechar Caixa">
+                  </form>
+        </div>
 
+
+        
 
 
     </div>
+
+
 </body>
 
 </html>

@@ -133,7 +133,7 @@ class ControllerIgreja extends Controller
         dd($ofertas->nome);*/
         $ofertas = ofertas::all();
         $datanow = Carbon::now();
-         
+       
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
     }
@@ -308,7 +308,7 @@ class ControllerIgreja extends Controller
 
 
             public function ver(Request $request){
-
+                $dados = $request->except('_token');
                 $ultimoregistro = caixas::latest('datafi')->first();
                 $ultimo = $ultimoregistro->datafi;
                 $dados = $request->except('_token');
@@ -317,7 +317,9 @@ class ControllerIgreja extends Controller
                 
 
                 if ($request->datafi <= $ultimo){
-                    Echo "Caixa Fechado";
+                    
+                    echo "gostei";
+                   
                 } else {
                     caixas::create($dados);
                     return redirect('/relatorio');
@@ -326,8 +328,8 @@ class ControllerIgreja extends Controller
             
                 }
 
-                
-                
+
+              
 
                
             }
