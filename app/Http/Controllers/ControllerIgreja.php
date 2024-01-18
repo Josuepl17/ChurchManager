@@ -16,6 +16,8 @@ use GuzzleHttp\Promise\Create;
 class ControllerIgreja extends Controller
 {
 
+    private $events;
+
 
 
                                                                                             /*Usuarios*/
@@ -191,6 +193,8 @@ class ControllerIgreja extends Controller
         $post->valor = $request->valor;
         $post->save();*/
         $despesas = despesas::all();
+       
+        dd( $despesas->valor);
         $totaldespesas = despesas::query()->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
     }
