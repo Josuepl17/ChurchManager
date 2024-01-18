@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 
-class ControllerIgreja extends Controller 
+class ControllerIgreja extends Controller
 {
 
 
-    
 
 
 
-                                                                                            /*Usuarios*/
+
+    /*Usuarios*/
     public function index()
     {
         $index = usuarios::all();
@@ -56,7 +56,7 @@ class ControllerIgreja extends Controller
 
 
 
-                                                                                                /*Dizimos Por Usuario*/
+    /*Dizimos Por Usuario*/
 
     public function botao_inserir(request $request)
     {
@@ -70,7 +70,7 @@ class ControllerIgreja extends Controller
     public function botao_registrar_dizimo(request $request)
     {
         $dados = $request->except('_token');
-      
+
 
         dizimos::create($dados);
         $user_id = $request->user_id;
@@ -114,17 +114,17 @@ class ControllerIgreja extends Controller
 
 
 
-                                                                                                /*Ofertas*/
+    /*Ofertas*/
 
 
 
     public function oferta()
     {
-        
-        
 
-        
-      
+
+
+
+
         /* $ofertas = new ofertas();
         $ofertas->nome = ofertas::all()->pluck('nome');
         $ofertas->data = ofertas::all()->pluck('data');
@@ -133,7 +133,7 @@ class ControllerIgreja extends Controller
         dd($ofertas->nome);*/
         $ofertas = ofertas::all();
         $datanow = Carbon::now();
-       
+
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
     }
@@ -174,7 +174,7 @@ class ControllerIgreja extends Controller
 
 
 
-                                                                                            /* Despesas */
+    /* Despesas */
 
     public function despesas()
     {
@@ -194,8 +194,8 @@ class ControllerIgreja extends Controller
         $post->valor = $request->valor;
         $post->save();*/
         $despesas = despesas::all();
+
        
-        dd( $despesas->valor);
         $totaldespesas = despesas::query()->sum('valor');
         return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
     }
@@ -224,7 +224,7 @@ class ControllerIgreja extends Controller
 
 
 
-                                                                                             /*Caixa*/
+    /*Caixa*/
 
     public function caixa()
     {
@@ -242,7 +242,7 @@ class ControllerIgreja extends Controller
 
 
 
-                                                                                            /*RELATORIO*/
+    /*RELATORIO*/
 
     public function relatorio()
     {
@@ -290,51 +290,53 @@ class ControllerIgreja extends Controller
     }
 
 
-        public function login(){
-            return view('login.index');
-        }
-
-            public function verificar (Request $request){
-                $senha = $request->only('senha')['senha'];
-                $index = usuarios::all();
-
-                if ($senha == 1234){
-                   
-                    return view('pagina.index')->with('index',  $index);
-                } else {
-                    echo "Falha";  
-                }
-            }
 
 
-            public function ver(Request $request){
-                $dados = $request->except('_token');
-                $ultimoregistro = caixas::latest('datafi')->first();
-                $ultimo = $ultimoregistro->datafi;
-                $dados = $request->except('_token');
-                
+
+    public function fechar_caixa(Request $request)
+    {
+        $primeiroregistro = caixas::value('dataini') ?? '1000-01-01';
+        $ultimoregistro = caixas::latest('datafi')->first();
+        $ultimo = $ultimoregistro->datafi ?? '1000-01-01';
+        
+        
+    
+
+
+        if ( $request->dataini > $primeiroregistro  && $request->datafi > $ultimo) {
            
-                
-
-                if ($request->datafi <= $ultimo){
-                    
-                    echo "Caixa Fechado ou Data Não informada";
-                   
-                } else {
-                    caixas::create($dados);
-                    return redirect('/relatorio');
-                }
-
+            $dados = $request->except('_token');
+            caixas::create($dados);
+            return redirect('/');
             
-                }
-
-
-              
-
-               
-            }
-
+        } else {
+            
+            echo "Caixa Fechado ou Data Não informada";
+        }
+    }
 
 
 
+    /* LOGIN*/
 
+
+
+
+    public function login()
+    {
+        return view('login.index');
+    }
+
+    public function verificar(Request $request)
+    {
+        $senha = $request->only('senha')['senha'];
+        $index = usuarios::all();
+
+        if ($senha == 1234) {
+
+            return view('pagina.index')->with('index',  $index);
+        } else {
+            echo "Falha";
+        }
+    }
+}

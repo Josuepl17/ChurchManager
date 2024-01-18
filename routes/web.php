@@ -31,6 +31,7 @@ Route::post('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
 Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'botao_inserir']);
 Route::post('/registrar/dizimo', [ControllerIgreja::class, 'botao_registrar_dizimo']);
 Route::post('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'botao_excluir_dizimo']);
+Route::get('/filtrar/dizimo/{user_id}', [ControllerIgreja::class, 'filtrar_dizimo']);
 
 
                              /*Ofertas*/
@@ -42,22 +43,23 @@ Route::post('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_ofe
 Route::get('/despesas', [ControllerIgreja::class, 'despesas']);
 Route::post('/registrar/despesas', [ControllerIgreja::class, 'botao_registrar_despesas']);
 Route::post('/destroy/despesas/{id}', [ControllerIgreja::class, 'botao_excluir_despesas']);
+Route::get('/filtrar/despesas', [ControllerIgreja::class, 'filtrar_despesas']);
 
                                 /*Caixa*/
 Route::get('/caixa', [ControllerIgreja::class, 'caixa']);
 Route::get('/filtrar', [ControllerIgreja::class, 'filtrar']);
-Route::get('/filtrar/dizimo/{user_id}', [ControllerIgreja::class, 'filtrar_dizimo']);
-
-Route::get('/filtrar/despesas', [ControllerIgreja::class, 'filtrar_despesas']);
 
 
+                                /*Relatorio*/
 Route::get('/relatorio', [ControllerIgreja::class, 'relatorio']);
 Route::get('/fpdf', [ControllerIgreja::class, 'fpdf']);
 Route::post('/filtro/pdf', [ControllerIgreja::class, 'filtrarrelatorio']);
 Route::get('/gerar/{dataini}/{datafi}', [ControllerIgreja::class, 'gerar']);
+Route::post('/fechar', [ControllerIgreja::class, 'fechar_caixa']);
 
-Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
+
+                             /* LOGIN*/
 
 Route::post('/login/if', [ControllerIgreja::class, 'verificar']);
-Route::post('/fechar/', [ControllerIgreja::class, 'ver']);
+Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
 

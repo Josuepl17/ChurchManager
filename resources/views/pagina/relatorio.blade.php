@@ -213,13 +213,13 @@
         <nav> <a href="/">Home</a></nav>
 
         <div class="filtro">
-            <form action="/filtro/pdf" method="post">
+            <form action="/filtro/pdf" method="post" require>
                 @csrf
 
-                <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
-                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
+                <input  type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required >
+                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required >
 
-                <input style="border-radius: 0px;" type="submit" value="Filtrar">
+                <input style="border-radius: 0px;" type="submit" value="Filtrar" require >
             </form>
         </div>
 
