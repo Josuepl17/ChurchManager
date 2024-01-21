@@ -16,7 +16,7 @@
             height: 80%;
             border: 1px solid black;
             
-            overflow: auto;
+            
 
 
         }
@@ -47,7 +47,7 @@
             text-transform: uppercase;
             font-size: 20px;
             padding: 2px;
-            border: 3px solid black;
+            border: 1px solid black;
             text-align: center;
 
 
@@ -105,12 +105,13 @@
             border-collapse: collapse;
 
 
-
+            overflow: auto;
             margin: auto;
             border-radius: 50px;
             width: 100%;
+            
             background-color: white;
-            margin-top: -2px;
+            margin-top: 0px;
             color: black;
 
         }
@@ -141,7 +142,7 @@
             color: white;
             background-color: var(--subtitulos);
             position: sticky;
-            top: -1px;
+            top: 0px;
             padding-top: 5px;
 
         }
@@ -179,7 +180,7 @@
 
         .valortotal p {
             color: black;
-
+            padding-right: 10px;
             
             background-color: white;
 
@@ -191,19 +192,19 @@
             display: flex;
             width: 100%;
             background-color: var(--titulos);
-            justify-content: flex-end;
             padding-top: 5px;
             padding-bottom: 5px;
             height: 7%;
         }
 
         .filtro form{
-            display: flex;
             width: 100%;
-            height: 100%;
+            display: flex;
             justify-content: flex-end;
-            margin-top: -3px;
+            align-items: center;
             border-radius: 0px;
+            margin-top: -3px;
+        
             
         }
 
@@ -212,6 +213,13 @@
             width: 40%;
             
         }*/
+
+        .conteudo{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
 
 
         
@@ -224,52 +232,43 @@
         <form action="/filtrar" method="get">
         <input  type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required >
         <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required >
-            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
         </form>
         
   
         
     </div>
 
-        <table>
-
-
-
-            <tr>
-                <th style="width: 4%;" >ID</th>
-                <th>DATA</th>
-                <th>VALOR</th>
-                <th style="width: 4%;" >X</th>
-                
-
-
-            </tr>
-
-   
-            @foreach ($ofertas as $oferta)
+        <div class="conteudo">
+            <table>
+                <tr>
+                    <th style="width: 4%;" >ID</th>
+                    <th>DATA</th>
+                    <th>VALOR</th>
+                    <th style="width: 4%;" >X</th>
             
-
-            <tr>
-                <td style="background-color: var(--titulos) ; color:white">{{ $oferta->id}}</td>
-                <td>{{\Carbon\Carbon::parse($oferta->data)->format('d/m/Y')}}</td>
-                <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
-
-                <td>
-                     <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>
-                        @csrf</form> 
-                </td>
-                
-            </tr>
-
-                
-           
-            @endforeach
-
-        </table>
+                </tr>
+                @foreach ($ofertas as $oferta)
+            
+                <tr>
+                    <td style="background-color: var(--titulos) ; color:white">{{ $oferta->id}}</td>
+                    <td>{{\Carbon\Carbon::parse($oferta->data)->format('d/m/Y')}}</td>
+                    <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
+                    <td>
+                         <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>
+                            @csrf</form>
+                    </td>
+            
+                </tr>
+            
+            
+                @endforeach
+            </table>
+        </div>
 
         <div class="valortotal">
             <p>VALOR TOTAL: R$ 
-            <p style="color: green; font-weight: bold;">{{$totalofertas}},00</p>
+            <p style="color: green; font-weight: bold;">{{ number_format($totalofertas, 2, ',', '.') }}</p>
             </p>
         </div>
 

@@ -14,8 +14,6 @@
             width: 100%;
             height: 80%;
             border: 1px solid black;
-            
-            overflow: auto;
 
 
         }
@@ -179,7 +177,7 @@
         .valortotal p {
             color: black;
 
-            
+            padding-right: 10px;
             background-color: white;
 
 
@@ -199,6 +197,7 @@
             width: 100%;
             display: flex;
             justify-content: flex-end;
+            align-items: center;
             border-radius: 0px;
             margin-top: -3px;
             
@@ -211,6 +210,13 @@
 
         option{
             font-size: 18px;
+        }
+
+        .conteudo{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
         }
 
         
@@ -227,42 +233,34 @@
         </form>
     </div>
 
-        <table>
-
-
-
-            <tr>
-                <th  style="width: 4%;" >ID</th>
-                <th>DATA</th>
-                <th>DESCRIÇÃO</th>
-                <th>VALOR</th>
-                <th style="width: 4%;" >X</th>
-
-
-            </tr>
-            @foreach ($despesas as $despesa)
-
-
-            <tr>
-                <td style="background-color: var(--titulos); color:white">{{$despesa->id}}</td>
-                <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>
-                <td>{{$despesa->descricao}}</td>
-                <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
-
-                <td>
-                    <form method="post" class="formx" action="/destroy/despesas/{{$despesa->id}}"><button class="excluir">X</button>
-                        @csrf
-                    </form>
-                </td>
-            </tr>
-
-            @endforeach
-
-        </table>
+        <div class="conteudo">
+            <table>
+                <tr>
+                    <th  style="width: 4%;" >ID</th>
+                    <th>DATA</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>VALOR</th>
+                    <th style="width: 4%;" >X</th>
+                </tr>
+                @foreach ($despesas as $despesa)
+                <tr>
+                    <td style="background-color: var(--titulos); color:white">{{$despesa->id}}</td>
+                    <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>
+                    <td>{{$despesa->descricao}}</td>
+                    <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
+                    <td>
+                        <form method="post" class="formx" action="/destroy/despesas/{{$despesa->id}}"><button class="excluir">X</button>
+                            @csrf
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </table>
+        </div>
 
         <div class="valortotal">
             <p>VALOR TOTAL: R$
-            <p style="color: red; margin-right: 20px; font-weight: bold;">{{$totaldespesas}},00</p>
+            <p style="color: red;  font-weight: bold;">{{ number_format($totaldespesas, 2, ',', '.') }}</p>
             </p>
         </div>
 
