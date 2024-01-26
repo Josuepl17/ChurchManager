@@ -25,8 +25,9 @@ class ControllerIgreja extends Controller
     public function index()
     {
         $index = usuarios::all();
+        $tex = 'ola';
 
-        return view('pagina.index')->with('index',  $index);
+        return view('pagina.index')->with('index',  $index)->with('tex', $tex);
     }
 
     public function cadastro_membro()
