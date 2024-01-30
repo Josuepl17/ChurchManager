@@ -288,4 +288,14 @@
 
         <button type="submit">Registar Oferta</button>
     </form>
+
+
+
+    <script>
+    @if (session('alert'))
+    alert('{{ session('alert') }}');
+    @endif
+</script>
+
+
 </x-layout>

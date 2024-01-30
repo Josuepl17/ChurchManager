@@ -18,6 +18,25 @@ class ControllerIgreja extends Controller
 
 
 
+    public function Vcreate(Request $request){
+
+        $primeiroregistro = caixas::value('dataini') ?? '';
+        $ultimoregistro = caixas::latest('datafi')->first();
+        $ultimo = $ultimoregistro->datafi ?? '';
+
+        if ( $request->data > $primeiroregistro  && $request->data > $ultimo) {
+            session()->flash('alert', 'Registro inserido com sucesso!');
+           return;
+        } else {
+            session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
+            return redirect('/relatorio');
+            
+        }
+
+    }
+
+
+
 
 
 
@@ -126,12 +145,15 @@ class ControllerIgreja extends Controller
 
 
 
+
         /* $ofertas = new ofertas();
         $ofertas->nome = ofertas::all()->pluck('nome');
         $ofertas->data = ofertas::all()->pluck('data');
         $ofertas->valor = ofertas::all()->pluck('valor');
         $ofertas->id = ofertas::all()->pluck('id');
         dd($ofertas->nome);*/
+
+        
         $ofertas = ofertas::all();
         $datanow = Carbon::now();
 
@@ -143,6 +165,13 @@ class ControllerIgreja extends Controller
 
     public function botao_registrar_oferta(request $request)
     {
+        
+
+
+
+        
+        $this->Vcreate($request);
+
         $dados = $request->all();
         ofertas::create($dados);
         /*$post = new ofertas;
