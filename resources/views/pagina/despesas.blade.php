@@ -298,11 +298,12 @@
 
 
     
-<script>
-    @if (session('alert'))
-    alert('{{ session('alert') }}');
-    @endif
-</script>
+    <script>
+    var alertMessage = "{{ session('alert') }}";
+    if (alertMessage) {
+        alert(alertMessage);
+    }
+    </script>
 
 
 
