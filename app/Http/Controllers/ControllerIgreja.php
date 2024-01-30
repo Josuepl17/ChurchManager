@@ -25,9 +25,9 @@ class ControllerIgreja extends Controller
     public function index()
     {
         $index = usuarios::all();
-        $tex = 'ola';
+       
 
-        return view('pagina.index')->with('index',  $index)->with('tex', $tex);
+        return view('pagina.index')->with('index',  $index);
     }
 
     public function cadastro_membro()
@@ -187,28 +187,68 @@ class ControllerIgreja extends Controller
 
     public function botao_registrar_despesas(request $request)
     {
-        $dados = $request->all();
-        despesas::create($dados);
+
+       
+
+       
+
+        $primeiroregistro = caixas::value('dataini') ?? '';
+        $ultimoregistro = caixas::latest('datafi')->first();
+        $ultimo = $ultimoregistro->datafi ?? '';
+        
+        
+    
+
+
+        if ( $request->data > $primeiroregistro  && $request->data > $ultimo) {
+           
+            $dados = $request->all();
+             despesas::create($dados);
+
+             /*$despesas = despesas::all(); Não se usa Mais porque ele retona para dados da pagin aanterir, não sendo necessario levar todas as variaveis denovo 
+             $totaldespesas = despesas::query()->sum('valor');*/
+
+             session()->flash('alert', 'Registro inserido com sucesso!');
+
+             return redirect()->back(); /* OBS Feito assim para Não levar dados da pagin aem m aposisvel recarregação */
+            
+        } else {
+            
+           
+            session()->flash('alert', 'Falha Ao Cadastrar, Caixa Fechado');
+            return redirect()->back();
+            
+                
+          
+            
+
+        }
+
+        
+    }
+
+
+
+        
         /*$post = new despesas;
         $post->data = $request->data;
         $post->descricao = $request->descricao;
         $post->valor = $request->valor;
         $post->save();*/
-        $despesas = despesas::all();
-
        
-        $totaldespesas = despesas::query()->sum('valor');
-        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
-    }
+    
 
 
     public function botao_excluir_despesas(request $request)
     {
         $destroy = $request->id;
         despesas::destroy($destroy);
-        $despesas = despesas::all();
-        $totaldespesas = despesas::query()->sum('valor');
-        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas);
+
+       /* $despesas = despesas::all();
+        $totaldespesas = despesas::query()->sum('valor'); */
+       /* return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas); */
+
+       return redirect()->back();
     }
 
     public function filtrar_despesas(Request $request)
@@ -308,11 +348,14 @@ class ControllerIgreja extends Controller
            
             $dados = $request->except('_token');
             caixas::create($dados);
+
+            session()->flash('alert', 'Caixa Fechado Com Sucesso');
             return redirect('/');
             
         } else {
+            session()->flash('alert', 'Falha ao Fechar Caixa');
+            return redirect('/relatorio');
             
-            echo "Caixa Fechado ou Data Não informada";
         }
     }
 

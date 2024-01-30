@@ -292,4 +292,20 @@
 
         <button style="height: 50px;" type="submit">Registar Despesa</button>
     </form>
+
+
+
+
+
+    
+<script>
+    @if (session('alert'))
+    alert('{{ session('alert') }}');
+    @endif
+</script>
+
+
+
+
+
 </x-layout>

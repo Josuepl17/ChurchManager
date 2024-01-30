@@ -124,4 +124,12 @@
 
     </table>
 
+
+    <script>
+    @if (session('alert'))
+    alert('{{ session('alert') }}');
+    @endif
+</script>
+
+
 </x-layout>
