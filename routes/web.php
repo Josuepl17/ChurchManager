@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\CaixasController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerIgreja;
+use App\Http\Controllers\DespesasController;
+use App\Http\Controllers\DizimosControler;
+use App\Http\Controllers\MembrosController;
+use App\Http\Controllers\OfertasControler;
 use App\Http\Controllers\User;
 use GuzzleHttp\Middleware;
 use Illuminate\Routing\Controller as RoutingController;
@@ -22,40 +27,40 @@ use Illuminate\Support\Facades\Route;
 
 
                             /*Usuarios*/
-Route::get('/', [ControllerIgreja::class, 'index']);
-Route::get('/cadastro/membro', [ControllerIgreja::class, 'cadastro_membro']);
-Route::post('/inserir/membro', [ControllerIgreja::class, 'botao_inserir_membro']);
-Route::post('/destroy/{id}', [ControllerIgreja::class, 'excluir_membro']);
+Route::get('/', [MembrosController::class, 'index']);
+Route::get('/cadastro/membro', [MembrosController::class, 'cadastro_membro']);
+Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro']);
+Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
 
                             /*Dizimos Por Usuario*/
-Route::get('/inserir/dizimos/{id}', [ControllerIgreja::class, 'botao_inserir']);
-Route::post('/registrar/dizimo', [ControllerIgreja::class, 'botao_registrar_dizimo']);
-Route::post('/destroy/dizimos/{id}/{user_id}', [ControllerIgreja::class, 'botao_excluir_dizimo']);
-Route::get('/filtrar/dizimo/{user_id}', [ControllerIgreja::class, 'filtrar_dizimo']);
+Route::get('/inserir/dizimos/{id}', [DizimosControler::class, 'botao_inserir']);
+Route::post('/registrar/dizimo', [DizimosControler::class, 'botao_registrar_dizimo']);
+Route::post('/destroy/dizimos/{id}/{user_id}', [DizimosControler::class, 'botao_excluir_dizimo']);
+Route::get('/filtrar/dizimo/{user_id}', [DizimosControler::class, 'filtrar_dizimo']);
 
 
                              /*Ofertas*/
-Route::get('/oferta', [ControllerIgreja::class, 'oferta']);
-Route::post('/registrar/oferta', [ControllerIgreja::class, 'botao_registrar_oferta']);
-Route::post('/destroy/oferta/{id}', [ControllerIgreja::class, 'botao_excluir_oferta']);
+Route::get('/oferta', [OfertasControler::class, 'oferta']);
+Route::post('/registrar/oferta', [OfertasControler::class, 'botao_registrar_oferta']);
+Route::post('/destroy/oferta/{id}', [OfertasControler::class, 'botao_excluir_oferta']);
 
                             /* Despesas */
-Route::get('/despesas', [ControllerIgreja::class, 'despesas']);
-Route::post('/registrar/despesas', [ControllerIgreja::class, 'botao_registrar_despesas']);
-Route::post('/destroy/despesas/{id}', [ControllerIgreja::class, 'botao_excluir_despesas']);
-Route::get('/filtrar/despesas', [ControllerIgreja::class, 'filtrar_despesas']);
+Route::get('/despesas', [DespesasController::class, 'despesas']);
+Route::post('/registrar/despesas', [DespesasController::class, 'botao_registrar_despesas']);
+Route::post('/destroy/despesas/{id}', [DespesasControllr::class, 'botao_excluir_despesas']);
+Route::get('/filtrar/despesas', [DespesasController::class, 'filtrar_despesas']);
 
                                 /*Caixa*/
-Route::get('/caixa', [ControllerIgreja::class, 'caixa']);
-Route::get('/filtrar', [ControllerIgreja::class, 'filtrar']);
+Route::get('/caixa', [CaixasController::class, 'caixa']);
+Route::get('/filtrar', [CaixasController::class, 'filtrar']);
 
 
-                                /*Relatorio*/
-Route::get('/relatorio', [ControllerIgreja::class, 'relatorio']);
-Route::get('/fpdf', [ControllerIgreja::class, 'fpdf']);
-Route::post('/filtro/pdf', [ControllerIgreja::class, 'filtrarrelatorio']);
-Route::get('/gerar/{dataini}/{datafi}', [ControllerIgreja::class, 'gerar']);
-Route::post('/fechar', [ControllerIgreja::class, 'fechar_caixa']);
+                     
+Route::get('/relatorio', [CaixasController::class, 'relatorio']);
+Route::get('/fpdf', [CaixasController::class, 'fpdf']);
+Route::post('/filtro/pdf', [CaixasController::class, 'filtrarrelatorio']);
+Route::get('/gerar/{dataini}/{datafi}', [CaixasController::class, 'gerar']);
+Route::post('/fechar', [CaixasController::class, 'fechar_caixa']);
 
 
                              /* LOGIN*/

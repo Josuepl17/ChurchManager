@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 
-class DizimosControler extends Controller
+class DizimosController extends Controller
 {
     /*Dizimos Por Usuario*/
 

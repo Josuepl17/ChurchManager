@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 
-class DespesasControler extends Controller
+class DespesasController extends Controller
 {
      /* Despesas */
 
