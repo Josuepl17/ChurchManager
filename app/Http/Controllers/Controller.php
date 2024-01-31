@@ -28,10 +28,11 @@ class Controller extends BaseController
 
         if ( $request->data > $primeiroregistro  && $request->data > $ultimo) {
             session()->flash('alert', 'Registro inserido com sucesso!');
-           return;
+            return;
         } else {
             session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
             return redirect()->back();
+            
             
         }
 

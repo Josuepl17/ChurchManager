@@ -47,20 +47,24 @@ class OfertasController extends Controller
 
    public function botao_registrar_oferta(request $request)
    {
+    $primeiroregistro = caixas::value('dataini') ?? '';
+    $ultimoregistro = caixas::latest('datafi')->first();
+    $ultimo = $ultimoregistro->datafi ?? '';
+
+    if ( $request->data > $primeiroregistro  && $request->data > $ultimo) {
+        session()->flash('alert', 'Registro inserido com sucesso!');
+   
+    } else {
+        session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
+        return redirect()->back();
+        
+        
+    }
        
-
-
-
        
-       $this->Vcreate($request);
 
        $dados = $request->all();
        ofertas::create($dados);
-       /*$post = new ofertas;
-       $post->data = $request->data;
-       $post->valor = $request->valor;
-       $post->save();*/
-       $ofertas = ofertas::all();
        return redirect('/oferta');
    }
 
