@@ -126,10 +126,11 @@
 
 
     <script>
-    @if (session('alert'))
-    alert('{{ session('alert') }}');
-    @endif
-</script>
+    var alertMessage = "{{ session('alert') }}";
+    if (alertMessage) {
+        alert(alertMessage);
+    }
+    </script>
 
 
 </x-layout>

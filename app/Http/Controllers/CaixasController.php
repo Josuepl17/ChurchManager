@@ -13,8 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use App\Http\Controllers\ControllerIgreja;
 
-class CaixasController extends Controller
+class CaixasController extends Controller 
 {
         /*Caixa*/
 
@@ -27,14 +28,6 @@ class CaixasController extends Controller
         }
     
     
-    
-    
-    
-    
-    
-    
-    
-        /*RELATORIO*/
     
         public function relatorio()
         {
@@ -87,26 +80,26 @@ class CaixasController extends Controller
     
         public function fechar_caixa(Request $request)
         {
-            $primeiroregistro = caixas::value('dataini') ?? '1000-01-01';
-            $ultimoregistro = caixas::latest('datafi')->first();
-            $ultimo = $ultimoregistro->datafi ?? '1000-01-01';
-            
-            
+
+                $primeiroregistro = caixas::value('dataini') ?? '';
+                $ultimoregistro = caixas::latest('datafi')->first();
+                $ultimo = $ultimoregistro->datafi ?? '';
         
-    
-    
-            if ( $request->dataini > $primeiroregistro  && $request->datafi > $ultimo) {
-               
-                $dados = $request->except('_token');
-                caixas::create($dados);
-    
-                session()->flash('alert', 'Caixa Fechado Com Sucesso');
-                return redirect('/');
-                
-            } else {
-                session()->flash('alert', 'Falha ao Fechar Caixa');
-                return redirect('/relatorio');
-                
+                if ( $request->dataini > $primeiroregistro  && $request->datafi > $ultimo) {
+                    $dados = $request->except('_token');
+                    caixas::create($dados);
+                    session()->flash('alert', 'Registro inserido com sucesso!');
+                    return redirect('/relatorio');
+                    
+
+                } else {
+                    session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
+                    return redirect('/relatorio');
+                    
+                }
+        
             }
-        }
+            
+            
+
 }
