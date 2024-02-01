@@ -42,7 +42,7 @@ Route::get('/filtrar/dizimo/{user_id}', [DizimosController::class, 'filtrar_dizi
                              /*Ofertas*/
 Route::get('/oferta', [OfertasController::class, 'oferta']);
 Route::post('/registrar/oferta', [OfertasController::class, 'botao_registrar_oferta']);
-Route::post('/destroy/oferta/{id}', [OfertasController::class, 'botao_excluir_oferta']);
+Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_oferta']);
 
                             /* Despesas */
 Route::get('/despesas', [DespesasController::class, 'despesas']);

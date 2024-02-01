@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Http\RedirectResponse;
 
 class OfertasController extends Controller
 {
@@ -28,35 +29,18 @@ class OfertasController extends Controller
         $ultimo = $ultimoregistro->datafi ?? '';
 
         if ($request->data > $primeiroregistro  && $request->data > $ultimo) {
-            session()->flash('alert', 'Registro inserido com sucesso!');
-            return redirect('/ofertas');
+            session()->flash('alert', 'Sucesso');
         } else {
-            session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
+            session()->flash('alert', 'ATENÇÃO !!! O CAIXA ESTA FECHADO');
             return redirect()->back();
-            
         }
     }
 
 
     public function oferta()
     {
-
-
-
-
-
-
-        /* $ofertas = new ofertas();
-       $ofertas->nome = ofertas::all()->pluck('nome');
-       $ofertas->data = ofertas::all()->pluck('data');
-       $ofertas->valor = ofertas::all()->pluck('valor');
-       $ofertas->id = ofertas::all()->pluck('id');
-       dd($ofertas->nome);*/
-
-
         $ofertas = ofertas::all();
-        $datanow = Carbon::now();
-
+        $datanow = Carbon::now()->format('Y-m-d');
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
     }
@@ -65,20 +49,28 @@ class OfertasController extends Controller
 
     public function botao_registrar_oferta(request $request)
     {
+        $resposta = $this->Vcreate($request);
 
-        $this->Vcreate($request);
-
-        
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
+        $dados = $request->all();
+        ofertas::create($dados);
+        return redirect()->back();
     }
 
 
     public function botao_excluir_oferta(request $request)
     {
+        $resposta = $this->Vcreate($request);
+
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
+
         $destroy = $request->id;
         ofertas::destroy($destroy);
-        $ofertas = ofertas::all();
-        $totalofertas = ofertas::query()->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
+        return redirect()->back();
     }
 
     public function filtrar(Request $request)

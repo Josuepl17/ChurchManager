@@ -255,12 +255,14 @@
                     <td>{{\Carbon\Carbon::parse($oferta->data)->format('d/m/Y')}}</td>
                     <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
                     <td>
-                         <form method="post" class="formx" action="/destroy/oferta/{{$oferta->id}}"><button class="excluir">X</button>
+                         <form method="post" class="formx" action="/destroy/ofertas/id"><button class="excluir">X</button>
+                         <input type="hidden" name="data" value="{{$oferta->data}}" >
+                         <input type="hidden" name="id" value="{{$oferta->id}}" >
                             @csrf</form>
                     </td>
             
                 </tr>
-            
+            <br>
             
                 @endforeach
             </table>
@@ -279,7 +281,7 @@
     <form class="id" action="/registrar/oferta" method="post">
         @csrf
         <label for="data">Data:</label>
-        <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
+        <input class="cad" type="date" name="data" id="data" value="{{ $datanow }}" autocomplete="off" required>
 
         <label for="valor">Valor:</label>
         <input class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
