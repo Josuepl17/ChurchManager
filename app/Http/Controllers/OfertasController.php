@@ -16,75 +16,78 @@ use GuzzleHttp\Promise\Create;
 
 class OfertasController extends Controller
 {
-   /*Ofertas*/
+    /*Ofertas*/
 
 
 
-   public function oferta()
-   {
+    public function Vcreate(Request $request)
+    {
+
+        $primeiroregistro = caixas::value('dataini') ?? '';
+        $ultimoregistro = caixas::latest('datafi')->first();
+        $ultimo = $ultimoregistro->datafi ?? '';
+
+        if ($request->data > $primeiroregistro  && $request->data > $ultimo) {
+            session()->flash('alert', 'Registro inserido com sucesso!');
+            return redirect('/ofertas');
+        } else {
+            session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
+            return redirect()->back();
+            
+        }
+    }
+
+
+    public function oferta()
+    {
 
 
 
 
 
 
-       /* $ofertas = new ofertas();
+        /* $ofertas = new ofertas();
        $ofertas->nome = ofertas::all()->pluck('nome');
        $ofertas->data = ofertas::all()->pluck('data');
        $ofertas->valor = ofertas::all()->pluck('valor');
        $ofertas->id = ofertas::all()->pluck('id');
        dd($ofertas->nome);*/
 
-       
-       $ofertas = ofertas::all();
-       $datanow = Carbon::now();
 
-       $totalofertas = ofertas::query()->sum('valor');
-       return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
-   }
+        $ofertas = ofertas::all();
+        $datanow = Carbon::now();
+
+        $totalofertas = ofertas::query()->sum('valor');
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
+    }
 
 
 
-   public function botao_registrar_oferta(request $request)
-   {
-    $primeiroregistro = caixas::value('dataini') ?? '';
-    $ultimoregistro = caixas::latest('datafi')->first();
-    $ultimo = $ultimoregistro->datafi ?? '';
+    public function botao_registrar_oferta(request $request)
+    {
 
-    if ( $request->data > $primeiroregistro  && $request->data > $ultimo) {
-        session()->flash('alert', 'Registro inserido com sucesso!');
-   
-    } else {
-        session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
-        return redirect()->back();
-        
+        $this->Vcreate($request);
+
         
     }
-       
-       
-
-       $dados = $request->all();
-       ofertas::create($dados);
-       return redirect('/oferta');
-   }
 
 
-   public function botao_excluir_oferta(request $request)
-   {
-       $destroy = $request->id;
-       ofertas::destroy($destroy);
-       $ofertas = ofertas::all();
-       $totalofertas = ofertas::query()->sum('valor');
-       return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
-   }
+    public function botao_excluir_oferta(request $request)
+    {
+        $destroy = $request->id;
+        ofertas::destroy($destroy);
+        $ofertas = ofertas::all();
+        $totalofertas = ofertas::query()->sum('valor');
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas);
+    }
 
-   public function filtrar(Request $request)
-   {
+    public function filtrar(Request $request)
+    {
 
-       $dataIni = $request->get('dataini');
-       $dataFi = $request->get('datafi');
-       $ofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->get();
-       $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-       return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
-   }
+        $dataIni = $request->get('dataini');
+        $dataFi = $request->get('datafi');
+        $ofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->get();
+        $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
+    }
 }
