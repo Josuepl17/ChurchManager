@@ -15,26 +15,14 @@ use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\RedirectResponse;
 
+
 class OfertasController extends Controller
 {
     /*Ofertas*/
 
 
 
-    public function Vcreate(Request $request)
-    {
 
-        $primeiroregistro = caixas::value('dataini') ?? '';
-        $ultimoregistro = caixas::latest('datafi')->first();
-        $ultimo = $ultimoregistro->datafi ?? '';
-
-        if ($request->data > $primeiroregistro  && $request->data > $ultimo) {
-            session()->flash('alert', 'Sucesso');
-        } else {
-            session()->flash('alert', 'ATENÇÃO !!! O CAIXA ESTA FECHADO');
-            return redirect()->back();
-        }
-    }
 
 
     public function oferta()
@@ -49,11 +37,10 @@ class OfertasController extends Controller
 
     public function botao_registrar_oferta(request $request)
     {
-        $resposta = $this->Vcreate($request);
+        
+        $this->Vcreate($request);
 
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
-        }
+
         $dados = $request->all();
         ofertas::create($dados);
         return redirect()->back();
@@ -62,12 +49,8 @@ class OfertasController extends Controller
 
     public function botao_excluir_oferta(request $request)
     {
-        $resposta = $this->Vcreate($request);
-
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
-        }
-
+        $this->Vcreate($request);
+        
         $destroy = $request->id;
         ofertas::destroy($destroy);
         return redirect()->back();

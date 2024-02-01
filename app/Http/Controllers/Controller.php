@@ -15,27 +15,27 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Http\RedirectResponse;
+
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function Vcreate(Request $request){
+    public function Vcreate(Request $request)
+    {
 
         $primeiroregistro = caixas::value('dataini') ?? '';
         $ultimoregistro = caixas::latest('datafi')->first();
         $ultimo = $ultimoregistro->datafi ?? '';
 
-        if ( $request->data > $primeiroregistro  && $request->data > $ultimo) {
-            session()->flash('alert', 'Registro inserido com sucesso!');
+        if ($request->data > $primeiroregistro  && $request->data > $ultimo) {
+            session()->flash('alert', 'Sucesso');
+            
         } else {
-            session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
-            return redirect()-back();
-            
-            
-            
+            session()->flash('alert', 'ATENÇÃO !!! O CAIXA ESTA FECHADO');
+            return redirect('/relatorio');
         }
-
     }
 
 }
