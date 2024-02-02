@@ -1,19 +1,20 @@
 <x-layout>
 
-    <style>
-:root {
-    --titulos: #0A1626 ;
-    --subtitulos:#023859 ;
-    --fundos:#0D8AA6 ;
-    
-    --cor-secundaria:#313131e7 ;
-}
+<style>
+        :root {
+            --titulos: #0A1626;
+            --subtitulos: #023859;
+            --fundos: #0D8AA6;
+
+            --cor-secundaria: #313131e7;
+        }
+
         .table2 {
             display: flex;
             flex-direction: column;
             width: 100%;
             height: 80%;
-            border: 1px solid black;
+            
 
 
         }
@@ -133,7 +134,7 @@
             border: 1px solid black;
             border-top: none;
             border-left: none;
-            
+
             font-size: 20px;
             color: white;
             background-color: var(--subtitulos);
@@ -176,7 +177,6 @@
 
         .valortotal p {
             color: black;
-
             padding-right: 10px;
             background-color: white;
 
@@ -184,7 +184,7 @@
 
         }
 
-        .filtro{
+        .filtro {
             display: flex;
             width: 100%;
             background-color: var(--titulos);
@@ -193,54 +193,54 @@
             height: 7%;
         }
 
-        .filtro form{
+        .filtro form {
             width: 100%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             border-radius: 0px;
             margin-top: -3px;
-            
+
         }
 
-        select{
-            font-size: 20px;
-            border-radius: 10px ;
-        }
-
-        option{
-            font-size: 18px;
-        }
-
-        .conteudo{
+        .conteudo {
             display: flex;
             width: 100%;
             height: 100%;
             overflow: auto;
         }
 
-        
+        select {
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        option {
+            font-size: 18px;
+        }
+
+
     </style>
 
 
     <div class="table2">
 
-    <div class="filtro">
-        <form action="/filtrar/despesas" method="get">
-        <input  type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required >
-                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required >
-            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
-        </form>
-    </div>
+        <div class="filtro">
+            <form action="/filtrar/despesas" method="get">
+                <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
+                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
+                <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+            </form>
+        </div>
 
         <div class="conteudo">
             <table>
                 <tr>
-                    <th  style="width: 4%;" >ID</th>
+                    <th style="width: 4%;">ID</th>
                     <th>DATA</th>
                     <th>DESCRIÇÃO</th>
                     <th>VALOR</th>
-                    <th style="width: 4%;" >X</th>
+                    <th style="width: 4%;">X</th>
                 </tr>
                 @foreach ($despesas as $despesa)
                 <tr>
@@ -249,7 +249,9 @@
                     <td>{{$despesa->descricao}}</td>
                     <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
                     <td>
-                        <form method="post" class="formx" action="/destroy/despesas/{{$despesa->id}}"><button class="excluir">X</button>
+                        <form method="post" class="formx" action="/destroy/despesas/id"><button class="excluir">X</button>
+                            <input type="hidden" name="data" value="{{$despesa->data}}">
+                            <input type="hidden" name="id" value="{{$despesa->id}}">
                             @csrf
                         </form>
                     </td>
@@ -272,17 +274,17 @@
         @csrf
 
         <label for="data">Data:</label>
-        <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
+        <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
         <label for="descricao">Desc:</label>
-        <select name="descricao" id="descricao" require autocomplete="off" >
-            <Option disabled selected ></Option>
+        <select name="descricao" id="descricao" require autocomplete="off">
+            <Option disabled selected></Option>
             <Option>LIMPEZA</Option>
             <Option>SALARIO</Option>
             <Option>FESTIVIDADE</Option>
             <Option>MANUNTENÇÃO</Option>
             <Option>DOAÇÃO</Option>
-            
+
         </select>
 
         <label for="valor">Valor:</label>
@@ -297,12 +299,12 @@
 
 
 
-    
+
     <script>
-    var alertMessage = "{{ session('alert') }}";
-    if (alertMessage) {
-        alert(alertMessage);
-    }
+        var alertMessage = "{{ session('alert') }}";
+        if (alertMessage) {
+            alert(alertMessage);
+        }
     </script>
 
 

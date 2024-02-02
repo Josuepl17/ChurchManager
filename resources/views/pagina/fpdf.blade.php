@@ -19,7 +19,7 @@
 
         table {
             border-collapse: collapse;
-            
+
 
 
             margin: auto;
@@ -55,7 +55,7 @@
             border: 1px solid black;
         }
 
-        p{
+        p {
             text-align: center;
         }
     </style>
@@ -65,7 +65,7 @@
 
 
 
-    <h1>Relatorio  Dizimos</h1>
+    <h1>Relatorio Dizimos</h1>
     <hr>
 
     <div class="conteiner">
@@ -75,11 +75,11 @@
 
 
 
-            <tr style="border-bottom: 1px solid black;" >
+            <tr style="border-bottom: 1px solid black;">
                 <th>ID</th>
                 <th>DATA</th>
                 <th>VALOR</th>
-                
+
 
 
 
@@ -95,7 +95,7 @@
 
                 <td>{{ \Carbon\Carbon::parse($dizimo->data)->format('d/m/Y') }}</td>
                 <td>R$ {{ number_format($dizimo->valor, 2, ',', '.') }}</td>
-                
+
 
 
             </tr>
@@ -104,17 +104,17 @@
 
             @endforeach
 
-            
-             <tr>
-                <td colspan="3" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totaldizimos, 2, ',', '.') }}</td>
-                
-             </tr>   
-            
+
+            <tr>
+                <td colspan="3" style="font-weight: bold;">TOTAL: R$ {{ number_format($totaldizimos, 2, ',', '.') }}</td>
+
+            </tr>
+
 
         </table>
 
         <br>
-    <br>
+        <br>
 
 
 
@@ -122,124 +122,124 @@
 
 
 
-    <h1>Relatorio  Ofertas</h1>
+    <h1>Relatorio Ofertas</h1>
     <hr>
 
     <div class="conteiner">
 
 
 
-<table>
+        <table>
 
 
 
-    <tr style="border-bottom: 1px solid black;" >
-        <th>ID</th>
-        <th>DATA</th>
-        <th>VALOR</th>
-        
-
-
-
-    </tr>
-
-
-    @foreach ($ofertas as $oferta)
-
-
-    <tr>
-        <td>{{ $oferta->id}}</td>
-
-
-        <td>{{ \Carbon\Carbon::parse($oferta->data)->format('d/m/Y') }}</td>
-        <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
-        
-
-
-    </tr>
-
-
-
-    @endforeach
-
-    
-     <tr>
-        <td colspan="3" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totalofertas, 2, ',', '.') }}</td>
-        
-     </tr>   
-    
-
-</table>
-
-<br>
-<br>
+            <tr style="border-bottom: 1px solid black;">
+                <th>ID</th>
+                <th>DATA</th>
+                <th>VALOR</th>
 
 
 
 
-</div>
+            </tr>
+
+
+            @foreach ($ofertas as $oferta)
+
+
+            <tr>
+                <td>{{ $oferta->id}}</td>
+
+
+                <td>{{ \Carbon\Carbon::parse($oferta->data)->format('d/m/Y') }}</td>
+                <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
 
 
 
-<h1>Relatorio Despesas</h1>
+            </tr>
+
+
+
+            @endforeach
+
+
+            <tr>
+                <td colspan="3" style="font-weight: bold;">TOTAL: R$ {{ number_format($totalofertas, 2, ',', '.') }}</td>
+
+            </tr>
+
+
+        </table>
+
+        <br>
+        <br>
+
+
+
+
+    </div>
+
+
+
+    <h1>Relatorio Despesas</h1>
     <hr>
 
     <div class="conteiner">
 
 
 
-<table>
+        <table>
 
 
 
-    <tr style="border-bottom: 1px solid black;" >
-        <th>ID</th>
-        <th>DATA</th>
-        <th>DESCRIÇÃO</th>
-        <th>VALOR</th>
-        
+            <tr style="border-bottom: 1px solid black;">
+                <th>ID</th>
+                <th>DATA</th>
+                <th>DESCRIÇÃO</th>
+                <th>VALOR</th>
 
 
 
-    </tr>
+
+            </tr>
 
 
-    @foreach ($despesas as $despesa)
+            @foreach ($despesas as $despesa)
 
 
-    <tr >
-        <td>{{ $despesa->id}}</td>
+            <tr>
+                <td>{{ $despesa->id}}</td>
 
 
-        <td>{{ \Carbon\Carbon::parse($despesa->data)->format('d/m/Y') }}</td>
-        <td>{{$despesa->descricao}}</td>
-        <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
-        
-
-
-    </tr>
+                <td>{{ \Carbon\Carbon::parse($despesa->data)->format('d/m/Y') }}</td>
+                <td>{{$despesa->descricao}}</td>
+                <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
 
 
 
-    @endforeach
+            </tr>
 
-    
-     <tr>
-        <td colspan="4" style="font-weight: bold;" >TOTAL: R$ {{ number_format($totaldespesas, 2, ',', '.') }}</td>
-        
-     </tr>   
-    
 
-</table>
 
-<br>
-<br>
+            @endforeach
 
-<p>_____________________________________</p>
+
+            <tr>
+                <td colspan="4" style="font-weight: bold;">TOTAL: R$ {{ number_format($totaldespesas, 2, ',', '.') }}</td>
+
+            </tr>
+
+
+        </table>
+
+        <br>
+        <br>
+
+        <p>_____________________________________</p>
         <p>Assinatura</p>
 
 
-</div>
+    </div>
 
 
 
@@ -249,7 +249,7 @@
 
 
 
-    
+
 
 </body>
 

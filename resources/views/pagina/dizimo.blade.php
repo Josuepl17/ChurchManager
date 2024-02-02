@@ -1,20 +1,20 @@
 <x-layout>
 
     <style>
+        :root {
+            --titulos: #0A1626;
+            --subtitulos: #023859;
+            --fundos: #0D8AA6;
 
-:root {
-    --titulos: #0A1626 ;
-    --subtitulos:#023859 ;
-    --fundos:#0D8AA6 ;
-    
-    --cor-secundaria:#313131e7 ;
-}
+            --cor-secundaria: #313131e7;
+        }
+
         .table2 {
             display: flex;
             flex-direction: column;
             width: 100%;
             height: 80%;
-            border: 1px solid black;
+            
 
 
         }
@@ -134,7 +134,7 @@
             border: 1px solid black;
             border-top: none;
             border-left: none;
-            
+
             font-size: 20px;
             color: white;
             background-color: var(--subtitulos);
@@ -178,15 +178,13 @@
         .valortotal p {
             color: black;
             padding-right: 10px;
-           
-            
             background-color: white;
 
 
 
         }
 
-        .filtro{
+        .filtro {
             display: flex;
             width: 100%;
             background-color: var(--titulos);
@@ -195,56 +193,60 @@
             height: 7%;
         }
 
-        .filtro form{
+        .filtro form {
             width: 100%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             border-radius: 0px;
             margin-top: -3px;
-            
+
         }
 
-        .conteudo{
+        .conteudo {
             display: flex;
             width: 100%;
             height: 100%;
             overflow: auto;
         }
-
-
     </style>
 
 
     <div class="table2">
-    <div class="filtro">
-        <form action="/filtrar" method="get">
-        <input  type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required >
-        <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required >
-        <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
-        </form>
-    </div>
+        <div class="filtro">
+            <form action="/filtrar" method="get">
+                <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
+                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
+                <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+            </form>
+        </div>
 
         <div class="conteudo">
+
+
             <table>
                 <tr>
-                    <th style="width: 4%; " >ID</th>
+                    <th style="width: 4%; ">ID</th>
                     <th>DATA</th>
                     <th>VALOR</th>
-                    <th style="width: 4%;" >X</th>
+                    <th style="width: 4%;">X</th>
                 </tr>
                 @foreach ($dizimos as $dizimo)
-            
+
                 <tr>
                     <td style="background-color: var(--titulos);; color:white">{{ $dizimo->id}}</td>
                     <td>{{ \Carbon\Carbon::parse($dizimo->data)->format('d/m/Y') }}</td>
                     <td>R${{ number_format($dizimo->valor, 2, ',', '.') }}</td>
                     <td>
-                         <form method="post" class="formx" action="/destroy/dizimos/{{$dizimo->id}}/{{$dizimo->user_id}}"><button class="excluir">X</button>
-                            @csrf</form>
+                        <form method="post" class="formx" action="/dizimos/destoy/id"><button class="excluir">X</button>
+                            <input type="hidden" name="data" value="{{$dizimo->data}}">
+                            <input type="hidden" name="id" value="{{$dizimo->id}}">
+                            <input type="hidden" name="user_id" value="{{$dizimo->user_id}}">
+                            @csrf
+                        </form>
                     </td>
                 </tr>
-            
+
                 @endforeach
             </table>
         </div>
@@ -263,7 +265,7 @@
         @csrf
         <input type="hidden" name="user_id" value="{{ $user_id }}">
         <label for="data">Data:</label>
-        <input class="cad" type="date" name="data" id="data" autocomplete="off" required>
+        <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
         <label for="valor">Valor:</label>
         <input class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
@@ -272,4 +274,13 @@
 
         <button type="submit">Registar Dizimo</button>
     </form>
+
+    <script>
+        var alertMessage = "{{ session('alert') }}";
+        if (alertMessage) {
+            alert(alertMessage);
+        }
+    </script>
+
+
 </x-layout>

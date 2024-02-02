@@ -1,15 +1,14 @@
-<x-layout  >
+<x-layout>
 
     <style>
+        :root {
+            --titulos: #10233b;
+            /*--titulos: #0A1626 ; */
+            --subtitulos: #023859;
+            --fundos: #0D8AA6;
 
-:root {
-    --titulos: #10233b ;
-    /*--titulos: #0A1626 ; */
-    --subtitulos:#023859 ;
-    --fundos:#0D8AA6 ;
-    
-    --cor-secundaria:#5353533d ;
-}
+            --cor-secundaria: #5353533d;
+        }
 
         .geral {
             display: flex;
@@ -38,12 +37,12 @@
 
         }
 
-        select{
+        select {
             width: 62%;
             height: 30px;
             border-radius: 5px;
             text-align: center;
-            
+
         }
 
         label {
@@ -91,7 +90,7 @@
         }
 
         .btn:hover {
-            background-color: var(--titulos) ;
+            background-color: var(--titulos);
             color: white;
             border: 1px solid black;
             transition: 0.6s;
@@ -107,13 +106,13 @@
             <input class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
             <label for="funcao">Função</label>
             <select name="funcao" id="funcao">
-                <Option disabled selected ></Option>
+                <Option disabled selected></Option>
                 <option value="MEMBRO">MEMBRO</option>
                 <option value="MUSICO">MUSICO</option>
                 <option value="PASTOR">PASTOR</option>
                 <option value="DIACONO">DIACONO</option>
                 <option value="OBREIRO">OBREIRO</option>
-            </select> 
+            </select>
 
             <label for="endereco">Endereço:</label>
             <input class="cad" type="text" name="endereco" id="endereco" autocomplete="off" required>

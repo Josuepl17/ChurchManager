@@ -20,39 +20,41 @@ class DizimosController extends Controller
 
     public function botao_inserir(request $request)
     {
-
+        $datanow = Carbon::now()->format('Y-m-d');
         $user_id = $request->id;
         $dizimos = dizimos::where('user_id', $user_id)->get();
         $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
-        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos);
+        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('datanow', $datanow);
     }
 
     public function botao_registrar_dizimo(request $request)
     {
+
+        $this->Vcreate($request);
+        $resposta = $this->Vcreate($request);
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
+
         $dados = $request->except('_token');
-
-
         dizimos::create($dados);
         $user_id = $request->user_id;
-
-        /*$post = new dizimos;
-        $post->user_id = $user_id;
-        $post->data = $request->data;
-        $post->valor = $request->valor;
-        $post->save();*/
-        $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
-        $dizimos = dizimos::where('user_id', $user_id)->get();
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id)->with('totaldizimos', $totaldizimos);
+        return redirect()->back();
     }
 
     public function botao_excluir_dizimo(request $request)
     {
+        $this->Vcreate($request);
+        $resposta = $this->Vcreate($request);
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
+
         $destroy = $request->id;
+
         $user_id = $request->user_id;
         dizimos::destroy($destroy);
-        $dizimos = dizimos::where('user_id', $user_id)->get();
-        $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('user_id', $user_id)->with('totaldizimos', $totaldizimos);
+        return redirect()->back();
     }
 
     public function filtrar_dizimo(Request $request)

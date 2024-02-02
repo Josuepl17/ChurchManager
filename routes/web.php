@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
                             /*Usuarios*/
-Route::get('/', [MembrosController::class, 'index']);
+Route::get('/', [MembrosController::class, 'index'])->name('index');
 Route::get('/cadastro/membro', [MembrosController::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro']);
 Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
@@ -35,7 +35,7 @@ Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
                             /*Dizimos Por Usuario*/
 Route::get('/inserir/dizimos/{id}', [DizimosController::class, 'botao_inserir']);
 Route::post('/registrar/dizimo', [DizimosController::class, 'botao_registrar_dizimo']);
-Route::post('/destroy/dizimos/{id}/{user_id}', [DizimosController::class, 'botao_excluir_dizimo']);
+Route::post('/dizimos/destoy/id', [DizimosController::class, 'botao_excluir_dizimo']);
 Route::get('/filtrar/dizimo/{user_id}', [DizimosController::class, 'filtrar_dizimo']);
 
 
@@ -47,7 +47,7 @@ Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_ofe
                             /* Despesas */
 Route::get('/despesas', [DespesasController::class, 'despesas']);
 Route::post('/registrar/despesas', [DespesasController::class, 'botao_registrar_despesas']);
-Route::post('/destroy/despesas/{id}', [DespesasController::class, 'botao_excluir_despesas']);
+Route::post('/destroy/despesas/id', [DespesasController::class, 'botao_excluir_despesas']);
 Route::get('/filtrar/despesas', [DespesasController::class, 'filtrar_despesas']);
 
                                 /*Caixa*/

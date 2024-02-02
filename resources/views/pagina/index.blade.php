@@ -1,16 +1,13 @@
 <x-layout>
 
     <style>
+        :root {
+            --titulos: #0A1626;
+            --subtitulos: #023859;
+            --fundos: #0D8AA6;
 
-
-
-:root {
-    --titulos: #0A1626 ;
-    --subtitulos:#023859 ;
-    --fundos:#0D8AA6 ;
-    
-    --cor-secundaria:#313131e7 ;
-}
+            --cor-secundaria: #313131e7;
+        }
 
         table {
             border-collapse: collapse;
@@ -61,7 +58,7 @@
             font-size: 20px;
             height: 100%;
             width: 100%;
-            color:white;
+            color: white;
 
 
 
@@ -86,8 +83,8 @@
             <th>ENDEREÇO</th>
             <th>FUNÇÃO</th>
             <th>TELEFONE</th>
-            <th style="width: 08%;" >X</th>
-            <th style="width: 4%;" >X</th>
+            <th style="width: 08%;">X</th>
+            <th style="width: 4%;">X</th>
 
         </tr>
 
@@ -126,10 +123,10 @@
 
 
     <script>
-    var alertMessage = "{{ session('alert') }}";
-    if (alertMessage) {
-        alert(alertMessage);
-    }
+        var alertMessage = "{{ session('alert') }}";
+        if (alertMessage) {
+            alert(alertMessage);
+        }
     </script>
 
 

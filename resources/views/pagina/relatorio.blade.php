@@ -47,7 +47,7 @@
         }
 
         .conteiner-colunas {
-            
+
             width: 100%;
             height: 30vh;
             display: flex;
@@ -60,9 +60,10 @@
 
         .box {
             border: 1px solid black;
-            width: 20%;
+            width: 19%;
             height: 55%;
             margin-top: 40px;
+            box-shadow: 1px 1px 2px black;
 
 
 
@@ -72,11 +73,11 @@
             display: flex;
             width: 100%;
             height: 20%;
-            border: 1px solid black;
+
             font-size: 20px;
             justify-content: center;
             align-items: center;
-            background-color: #0A1626;
+            background-color: #0d1c31f6;
             color: white;
         }
 
@@ -84,7 +85,7 @@
             display: flex;
             width: 100%;
             height: 65%;
-            border: 1px solid black;
+
             background-color: white;
             justify-content: center;
             align-items: center;
@@ -93,23 +94,24 @@
         .box-3 {
             display: flex;
             width: 100%;
-            height: 18%;
-            border: 1px solid black;
+            height: 15%;
+
             justify-content: center;
             align-items: center;
             background-color: var(--subtitulos);
-            color: white;
+
         }
 
         nav a {
 
 
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: none;
             color: black;
             border: 1px solid black;
             padding: 6px;
             color: white;
+            background-color: var(--cor-secundaria);
 
         }
 
@@ -130,7 +132,7 @@
         }
 
         .filtro {
-            padding-top: 10px ;
+            padding-top: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -143,16 +145,16 @@
             border-radius: 10px;
         }
 
-        .botao{
+        .botao {
             display: flex;
             width: 100%;
             height: 10%;
             justify-content: center;
-            
-            
+
+
         }
 
-        .botao a{
+        .botao a {
             padding: 20px;
             border: #0A1626 solid 1px;
             font-size: 20px;
@@ -162,44 +164,39 @@
             border-radius: 10px;
         }
 
-        .botao a:hover{
+        .botao a:hover {
             background-color: var(--fundos);
-            
+
             transition: 0.4s;
 
-            
+
         }
 
-        #Caixaregistrar{
+        #Caixaregistrar {
             display: flex;
             width: 99%;
             height: 10%;
             justify-content: flex-end;
-          
+
         }
 
-        #caixa{
-            
-         
+        #caixa {
+
+
             width: 100%;
             height: 100%;
             margin-right: 100px;
         }
 
-        #botao2{
+        #botao2 {
             width: 100%;
             height: 100%;
             font-size: 25px;
             padding: 8px;
             background-color: red;
             color: white;
-            
+
         }
-
-
-
-
-
     </style>
 </head>
 
@@ -210,16 +207,16 @@
             <h1>Igreja Presbiteriana da Renovação</h1>
         </div>
 
-        <nav> <a href="/">Home</a></nav>
+        <nav> <a href="/">MENU PRINCIPAL</a></nav>
 
         <div class="filtro">
             <form action="/filtro/pdf" method="post" require>
                 @csrf
 
-                <input  type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required >
-                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required >
+                <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
+                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
 
-                <input style="border-radius: 0px;" type="submit" value="Filtrar" require >
+                <input style="border-radius: 0px;" type="submit" value="Filtrar" require>
             </form>
         </div>
 
@@ -231,46 +228,48 @@
                 <div class="box-2">
                     <h1>{{ $qtymembros }}</h1>
                 </div>
-                <div class="box-3"> <a href="">
-                        <p>Relatorio -></p>
-                    </a> </div>
+                <div class="box-3"></div>
             </div>
 
             <div class="box">
                 <div class="box-1">
-                    <p>Dizimos</p>
+                    <p style="color: rgb(0, 254, 0);">Dizimos</p>
                 </div>
                 <div class="box-2">
                     <h1>R${{ number_format($totaldizimos, 2, ',', '.') }}</h1>
                 </div>
-                <div class="box-3"> <a href="">
-                        <p>Relatorio -></p>
-                    </a> </div>
+                <div class="box-3"></div>
             </div>
 
             <div class="box">
-                
+
                 <div class="box-1">
-                    <p>Ofertas</p>
+                    <p style="color: rgb(0, 254, 0);">Ofertas</p>
                 </div>
                 <div class="box-2">
                     <h1>R${{ number_format($totalofertas, 2, ',', '.') }}</h1>
                 </div>
-                <div class="box-3"> <a href="">
-                        <p>Relatorio -></p>
-                    </a> </div>
+                <div class="box-3"></div>
             </div>
 
             <div class="box">
                 <div class="box-1">
-                    <p>Despesas</p>
+                    <p style="color:red;">Despesas</p>
                 </div>
                 <div class="box-2">
                     <h1>R${{ number_format($totaldespesas, 2, ',', '.') }}</h1>
                 </div>
-                <div class="box-3"> <a href="">
-                        <p>Relatorio -></p>
-                    </a> </div>
+                <div class="box-3"></div>
+            </div>
+
+            <div class="box">
+                <div class="box-1">
+                    <p style="color:blue;">Saldo Atual</p>
+                </div>
+                <div class="box-2">
+                    <h1>R${{ number_format($saldo, 2, ',', '.') }}</h1>
+                </div>
+                <div class="box-3"></div>
             </div>
 
         </div>
@@ -280,35 +279,35 @@
 
         </div>
 
-        <div id="Caixaregistrar" >
-        <form action="/fechar" onsubmit="return minhaFuncao()" method="post">
-        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
-            <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
-            <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
-            <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
-            <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
-            @csrf
-  <input  id="botao2" class="botao" type="submit" value="Fechar Caixa">
-</form>
+        <div id="Caixaregistrar">
+            <form action="/fechar" onsubmit="return minhaFuncao()" method="post">
+                <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
+                <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
+                <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
+                <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
+                <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
+                @csrf
+                <input id="botao2" class="botao" type="submit" value="Fechar Caixa">
+            </form>
         </div>
 
 
 
 
-<script>
-function minhaFuncao() {
-  var resposta = confirm("Você Quer fechar o Caixa Na Data Informada ??");
-  if (resposta == true) {
-    
-    
-  } else {
-    // Usuário clicou em "Cancelar"
-    alert("Você clicou em Não");
-    // O formulário não será enviado
-    return false;
-  }
-}
-</script>
+        <script>
+            function minhaFuncao() {
+                var resposta = confirm("Você Quer fechar o Caixa Na Data Informada ??");
+                if (resposta == true) {
+
+
+                } else {
+                    // Usuário clicou em "Cancelar"
+                    alert("Você clicou em Não");
+                    // O formulário não será enviado
+                    return false;
+                }
+            }
+        </script>
 
 
 
@@ -318,10 +317,10 @@ function minhaFuncao() {
 
 
     <script>
-    var alertMessage = "{{ session('alert') }}";
-    if (alertMessage) {
-        alert(alertMessage);
-    }
+        var alertMessage = "{{ session('alert') }}";
+        if (alertMessage) {
+            alert(alertMessage);
+        }
     </script>
 
 

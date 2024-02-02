@@ -37,8 +37,12 @@ class OfertasController extends Controller
 
     public function botao_registrar_oferta(request $request)
     {
-        
+
         $this->Vcreate($request);
+        $resposta = $this->Vcreate($request);
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
 
 
         $dados = $request->all();
@@ -50,7 +54,11 @@ class OfertasController extends Controller
     public function botao_excluir_oferta(request $request)
     {
         $this->Vcreate($request);
-        
+        $resposta = $this->Vcreate($request);
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
+
         $destroy = $request->id;
         ofertas::destroy($destroy);
         return redirect()->back();

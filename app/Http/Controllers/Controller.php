@@ -30,11 +30,12 @@ class Controller extends BaseController
         $ultimo = $ultimoregistro->datafi ?? '';
 
         if ($request->data > $primeiroregistro  && $request->data > $ultimo) {
-            session()->flash('alert', 'Sucesso');
+            session()->flash('alert', 'SUCESSO');
             
         } else {
-            session()->flash('alert', 'ATENÇÃO !!! O CAIXA ESTA FECHADO');
-            return redirect('/relatorio');
+            session()->flash('alert', 'ATENÇÃO !!! O CAIXA ESTÁ FECHADO.');
+            return redirect()->back();
+            
         }
     }
 
