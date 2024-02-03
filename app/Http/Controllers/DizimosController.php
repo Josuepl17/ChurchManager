@@ -22,9 +22,10 @@ class DizimosController extends Controller
     {
         $datanow = Carbon::now()->format('Y-m-d');
         $user_id = $request->id;
+        $nome = $request->nome;
         $dizimos = dizimos::where('user_id', $user_id)->get();
         $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
-        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('datanow', $datanow);
+        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('datanow', $datanow)->with('nome', $nome);
     }
 
     public function botao_registrar_dizimo(request $request)
@@ -62,8 +63,10 @@ class DizimosController extends Controller
         $user_id = $request->user_id;
         $dataIni = $request->get('dataini');
         $dataFi = $request->get('datafi');
+        $nome = $request->nome;
+        $datanow = Carbon::now()->format('Y-m-d');
         $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldizimos = dizimos::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('user_id', $user_id)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
+        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('user_id', $user_id)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('nome', $nome)->with('datanow', $datanow);
     }
 }

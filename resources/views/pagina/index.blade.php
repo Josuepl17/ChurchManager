@@ -1,6 +1,9 @@
-<x-layout>
 
-    <style>
+@extends('components.layout')
+
+@section('conteudo')  
+@section('titulo', 'Igreja Presbiteriana da Renovação' )
+  <style>
         :root {
             --titulos: #0A1626;
             --subtitulos: #023859;
@@ -74,7 +77,9 @@
         }
     </style>
 
-
+        
+        
+     
 
     <table>
         <tr>
@@ -102,7 +107,7 @@
             <td>{{ $ind->funcao }}</td>
             <td>{{ $ind->telefone }}</td>
             <td>
-                <form class="formx" action="/inserir/dizimos/{{ $ind->id }}"><button class="inserir">Inserir</button></form>
+                <form class="formx" action="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}"><button class="inserir">Inserir</button></form>
             </td>
             <td>
 
@@ -129,5 +134,4 @@
         }
     </script>
 
-
-</x-layout>
+@endsection

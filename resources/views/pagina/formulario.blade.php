@@ -1,4 +1,7 @@
-<x-layout>
+@extends('components.layout')
+
+@section('conteudo')  
+@section('titulo', 'FORMULARIO' )
 
     <style>
         :root {
@@ -127,4 +130,4 @@
         </form>
     </div>
 
-</x-layout>
+    @endsection

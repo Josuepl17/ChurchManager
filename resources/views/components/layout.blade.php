@@ -16,7 +16,7 @@
 
         <div class="conteiner-titulo">
 
-            <h1>  {{ isset($tex) ? $tex : 'Igreja Prebiteriana da Renovação' }}</h1>
+            <h1>@yield('titulo')</h1>
         </div>
 
         <main class="conteiner-menu-pesquisa-conteudo">
@@ -27,7 +27,7 @@
                 <a href="/cadastro/membro">Cadastro Membro</a>
                 <a href="/oferta">Cadastro Oferta</a>
                 <a href="/despesas">Cadastro Despesas</a>
-                <a href="/caixa">Caixa</a>
+                {{--<a href="/caixa">Caixa</a>--}}
                 <a href="/relatorio">Relatorios</a>
             </div>
 
@@ -41,7 +41,7 @@
                 <div class="conteiner-tabela">
 
 
-                    {{ $slot }}
+                    @yield('conteudo')
 
 
                 </div>

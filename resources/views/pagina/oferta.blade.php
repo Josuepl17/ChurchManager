@@ -1,4 +1,7 @@
-<x-layout>
+@extends('components.layout')
+
+@section('conteudo')  
+@section('titulo', 'OFERTAS' )
 
     <style>
         :root {
@@ -225,7 +228,7 @@
 
     <div class="table2">
         <div class="filtro">
-            <form action="/filtrar" method="get">
+            <form action="/filtrar/ofertas/{user_id}/{nome}" method="get">
                 <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
                 <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
                 <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
@@ -298,4 +301,4 @@
     </script>
 
 
-</x-layout>
+@endsection
