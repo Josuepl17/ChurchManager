@@ -63,8 +63,9 @@ class DespesasController extends Controller
     {
         $dataIni = $request->get('dataini');
         $dataFi = $request->get('datafi');
+        $datanow = Carbon::now()->format('Y-m-d');
         $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow);;
     }
 }

@@ -69,10 +69,9 @@ class OfertasController extends Controller
 
         $dataIni = $request->get('dataini');
         $dataFi = $request->get('datafi');
-        $nome = $request->nome;
         $datanow = Carbon::now()->format('Y-m-d');
         $ofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->get();
         $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('nome', $nome)->with('datanow', $datanow);;
+        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow);
     }
 }
