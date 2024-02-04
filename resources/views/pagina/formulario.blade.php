@@ -1,12 +1,12 @@
 @extends('components.layout')
 
 @section('conteudo')  
-@section('titulo', 'FORMULARIO' )
+@section('titulo', 'FORMULÁRIO' )
 
     <style>
         :root {
             --titulos: #10233b;
-            /*--titulos: #0A1626 ; */
+            --titulos: #0A1626 ; 
             --subtitulos: #023859;
             --fundos: #0D8AA6;
 
