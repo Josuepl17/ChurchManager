@@ -2,6 +2,7 @@
 
 @section('conteudo')  
 @section('titulo', 'FORMULÁRIO' )
+@section('titulo-nav', 'Formulário' )
 
     <style>
         :root {

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('totalofertas');
             $table->Integer('totaldespesas');
             $table->Integer('totaldizimos');
+            $table->Integer('saldo');
             $table->timestamps();
 
             

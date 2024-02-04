@@ -286,6 +286,7 @@
                 <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
                 <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
                 <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
+                <input type="hidden" name="saldo" value="{{$saldo}}">
                 @csrf
                 <input id="botao2" class="botao" type="submit" value="Fechar Caixa">
             </form>

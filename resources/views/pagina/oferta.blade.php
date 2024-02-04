@@ -2,6 +2,8 @@
 
 @section('conteudo')  
 @section('titulo', 'OFERTAS' )
+@section('titulo-nav', 'Ofertas' )
+
 
     <style>
         :root {
@@ -247,7 +249,7 @@
                     <th style="width: 4%;">X</th>
 
                 </tr>
-                @foreach ($ofertas as $oferta)
+                @foreach ($ofertas->reverse() as $oferta)
 
                 <tr>
                     <td style="background-color: var(--titulos) ; color:white">{{ $oferta->id}}</td>

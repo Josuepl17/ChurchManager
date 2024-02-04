@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class caixas extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 'dataini', 'datafi', 'totalofertas', 'totaldespesas', 'totaldizimos'];
+    protected $fillable = ['id', 'dataini', 'datafi', 'totalofertas', 'totaldespesas', 'totaldizimos', 'saldo'];
 }

@@ -3,6 +3,7 @@
 
 @section('conteudo')  
 @section('titulo', 'Igreja Presbiteriana da Renovação' )
+@section('titulo-nav', 'IPDR' )
   <style>
         :root {
             --titulos: #0A1626;

@@ -2,6 +2,8 @@
 
 @section('conteudo')  
 @section('titulo', 'DESPESAS' )
+@section('titulo-nav', 'Despesas' )
+
 
 <style>
         :root {
@@ -245,7 +247,7 @@
                     <th>VALOR</th>
                     <th style="width: 4%;">X</th>
                 </tr>
-                @foreach ($despesas as $despesa)
+                @foreach ($despesas->reverse() as $despesa)
                 <tr>
                     <td style="background-color: var(--titulos); color:white">{{$despesa->id}}</td>
                     <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>

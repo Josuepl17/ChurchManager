@@ -51,8 +51,9 @@ class CaixasController extends Controller
         $totaldizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         $totalofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
+        $saldo = $totaldizimos + $totalofertas - $totaldespesas;
         $qtymembros = usuarios::count();
-        return view('pagina.relatorio')->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas)->with('totalofertas', $totalofertas)->with('qtymembros', $qtymembros)->with('dataIni', $dataIni)->with('dataFi', $dataFi);
+        return view('pagina.relatorio')->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas)->with('totalofertas', $totalofertas)->with('qtymembros', $qtymembros)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('saldo', $saldo);;
     }
 
 

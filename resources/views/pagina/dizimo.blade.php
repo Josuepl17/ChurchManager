@@ -2,6 +2,7 @@
 
 @section('conteudo')  
 @section('titulo', $nome )
+@section('titulo-nav', $nome )
 
     <style>
         :root {
@@ -234,7 +235,7 @@
                     <th>VALOR</th>
                     <th style="width: 4%;">X</th>
                 </tr>
-                @foreach ($dizimos as $dizimo)
+                @foreach ($dizimos->reverse() as $dizimo)
 
                 <tr>
                     <td style="background-color: var(--titulos);; color:white">{{ $dizimo->id}}</td>
