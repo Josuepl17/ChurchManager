@@ -104,18 +104,13 @@
             transition: 0.6;
         }
 
-        table {
-            border-collapse: collapse;
+        td {
 
-
-
-            margin: auto;
-            border-radius: 50px;
-            width: 100%;
-            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.34);
+            text-align: center;
+            font-size: 18px;
             margin-top: 0px;
-            color: black;
-
+            margin-bottom: 0px;
         }
 
         td {
