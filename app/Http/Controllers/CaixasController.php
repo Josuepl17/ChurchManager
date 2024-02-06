@@ -96,4 +96,12 @@ class CaixasController extends Controller
             return redirect('/relatorio');
         }
     }
+
+
+
+    public function indexcaixa(){
+        $dados = caixas::all();
+        return view('pagina.caixa')->with('dados', $dados);
+    }
+
 }

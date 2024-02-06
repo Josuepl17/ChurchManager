@@ -60,6 +60,10 @@ Route::post('/filtro/pdf', [CaixasController::class, 'filtrarrelatorio']);
 Route::get('/gerar/{dataini}/{datafi}', [CaixasController::class, 'gerar']);
 Route::post('/fechar', [CaixasController::class, 'fechar_caixa']);
 
+Route::post('/indexcaixa', [CaixasController::class, 'indexcaixa']);
+
+
+
 
                              /* LOGIN*/
 
