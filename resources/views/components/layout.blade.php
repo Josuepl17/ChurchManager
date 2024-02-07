@@ -27,8 +27,8 @@
                 <a href="/cadastro/membro">Cadastro Membro</a>
                 <a href="/oferta">Cadastro Oferta</a>
                 <a href="/despesas">Cadastro Despesas</a>
-                <a href="/indexcaixa">Caixa</a>
                 <a href="/relatorio">Relatorios</a>
+                <a href="/indexcaixa">Caixa</a>
             </div>
 
             <div class="conteiner-navtable">

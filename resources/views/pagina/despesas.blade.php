@@ -113,14 +113,21 @@
             margin-bottom: 0px;
         }
 
-        td {
+        table {
+            border-collapse: collapse;
 
-            border: 1px solid rgba(0, 0, 0, 0.34);
-            text-align: center;
-            font-size: 18px;
+
+
+            margin: auto;
+            border-radius: 50px;
+            width: 100%;
+            background-color: white;
             margin-top: 0px;
-            margin-bottom: 0px;
+            color: black;
+
         }
+
+
 
 
         td:hover {

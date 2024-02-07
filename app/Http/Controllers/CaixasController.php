@@ -101,7 +101,18 @@ class CaixasController extends Controller
 
     public function indexcaixa(){
         $dados = caixas::all();
-        return view('pagina.caixa')->with('dados', $dados);
+        
+        $saldo = caixas::query()->sum('saldo');;
+        return view('pagina.caixa')->with('dados', $dados)->with('saldo', $saldo);
     }
+
+    public function destroy_caixa(Request $request){
+        $destroy = $request->id;
+        caixas::destroy($destroy);
+        
+        return redirect()->back();
+    }
+
+
 
 }

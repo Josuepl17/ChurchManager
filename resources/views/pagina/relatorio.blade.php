@@ -105,7 +105,7 @@
         nav a {
 
 
-            font-size: 18px;
+            font-size: 17px;
             text-decoration: none;
             color: black;
             border: 1px solid black;

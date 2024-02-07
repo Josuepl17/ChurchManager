@@ -53,14 +53,13 @@ Route::get('/filtrar/despesas/', [DespesasController::class, 'filtrar_despesas']
 
                                 /*Caixa*/
 Route::get('/caixa', [CaixasController::class, 'caixa']);
-
 Route::get('/relatorio', [CaixasController::class, 'relatorio']);
 Route::get('/fpdf', [CaixasController::class, 'fpdf']);
 Route::post('/filtro/pdf', [CaixasController::class, 'filtrarrelatorio']);
 Route::get('/gerar/{dataini}/{datafi}', [CaixasController::class, 'gerar']);
 Route::post('/fechar', [CaixasController::class, 'fechar_caixa']);
-
 Route::get('/indexcaixa', [CaixasController::class, 'indexcaixa']);
+Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
 
 
 
