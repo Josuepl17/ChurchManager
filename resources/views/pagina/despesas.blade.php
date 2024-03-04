@@ -309,7 +309,7 @@
 
 <div style="font-size: 100px;" >
 
-    {{ session('alert') }}
+
 </div>
 
 
