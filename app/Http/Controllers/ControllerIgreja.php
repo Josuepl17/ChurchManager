@@ -92,7 +92,7 @@ class ControllerIgreja extends Controller
     public function authenticate(Request $request)
     {
         
-        $credentials = $request->only( 'email','password');
+        $credentials = $request->only( 'user','password');
     
         if (Auth::attempt($credentials)) {
             // Autenticação bem-sucedida
@@ -115,7 +115,7 @@ class ControllerIgreja extends Controller
         $user->user = $request->user;
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect('/');
+        return redirect('/login');
     
 
     }
