@@ -8,10 +8,14 @@ use App\Models\ofertas;
 use App\Models\usuarios;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Expr\FuncCall;
 
 class ControllerIgreja extends Controller
 {
@@ -32,6 +36,12 @@ class ControllerIgreja extends Controller
             return redirect('/relatorio');
             
         }
+
+
+        
+
+
+
 
     }
 
@@ -79,16 +89,40 @@ class ControllerIgreja extends Controller
         return view('login.index');
     }
 
-    public function verificar(Request $request)
+    public function authenticate(Request $request)
     {
-        $senha = $request->only('senha')['senha'];
-        $index = usuarios::all();
-
-        if ($senha == 1234) {
-
-            return view('pagina.index')->with('index',  $index);
-        } else {
-            echo "Falha";
+        
+        $credentials = $request->only( 'email','password');
+    
+        if (Auth::attempt($credentials)) {
+            // Autenticação bem-sucedida
+            return redirect()->intended('index');
         }
+    
+        // Autenticação falhou
+        return back()->withErrors([
+            'email' => 'As credenciais fornecidas estão incorretas.',
+        ]);
     }
+
+
+
+
+
+    public function cadastro_user(Request $request){
+        
+        $user = new User();
+        $user->user = $request->user;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect('/');
+    
+
+    }
+
+
+    public function form_login(){
+        return view('login.cadastro');
+    }
+    
 }
