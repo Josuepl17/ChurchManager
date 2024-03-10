@@ -128,11 +128,5 @@
     </table>
 
 
-    <script>
-        var alertMessage = "{{ session('alert') }}";
-        if (alertMessage) {
-            alert(alertMessage);
-        }
-    </script>
 
 @endsection
