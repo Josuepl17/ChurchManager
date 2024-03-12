@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
                             /*Usuarios*/
-Route::get('/', [MembrosController::class, 'index'])->name('index')->middleware('auth');
+Route::get('/', [MembrosController::class, 'index'])->name('index');
 Route::get('/cadastro/membro', [MembrosController::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro']);
 Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
