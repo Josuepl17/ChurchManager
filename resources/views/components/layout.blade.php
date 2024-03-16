@@ -16,7 +16,10 @@
 
         <div class="conteiner-titulo">
 
-            <h1>@yield('titulo')</h1>
+                <h1 id="titulo" >@yield('titulo')</h1>
+
+               
+            
         </div>
 
         <main class="conteiner-menu-pesquisa-conteudo">

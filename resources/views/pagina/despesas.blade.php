@@ -226,6 +226,22 @@
         font-size: 18px;
     }
 
+    .msg{
+        display: flex;
+        width: 20%;
+        height: 90%;
+        background-color: green;
+        border: 1px solid white;
+        justify-items: center;
+        align-items: center;
+    }
+
+
+
+    .msg p{
+        color: white;
+    }
+
 
 
 
@@ -235,6 +251,14 @@
 <div class="table2">
 
     <div class="filtro">
+        @if(session('alert'))
+
+
+        <div class="msg" >
+            <p>{{ session('alert') }}</p>
+        </div>
+
+        @endif
         <form action="/filtrar/despesas" method="get">
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
             <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
