@@ -27,7 +27,7 @@ class OfertasController extends Controller
 
     public function oferta()
     {
-        $ofertas = ofertas::all();
+         return $ofertas = ofertas::all();
         $datanow = Carbon::now()->format('Y-m-d');
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
