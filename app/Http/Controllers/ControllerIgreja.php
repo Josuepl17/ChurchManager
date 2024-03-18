@@ -47,38 +47,6 @@ class ControllerIgreja extends Controller
 
 
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-   
-
-
-
-
-
-
-
-
     /* LOGIN*/
 
 

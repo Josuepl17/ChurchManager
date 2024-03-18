@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Services;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
 use App\Models\usuarios;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -21,13 +22,20 @@ class OfertasController extends Controller
     /*Ofertas*/
 
 
+        protected $meuserviço;
+
+        public function __construct(MeuServico $meuServico)
+        {
+            $this->meuserviço = $meuServico;
+        }
+
 
 
 
 
     public function oferta()
     {
-         return $ofertas = ofertas::all();
+     $ofertas = ofertas::all();
         $datanow = Carbon::now()->format('Y-m-d');
         $totalofertas = ofertas::query()->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
@@ -37,12 +45,10 @@ class OfertasController extends Controller
 
     public function botao_registrar_oferta(request $request)
     {
+        $data = $request->data;
+       
+       $this->meuserviço->Verificacaixa($data);
 
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
-        }
 
 
         $dados = $request->all();
