@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use App\Models\caixas;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Stmt\If_;
 
