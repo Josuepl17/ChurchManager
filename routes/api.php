@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfertasController;
+use App\Models\usuarios;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/oferta', [OfertasController::class, 'oferta']);
+Route::get('/oferta', function(){
+    return usuarios::all();
+});

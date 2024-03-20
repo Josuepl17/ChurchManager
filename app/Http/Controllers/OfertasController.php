@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\RedirectResponse;
-
+use PhpParser\Node\Expr\FuncCall;
 
 class OfertasController extends Controller
 {
@@ -80,4 +80,13 @@ class OfertasController extends Controller
         $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow);
     }
+
+
+
+        public function oferta_api(){
+            return usuarios::all();
+        }
+
+
+
 }
