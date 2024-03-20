@@ -22,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/oferta', function(){
-    return usuarios::all();
+    echo "ola mundo";
 });
