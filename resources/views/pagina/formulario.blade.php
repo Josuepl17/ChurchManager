@@ -14,7 +14,7 @@
             --cor-secundaria: #5353533d;
         }
 
-        .geral {
+        #geral {
             display: flex;
             width: 100%;
             height: 100%;
@@ -102,7 +102,7 @@
         }
     </style>
 
-    <div class="geral">
+    <div id="geral">
         <form action="/inserir/membro" method="post">
             @csrf
             <h1 class="h1m">Cadastro de Membros</h1>
