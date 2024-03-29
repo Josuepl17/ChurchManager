@@ -1,11 +1,4 @@
-@extends('components.layout')
-
-@section('conteudo')  
-@section('titulo', 'OFERTAS' )
-@section('titulo-nav', 'Ofertas' )
-
-
-    <style>
+<style>
         :root {
             --titulos: #0A1626;
             --subtitulos: #023859;
@@ -298,4 +291,3 @@
 
 
 
-@endsection

@@ -100,8 +100,8 @@
             <div class="menu-esquerdo">
                 <h1 class="h1-menu">Menu</h1>
                 <a href="/">Home</a>
-                <a id="link" href="/cadastro/membro">Cadastro Membro</a>
-                <a href="/oferta">Cadastro Oferta</a>
+                <a id="formulario" href="/cadastro/membro">Cadastro Membro</a>
+                <a id="oferta" href="/oferta">Cadastro Oferta</a>
                 <a href="/despesas">Cadastro Despesas</a>
                 <a href="/relatorio">Relatorios</a>
                 <a href="/indexcaixa">Caixa</a>
@@ -184,18 +184,26 @@
 </body>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function() {
-        $('#link').click(function(e) {
-            e.preventDefault();
+        var botoes = [
+            { id: 'formulario', url: '/cadastro/membro', method: 'GET' },
+            { id: 'oferta', url: '/oferta', method: 'GET' },
+            // adicione mais botões, URLs e métodos conforme necessário
+        ];
 
-            $.ajax({
-                url: '/cadastro/membro', // substitua '/sua-rota' pela rota que retorna os dados do controlador
-                type: 'GET',
-                success: function(data) {
-                    $('#conteiner-tabela').html(data);
-                }
+        botoes.forEach(function(botao) {
+            $('#' + botao.id).click(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: botao.url,
+                    type: botao.method,
+                    success: function(data) {
+                        $('#conteiner-tabela').html(data);
+                    }
+                });
             });
         });
     });
