@@ -25,7 +25,8 @@ class MembrosController extends Controller
 
     public function cadastro_membro()
     {
-        return view('pagina.formulario');
+        $view = view('pagina.formulario')->render();
+        return response()->json($view);
     }
 
     public function botao_inserir_membro(request $request)

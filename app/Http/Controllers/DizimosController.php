@@ -20,6 +20,7 @@ class DizimosController extends Controller
 
     public function botao_inserir(request $request)
     {
+        dd($request->all());
         $datanow = Carbon::now()->format('Y-m-d');
         $user_id = $request->id;
         $nome = $request->nome;

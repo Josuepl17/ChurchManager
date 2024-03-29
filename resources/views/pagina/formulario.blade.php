@@ -1,10 +1,4 @@
-@extends('components.layout')
-
-@section('conteudo')  
-@section('titulo', 'FORMULÁRIO' )
-@section('titulo-nav', 'Formulário' )
-
-    <style>
+  <style>
         :root {
             --titulos: #10233b;
             --titulos: #0A1626 ; 
@@ -131,4 +125,3 @@
         </form>
     </div>
 
-    @endsection
