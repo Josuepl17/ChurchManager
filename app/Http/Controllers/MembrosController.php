@@ -27,6 +27,7 @@ class MembrosController extends Controller
     {
         $view = view('pagina.formulario')->render();
         return response()->json($view);
+        
     }
 
     public function botao_inserir_membro(request $request)

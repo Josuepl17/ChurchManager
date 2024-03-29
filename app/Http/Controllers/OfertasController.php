@@ -22,17 +22,6 @@ class OfertasController extends Controller
     /*Ofertas*/
 
 
-        protected $meuserviço;
-
-        public function __construct(MeuServico $meuServico)
-        {
-            $this->meuserviço = $meuServico;
-        }
-
-
-
-
-
     public function oferta()
     {
         $ofertas = ofertas::all();
@@ -42,21 +31,14 @@ class OfertasController extends Controller
         
         return response()->json($view);
 
-    
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
     }
 
 
 
     public function botao_registrar_oferta(request $request)
     {
-        $data = $request->data;
-       
-       $this->meuserviço->Verificacaixa($data);
-
-
-
-        $dados = $request->all();
+        
+       $dados = $request->all();
         ofertas::create($dados);
         return redirect()->back();
     }
@@ -64,11 +46,6 @@ class OfertasController extends Controller
 
     public function botao_excluir_oferta(request $request)
     {
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
-        }
 
         $destroy = $request->id;
         ofertas::destroy($destroy);
@@ -86,11 +63,6 @@ class OfertasController extends Controller
         return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow);
     }
 
-
-
-        public function oferta_api(){
-            return usuarios::all();
-        }
 
 
 

@@ -22,22 +22,6 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function Vcreate(Request $request)
-    {
-
-        $primeiroregistro = caixas::value('dataini') ?? '';
-        $ultimoregistro = caixas::latest('datafi')->first();
-        $ultimo = $ultimoregistro->datafi ?? '';
-
-        if ($request->data > $primeiroregistro  && $request->data > $ultimo) {
-            session()->flash('alert', 'SUCESSO');
-            
-        } else {
-            session()->flash('alert', 'ATENÇÃO !!! O CAIXA ESTÁ FECHADO.');
-            return redirect()->back();
-            
-        }
-    }
 
 }
 

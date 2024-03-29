@@ -1,10 +1,3 @@
-@extends('components.layout')
-
-@section('conteudo')
-@section('titulo', 'CAIXA' )
-@section('titulo-nav', 'Caixa' )
-
-
 <style>
     .conteudo {
         width: 100%;
@@ -130,5 +123,3 @@
         </div>
 
 
-
-@endsection

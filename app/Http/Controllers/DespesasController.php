@@ -22,24 +22,25 @@ class DespesasController extends Controller
     {
         $datanow = Carbon::now()->format('Y-m-d');
         $despesas = despesas::all();
-        $totalodespesas = despesas::query()->sum('valor');
-        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totalodespesas)->with('datanow', $datanow);
+        $totaldespesas = despesas::query()->sum('valor');
+
+        $view = view('pagina.despesas', compact('despesas', 'datanow', 'totaldespesas'))->render();
+        return response()->json($view);
+        
     }
 
 
     public function botao_registrar_despesas(request $request)
     {
-
-
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
-        }
-
+        $despesas =  $this->despesas();
+        $index = usuarios::all();
         $dados = $request->all();
         despesas::create($dados);
-        return redirect()->back();
+        $view = view('pagina.index', compact('despesas'))->render();
+        return response()->json($view);
+        
+        
+        
     }
 
 
@@ -48,12 +49,6 @@ class DespesasController extends Controller
 
     public function botao_excluir_despesas(request $request)
     {
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
-        }
-
         $destroy = $request->id;
         despesas::destroy($destroy);
         return redirect()->back();

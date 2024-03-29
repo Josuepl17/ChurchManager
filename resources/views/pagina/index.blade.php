@@ -102,9 +102,9 @@
                 <a href="/">Home</a>
                 <a id="formulario" href="/cadastro/membro">Cadastro Membro</a>
                 <a id="oferta" href="/oferta">Cadastro Oferta</a>
-                <a href="/despesas">Cadastro Despesas</a>
+                <a id="despesas" href="/despesas">Cadastro Despesas</a>
                 <a href="/relatorio">Relatorios</a>
-                <a href="/indexcaixa">Caixa</a>
+                <a id="caixa" href="/indexcaixa">Caixa</a>
             </div>
 
             <div class="conteiner-navtable">
@@ -184,12 +184,14 @@
 </body>
 
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         var botoes = [
             { id: 'formulario', url: '/cadastro/membro', method: 'GET' },
             { id: 'oferta', url: '/oferta', method: 'GET' },
+            { id: 'despesas', url: '/despesas', method: 'GET' },
+            { id: 'caixa', url: '/indexcaixa', method: 'GET' },
             // adicione mais botões, URLs e métodos conforme necessário
         ];
 

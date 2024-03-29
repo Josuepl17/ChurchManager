@@ -1,9 +1,3 @@
-@extends('components.layout')
-
-@section('conteudo')
-@section('titulo', 'DESPESAS' )
-@section('titulo-nav', 'Despesas' )
-
 
 <style>
     :root {
@@ -226,24 +220,6 @@
         font-size: 18px;
     }
 
-    .msg{
-        display: flex;
-        width: 20%;
-        height: 90%;
-        background-color: green;
-        border: 1px solid white;
-        justify-items: center;
-        align-items: center;
-    }
-
-
-
-    .msg p{
-        color: white;
-    }
-
-
-
 
 </style>
 
@@ -275,7 +251,7 @@
                 <th>VALOR</th>
                 <th style="width: 4%;">X</th>
             </tr>
-            @foreach ($despesas->reverse() as $despesa)
+            @foreach ($despesas as $despesa)
             <tr>
                 <td style="background-color: var(--titulos); color:white">{{$despesa->id}}</td>
                 <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>
@@ -303,7 +279,7 @@
 </div>
 
 
-<form class="id" action="/registrar/despesas" method="post">
+<form class="id" action="/registrar/despesas" method="POST">
     @csrf
 
     <label for="data">Data:</label>
@@ -325,22 +301,30 @@
 
     <br>
 
-    <button style="height: 50px;" type="submit">Registar Despesa</button>
+    <button id="registrar" style="height: 50px;" type="submit">Registar Despesa</button>
 </form>
 
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// Ao clicar no botão para inserir um novo registro
+$('#id').on('click', function() {
+
+  $.ajax({
+    url: '/registrar/despesas',
+    method: 'POST',
+    data: FormData,
+    success: function(response) {
+      // Atualizar a parte da tela com os novos dados recebidos
+      $('#conteiner-tabela').html(response.novaView); // Atualiza a parte da tela com os novos dados e a nova view
+    }
+  });
+});
+
+</script>
 
 
-<div style="font-size: 100px;">
 
 
 
-</div>
-
-
-
-
-
-
-@endsection

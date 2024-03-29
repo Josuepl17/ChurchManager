@@ -1,224 +1,227 @@
+
 <style>
-        :root {
-            --titulos: #0A1626;
-            --subtitulos: #023859;
-            --fundos: #0D8AA6;
+    :root {
+        --titulos: #0A1626;
+        --subtitulos: #023859;
+        --fundos: #0D8AA6;
 
-            --cor-secundaria: #313131e7;
-        }
+        --cor-secundaria: #313131e7;
+    }
 
-        .table2 {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 80%;
-            
+    .table2 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 80%;
 
 
 
+    }
 
-        }
+    .id {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
 
-        .id {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 15px;
 
 
 
 
+    }
 
-        }
+    label {
+        font-size: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 10px;
 
-        label {
-            font-size: 20px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            padding: 10px;
+    }
 
-        }
 
 
+    .cad {
+        width: 30%;
+        text-transform: uppercase;
+        font-size: 20px;
+        padding: 2px;
+        border: 1px solid black;
+        text-align: center;
 
-        .cad {
-            width: 30%;
-            text-transform: uppercase;
-            font-size: 20px;
-            padding: 2px;
-            border: 1px solid black;
-            text-align: center;
 
+    }
 
-        }
+    .h1m {
+        color: black;
+        font-size: 50px;
+    }
 
-        .h1m {
-            color: black;
-            font-size: 50px;
-        }
+    .id button {
+        margin: 0px;
+        color: black;
+        text-decoration: none;
 
-        .id button {
-            margin: 0px;
-            color: black;
-            text-decoration: none;
+        padding-bottom: 0;
+        font-size: 20px;
+        width: 180px;
+        height: 40px;
+        border: 3px solid black;
+        background-color: var(--subtitulos);
+        color: white;
 
-            padding-bottom: 0;
-            font-size: 20px;
-            width: 180px;
-            height: 40px;
-            border: 3px solid black;
-            background-color: var(--subtitulos);
-            color: white;
 
+    }
 
-        }
+    .id button:hover {
+        background-color: var(--titulos);
+        color: white;
 
-        .id button:hover {
-            background-color: var(--titulos);
-            color: white;
+        transition: 0.6s;
 
-            transition: 0.6s;
+    }
 
-        }
+    .excluir {
+        margin: auto;
+        background-color: red;
+        font-size: 20px;
+        height: 100%;
+        width: 100%;
+        margin-top: -2px;
 
-        .excluir {
-            margin: auto;
-            background-color: red;
-            font-size: 20px;
-            height: 100%;
-            width: 100%;
-            margin-top: -2px;
 
+    }
 
-        }
 
+    .excluir:hover {
+        color: aliceblue;
 
-        .excluir:hover {
-            color: aliceblue;
+        background-color: red;
+        transition: 0.6;
+    }
 
-            background-color: red;
-            transition: 0.6;
-        }
+    td {
 
-        table {
-            border-collapse: collapse;
+        border: 1px solid rgba(0, 0, 0, 0.34);
+        text-align: center;
+        font-size: 18px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 
+    table {
+        border-collapse: collapse;
 
-            overflow: auto;
-            margin: auto;
-            border-radius: 50px;
-            width: 100%;
 
-            background-color: white;
-            margin-top: 0px;
-            color: black;
 
-        }
+        margin: auto;
+        border-radius: 50px;
+        width: 100%;
+        background-color: white;
+        margin-top: 0px;
+        color: black;
 
-        td {
+    }
 
-            border: 1px solid rgba(0, 0, 0, 0.34);
-            text-align: center;
-            font-size: 18px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
 
 
-        td:hover {
-            color: white;
-        }
 
+    td:hover {
+        color: white;
+    }
 
 
 
-        th {
-            border: 1px solid black;
-            border-top: none;
-            border-left: none;
 
-            font-size: 20px;
-            color: white;
-            background-color: var(--subtitulos);
-            position: sticky;
-            top: 0px;
-            padding-top: 5px;
+    th {
+        border: 1px solid black;
+        border-top: none;
+        border-left: none;
 
-        }
+        font-size: 20px;
+        color: white;
+        background-color: var(--subtitulos);
+        position: sticky;
+        top: -1px;
+        padding-top: 5px;
 
-        tr:hover {
-            background-color: var(--fundos);
-            color: white;
-            transition: 0.1s;
-        }
+    }
 
+    tr:hover {
+        background-color: var(--fundos);
+        color: white;
+        transition: 0.1s;
+    }
 
 
-        .formx {
 
-            display: flex;
-            width: 100%;
-            flex-direction: none;
-            align-items: none;
-            margin-top: none;
-            justify-content: none;
+    .formx {
 
+        display: flex;
+        width: 100%;
+        flex-direction: none;
+        align-items: none;
+        margin-top: none;
+        justify-content: none;
 
 
-        }
 
-        .valortotal {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 9%;
-            width: 100%;
-            background-color: var(--titulos);
+    }
 
-        }
+    .valortotal {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 9%;
+        width: 100%;
+        background-color: var(--titulos);
 
-        .valortotal p {
-            color: black;
-            padding-right: 10px;
+    }
 
-            background-color: white;
+    .valortotal p {
+        color: black;
+        padding-right: 10px;
+        background-color: white;
 
 
 
-        }
+    }
 
-        .filtro {
-            display: flex;
-            width: 100%;
-            background-color: var(--titulos);
-            padding-top: 5px;
-            padding-bottom: 5px;
-            height: 7%;
-        }
+    .filtro {
+        display: flex;
+        width: 100%;
+        background-color: var(--titulos);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 7%;
+    }
 
-        .filtro form {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            border-radius: 0px;
-            margin-top: -3px;
+    .filtro form {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-radius: 0px;
+        margin-top: -3px;
 
+    }
 
-        }
+    .conteudo {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
 
-        /*.relatorio{
-            display: flex;
-            width: 40%;
-            
-        }*/
+    select {
+        font-size: 20px;
+        border-radius: 10px;
+    }
 
-        .conteudo {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-        }
-    </style>
+    option {
+        font-size: 18px;
+    }
+
+
+</style>
 
 
     <div class="table2">
@@ -273,18 +276,19 @@
     </div>
 
 
-    <form class="id" action="/registrar/oferta" method="post">
-        @csrf
-        <label for="data">Data:</label>
-        <input class="cad" type="date" name="data" id="data" value="{{ $datanow }}" autocomplete="off" required>
+    <form class="id" action="/registrar/ofertas" method="post">
+    @csrf
 
-        <label for="valor">Valor:</label>
-        <input class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
+    <label for="data">Data:</label>
+    <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
-        <br>
+    <label for="valor">Valor:</label>
+    <input style="width: 10%;" class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
 
-        <button type="submit">Registar Oferta</button>
-    </form>
+    <br>
+
+    <button style="height: 50px;" type="submit">Registar Despesa</button>
+</form>
 
 
 
