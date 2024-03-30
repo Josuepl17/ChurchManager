@@ -32,12 +32,12 @@ class DespesasController extends Controller
 
     public function botao_registrar_despesas(request $request)
     {
-        $despesas =  $this->despesas();
-        $index = usuarios::all();
+        
+        
         $dados = $request->all();
         despesas::create($dados);
-        $view = view('pagina.index', compact('despesas'))->render();
-        return response()->json($view);
+        return redirect('/');
+        
         
         
         
@@ -51,7 +51,7 @@ class DespesasController extends Controller
     {
         $destroy = $request->id;
         despesas::destroy($destroy);
-        return redirect()->back();
+        return;
     }
 
     public function filtrar_despesas(Request $request)

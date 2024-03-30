@@ -19,8 +19,14 @@ class MembrosController extends Controller
     /*Usuarios*/
     public function index()
     {
+        $view = $this->principal();
+        return view('pagina.index', compact('view'));
+    }
+
+    public function principal(){
         $index = usuarios::all();
-        return view('pagina.index')->with('index',  $index);
+        $view = view('pagina.principal', compact('index'))->render();
+        return response()->json($view);
     }
 
     public function cadastro_membro()

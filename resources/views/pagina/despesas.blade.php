@@ -306,23 +306,11 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-// Ao clicar no botão para inserir um novo registro
-$('#id').on('click', function() {
 
-  $.ajax({
-    url: '/registrar/despesas',
-    method: 'POST',
-    data: FormData,
-    success: function(response) {
-      // Atualizar a parte da tela com os novos dados recebidos
-      $('#conteiner-tabela').html(response.novaView); // Atualiza a parte da tela com os novos dados e a nova view
-    }
-  });
-});
 
-</script>
+
+
+
 
 
 
