@@ -158,6 +158,7 @@
                 $.ajax({
                     url: botao.url,
                     type: botao.method,
+                    dataType: 'json',
                     success: function(data) {
                         $('#conteiner-tabela').html(data);
                     }

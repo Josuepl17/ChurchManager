@@ -19,16 +19,60 @@ class MembrosController extends Controller
     /*Usuarios*/
     public function index()
     {
-        $view = $this->principal();
-        $view2 = view('pagina.index', compact('view'))->render();
-        return $view2;
+        $paginaPrincipal = view('pagina.index');
+    
+       
+        $echo = "Meu Texto";
+        $respostaJson = response()->json(['view' => $echo]);
+    
+        
+        return view('pagina.index')->with('echo', $respostaJson);
     }
+
 
     public function principal(){
         $index = usuarios::all();
         $view = view('pagina.principal', compact('index'))->render();
         return response()->json($view);
     }
+
+
+
+
+
+    public function barra()
+    {
+       
+    
+
+        $paginaPrincipal = view('pagina.index');
+    
+       
+        $respostaJson = response()->json([
+            'conteudo_especifico' => view('pagina.principal')->render()
+        ]);
+    
+      
+        return $paginaPrincipal->with('respostaJson', $respostaJson);
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function cadastro_membro()
     {
