@@ -20,7 +20,8 @@ class MembrosController extends Controller
     public function index()
     {
         $view = $this->principal();
-        return view('pagina.index', compact('view'));
+        $view2 = view('pagina.index', compact('view'))->render();
+        return $view2;
     }
 
     public function principal(){
