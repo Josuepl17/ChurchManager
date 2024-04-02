@@ -48,22 +48,18 @@ input{
 <div class="conteiner" >
 
 <form action="/login/if" method="post">
-
-<h2>Login Usuario</h2>
+<h2>Senha</h2>
 @csrf
 <input type="text" name="user" id="user" >
 <br>
 <br>
 <input type="password" name="password" id="password">
 <input class="sub" type="submit" value="Enviar">
-<br>
-<br>
-<a href="/cadastro/login">Cadastrar usuario</a>
 
 </form>
 
 
-
+<a href="/cadastro/login">Cadastrar usuario</a>
 </div>
 
 

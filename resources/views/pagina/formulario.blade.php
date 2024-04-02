@@ -1,4 +1,10 @@
-  <style>
+@extends('components.layout')
+
+@section('conteudo')  
+@section('titulo', 'FORMULÁRIO' )
+@section('titulo-nav', 'Formulário' )
+
+    <style>
         :root {
             --titulos: #10233b;
             --titulos: #0A1626 ; 
@@ -8,7 +14,7 @@
             --cor-secundaria: #5353533d;
         }
 
-        #geral {
+        .geral {
             display: flex;
             width: 100%;
             height: 100%;
@@ -96,7 +102,7 @@
         }
     </style>
 
-    <div id="geral">
+    <div class="geral">
         <form action="/inserir/membro" method="post">
             @csrf
             <h1 class="h1m">Cadastro de Membros</h1>
@@ -125,3 +131,4 @@
         </form>
     </div>
 
+    @endsection

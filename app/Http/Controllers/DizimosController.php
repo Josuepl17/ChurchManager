@@ -20,7 +20,6 @@ class DizimosController extends Controller
 
     public function botao_inserir(request $request)
     {
-        dd($request->all());
         $datanow = Carbon::now()->format('Y-m-d');
         $user_id = $request->id;
         $nome = $request->nome;
@@ -32,14 +31,29 @@ class DizimosController extends Controller
     public function botao_registrar_dizimo(request $request)
     {
 
+        $this->Vcreate($request);
+        $resposta = $this->Vcreate($request);
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
+
         $dados = $request->except('_token');
         dizimos::create($dados);
+        $user_id = $request->user_id;
         return redirect()->back();
     }
 
     public function botao_excluir_dizimo(request $request)
     {
+        $this->Vcreate($request);
+        $resposta = $this->Vcreate($request);
+        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
+            return $resposta;
+        }
+
         $destroy = $request->id;
+
+        $user_id = $request->user_id;
         dizimos::destroy($destroy);
         return redirect()->back();
     }

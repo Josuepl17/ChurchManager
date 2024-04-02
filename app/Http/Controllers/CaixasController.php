@@ -26,8 +26,7 @@ class CaixasController extends Controller
         $totaldizimos = dizimos::query()->sum('valor');
         $saldo = $totaldizimos + $totalofertas - $totaldespesas;
 
-        $view = view('pagina.caixa', compact('totalofertas', 'totaldespesas', 'totaldizimos', 'saldo'))->render();
-        return response()->json($view);
+        return view('pagina.caixa')->with('totalofertas', $totalofertas)->with('totaldespesas', $totaldespesas)->with('totaldizimos', $totaldizimos)->with('saldo', $saldo);
     }
 
 

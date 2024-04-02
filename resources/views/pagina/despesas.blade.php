@@ -1,3 +1,9 @@
+@extends('components.layout')
+
+@section('conteudo')
+@section('titulo', 'DESPESAS' )
+@section('titulo-nav', 'Despesas' )
+
 
 <style>
     :root {
@@ -221,20 +227,14 @@
     }
 
 
+
+
 </style>
 
 
 <div class="table2">
 
     <div class="filtro">
-        @if(session('alert'))
-
-
-        <div class="msg" >
-            <p>{{ session('alert') }}</p>
-        </div>
-
-        @endif
         <form action="/filtrar/despesas" method="get">
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
             <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
@@ -251,7 +251,7 @@
                 <th>VALOR</th>
                 <th style="width: 4%;">X</th>
             </tr>
-            @foreach ($despesas as $despesa)
+            @foreach ($despesas->reverse() as $despesa)
             <tr>
                 <td style="background-color: var(--titulos); color:white">{{$despesa->id}}</td>
                 <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>
@@ -279,7 +279,7 @@
 </div>
 
 
-<form class="id" action="/registrar/despesas" method="POST">
+<form class="id" action="/registrar/despesas" method="post">
     @csrf
 
     <label for="data">Data:</label>
@@ -301,18 +301,22 @@
 
     <br>
 
-    <button id="registrar" style="height: 50px;" type="submit">Registar Despesa</button>
+    <button style="height: 50px;" type="submit">Registar Despesa</button>
 </form>
 
 
 
 
 
+<div style="font-size: 100px;">
+
+
+
+</div>
 
 
 
 
 
 
-
-
+@endsection

@@ -276,9 +276,7 @@
 
         <br>
 
-        <button type="submit">Registar Dizimo</button> 
-
-        
+        <button type="submit">Registar Dizimo</button>
     </form>
 
 

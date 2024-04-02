@@ -17,69 +17,15 @@ use GuzzleHttp\Promise\Create;
 class MembrosController extends Controller
 {
     /*Usuarios*/
-
     public function index()
-    {   $index = usuarios::all();
-        
-        $view = view('pagina.principal', compact('index'))->render();
-        $data = ['nome' => 'josuekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'];
-         return view('pagina.index')->with('data', json_encode($data));
-        
-        
-        
-        
-    }
-
-
-    public function principal(){
-        $index = usuarios::all();
-        $view = view('pagina.principal', compact('index'))->render();
-        return response()->json($view);
-    }
-
-
-
-
-
-    public function barra()
     {
-       
-    
-
-        $paginaPrincipal = view('pagina.index');
-    
-       
-        $respostaJson = response()->json([
-            'conteudo_especifico' => view('pagina.principal')->render()
-        ]);
-    
-      
-        return $paginaPrincipal->with('respostaJson', $respostaJson);
+        $index = usuarios::all();
+        return view('pagina.index')->with('index',  $index);
     }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function cadastro_membro()
     {
-        $view = view('pagina.formulario')->render();
-        return response()->json($view);
-        
+        return view('pagina.formulario');
     }
 
     public function botao_inserir_membro(request $request)
