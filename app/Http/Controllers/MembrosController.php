@@ -20,12 +20,13 @@ class MembrosController extends Controller
 
     public function index()
     {   $index = usuarios::all();
-        $paginaConteudo = view('pagina.principal')->render();
-       
         
-        $respostaJson = response()->json($paginaConteudo);
-    
-        return view('pagina.index')->with('index', $index);
+        $view = view('pagina.principal', compact('index'))->render();
+        $data = ['nome' => 'josuekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'];
+         return view('pagina.index')->with('data', json_encode($data));
+        
+        
+        
         
     }
 
