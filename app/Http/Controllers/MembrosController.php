@@ -20,10 +20,10 @@ class MembrosController extends Controller
     public function index()
     {
         $paginaPrincipal = view('pagina.index');
-    
+        $paginaConteudo = view('pagina.despesas')->render();
        
-        $echo = "Meu Texto";
-        $respostaJson = response()->json(['view' => $echo]);
+        
+        $respostaJson = response()->json($paginaConteudo);
     
         
         return view('pagina.index')->with('echo', $respostaJson);
