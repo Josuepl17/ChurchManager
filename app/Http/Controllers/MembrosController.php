@@ -17,16 +17,16 @@ use GuzzleHttp\Promise\Create;
 class MembrosController extends Controller
 {
     /*Usuarios*/
+
     public function index()
-    {
-        $paginaPrincipal = view('pagina.index');
-        $paginaConteudo = view('pagina.despesas')->render();
+    {   $index = usuarios::all();
+        $paginaConteudo = view('pagina.principal')->render();
        
         
         $respostaJson = response()->json($paginaConteudo);
     
+        return view('pagina.index')->with('index', $index);
         
-        return view('pagina.index')->with('echo', $respostaJson);
     }
 
 

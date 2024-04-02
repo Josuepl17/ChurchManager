@@ -158,14 +158,14 @@
                 $.ajax({
                     url: botao.url,
                     type: botao.method,
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#conteiner-tabela').html(data);
-                    }
+                    dataType: 'json'
+                }).always(function(data) {
+                    $('#conteiner-tabela').html(data);
                 });
             });
         });
     });
+</script>
 </script>
 
 
