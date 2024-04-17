@@ -11,29 +11,23 @@ use PhpParser\Node\Stmt\If_;
 class MeuServico
 {
 
-    public function Verificacaixa(Request $data){
-        $primeiroregisttro = caixas::value('dataini') ?? '';
+    public static function Vcreate($data)
+    {
+
+        $primeiroregistro = caixas::value('dataini') ?? '';
         $ultimoregistro = caixas::latest('datafi')->first();
         $ultimo = $ultimoregistro->datafi ?? '';
-        
 
-
-        if ($data > $primeiroregisttro && $data > $ultimo){
-            return true;
-        }
-        else{
+        if ($data > $primeiroregistro  && $data > $ultimo) {
+            
+           return true;
+            
+        } else {
+            
             return false;
+            
         }
-
-        
-
-
     }
-
-
-
-
-
 
 
 }

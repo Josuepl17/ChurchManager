@@ -9,6 +9,7 @@ use App\Models\ofertas;
 use App\Models\usuarios;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -30,16 +31,23 @@ class DespesasController extends Controller
     public function botao_registrar_despesas(request $request)
     {
 
-
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
+        $data = $request->data;
+        
+        $fun = new MeuServico();
+        
+        
+       
+        $verificar =  $fun->Vcreate($data);
+        
+        if($verificar == true){
+            $dados = $request->all();
+            despesas::create($dados);
+           return redirect()->back();
+        } else {
+            echo  "deu ruim";
         }
 
-        $dados = $request->all();
-        despesas::create($dados);
-        return redirect()->back();
+        
     }
 
 
