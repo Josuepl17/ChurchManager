@@ -226,6 +226,18 @@
         font-size: 18px;
     }
 
+    #popup-content {
+            width: 300px;
+            padding: 20px;
+            background: white;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1000;
+        }
+
 
 
 
@@ -313,6 +325,33 @@
 
 
 </div>
+
+
+
+<div id="popup-content">
+    <h2>Notificação</h2>
+    <p>{{ Session::get('notificacao') }}</p>
+</div>
+
+<script>
+    // Verificar se há uma notificação
+    var notificacao = "{{ Session::get('notificacao', '') }}";
+
+    if (notificacao !== '') {
+        document.getElementById('notificacao-texto').textContent = notificacao;
+
+        var popup = document.getElementById('popup-content');
+        popup.style.opacity = 1;
+
+        // Faz o popup desaparecer após 5 segundos
+        setTimeout(function() {
+            popup.style.opacity = 0;
+        }, 5000); // 5000 milissegundos = 5 segundos
+    }
+</script>
+
+
+
 
 
 

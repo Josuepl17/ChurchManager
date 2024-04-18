@@ -37,12 +37,14 @@ class DespesasController extends Controller
         
         
        
-        $verificar =  $fun->Vcreate($data);
+        $verificar =  $fun->Verificar($data);
         
         if($verificar == true){
+
             $dados = $request->all();
             despesas::create($dados);
-           return redirect()->back();
+            return $this->despesas();
+
         } else {
             echo  "deu ruim";
         }

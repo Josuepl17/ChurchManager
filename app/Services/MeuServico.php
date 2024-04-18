@@ -11,7 +11,7 @@ use PhpParser\Node\Stmt\If_;
 class MeuServico
 {
 
-    public static function Vcreate($data)
+    public static function Verificar($data)
     {
 
         $primeiroregistro = caixas::value('dataini') ?? '';
