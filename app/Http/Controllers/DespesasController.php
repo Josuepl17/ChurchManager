@@ -21,6 +21,7 @@ class DespesasController extends Controller
 
     public function despesas()
     {
+
         $datanow = Carbon::now()->format('Y-m-d');
         $despesas = despesas::all();
         $totalodespesas = despesas::query()->sum('valor');
@@ -32,24 +33,17 @@ class DespesasController extends Controller
     {
 
         $data = $request->data;
-        
-        $fun = new MeuServico();
-        
-        
-       
-        $verificar =  $fun->Verificar($data);
-        
-        if($verificar == true){
 
+        if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
             despesas::create($dados);
-            return $this->despesas();
+            return redirect('/despesas');
 
         } else {
             echo  "deu ruim";
         }
 
-        
+
     }
 
 
@@ -58,21 +52,38 @@ class DespesasController extends Controller
 
     public function botao_excluir_despesas(request $request)
     {
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
+        $data = $request->data;
+    
+        if (MeuServico::Verificar($data) == true) {
+            $destroy = $request->id;
+            despesas::destroy($destroy);
+        } else {
+            echo "Falha";
         }
-
-        $destroy = $request->id;
-        despesas::destroy($destroy);
-        return redirect()->back();
+    
+        if ($request->dataini && $request->datafi){
+            $dataini = $request->dataini;
+            $datafi = $request->datafi;
+    
+            // Cria um novo objeto Request e define os dados necessários
+            $newRequest = new Request();
+            $newRequest->setMethod('POST');
+            $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+    
+            return $this->filtrar_despesas($newRequest);
+        } else{
+            return redirect('/despesas');
+        }
     }
+
+
+    
 
     public function filtrar_despesas(Request $request)
     {
-        $dataIni = $request->get('dataini');
-        $dataFi = $request->get('datafi');
+        $dataIni = $request->all();
+        dd($dataIni);
+        $dataFi = $request->datafi;
         $datanow = Carbon::now()->format('Y-m-d');
         $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');

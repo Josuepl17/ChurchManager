@@ -226,20 +226,6 @@
         font-size: 18px;
     }
 
-    #popup-content {
-            width: 300px;
-            padding: 20px;
-            background: white;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            z-index: 1000;
-        }
-
-
-
 
 </style>
 
@@ -249,6 +235,7 @@
     <div class="filtro">
         <form action="/filtrar/despesas" method="get">
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
+        
             <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
@@ -270,9 +257,11 @@
                 <td>{{$despesa->descricao}}</td>
                 <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
                 <td>
-                    <form method="post" class="formx" action="/destroy/despesas/id"><button class="excluir">X</button>
+                    <form method="POST" class="formx" action="/destroy/despesas/id"><button class="excluir">X</button>
                         <input type="hidden" name="data" value="{{$despesa->data}}">
                         <input type="hidden" name="id" value="{{$despesa->id}}">
+                        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
+                        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
                         @csrf
                     </form>
                 </td>
@@ -291,7 +280,7 @@
 </div>
 
 
-<form class="id" action="/registrar/despesas" method="post">
+<form class="id" action="/registrar/despesas/igreja" method="post">
     @csrf
 
     <label for="data">Data:</label>
@@ -332,29 +321,6 @@
     <h2>Notificação</h2>
     <p>{{ Session::get('notificacao') }}</p>
 </div>
-
-<script>
-    // Verificar se há uma notificação
-    var notificacao = "{{ Session::get('notificacao', '') }}";
-
-    if (notificacao !== '') {
-        document.getElementById('notificacao-texto').textContent = notificacao;
-
-        var popup = document.getElementById('popup-content');
-        popup.style.opacity = 1;
-
-        // Faz o popup desaparecer após 5 segundos
-        setTimeout(function() {
-            popup.style.opacity = 0;
-        }, 5000); // 5000 milissegundos = 5 segundos
-    }
-</script>
-
-
-
-
-
-
 
 
 
