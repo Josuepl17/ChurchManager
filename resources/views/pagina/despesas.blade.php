@@ -257,8 +257,8 @@
 <div class="table2">
 
     <div class="filtro">
-        <form action="/filtrar/despesas" method="get">
-
+        <form action="/filtrar/despesas" method="post">
+        @csrf
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
 
             <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>

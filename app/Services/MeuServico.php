@@ -30,4 +30,12 @@ class MeuServico
     }
 
 
+    public static function filtro($data){
+        if($data->dataini && $data->datafi){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
 }

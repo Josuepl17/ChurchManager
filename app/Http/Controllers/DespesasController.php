@@ -40,13 +40,45 @@ class DespesasController extends Controller
             $dados = $request->all();
             despesas::create($dados);
             return redirect('/despesas');
-
         } else {
             echo  "deu ruim";
         }
-
-
     }
+
+
+
+
+
+   /* public function botao_excluir_despesas(request $request)
+    {
+        $data = $request->data;
+
+
+
+        if (MeuServico::Verificar($data) == true && MeuServico::filtro($request) == true) {
+            $destroy = $request->id;
+            despesas::destroy($destroy);
+
+            $dataini = $request->dataini;
+            $datafi = $request->datafi;
+            $newRequest = new Request();
+            $newRequest->setMethod('post');
+            $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+            return $this->filtrar_despesas($newRequest);
+        } elseif (MeuServico::Verificar($data) == false && MeuServico::filtro($request) == true) {
+            $dataini = $request->dataini;
+            $datafi = $request->datafi;
+            $newRequest = new Request();
+            $newRequest->setMethod('post');
+            $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+            return $this->filtrar_despesas($newRequest);
+        } elseif (MeuServico::Verificar($data) == true && MeuServico::filtro($request) == false) {
+            $destroy = $request->id;
+            despesas::destroy($destroy);
+            return redirect('\despesas');
+        } elseif (MeuServico::Verificar($data) == false && MeuServico::filtro($request) == false)
+            return redirect('\despesas');
+    } */
 
 
 
@@ -55,46 +87,51 @@ class DespesasController extends Controller
     public function botao_excluir_despesas(request $request)
     {
         $data = $request->data;
-    
-        if (MeuServico::Verificar($data) == true) {
+        $verificar = MeuServico::Verificar($data);
+        $filtro = MeuServico::filtro($request);
+
+        if ($verificar) {
             $destroy = $request->id;
             despesas::destroy($destroy);
-            if($request->dataini && $request->datafi){
-                $dataini = $request->dataini;
-                
-                $datafi = $request->datafi;
-                $newRequest = new Request();
-                $newRequest->setMethod('post');
-                $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
-                
-                return $this->filtrar_despesas($newRequest)->with('sucesso', 'Item Excluido com Sucesso');
-            } else{
-                return redirect('/despesas')->with('sucesso', 'Item Excluido com Sucesso');
-            }
+            
+        }
 
+        if ($filtro) {
+            $dataini = $request->dataini;
+            $datafi = $request->datafi;
+            $newRequest = new Request();
+            $newRequest->setMethod('post');
+            $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+            return $this->filtrar_despesas($newRequest);
+        }
 
-            } else{
-                return redirect('/despesas')->with('falha_caixa', 'Atenção !! Caixa Está Fechado');
-            }
-           
-       
-           
-      
+      return redirect('/despesas');
     }
 
 
-    
+
+
+
+
+
+
+
 
     public function filtrar_despesas(Request $request)
     {
-     
+
         $dataIni = $request->dataini;
         $dataFi = $request->datafi;
-       
-        
+
+
         $datanow = Carbon::now()->format('Y-m-d');
         $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow)->with();
+
+
+
+
+
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow);
     }
 }

@@ -49,7 +49,7 @@ Route::get('/filtrar/ofertas', [OfertasController::class, 'filtrar']);
 Route::get('/despesas', [DespesasController::class, 'despesas']);
 Route::POST('/registrar/despesas/igreja', [DespesasController::class, 'botao_registrar_despesas']);
 Route::POST('/destroy/despesas/id', [DespesasController::class, 'botao_excluir_despesas']);
-Route::get('/filtrar/despesas', [DespesasController::class, 'filtrar_despesas']);
+Route::post('/filtrar/despesas', [DespesasController::class, 'filtrar_despesas']);
 
                                 /*Caixa*/
 Route::get('/caixa', [CaixasController::class, 'caixa']);
