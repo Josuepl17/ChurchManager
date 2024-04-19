@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Contracts\Session\Session;
+use PhpParser\Node\Stmt\Else_;
 
 class DespesasController extends Controller
 {
@@ -57,23 +59,27 @@ class DespesasController extends Controller
         if (MeuServico::Verificar($data) == true) {
             $destroy = $request->id;
             despesas::destroy($destroy);
-        } else {
-            echo "Falha";
-        }
-    
-        if ($request->dataini && $request->datafi){
-            $dataini = $request->dataini;
-            $datafi = $request->datafi;
-    
-            // Cria um novo objeto Request e define os dados necessários
-            $newRequest = new Request();
-            $newRequest->setMethod('POST');
-            $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
-    
-            return $this->filtrar_despesas($newRequest);
-        } else{
-            return redirect('/despesas');
-        }
+            if($request->dataini && $request->datafi){
+                $dataini = $request->dataini;
+                
+                $datafi = $request->datafi;
+                $newRequest = new Request();
+                $newRequest->setMethod('post');
+                $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+                
+                return $this->filtrar_despesas($newRequest)->with('sucesso', 'Item Excluido com Sucesso');
+            } else{
+                return redirect('/despesas')->with('sucesso', 'Item Excluido com Sucesso');
+            }
+
+
+            } else{
+                return redirect('/despesas')->with('falha_caixa', 'Atenção !! Caixa Está Fechado');
+            }
+           
+       
+           
+      
     }
 
 
@@ -81,11 +87,14 @@ class DespesasController extends Controller
 
     public function filtrar_despesas(Request $request)
     {
+     
         $dataIni = $request->dataini;
         $dataFi = $request->datafi;
+       
+        
         $datanow = Carbon::now()->format('Y-m-d');
         $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow);;
+        return view('pagina.despesas')->with('despesas', $despesas)->with('totaldespesas', $totaldespesas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow)->with();
     }
 }

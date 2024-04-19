@@ -226,7 +226,31 @@
         font-size: 18px;
     }
 
+    .msg {
+        position: absolute;
+        z-index: 999;
+        right: 25px;
+        top: 16px;
+        border: 1px solid black;
+        width: 350px;
+        height: 40px;
+        
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: sumir 6s forwards;
+        border-radius: 0px 20px 0px 20px;
+    }
 
+    @keyframes sumir {
+            to {
+                opacity: 0;
+                /* torna o elemento transparente */
+                visibility: hidden;
+                /* oculta o elemento da tela */
+            }
+        }
 </style>
 
 
@@ -234,9 +258,9 @@
 
     <div class="filtro">
         <form action="/filtrar/despesas" method="get">
-            
+
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
-        
+
             <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
@@ -310,11 +334,28 @@
 
 
 
-<div style="font-size: 100px;">
 
+@if(session('sucesso'))
 
-
+<div style="background-color: green;" class="msg">
+    <p>{{ session('sucesso') }}</p>
 </div>
+
+@endif
+
+@if(session('falha_caixa'))
+
+<div style="background-color: red;" class="msg">
+    <p>{{ session('falha_caixa') }}</p>
+</div>
+
+@endif
+
+
+
+
+
+
 
 
 
