@@ -234,6 +234,7 @@
 
     <div class="filtro">
         <form action="/filtrar/despesas" method="get">
+            
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
         
             <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
@@ -313,13 +314,6 @@
 
 
 
-</div>
-
-
-
-<div id="popup-content">
-    <h2>Notificação</h2>
-    <p>{{ Session::get('notificacao') }}</p>
 </div>
 
 

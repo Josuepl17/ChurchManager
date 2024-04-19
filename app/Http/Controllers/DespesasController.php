@@ -81,8 +81,7 @@ class DespesasController extends Controller
 
     public function filtrar_despesas(Request $request)
     {
-        $dataIni = $request->all();
-        dd($dataIni);
+        $dataIni = $request->dataini;
         $dataFi = $request->datafi;
         $datanow = Carbon::now()->format('Y-m-d');
         $despesas = despesas::whereBetween('data', [$dataIni, $dataFi])->get();
