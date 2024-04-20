@@ -285,8 +285,8 @@
                     <form method="POST" class="formx" action="/destroy/despesas/id"><button class="excluir">X</button>
                         <input type="hidden" name="data" value="{{$despesa->data}}">
                         <input type="hidden" name="id" value="{{$despesa->id}}">
-                        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '1900-01-01' }}">
-                        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '5000-01-01' }}">
+                        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
+                        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
                         @csrf
                     </form>
                 </td>
@@ -335,20 +335,19 @@
 
 
 
-@if(session('sucesso'))
 
-<div style="background-color: green;" class="msg">
-    <p>{{ session('sucesso') }}</p>
-</div>
 
+
+@if (Session::has('sucess'))
+    <div style="background-color: green;" class="msg">
+        <p>{{ Session::get('sucess') }}</p>
+    </div>
 @endif
 
-@if(session('falha_caixa'))
-
-<div style="background-color: red;" class="msg">
-    <p>{{ session('falha_caixa') }}</p>
-</div>
-
+@if (Session::has('fail'))
+    <div  class="msg">
+        <p>{{ Session::get('fail') }}</p>
+    </div>
 @endif
 
 
