@@ -42,10 +42,17 @@ class DespesasController extends Controller
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
             despesas::create($dados);
-            return redirect('/despesas');
+            Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {
-            echo  "deu ruim";
+            Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
+
+        $dataini = $request->dataini;
+        $datafi = $request->datafi;
+        $newRequest = new Request();
+        $newRequest->setMethod('post');
+        $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+        return $this->filtrar_despesas($newRequest);
     }
 
 
