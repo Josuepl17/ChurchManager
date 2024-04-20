@@ -60,9 +60,9 @@ class DespesasController extends Controller
         if ($verificar) {
             $destroy = $request->id;
             despesas::destroy($destroy);
-            with('sucess', 'sucesso mensagem');
+            Session()->flash('sucesso',  'Item Apagado com Sucesso');
         } else {
-            with('sucess', 'sucesso mensagem');
+            Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
 
 

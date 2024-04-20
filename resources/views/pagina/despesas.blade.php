@@ -338,18 +338,21 @@
 
 
 
-@if (Session::has('sucess'))
+
+
+@if (Session::has('sucesso'))
     <div style="background-color: green;" class="msg">
-        <p>{{ Session::get('sucess') }}</p>
+        <p>{{ Session::get('sucesso') }}</p>
     </div>
+    {{ Session::forget('sucesso') }}
 @endif
 
-@if (Session::has('fail'))
-    <div  class="msg">
-        <p>{{ Session::get('fail') }}</p>
+@if (Session::has('falha'))
+    <div style="background-color: red;" class="msg">
+        <p>{{ Session::get('falha') }}</p>
     </div>
+    {{ Session::forget('falha') }}
 @endif
-
 
 
 
