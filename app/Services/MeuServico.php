@@ -19,23 +19,23 @@ class MeuServico
         $ultimo = $ultimoregistro->datafi ?? '';
 
         if ($data > $primeiroregistro  && $data > $ultimo) {
-            
-           return true;
-            
-        } else {
-            
-            return false;
-            
-        }
-    }
 
-
-    public static function filtro($data){
-        if($data->dataini && $data->datafi){
             return true;
-        } else{
+        } else {
+
             return false;
         }
     }
 
+
+    public static function post_filter($request)
+    {
+
+        $dataini = $request->dataini;
+        $datafi = $request->datafi;
+        $newRequest = new Request();
+        $newRequest->setMethod('post');
+        $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+        return $newRequest;
+    }
 }

@@ -46,10 +46,10 @@ Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_ofe
 Route::get('/filtrar/ofertas', [OfertasController::class, 'filtrar']);
 
                             /* Despesas */
-Route::get('/despesas', [DespesasController::class, 'despesas']);
+Route::get('/despesas', [DespesasController::class, 'filter_page']);
 Route::POST('/registrar/despesas/igreja', [DespesasController::class, 'botao_registrar_despesas']);
 Route::POST('/destroy/despesas/id', [DespesasController::class, 'botao_excluir_despesas']);
-Route::post('/filtrar/despesas', [DespesasController::class, 'filtrar_despesas']);
+Route::post('/filtrar/despesas', [DespesasController::class, 'filter_page']);
 
                                 /*Caixa*/
 Route::get('/caixa', [CaixasController::class, 'caixa']);

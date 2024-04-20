@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('data');
             $table->string('descricao');
-            $table->Integer('valor');
+            $table->decimal('valor', 8, 2);
             $table->timestamps();
 
             

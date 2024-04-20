@@ -218,12 +218,13 @@
     }
 
     select {
-        font-size: 20px;
+        font-size: 15px;
         border-radius: 10px;
+        padding: 5px;
     }
 
     option {
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .msg {
@@ -259,9 +260,9 @@
     <div class="filtro">
         <form action="/filtrar/despesas" method="post">
         @csrf
-            <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
+            <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
 
-            <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
+            <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
     </div>
@@ -285,8 +286,8 @@
                     <form method="POST" class="formx" action="/destroy/despesas/id"><button class="excluir">X</button>
                         <input type="hidden" name="data" value="{{$despesa->data}}">
                         <input type="hidden" name="id" value="{{$despesa->id}}">
-                        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
-                        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
+                        <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
+                        <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
                         @csrf
                     </form>
                 </td>
@@ -311,7 +312,7 @@
     <label for="data">Data:</label>
     <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
-    <label for="descricao">Desc:</label>
+    <label for="descricao">Desc:</label require>
     <select name="descricao" id="descricao" require autocomplete="off">
         <Option disabled selected></Option>
         <Option>LIMPEZA</Option>
@@ -327,8 +328,8 @@
 
     <br>
 
-                        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
-                        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
+                        <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
+                        <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
 
     <button style="height: 50px;" type="submit">Registar Despesa</button>
 </form>

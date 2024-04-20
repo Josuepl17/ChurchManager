@@ -19,19 +19,6 @@ use PhpParser\Node\Stmt\Else_;
 
 class DespesasController extends Controller
 {
-    /* Despesas */
-
-
-    public function despesas()
-    {
-        $dados = [
-            'datanow' => Carbon::now()->format('Y-m-d'),
-            'despesas' => despesas::all(),
-            'totaldespesas' => despesas::query()->sum('valor')
-        ];
-
-        return view('pagina.despesas', $dados);
-    }
 
 
     public function botao_registrar_despesas(request $request)
@@ -41,18 +28,14 @@ class DespesasController extends Controller
 
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
+            $dados['valor'] = str_replace(',', '.', $dados['valor']);
             despesas::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
 
-        $dataini = $request->dataini;
-        $datafi = $request->datafi;
-        $newRequest = new Request();
-        $newRequest->setMethod('post');
-        $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
-        return $this->filtrar_despesas($newRequest);
+        return $this->filter_page(MeuServico::post_filter($request));
     }
 
 
@@ -61,8 +44,8 @@ class DespesasController extends Controller
     {
         $data = $request->data;
         $verificar = MeuServico::Verificar($data);
-       
-        
+
+
 
         if ($verificar) {
             $destroy = $request->id;
@@ -73,36 +56,34 @@ class DespesasController extends Controller
         }
 
 
-        
 
-        $dataini = $request->dataini;
-        $datafi = $request->datafi;
-        $newRequest = new Request();
-        $newRequest->setMethod('post');
-        $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
-        return $this->filtrar_despesas($newRequest);
+        return $this->filter_page(MeuServico::post_filter($request));
     }
 
 
 
 
-    public function filtrar_despesas(Request $request)
+    public function filter_page(Request $request)
     {
-        $dataIni = $request->dataini;
-        $dataFi = $request->datafi;
+
+        $dataIni = $request->input('dataini') ?? '1900-01-01';
+        $dataFi = $request->input('datafi') ?? '5000-01-01';
+
 
         $dados = [
             'despesas' => despesas::whereBetween('data', [$dataIni, $dataFi])->get(),
             'totaldespesas' => despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
-            'dataIni' => $request->dataini,
-            'dataFi' => $request->datafi
+            'dataini' => $request->dataini,
+            'datafi' => $request->datafi
         ];
 
 
-        if ($dataIni == null && $dataFi == null) {
-            return $this->despesas();
+        if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
+            unset($dados['dataini'], $dados['datafi']);
+            return view('pagina.despesas', $dados);
         }
+
 
         return view('pagina.despesas', $dados);
     }
