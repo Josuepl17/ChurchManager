@@ -285,8 +285,8 @@
                     <form method="POST" class="formx" action="/destroy/despesas/id"><button class="excluir">X</button>
                         <input type="hidden" name="data" value="{{$despesa->data}}">
                         <input type="hidden" name="id" value="{{$despesa->id}}">
-                        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
-                        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
+                        <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '1900-01-01' }}">
+                        <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '5000-01-01' }}">
                         @csrf
                     </form>
                 </td>
