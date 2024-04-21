@@ -28,9 +28,10 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            width: 50%;
+            width: 60%;
             height: 90%;
-            padding-bottom: 5px;
+            padding-top: 10px;
+            
             border: 1px solid black;
             align-items: center;
             border-radius: 5px;
@@ -79,7 +80,7 @@
             margin-top: 10px;
             color: black;
             text-decoration: none;
-            margin-top: 10px;
+            margin-top: -5px;
             padding-bottom: 0;
             font-size: 18px;
             width: 190px;
@@ -105,7 +106,7 @@
     <div class="geral">
         <form action="/inserir/membro" method="post">
             @csrf
-            <h1 class="h1m">Cadastro de Membros</h1>
+            
             <label for="nome">Nome:</label>
             <input class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
             <label for="funcao">Função</label>
