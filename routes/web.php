@@ -71,3 +71,4 @@ Route::get('/cadastro/login', [ControllerIgreja::class, 'form_login']);
 Route::post('/cadastro/user', [ControllerIgreja::class, 'cadastro_user']);
 Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
 
+Route::get('/pesquisa', [MembrosController::class, 'pesquisa']);

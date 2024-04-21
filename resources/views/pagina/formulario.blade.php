@@ -31,7 +31,6 @@
             width: 60%;
             height: 90%;
             padding-top: 10px;
-            
             border: 1px solid black;
             align-items: center;
             border-radius: 5px;

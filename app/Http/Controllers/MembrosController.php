@@ -44,4 +44,12 @@ class MembrosController extends Controller
         usuarios::destroy($destroy);
         return redirect('/');
     }
+
+
+    public function pesquisa (Request $request){
+        $dados = $request->pesquisa;
+       
+        $index = usuarios::where('nome', 'LIKE', "%{$dados}%")->get();
+        return view('pagina.index')->with('index',  $index);
+    }
 }
