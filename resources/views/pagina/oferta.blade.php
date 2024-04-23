@@ -251,62 +251,19 @@
                 /* oculta o elemento da tela */
             }
         }
-
-        .atualizar_btn{
-            display: flex;
-          
-           justify-content: center;
-           align-items: center;
-        
-           
-          
-           
-            
-        }
-
-        .filtro_data{
-            display: flex;
-            width: 35%;
-            
-           
-        }
-
-        #btn_filtro{
-            display: flex;
-            width: 100%;
-            height: 100%;
-            align-items: center;
-           
-            
-        }
-
-        .filtro {
-        display: flex;
-        width: 100%;
-        background-color: var(--titulos);
-        padding-top: 5px;
-        padding-bottom: 5px;
-        height: 7%;
-        justify-content: flex-end;
-    }
-
-
 </style>
 
 
 <div class="table2">
-<div class="filtro">
-        <div class="atualizar_btn" ><button id="btn_filtro" ><a href="/despesas"></a>Atualizar</button></div>
-    
+    <div class="filtro">
+        <form action="/filtrar/ofertas" method="get">
+            <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+            <input type="date" name="datafi" id="datafi" value="{{ isset($dataini) ? $dataini : '' }}" required>
+            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
+        </form>
 
-        <div class="filtro_data">
-            <form action="/filtrar/despesas" method="post">
-            @csrf
-                <input style="width: 35%;" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
-                <input style="width: 35%;" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-                <input style="width: 15%;" type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
-            </form>
-        </div>
+
+
     </div>
 
     <div class="conteudo">
