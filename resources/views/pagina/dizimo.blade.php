@@ -1,17 +1,14 @@
 @extends('components.layout')
-
 @section('conteudo')
-@section('titulo', $nome )
-@section('titulo-nav', $nome )
-
+@section('titulo', $nome)
+@section('titulo-nav', $nome)
 
 
 <style>
-    :root {
+:root {
         --titulos: #0A1626;
         --subtitulos: #023859;
         --fundos: #0D8AA6;
-
         --cor-secundaria: #313131e7;
     }
 
@@ -215,7 +212,35 @@
         height: 100%;
         overflow: auto;
     }
+
+    .msg {
+        position: absolute;
+        z-index: 999;
+        right: 25px;
+        top: 16px;
+        border: 1px solid black;
+        width: 350px;
+        height: 40px;
+        
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: sumir 6s forwards;
+        border-radius: 0px 20px 0px 20px;
+    }
+
+    @keyframes sumir {
+            to {
+                opacity: 0;
+                /* torna o elemento transparente */
+                visibility: hidden;
+                /* oculta o elemento da tela */
+            }
+        }
 </style>
+
+
 
 
 <div class="table2">
@@ -250,6 +275,7 @@
                         <input type="hidden" name="user_id" value="{{$dizimo->user_id}}">
                         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
                         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+                        <input type="hidden" name="nome" value="{{ $nome }}">
 
                         @csrf
                     </form>
@@ -273,6 +299,7 @@
 <form class="id" action="/registrar/dizimo" method="post">
     @csrf
     <input type="hidden" name="user_id" value="{{ $user_id }}">
+    <input type="hidden" name="nome" value="{{ $nome }}">
     <label for="data">Data:</label>
     <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
@@ -281,10 +308,25 @@
     <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
     <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
 
+
     <br>
 
     <button type="submit">Registar Dizimo</button>
 </form>
+
+@if (Session::has('sucesso'))
+    <div style="background-color: green;" class="msg">
+        <p>{{ Session::get('sucesso') }}</p>
+    </div>
+    {{ Session::forget('sucesso') }}
+@endif
+
+@if (Session::has('falha'))
+    <div style="background-color: red;" class="msg">
+        <p>{{ Session::get('falha') }}</p>
+    </div>
+    {{ Session::forget('falha') }}
+@endif
 
 
 

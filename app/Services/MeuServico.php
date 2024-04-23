@@ -29,13 +29,14 @@ class MeuServico
 
 
     public static function post_filter($request)
-    {
-
+    {   
+        $nome = $request->nome;
+        $user_id = $request->user_id;
         $dataini = $request->dataini;
         $datafi = $request->datafi;
         $newRequest = new Request();
         $newRequest->setMethod('post');
-        $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi]);
+        $newRequest->request->add(['dataini' => $dataini, 'datafi' => $datafi, 'user_id' => $user_id, 'nome' => $nome]);
         return $newRequest;
     }
 }

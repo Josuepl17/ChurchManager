@@ -32,23 +32,27 @@ class DizimosController extends Controller
 
         
 
-        $user_id = $request->id;
+        $user_id = $request->user_id;
+     
        
-        
+    
 
 
 
 
         $dados = [
             'dizimos' => dizimos::where('user_id', $user_id)->get(),
+            
             'totaldizimos' => dizimos::query()->where('user_id', $user_id)->get()->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
-            'user_id' => $request->id,
+            'user_id' => $request->user_id,
             'nome' => $request->nome
         ];
 
+       
+    
   
 
 
@@ -58,7 +62,7 @@ class DizimosController extends Controller
             return view('pagina.dizimo', $dados);
         }
 
-        return view('pagina.dizimo', $dados);
+        return view('pagina.dizimo')->with('dados', $dados);
     }
 
 
@@ -72,7 +76,8 @@ class DizimosController extends Controller
         $data = $request->data;
        
         if (MeuServico::Verificar($data) == true) {
-            $dados = $request->all();
+            $dados = $request->only('id', 'data', 'valor', 'user_id');
+           
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
          
             dizimos::create($dados);
@@ -80,8 +85,9 @@ class DizimosController extends Controller
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
-
+        
         return $this->filter_page(MeuServico::post_filter($request));
+       
     }
 
 
