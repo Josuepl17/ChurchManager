@@ -80,10 +80,7 @@
 
         
         
-     <form action="/pesquisa" method="get">
-        <input type="text" name="pesquisa" id="pesquisa">
-        <button type="submit">Pesquisar</button>
-     </form>
+ 
 
     <table>
         <tr>
