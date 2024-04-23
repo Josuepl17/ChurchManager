@@ -4,6 +4,8 @@
 @section('titulo', $nome )
 @section('titulo-nav', $nome )
 
+
+
 <style>
     :root {
         --titulos: #0A1626;
