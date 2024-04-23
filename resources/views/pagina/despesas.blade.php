@@ -193,15 +193,7 @@
 
     }
 
-    .filtro {
-        display: flex;
-        width: 100%;
-        background-color: var(--titulos);
-        padding-top: 5px;
-        padding-bottom: 5px;
-        height: 7%;
-        justify-content: flex-end;
-    }
+
 
     .filtro form {
         width: 100%;
@@ -258,28 +250,55 @@
 
         .atualizar_btn{
             display: flex;
+          
+           justify-content: center;
+           align-items: center;
+        
            
           
            
             
         }
 
-        .menu{
+        .filtro_data{
             display: flex;
             width: 35%;
             
            
         }
+
+        #btn_filtro{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+           
+            
+        }
+
+        .filtro {
+        display: flex;
+        width: 100%;
+        background-color: var(--titulos);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 7%;
+        justify-content: flex-end;
+    }
+
+  
+
+   
 </style>
 
 
 <div class="table2">
 
     <div class="filtro">
-        <div class="atualizar_btn" ><button ><a href="/despesas"></a>Atualizar</button></div>
+        <div class="atualizar_btn" ><button id="btn_filtro" ><a href="/despesas"></a>Atualizar</button></div>
     
 
-        <div class="menu">
+        <div class="filtro_data">
             <form action="/filtrar/despesas" method="post">
             @csrf
                 <input style="width: 35%;" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
