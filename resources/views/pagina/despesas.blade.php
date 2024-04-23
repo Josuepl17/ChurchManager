@@ -17,8 +17,6 @@
     .table2 {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        
         width: 100%;
         height: 80%;
 
@@ -200,7 +198,6 @@
         padding-top: 5px;
         padding-bottom: 5px;
         height: 7%;
-        justify-content: flex-end;
     }
 
     .filtro form {
@@ -255,38 +252,19 @@
                 /* oculta o elemento da tela */
             }
         }
-
-        .atualizar_btn{
-            display: flex;
-           
-          
-           
-            
-        }
-
-        .menu{
-            display: flex;
-            width: 35%;
-            
-           
-        }
 </style>
 
 
 <div class="table2">
 
     <div class="filtro">
-        <div class="atualizar_btn" ><button ><a href="/despesas"></a>Atualizar</button></div>
-    
+        <form action="/filtrar/despesas" method="post">
+        @csrf
+            <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
 
-        <div class="menu">
-            <form action="/filtrar/despesas" method="post">
-            @csrf
-                <input style="width: 35%;" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
-                <input style="width: 35%;" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-                <input style="width: 15%;" type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
-            </form>
-        </div>
+            <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
+            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+        </form>
     </div>
 
     <div class="conteudo">
