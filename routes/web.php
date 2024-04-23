@@ -33,17 +33,17 @@ Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro'
 Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
 
                             /*Dizimos Por Usuario*/
-Route::get('/inserir/dizimos/{id}/{nome}', [DizimosController::class, 'botao_inserir']);
+Route::get('/inserir/dizimos/{id}/{nome}', [DizimosController::class, 'filter_page']);
 Route::post('/registrar/dizimo', [DizimosController::class, 'botao_registrar_dizimo']);
 Route::post('/dizimos/destoy/id', [DizimosController::class, 'botao_excluir_dizimo']);
 Route::get('/filtrar/dizimo/{user_id}/{nome}', [DizimosController::class, 'filtrar_dizimo']);
 
 
                              /*Ofertas*/
-Route::get('/oferta', [OfertasController::class, 'oferta']);
+Route::get('/oferta', [OfertasController::class, 'filter_page']);
 Route::post('/registrar/oferta', [OfertasController::class, 'botao_registrar_oferta']);
 Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_oferta']);
-Route::get('/filtrar/ofertas', [OfertasController::class, 'filtrar']);
+Route::get('/filtrar/ofertas', [OfertasController::class, 'filter_page']);
 
                             /* Despesas */
 Route::get('/despesas', [DespesasController::class, 'filter_page']);

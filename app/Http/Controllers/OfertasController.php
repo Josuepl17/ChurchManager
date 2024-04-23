@@ -9,6 +9,7 @@ use App\Models\ofertas;
 use App\Models\usuarios;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -20,58 +21,66 @@ class OfertasController extends Controller
 {
     /*Ofertas*/
 
-
-
-
-
-
-    public function oferta()
+    public function filter_page(Request $request)
     {
-        $ofertas = ofertas::all();
-        $datanow = Carbon::now()->format('Y-m-d');
-        $totalofertas = ofertas::query()->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('datanow', $datanow);
+
+            $dataIni = $request->input('dataini') ?? '1900-01-01';
+            $dataFi = $request->input('datafi') ?? '5000-01-01';
+
+
+        $dados = [
+            'ofertas' => ofertas::whereBetween('data', [$dataIni, $dataFi])->get(),
+            'totalofertas' => ofertas::whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'datanow' => Carbon::now()->format('Y-m-d'),
+            'dataini' => $request->dataini,
+            'datafi' => $request->datafi
+        ];
+
+
+        if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
+            unset($dados['dataini'], $dados['datafi']);
+            return view('pagina.oferta', $dados);
+        }
+
+            return view('pagina.oferta', $dados);
     }
+
 
 
 
     public function botao_registrar_oferta(request $request)
     {
 
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
+        $data = $request->data;
+
+        if (MeuServico::Verificar($data) == true) {
+            $dados = $request->all();
+            $dados['valor'] = str_replace(',', '.', $dados['valor']);
+            ofertas::create($dados);
+            Session()->flash('sucesso', 'Item criado com Sucesso');
+        } else {
+            Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
 
-
-        $dados = $request->all();
-        ofertas::create($dados);
-        return redirect()->back();
+        return $this->filter_page(MeuServico::post_filter($request));
     }
 
 
     public function botao_excluir_oferta(request $request)
     {
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
+        $data = $request->data;
+        $verificar = MeuServico::Verificar($data);
+
+        if ($verificar) {
+            $destroy = $request->id;
+            ofertas::destroy($destroy);
+            Session()->flash('sucesso',  'Item Apagado com Sucesso');
+        } else {
+            Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
-
-        $destroy = $request->id;
-        ofertas::destroy($destroy);
-        return redirect()->back();
+            return $this->filter_page(MeuServico::post_filter($request));
     }
 
-    public function filtrar(Request $request)
-    {
 
-        $dataIni = $request->get('dataini');
-        $dataFi = $request->get('datafi');
-        $datanow = Carbon::now()->format('Y-m-d');
-        $ofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->get();
-        $totalofertas = ofertas::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.oferta')->with('ofertas', $ofertas)->with('totalofertas', $totalofertas)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('datanow', $datanow);
-    }
+
 }

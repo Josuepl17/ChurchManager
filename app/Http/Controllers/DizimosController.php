@@ -9,6 +9,7 @@ use App\Models\ofertas;
 use App\Models\usuarios;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -18,55 +19,86 @@ class DizimosController extends Controller
 {
     /*Dizimos Por Usuario*/
 
-    public function botao_inserir(request $request)
+
+
+
+
+    public function filter_page(Request $request)
     {
-        $datanow = Carbon::now()->format('Y-m-d');
+
+        $dataIni = $request->input('dataini') ?? '1900-01-01';
+        $dataFi = $request->input('datafi') ?? '5000-01-01';
+
+
+
+
         $user_id = $request->id;
         $nome = $request->nome;
         $dizimos = dizimos::where('user_id', $user_id)->get();
         $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
-        return view('pagina.dizimo')->with('user_id', $user_id)->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('datanow', $datanow)->with('nome', $nome);
+        
+
+
+
+
+        $dados = [
+            'dizimos' => dizimos::where('user_id', $user_id)->get(),
+            'totaldizimos' => dizimos::query()->where('user_id', $user_id)->get()->sum('valor'),
+            'datanow' => Carbon::now()->format('Y-m-d'),
+            'dataini' => $request->dataini,
+            'datafi' => $request->datafi,
+            'user_id' => $request->id,
+            'nome' => $request->nome
+        ];
+
+
+        if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
+            unset($dados['dataini'], $dados['datafi']);
+            return view('pagina.dizimo', $dados);
+        }
+
+        return view('pagina.dizimo', $dados);
     }
+
+
+
+
+
 
     public function botao_registrar_dizimo(request $request)
     {
 
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
+        $data = $request->data;
+
+        if (MeuServico::Verificar($data) == true) {
+            $dados = $request->all();
+            $dados['valor'] = str_replace(',', '.', $dados['valor']);
+            dizimos::create($dados);
+            Session()->flash('sucesso', 'Item criado com Sucesso');
+        } else {
+            Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
 
-        $dados = $request->except('_token');
-        dizimos::create($dados);
-        $user_id = $request->user_id;
-        return redirect()->back();
+        return $this->filter_page(MeuServico::post_filter($request));
     }
 
-    public function botao_excluir_dizimo(request $request)
+
+
+
+
+
+    public function botao_excluir_despesas(request $request)
     {
-        $this->Vcreate($request);
-        $resposta = $this->Vcreate($request);
-        if ($resposta instanceof \Illuminate\Http\RedirectResponse) {
-            return $resposta;
+        $data = $request->data;
+        $verificar = MeuServico::Verificar($data);
+
+        if ($verificar) {
+            $destroy = $request->id;
+            dizimos::destroy($destroy);
+            Session()->flash('sucesso',  'Item Apagado com Sucesso');
+        } else {
+            Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
-
-        $destroy = $request->id;
-
-        $user_id = $request->user_id;
-        dizimos::destroy($destroy);
-        return redirect()->back();
-    }
-
-    public function filtrar_dizimo(Request $request)
-    {
-        $user_id = $request->user_id;
-        $dataIni = $request->get('dataini');
-        $dataFi = $request->get('datafi');
-        $nome = $request->nome;
-        $datanow = Carbon::now()->format('Y-m-d');
-        $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
-        $totaldizimos = dizimos::query()->whereBetween('data', [$dataIni, $dataFi])->sum('valor');
-        return view('pagina.dizimo')->with('dizimos', $dizimos)->with('totaldizimos', $totaldizimos)->with('user_id', $user_id)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('nome', $nome)->with('datanow', $datanow);
+        return $this->filter_page(MeuServico::post_filter($request));
     }
 }
