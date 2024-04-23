@@ -41,15 +41,19 @@ class DizimosController extends Controller
 
 
         $dados = [
-            'dizimos' => dizimos::where('user_id', $user_id)->get(),
+            'dizimos' => dizimos::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             
-            'totaldizimos' => dizimos::query()->where('user_id', $user_id)->get()->sum('valor'),
+            'totaldizimos' => dizimos::query()->where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
             'user_id' => $request->user_id,
             'nome' => $request->nome
         ];
+
+ 
+
+
 
        
     
@@ -62,7 +66,7 @@ class DizimosController extends Controller
             return view('pagina.dizimo', $dados);
         }
 
-        return view('pagina.dizimo')->with('dados', $dados);
+        return view('pagina.dizimo', $dados);
     }
 
 

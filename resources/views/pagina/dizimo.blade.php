@@ -5,7 +5,7 @@
 
 
 <style>
-:root {
+    :root {
         --titulos: #0A1626;
         --subtitulos: #023859;
         --fundos: #0D8AA6;
@@ -221,7 +221,7 @@
         border: 1px solid black;
         width: 350px;
         height: 40px;
-        
+
         color: white;
         display: flex;
         justify-content: center;
@@ -231,13 +231,13 @@
     }
 
     @keyframes sumir {
-            to {
-                opacity: 0;
-                /* torna o elemento transparente */
-                visibility: hidden;
-                /* oculta o elemento da tela */
-            }
+        to {
+            opacity: 0;
+            /* torna o elemento transparente */
+            visibility: hidden;
+            /* oculta o elemento da tela */
         }
+    }
 </style>
 
 
@@ -248,7 +248,7 @@
         <form action="/filtrar/dizimo/{{ $user_id }}/{{ $nome }}" method="get">
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
             <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+                  <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
         </form>
     </div>
 
@@ -315,17 +315,17 @@
 </form>
 
 @if (Session::has('sucesso'))
-    <div style="background-color: green;" class="msg">
-        <p>{{ Session::get('sucesso') }}</p>
-    </div>
-    {{ Session::forget('sucesso') }}
+<div style="background-color: green;" class="msg">
+    <p>{{ Session::get('sucesso') }}</p>
+</div>
+{{ Session::forget('sucesso') }}
 @endif
 
 @if (Session::has('falha'))
-    <div style="background-color: red;" class="msg">
-        <p>{{ Session::get('falha') }}</p>
-    </div>
-    {{ Session::forget('falha') }}
+<div style="background-color: red;" class="msg">
+    <p>{{ Session::get('falha') }}</p>
+</div>
+{{ Session::forget('falha') }}
 @endif
 
 
