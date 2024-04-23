@@ -96,7 +96,7 @@ class ControllerIgreja extends Controller
     
         if (Auth::attempt($credentials)) {
             // Autenticação bem-sucedida
-            return redirect()->intended('index');
+            return redirect('/');
         }
     
         // Autenticação falhou

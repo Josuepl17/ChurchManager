@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->date('dataini');
             $table->date('datafi');
-            $table->string('totalofertas');
-            $table->Integer('totaldespesas');
-            $table->Integer('totaldizimos');
-            $table->Integer('saldo');
+            $table->decimal('totalofertas', 8, 2);
+            $table->decimal('totaldespesas', 8 , 2);
+            $table->decimal('totaldizimos', 8, 2);
+            $table->decimal('saldo', 8, 2);
             $table->timestamps();
 
             

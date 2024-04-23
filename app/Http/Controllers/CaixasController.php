@@ -61,7 +61,7 @@ class CaixasController extends Controller
     {
 
         $dataIni = $request->dataini;
-        dd($dataIni);
+       
         $dataFi = $request->datafi;
         $dizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->get();
         $totaldizimos = dizimos::whereBetween('data', [$dataIni, $dataFi])->sum('valor');

@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
                             /*Usuarios*/
-Route::get('/', [MembrosController::class, 'index'])->name('index');
+Route::get('/', [MembrosController::class, 'index'])->name('index')->middleware('auth');
 Route::get('/cadastro/membro', [MembrosController::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro']);
 Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
@@ -65,10 +65,11 @@ Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
 
 
                              /* LOGIN*/
-
+Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
 Route::post('/login/if', [ControllerIgreja::class, 'authenticate']);
+
 Route::get('/cadastro/login', [ControllerIgreja::class, 'form_login']);
 Route::post('/cadastro/user', [ControllerIgreja::class, 'cadastro_user']);
-Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
+
 
 Route::get('/pesquisa', [MembrosController::class, 'pesquisa']);
