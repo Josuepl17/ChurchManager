@@ -30,12 +30,10 @@ class DizimosController extends Controller
         $dataFi = $request->input('datafi') ?? '5000-01-01';
 
 
-
+        
 
         $user_id = $request->id;
-        $nome = $request->nome;
-        $dizimos = dizimos::where('user_id', $user_id)->get();
-        $totaldizimos = dizimos::query()->where('user_id', $user_id)->get()->sum('valor');
+       
         
 
 
@@ -51,9 +49,12 @@ class DizimosController extends Controller
             'nome' => $request->nome
         ];
 
+  
+
 
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
             unset($dados['dataini'], $dados['datafi']);
+            
             return view('pagina.dizimo', $dados);
         }
 
@@ -69,10 +70,11 @@ class DizimosController extends Controller
     {
 
         $data = $request->data;
-
+       
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
+         
             dizimos::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {
@@ -87,7 +89,7 @@ class DizimosController extends Controller
 
 
 
-    public function botao_excluir_despesas(request $request)
+    public function botao_excluir_dizimo(request $request)
     {
         $data = $request->data;
         $verificar = MeuServico::Verificar($data);
