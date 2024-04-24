@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\RedirectResponse;
-
+use Illuminate\Support\Facades\Auth;
 
 class OfertasController extends Controller
 {
@@ -26,11 +26,11 @@ class OfertasController extends Controller
 
             $dataIni = $request->input('dataini') ?? '1900-01-01';
             $dataFi = $request->input('datafi') ?? '5000-01-01';
-
+            $user_id = Auth::id();
 
         $dados = [
-            'ofertas' => ofertas::whereBetween('data', [$dataIni, $dataFi])->get(),
-            'totalofertas' => ofertas::whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'ofertas' => ofertas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'totalofertas' => ofertas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi
@@ -50,11 +50,12 @@ class OfertasController extends Controller
 
     public function botao_registrar_oferta(request $request)
     {
-
+        $user_id = Auth::id();
         $data = $request->data;
 
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
+            $dados['user_id'] = $user_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
             ofertas::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');

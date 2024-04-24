@@ -27,11 +27,11 @@ class DespesasController extends Controller
 
             $dataIni = $request->input('dataini') ?? '1900-01-01';
             $dataFi = $request->input('datafi') ?? '5000-01-01';
-
+            $user_id = Auth::id();
 
         $dados = [
-            'despesas' => despesas::whereBetween('data', [$dataIni, $dataFi])->get(),
-            'totaldespesas' => despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'despesas' => despesas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'totaldespesas' => despesas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi
@@ -53,7 +53,8 @@ class DespesasController extends Controller
         $data = $request->data;
         $user_id = Auth::id();
        
-     
+        
+ 
 
        
 
