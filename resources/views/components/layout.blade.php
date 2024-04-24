@@ -16,12 +16,12 @@
 
         <div class="conteiner-titulo">
 
-            <h1>@yield('titulo')</h1>
+            <h1>@yield('titulo')</h1>   <div id="logout" ><a href="/logout">Sair</a></div>
         </div>
 
         <main class="conteiner-menu-pesquisa-conteudo">
             
-            <div class="menu-esquerdo">
+            <div id="menu-esquerdo" >
                 <h1 class="h1-menu">Menu</h1>
                 <a href="/">Home</a>
                 <a href="/cadastro/membro">Cadastro Membro</a>
@@ -49,7 +49,7 @@
 
         </main>
 
-        <div class="barrainferior">@Copyright</div>
+        <div class="barrainferior">Usuário:&nbsp<span>{{ Auth::User()->user }}</span></div>
 
     </div>
 

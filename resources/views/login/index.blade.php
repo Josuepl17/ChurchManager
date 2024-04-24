@@ -199,6 +199,17 @@ body {
     <div class="user-box">
       <input type="password" name="password" required="">
       <label>Senha:</label>
+      <span>
+
+      @if (Session::has('falha'))
+
+        <p style="color: red;" >{{ Session::get('falha') }}</p>
+        {{ Session::forget('falha') }}
+
+    @endif
+
+
+      </span>
     </div>
     <div id="login">
       <a href="">

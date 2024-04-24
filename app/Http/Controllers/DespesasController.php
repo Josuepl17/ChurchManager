@@ -9,12 +9,14 @@ use App\Models\ofertas;
 use App\Models\usuarios;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Models\User;
 use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Else_;
 
 class DespesasController extends Controller
@@ -49,10 +51,18 @@ class DespesasController extends Controller
     {
 
         $data = $request->data;
+        $user_id = Auth::id();
+       
+     
+
+       
 
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
+            $dados['user_id'] = $user_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
+           
+        
             despesas::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {

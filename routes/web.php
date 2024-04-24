@@ -71,5 +71,5 @@ Route::post('/login/if', [ControllerIgreja::class, 'authenticate']);
 Route::get('/cadastro/login', [ControllerIgreja::class, 'form_login']);
 Route::post('/cadastro/user', [ControllerIgreja::class, 'cadastro_user']);
 
-
+Route::get('/logout', [ControllerIgreja::class, 'logout']);
 Route::get('/pesquisa', [MembrosController::class, 'pesquisa']);

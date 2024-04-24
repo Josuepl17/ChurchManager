@@ -13,4 +13,6 @@ class usuarios extends Model
     public function dizimos(){
         return $this->hasMany(dizimos::class);
     }
+
+
 }

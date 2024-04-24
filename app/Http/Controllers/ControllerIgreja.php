@@ -22,62 +22,6 @@ class ControllerIgreja extends Controller
 
 
 
-    public function Vcreate(Request $request){
-
-        $primeiroregistro = caixas::value('dataini') ?? '';
-        $ultimoregistro = caixas::latest('datafi')->first();
-        $ultimo = $ultimoregistro->datafi ?? '';
-
-        if ( $request->data > $primeiroregistro  && $request->data > $ultimo) {
-            session()->flash('alert', 'Registro inserido com sucesso!');
-           return;
-        } else {
-            session()->flash('alert', 'Atenção!! O Caixa Esta Fechado');
-            return redirect('/relatorio');
-            
-        }
-
-
-        
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-   
-
-
-
-
-
-
-
 
     /* LOGIN*/
 
@@ -100,9 +44,9 @@ class ControllerIgreja extends Controller
         }
     
         // Autenticação falhou
-        return back()->withErrors([
-            'email' => 'As credenciais fornecidas estão incorretas.',
-        ]);
+        Session()->flash('falha',  'Login Incorreto');
+        return redirect('/login');
+        
     }
 
 
@@ -124,5 +68,11 @@ class ControllerIgreja extends Controller
     public function form_login(){
         return view('login.cadastro');
     }
+
+    public function logout() {
+        Auth::logout();
+        return redirect('/login');
+    }
+    
     
 }
