@@ -31,13 +31,7 @@
                 <a href="/indexcaixa">Caixa</a>
             </div>
 
-            <div class="conteiner-navtable">
-
-
-
-
-
-
+        
                 <div class="conteiner-tabela">
 
 
@@ -45,11 +39,15 @@
 
 
                 </div>
-            </div>
+            
+
+            
 
         </main>
 
         <div class="barrainferior">Usuário:&nbsp<span>{{ Auth::User()->user }}</span></div>
+
+        
 
     </div>
 
