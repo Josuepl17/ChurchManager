@@ -173,7 +173,7 @@
     /* Tabela*/
     .conteiner-tabela {
     display: flex;
-    
+    flex-direction: column;
     border: 1px solid black;
     width: 82%;
     height: 97.5%;
@@ -181,6 +181,7 @@
     border: 1px solid black;
     font-size: 20px;
     overflow: auto;
+    margin-left: 5px;
     }
     
     #menutabela-barra{
