@@ -18,7 +18,7 @@
 
         <div class="conteiner-titulo">
             <h1>@yield('titulo')</h1>
-            
+            <div id="logout" ><a href="/logout">Sair</a></div>
         </div>
 
 

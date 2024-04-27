@@ -27,7 +27,7 @@
 
             border: 1px solid rgba(0, 0, 0, 0.34);
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
 
         }
 
@@ -41,7 +41,7 @@
 
         th {
             border: 1px solid black;
-            font-size: 20px;
+            font-size: 16px;
             color: white;
             background-color: var(--subtitulos);
             position: sticky;
@@ -59,7 +59,7 @@
         .excluir {
             margin: auto;
             background-color: red;
-            font-size: 20px;
+            font-size: 16px;
             height: 100%;
             width: 100%;
             color: white;
@@ -71,7 +71,7 @@
         .inserir {
             margin: auto;
             background-color: rgb(0, 48, 0);
-            font-size: 20px;
+            font-size: 16px;
             color: white;
             height: 100%;
             width: 100%;
