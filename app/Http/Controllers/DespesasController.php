@@ -27,11 +27,11 @@ class DespesasController extends Controller
 
             $dataIni = $request->input('dataini') ?? '1900-01-01';
             $dataFi = $request->input('datafi') ?? '5000-01-01';
-            $user_id = Auth::id();
+            $empresa_id = auth()->user()->empresa_id;
 
         $dados = [
-            'despesas' => despesas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
-            'totaldespesas' => despesas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'despesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi
@@ -52,7 +52,7 @@ class DespesasController extends Controller
 
         $data = $request->data;
         $user_id = Auth::id();
-       
+        $empresa_id = auth()->user()->empresa_id;
         
  
 
@@ -61,6 +61,7 @@ class DespesasController extends Controller
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
             $dados['user_id'] = $user_id;
+            $dados['empresa_id'] = $empresa_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
            
         

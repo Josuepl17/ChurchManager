@@ -189,6 +189,14 @@ body {
       <input type="password" name="password" required="">
       <label>Senha</label>
     </div>
+    <div class="user-box">
+      <input type="text" name="razao" required="">
+      <label>Razão Social</label>
+    </div>
+    <div class="user-box">
+      <input type="cnpj" name="cnpj" required="">
+      <label>CNPJ</label>
+    </div>
     <a href="">
       <span></span>
       <span></span>

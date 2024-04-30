@@ -8,6 +8,8 @@ use App\Models\ofertas;
 use App\Models\usuarios;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Models\empresa;
+use App\Models\empresas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,10 +57,19 @@ class ControllerIgreja extends Controller
 
     public function cadastro_user(Request $request){
         
+
+        $empresa = new empresas();
+        $empresa->razao = $request->razao;
+        $empresa->cnpj = $request->cnpj;
+        $empresa->save();
+
         $user = new User();
         $user->user = $request->user;
         $user->password = Hash::make($request->password);
+        $user->empresa_id = $empresa->id;
         $user->save();
+        
+        
         return redirect('/login');
     
 

@@ -27,10 +27,11 @@ class OfertasController extends Controller
             $dataIni = $request->input('dataini') ?? '1900-01-01';
             $dataFi = $request->input('datafi') ?? '5000-01-01';
             $user_id = Auth::id();
+            $empresa_id = auth()->user()->empresa_id;
 
         $dados = [
-            'ofertas' => ofertas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
-            'totalofertas' => ofertas::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'ofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi
@@ -52,9 +53,11 @@ class OfertasController extends Controller
     {
         $user_id = Auth::id();
         $data = $request->data;
+        $empresa_id = auth()->user()->empresa_id;
 
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->all();
+            $dados['empresa_id'] = $empresa_id;
             $dados['user_id'] = $user_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
             ofertas::create($dados);
