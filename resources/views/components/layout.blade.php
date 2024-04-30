@@ -19,6 +19,7 @@
         <div class="conteiner-titulo">
             <h1>@yield('titulo')</h1>
             <div id="logout" ><a href="/logout">Sair</a></div>
+            <div id="novo_usuario" ><a href="/cadastro/login/novo">Novo Usuario</a></div>
         </div>
 
 

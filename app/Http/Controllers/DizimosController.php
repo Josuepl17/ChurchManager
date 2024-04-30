@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Auth;
 
 class DizimosController extends Controller
 {
@@ -32,8 +33,8 @@ class DizimosController extends Controller
 
         
 
-        $user_id = $request->user_id;
-     
+       
+        $empresa_id = auth()->user()->empresa_id;
        
     
 
@@ -41,13 +42,13 @@ class DizimosController extends Controller
 
 
         $dados = [
-            'dizimos' => dizimos::where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'dizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             
-            'totaldizimos' => dizimos::query()->where('user_id', $user_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
+            'totaldizimos' => dizimos::query()->where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
-            'user_id' => $request->user_id,
+            'usuario_id' => $request->usuario_id,
             'nome' => $request->nome
         ];
 
@@ -74,10 +75,13 @@ class DizimosController extends Controller
     {
 
         $data = $request->data;
+        $user_id = Auth::id();
+        $empresa_id = auth()->user()->empresa_id;
        
         if (MeuServico::Verificar($data) == true) {
-            $dados = $request->only('id', 'data', 'valor', 'user_id');
-           
+            $dados = $request->only('id', 'data', 'valor', 'usuario_id');
+            $dados['user_id'] = $user_id;
+            $dados['empresa_id'] = $empresa_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
          
             dizimos::create($dados);

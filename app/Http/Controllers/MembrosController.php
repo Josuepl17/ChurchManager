@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Auth;
 
 class MembrosController extends Controller
 {
@@ -30,9 +31,13 @@ class MembrosController extends Controller
 
     public function botao_inserir_membro(request $request)
     {
+        $user_id = Auth::id();
+        $empresa_id = auth()->user()->empresa_id;
         $dados = $request->all();
-        $DADOS1 =  array_map('strtoupper', array_map('strval', $dados));
-        usuarios::create($DADOS1);
+        $dados['user_id'] = $user_id;
+        $dados['empresa_id'] = $empresa_id;
+        $dados =  array_map('strtoupper', array_map('strval', $dados));
+        usuarios::create($dados);
         return redirect('/');
     }
 
@@ -40,7 +45,7 @@ class MembrosController extends Controller
     public function excluir_membro(request $request)
     {
         $destroy = $request->id;
-        dizimos::where('user_id', $destroy)->forceDelete();
+        //dizimos::where('user_id', $destroy)->forceDelete();
         usuarios::destroy($destroy);
         return redirect('/');
     }

@@ -245,7 +245,7 @@
 
 <div class="table2">
     <div class="filtro">
-        <form action="/filtrar/dizimo/{{ $user_id }}/{{ $nome }}" method="get">
+        <form action="/filtrar/dizimo/{{ $usuario_id }}/{{ $nome }}" method="get">
             <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
             <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
             <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
@@ -272,7 +272,7 @@
                     <form method="post" class="formx" action="/dizimos/destoy/id"><button class="excluir">X</button>
                         <input type="hidden" name="data" value="{{$dizimo->data}}">
                         <input type="hidden" name="id" value="{{$dizimo->id}}">
-                        <input type="hidden" name="user_id" value="{{$dizimo->user_id}}">
+                        <input type="hidden" name="usuario_id" value="{{$dizimo->usuario_id}}">
                         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
                         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
                         <input type="hidden" name="nome" value="{{ $nome }}">
@@ -298,7 +298,7 @@
 
 <form class="id" action="/registrar/dizimo" method="post">
     @csrf
-    <input type="hidden" name="user_id" value="{{ $user_id }}">
+    <input type="hidden" name="usuario_id" value="{{ $usuario_id}}">
     <input type="hidden" name="nome" value="{{ $nome }}">
     <label for="data">Data:</label>
     <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>

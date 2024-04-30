@@ -57,17 +57,27 @@ class ControllerIgreja extends Controller
 
     public function cadastro_user(Request $request){
         
+        if($request->razao && $request->cnpj){
+            $empresa = new empresas();
+            $empresa->razao = $request->razao;
+            $empresa->cnpj = $request->cnpj;
+            $empresa->save();
+        }
 
-        $empresa = new empresas();
-        $empresa->razao = $request->razao;
-        $empresa->cnpj = $request->cnpj;
-        $empresa->save();
-
-        $user = new User();
-        $user->user = $request->user;
-        $user->password = Hash::make($request->password);
-        $user->empresa_id = $empresa->id;
-        $user->save();
+        if($request->user){
+            $empresa = new empresas();
+            $user = new User();
+            $user->user = $request->user;
+            $user->password = Hash::make($request->password);
+            
+            if($empresa->id = null ){
+                $user->empresa_id = auth()->user()->empresa_id;
+                dd($empresa->id);
+            }
+            
+            $user->save();
+        }
+        
         
         
         return redirect('/login');
@@ -78,6 +88,10 @@ class ControllerIgreja extends Controller
 
     public function form_login(){
         return view('login.cadastro');
+    }
+
+    public function form_login_novo(){
+        return view('login.cadastro_user');
     }
 
     public function logout() {

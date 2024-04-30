@@ -55,11 +55,31 @@
     
     
     }
+
+
+    #novo_usuario{
+        position: absolute;
+        right: 85px;
+        top: 25px;
+    }
+    #novo_usuario a{
+    
+        background-color: var(--subtitulos);
+        padding-left: 10px;
+        padding-right: 10px;
+        }
+        
+        #novo_usuario a:hover{
+        background-color: var(--fundos);
+        transition: 0.3s;
+        }
+
+
     
     #logout{
     position: absolute;
     right: 29px;
-    top: 20px;
+    top: 25px;
     
     
     }

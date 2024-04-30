@@ -33,7 +33,7 @@ Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro'
 Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
 
                             /*Dizimos Por Usuario*/
-Route::get('/inserir/dizimos/{user_id}/{nome}', [DizimosController::class, 'filter_page']);
+Route::get('/inserir/dizimos/{usuario_id}/{nome}', [DizimosController::class, 'filter_page']);
 Route::post('/registrar/dizimo', [DizimosController::class, 'botao_registrar_dizimo']);
 Route::post('/dizimos/destoy/id', [DizimosController::class, 'botao_excluir_dizimo']);
 Route::get('/filtrar/dizimo/{user_id}/{nome}', [DizimosController::class, 'filter_page']);
@@ -69,6 +69,7 @@ Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
 Route::post('/login/if', [ControllerIgreja::class, 'authenticate']);
 
 Route::get('/cadastro/login', [ControllerIgreja::class, 'form_login']);
+Route::get('/cadastro/login/novo', [ControllerIgreja::class, 'form_login_novo']);
 Route::post('/cadastro/user', [ControllerIgreja::class, 'cadastro_user']);
 
 Route::get('/logout', [ControllerIgreja::class, 'logout']);
