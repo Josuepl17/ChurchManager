@@ -2,7 +2,7 @@
 @extends('components.layout')
 
 @section('conteudo')  
-@section('titulo', 'Igreja Presbiteriana da Renovação' )
+@section('titulo', $razao_empresa )
 @section('titulo-nav', 'IPDR' )
   <style>
         :root {

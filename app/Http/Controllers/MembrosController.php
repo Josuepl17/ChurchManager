@@ -9,6 +9,7 @@ use App\Models\ofertas;
 use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Models\empresas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -21,7 +22,9 @@ class MembrosController extends Controller
     public function index()
     {
         $index = membros::all();
-        return view('pagina.index')->with('index',  $index);
+        $empresa_id = auth()->user()->empresa_id;
+        $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
+        return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa);
     }
 
     public function cadastro_membro()

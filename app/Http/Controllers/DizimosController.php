@@ -9,6 +9,7 @@ use App\Models\ofertas;
 use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Models\empresas;
 use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,9 +33,10 @@ class DizimosController extends Controller
 
 
         
-
+        
        
         $empresa_id = auth()->user()->empresa_id;
+     
         $membro_id = $request->membro_id;
        
        
@@ -79,12 +81,11 @@ class DizimosController extends Controller
         $data = $request->data;
         $user_id = Auth::id();
         $empresa_id = auth()->user()->empresa_id;
-        $membro_id = $request->membro_id;
+        
 
         if (MeuServico::Verificar($data) == true) {
             $dados = $request->only('id', 'data', 'valor', 'membro_id');
             $dados['user_id'] = $user_id;
-            $dados['membro_id'] = $membro_id;
             $dados['empresa_id'] = $empresa_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
          

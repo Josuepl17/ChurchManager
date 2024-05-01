@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\usuarios>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\membros>
  */
 class MembrosFactory extends Factory
 {
@@ -17,10 +17,12 @@ class MembrosFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => $this->faker->nome,
-            'funcao' => $this->faker->funcao,
-            'endereco' => fake()->endereco(),
-            'telefone' => fake()->telefone(),
+            'nome' => $this->faker->name,
+            'funcao' => $this->faker->jobTitle,
+            'endereco' => $this->faker->address,
+            'telefone' => $this->faker->phoneNumber,
+            'empresa_id' => $this->faker->name,
+            'user_id' => $this->faker->name,
             
         ];
     }

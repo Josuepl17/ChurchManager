@@ -179,7 +179,7 @@ body {
 <!-- partial:index.partial.html -->
 <div class="login-box">
   <h2>Crie Sua Conta</h2>
-  <form action="/cadastro/user" method="post" >
+  <form action="/cadastro/usuario" method="post" >
   @csrf
     <div class="user-box">
       <input type="text" name="user" required="">
