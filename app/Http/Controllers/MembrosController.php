@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
-use App\Models\usuarios;
+use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use Illuminate\Http\Request;
@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Auth;
 
 class MembrosController extends Controller
 {
-    /*Usuarios*/
+    /*membros*/
     public function index()
     {
-        $index = usuarios::all();
+        $index = membros::all();
         return view('pagina.index')->with('index',  $index);
     }
 
@@ -37,7 +37,7 @@ class MembrosController extends Controller
         $dados['user_id'] = $user_id;
         $dados['empresa_id'] = $empresa_id;
         $dados =  array_map('strtoupper', array_map('strval', $dados));
-        usuarios::create($dados);
+        membros::create($dados);
         return redirect('/');
     }
 
@@ -46,7 +46,7 @@ class MembrosController extends Controller
     {
         $destroy = $request->id;
         //dizimos::where('user_id', $destroy)->forceDelete();
-        usuarios::destroy($destroy);
+        membros::destroy($destroy);
         return redirect('/');
     }
 
@@ -54,7 +54,7 @@ class MembrosController extends Controller
     public function pesquisa (Request $request){
         $dados = $request->pesquisa;
        
-        $index = usuarios::where('nome', 'LIKE', "%{$dados}%")->get();
+        $index = membros::where('nome', 'LIKE', "%{$dados}%")->get();
         return view('pagina.index')->with('index',  $index);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
-use App\Models\usuarios;
+use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use App\Models\empresa;
@@ -57,32 +57,37 @@ class ControllerIgreja extends Controller
 
     public function cadastro_user(Request $request){
         
-        if($request->razao && $request->cnpj){
+        
             $empresa = new empresas();
             $empresa->razao = $request->razao;
             $empresa->cnpj = $request->cnpj;
             $empresa->save();
-        }
 
-        if($request->user){
-            $empresa = new empresas();
             $user = new User();
             $user->user = $request->user;
             $user->password = Hash::make($request->password);
-            
-            if($empresa->id = null ){
-                $user->empresa_id = auth()->user()->empresa_id;
-                dd($empresa->id);
-            }
+            $user->empresa_id = $empresa->id;
+                
+        
             
             $user->save();
-        }
+      
         
         
         
         return redirect('/login');
     
 
+    }
+
+    public function adicionar_usuario(Request $request){
+        $user = new User();
+        $user->user = $request->user;
+        $user->password = Hash::make($request->password);
+        $user->empresa_id = auth()->user()->empresa_id;
+        $user->save();
+        return redirect('/login');
+    
     }
 
 

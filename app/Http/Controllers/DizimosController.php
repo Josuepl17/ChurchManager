@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
-use App\Models\usuarios;
+use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use App\Services\MeuServico;
@@ -35,6 +35,8 @@ class DizimosController extends Controller
 
        
         $empresa_id = auth()->user()->empresa_id;
+        $membro_id = $request->membro_id;
+       
        
     
 
@@ -42,13 +44,13 @@ class DizimosController extends Controller
 
 
         $dados = [
-            'dizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'dizimos' => dizimos::where('empresa_id', $empresa_id)->where('membro_id', $membro_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             
             'totaldizimos' => dizimos::query()->where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
-            'usuario_id' => $request->usuario_id,
+            'membro_id' => $request->membro_id,
             'nome' => $request->nome
         ];
 
@@ -77,10 +79,12 @@ class DizimosController extends Controller
         $data = $request->data;
         $user_id = Auth::id();
         $empresa_id = auth()->user()->empresa_id;
-       
+        $membro_id = $request->membro_id;
+
         if (MeuServico::Verificar($data) == true) {
-            $dados = $request->only('id', 'data', 'valor', 'usuario_id');
+            $dados = $request->only('id', 'data', 'valor', 'membro_id');
             $dados['user_id'] = $user_id;
+            $dados['membro_id'] = $membro_id;
             $dados['empresa_id'] = $empresa_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
          

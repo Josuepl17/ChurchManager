@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
-use App\Models\usuarios;
+use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use Illuminate\Http\Request;

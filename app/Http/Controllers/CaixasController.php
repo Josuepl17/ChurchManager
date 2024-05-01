@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
-use App\Models\usuarios;
+use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class CaixasController extends Controller
 
     public function relatorio()
     {
-        $qtymembros = usuarios::count();
+        $qtymembros = membros::count();
         $totalofertas = ofertas::query()->sum('valor');
         $totaldizimos = dizimos::query()->sum('valor');
         $totaldespesas = despesas::query()->sum('valor');
@@ -52,7 +52,7 @@ class CaixasController extends Controller
         $totalofertas = ofertas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         $totaldespesas = despesas::whereBetween('data', [$dataIni, $dataFi])->sum('valor');
         $saldo = $totaldizimos + $totalofertas - $totaldespesas;
-        $qtymembros = usuarios::count();
+        $qtymembros = membros::count();
         return view('pagina.relatorio')->with('totaldizimos', $totaldizimos)->with('totaldespesas', $totaldespesas)->with('totalofertas', $totalofertas)->with('qtymembros', $qtymembros)->with('dataIni', $dataIni)->with('dataFi', $dataFi)->with('saldo', $saldo);;
     }
 
