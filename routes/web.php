@@ -69,9 +69,11 @@ Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
 Route::post('/login/if', [ControllerIgreja::class, 'authenticate']);
 
 Route::get('/cadastro/login', [ControllerIgreja::class, 'form_login']);
-Route::get('/cadastro/login/novo', [ControllerIgreja::class, 'form_login_novo']);
 Route::post('/cadastro/usuario', [ControllerIgreja::class, 'cadastro_user']);
-Route::post('/cadastro/user/novo', [ControllerIgreja::class, 'adicionar_usuario']);
+Route::get('/cadastro/login/novo', [ControllerIgreja::class, 'form_login_novo']);
+Route::post('/cadastro/user/adicionar', [ControllerIgreja::class, 'adicionar_usuario']);
+
+
 
 Route::get('/logout', [ControllerIgreja::class, 'logout']);
 Route::get('/pesquisa', [MembrosController::class, 'pesquisa']);

@@ -59,23 +59,18 @@ class ControllerIgreja extends Controller
 
         $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
         $existirusuario = User::where('user', $request->user)->first();
-      //  dd($existirusuario);
-        $existirsenha = hash::check($request->password, User);
-        dd($existirsenha);
 
+    
         if ($existingEmpresa) {
-            return "falha empresa";
+            Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
+            return redirect()->back();
         } 
 
         if ($existirusuario) {
-            return "falha usuario";
+            Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
+            return redirect()->back();
         } 
 
-        if ($existirsenha) {
-            return "falha senha";
-        } 
-
-        
 
 
         $empresa = new empresas();

@@ -83,13 +83,13 @@ body {
 }
 
 .login-box a:hover {
-  background: #03e9f4;
+  
   color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px #03e9f4,
-              0 0 25px #03e9f4,
-              0 0 50px #03e9f4,
-              0 0 100px #03e9f4;
+              0 0 5px #03e9f4,
+              0 0 5px #03e9f4,
+              0 0 5px #03e9f4;
 }
 
 .login-box a span {
@@ -172,6 +172,32 @@ body {
   }
 }
 
+.msg {
+        position: absolute;
+        z-index: 999;
+        right: 25px;
+        top: 16px;
+        border: 1px solid black;
+        width: 350px;
+        height: 40px;
+        
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: sumir 6s forwards;
+        border-radius: 0px 20px 0px 20px;
+    }
+
+    @keyframes sumir {
+            to {
+                opacity: 0;
+                /* torna o elemento transparente */
+                visibility: hidden;
+                /* oculta o elemento da tela */
+            }
+        }
+
   </style>
 
 </head>
@@ -213,7 +239,12 @@ body {
     </a>
   </form>
 </div>
-<!-- partial -->
+@if (Session::has('falha'))
+    <div style="background-color: red;" class="msg">
+        <p>{{ Session::get('falha') }}</p>
+    </div>
+    {{ Session::forget('falha') }}
+@endif
   
 </body>
 </html>
