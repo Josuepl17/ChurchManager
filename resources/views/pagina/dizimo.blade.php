@@ -5,10 +5,11 @@
 
 
 <style>
-:root {
+    :root {
         --titulos: #0A1626;
         --subtitulos: #023859;
         --fundos: #0D8AA6;
+
         --cor-secundaria: #313131e7;
     }
 
@@ -17,6 +18,8 @@
         flex-direction: column;
         width: 100%;
         height: 80%;
+
+
 
 
 
@@ -106,10 +109,11 @@
         border-collapse: collapse;
 
 
-
+        overflow: auto;
         margin: auto;
         border-radius: 50px;
         width: 100%;
+
         background-color: white;
         margin-top: 0px;
         color: black;
@@ -142,7 +146,7 @@
         color: white;
         background-color: var(--subtitulos);
         position: sticky;
-        top: -1px;
+        top: 0px;
         padding-top: 5px;
 
     }
@@ -181,6 +185,7 @@
     .valortotal p {
         color: black;
         padding-right: 10px;
+
         background-color: white;
 
 
@@ -204,7 +209,14 @@
         border-radius: 0px;
         margin-top: -3px;
 
+
     }
+
+    /*.relatorio{
+            display: flex;
+            width: 40%;
+            
+        }*/
 
     .conteudo {
         display: flex;

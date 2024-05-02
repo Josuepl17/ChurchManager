@@ -205,7 +205,7 @@ body {
 <!-- partial:index.partial.html -->
 <div class="login-box">
   <h2>Adicionando Conta</h2>
-  <form action="/cadastro/user/novo" method="post" >
+  <form action="/cadastro/user/adicionar" method="post" >
   @csrf
     <div class="user-box">
       <input type="text" name="user" required="">

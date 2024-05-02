@@ -39,10 +39,6 @@ class DizimosController extends Controller
      
         $membro_id = $request->membro_id;
        
-       
-    
-
-
 
 
         $dados = [

@@ -3,7 +3,7 @@
 
 @section('conteudo')  
 @section('titulo', $razao_empresa )
-@section('titulo-nav', 'IPDR' )
+@section('titulo-nav', $razao_empresa )
   <style>
         :root {
             --titulos: #0A1626;

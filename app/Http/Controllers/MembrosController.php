@@ -21,7 +21,8 @@ class MembrosController extends Controller
     /*membros*/
     public function index()
     {
-        $index = membros::all();
+        $id_empresa_autenticada = auth()->user()->empresa_id;
+        $index = membros::where('empresa_id', $id_empresa_autenticada)->get();
         $empresa_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
         return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa);
