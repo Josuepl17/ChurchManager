@@ -7,7 +7,7 @@
     <title>@yield('titulo-nav')</title>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('\icone.ico') }}" type="image/x-icon">
-   
+
 
 
 </head>
@@ -18,8 +18,8 @@
 
         <div class="conteiner-titulo">
             <h1>@yield('titulo')</h1>
-            <div id="logout" ><a href="/logout">Sair</a></div>
-            <div id="novo_usuario" ><a href="/cadastro/login/novo">Novo Usuario</a></div>
+            <div id="logout"><a href="/logout">Sair</a></div>
+            <div id="novo_usuario"><a href="/cadastro/login/novo">Novo Usuario</a></div>
         </div>
 
 
@@ -45,21 +45,7 @@
                 <div class="barrainferior">Usuário:&nbsp<span>{{ Auth::User()->user }}</span></div>
             </div>
 
-
-
-
-
-
-
-
-
-
-
         </main>
-
-
-
-
 
     </div>
 

@@ -113,7 +113,7 @@
         margin: auto;
         border-radius: 50px;
         width: 100%;
-
+        
         background-color: white;
         margin-top: 0px;
         color: black;
@@ -221,7 +221,7 @@
     .conteudo {
         display: flex;
         width: 100%;
-        height: 100%;
+        max-height: 450px;
         overflow: auto;
     }
 
