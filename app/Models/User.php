@@ -30,10 +30,10 @@ class User extends Authenticatable
 
 
 
-    public function despesas()
-    {
-        return $this->hasMany(despesas::class);
-    }
+    //public function despesas()
+    //{
+    //    return $this->hasMany(despesas::class);
+    //}
 
 
 

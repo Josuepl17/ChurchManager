@@ -24,10 +24,10 @@ class DespesasController extends Controller
 
     public function filter_page(Request $request)
     {
+        $dataIni = $request->dataini ?? '1900-01-01';
+        $dataFi = $request->datafi ?? '5000-01-01';
 
-            $dataIni = $request->input('dataini') ?? '1900-01-01';
-            $dataFi = $request->input('datafi') ?? '5000-01-01';
-            $empresa_id = auth()->user()->empresa_id;
+        $empresa_id = auth()->user()->empresa_id;
 
         $dados = [
             'despesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
@@ -43,29 +43,20 @@ class DespesasController extends Controller
             return view('pagina.despesas', $dados);
         }
 
-            return view('pagina.despesas', $dados);
+        return view('pagina.despesas', $dados);
     }
 
 
     public function botao_registrar_despesas(request $request)
     {
 
-        $data = $request->data;
-        $user_id = Auth::id();
-        $empresa_id = auth()->user()->empresa_id;
-        
- 
-
-       
-
-        if (MeuServico::Verificar($data) == true) {
+        if (MeuServico::Verificar($request->data) == true) {
             $dados = $request->all();
-            $dados['user_id'] = $user_id;
-            $dados['empresa_id'] = $empresa_id;
+            $dados['user_id'] = Auth::id(); //acessa o ID do usuario Autenticado
+            $dados['empresa_id'] = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
-           
-        
             despesas::create($dados);
+            
             Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
@@ -78,21 +69,14 @@ class DespesasController extends Controller
 
     public function botao_excluir_despesas(request $request)
     {
-        $data = $request->data;
-        $verificar = MeuServico::Verificar($data);
 
-        if ($verificar) {
+        if (MeuServico::Verificar($request->data)) {
             $destroy = $request->id;
             despesas::destroy($destroy);
             Session()->flash('sucesso',  'Item Apagado com Sucesso');
         } else {
             Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
-            return $this->filter_page(MeuServico::post_filter($request));
+        return $this->filter_page(MeuServico::post_filter($request));
     }
-
-
-
-
-
 }
