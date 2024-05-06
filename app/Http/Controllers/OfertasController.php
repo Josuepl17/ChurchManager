@@ -9,6 +9,8 @@ use App\Models\ofertas;
 use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Models\empresas;
+use App\Models\User;
 use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +30,13 @@ class OfertasController extends Controller
         $dataFi = $request->datafi ?? '5000-01-01';
 
         $empresa_id = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
+        
+       // $j = Auth::user()->ofertas->where('valor', '=', '50'); // pega  o usuario autenticado, e acessa a função Oferta, dentro da model User, definida no relacionamento ai faz um select com essa condição.
+       $teste = Auth::user();
+       $teste = $teste->empresas;
+       dd($teste);
+       
+        
 
         $dados = [
             'ofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
