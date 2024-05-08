@@ -40,10 +40,10 @@ Route::get('/filtrar/dizimo/{user_id}/{nome}', [DizimosController::class, 'filte
 
 
                              /*Ofertas*/
-Route::get('/oferta', [OfertasController::class, 'filter_page']);
-Route::post('/registrar/oferta', [OfertasController::class, 'botao_registrar_oferta']);
-Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_oferta']);
-Route::get('/filtrar/ofertas', [OfertasController::class, 'filter_page']);
+Route::get('/oferta', [OfertasController::class, 'filter_page'])->middleware('auth');
+Route::post('/registrar/oferta', [OfertasController::class, 'botao_registrar_oferta'])->middleware('auth');
+Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_oferta'])->middleware('auth');
+Route::get('/filtrar/ofertas', [OfertasController::class, 'filter_page'])->middleware('auth');
 
                             /* Despesas */
 Route::get('/despesas', [DespesasController::class, 'filter_page']);

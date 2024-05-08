@@ -32,9 +32,9 @@ class OfertasController extends Controller
         $empresa_id = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
         
        // $j = Auth::user()->ofertas->where('valor', '=', '50'); // pega  o usuario autenticado, e acessa a função Oferta, dentro da model User, definida no relacionamento ai faz um select com essa condição.
-       $teste = Auth::user();
-       $teste = $teste->empresas;
-       dd($teste);
+       //$teste = Auth::user();
+      // $teste = $teste->empresas;
+       //dd($teste);
        
         
 

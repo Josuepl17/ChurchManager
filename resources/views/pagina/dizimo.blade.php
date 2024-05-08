@@ -221,7 +221,8 @@
     .conteudo {
         display: flex;
         width: 100%;
-        max-height: 450px;
+        min-height: 85%;
+       
         overflow: auto;
     }
 

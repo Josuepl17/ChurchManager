@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Animated Login form with glow button | Glowing Login Form</title>
+  <title>Faça Login</title>
   <style>
     html {
   height: 100%;
