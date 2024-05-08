@@ -117,7 +117,7 @@
         border-collapse: collapse;
 
 
-
+   
         margin: auto;
         border-radius: 50px;
         width: 100%;
@@ -132,6 +132,7 @@
 
     td:hover {
         color: white;
+        
     }
 
 
@@ -148,6 +149,7 @@
         position: sticky;
         top: -1px;
         padding-top: 5px;
+        
 
     }
 
@@ -215,6 +217,7 @@
         width: 100%;
         height: 450px;
         overflow: auto;
+        
     }
 
     select {

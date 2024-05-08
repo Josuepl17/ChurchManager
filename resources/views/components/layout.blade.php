@@ -18,8 +18,6 @@
 
         <div class="conteiner-titulo">
             <h1>@yield('titulo')</h1>
-            <div id="logout"><a href="/logout">Sair</a></div>
-            <div id="novo_usuario"><a href="/cadastro/login/novo">Novo Usuario</a></div>
         </div>
 
 
@@ -35,6 +33,8 @@
                         <a href="/despesas">Cadastro Despesas</a>
                         <a href="/relatorio">Relatorios</a>
                         <a href="/indexcaixa">Caixa</a>
+                        <a href="/cadastro/login/novo">Novo Usuario</a>
+                        <a  href="/logout"><img  src="{{ asset('\sair.png') }}" alt="">&nbspLogout</a>
                     </div>
                     <div class="conteiner-tabela">
                         @yield('conteudo')

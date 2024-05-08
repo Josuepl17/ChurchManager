@@ -1,8 +1,8 @@
 :root {
 
-    --titulos: #0A1626;
-    --subtitulos: #023859;
-    --fundos: #0D8AA6;
+    --titulos: #0a1727;
+    --subtitulos: #012841;
+    --fundos: #0d8aa6;
     --cor-secundaria: #5353533d;
     }
     
@@ -84,17 +84,7 @@
     
     }
     
-    #logout a{
-    
-    background-color: var(--subtitulos);
-    padding-left: 10px;
-    padding-right: 10px;
-    }
-    
-    #logout a:hover{
-    background-color: var(--fundos);
-    transition: 0.3s;
-    }
+
     
     .conteiner-titulo h1 {
     font-size: 16px;
@@ -153,7 +143,9 @@
     }
     
     a {
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     width: 100%;
     padding-bottom: 3px;
