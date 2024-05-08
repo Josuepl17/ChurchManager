@@ -28,23 +28,17 @@ class DizimosController extends Controller
     public function filter_page(Request $request)
     {
 
-        $dataIni = $request->input('dataini') ?? '1900-01-01';
-        $dataFi = $request->input('datafi') ?? '5000-01-01';
-
-
-        
-        
-       
-        $empresa_id = auth()->user()->empresa_id;
-     
+        $dataIni = $request->dataini ?? '1900-01-01';
+        $dataFi = $request->datafi ?? '5000-01-01';
+        $empresa_id = Auth::user()->empresa_id;
         $membro_id = $request->membro_id;
-       
+
 
 
         $dados = [
-            'dizimos' => dizimos::where('empresa_id', $empresa_id)->where('membro_id', $membro_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
-            
-            'totaldizimos' => dizimos::query()->where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
+            'dizimos' => dizimos::where('empresa_id' , $empresa_id)->where('membro_id', $membro_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+
+            'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
@@ -52,18 +46,17 @@ class DizimosController extends Controller
             'nome' => $request->nome
         ];
 
-       
-    
-  
+
+
+
 
 
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
             unset($dados['dataini'], $dados['datafi']);
-            
             return view('pagina.dizimo', $dados);
         }
 
-        return view('pagina.dizimo', $dados);
+            return view('pagina.dizimo', $dados);
     }
 
 
@@ -73,26 +66,20 @@ class DizimosController extends Controller
 
     public function botao_registrar_dizimo(request $request)
     {
-
-        $data = $request->data;
-        $user_id = Auth::id();
-        $empresa_id = auth()->user()->empresa_id;
-        
-
-        if (MeuServico::Verificar($data) == true) {
+        if (MeuServico::Verificar($request->data) == true) {
             $dados = $request->only('id', 'data', 'valor', 'membro_id');
-            $dados['user_id'] = $user_id;
-            $dados['empresa_id'] = $empresa_id;
+            $dados['user_id'] = Auth::id();
+            $dados['empresa_id'] = Auth::user()->empresa_id;
+
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
-         
+
             dizimos::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
-        
-        return $this->filter_page(MeuServico::post_filter($request));
-       
+
+            return $this->filter_page(MeuServico::post_filter($request));
     }
 
 

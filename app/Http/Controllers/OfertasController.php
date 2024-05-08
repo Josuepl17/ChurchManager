@@ -9,6 +9,8 @@ use App\Models\ofertas;
 use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
+use App\Models\empresas;
+use App\Models\User;
 use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +26,17 @@ class OfertasController extends Controller
     public function filter_page(Request $request)
     {
 
-            $dataIni = $request->input('dataini') ?? '1900-01-01';
-            $dataFi = $request->input('datafi') ?? '5000-01-01';
-            $user_id = Auth::id();
-            $empresa_id = auth()->user()->empresa_id;
+        $dataIni = $request->dataini ?? '1900-01-01';
+        $dataFi = $request->datafi ?? '5000-01-01';
+
+        $empresa_id = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
+        
+       // $j = Auth::user()->ofertas->where('valor', '=', '50'); // pega  o usuario autenticado, e acessa a função Oferta, dentro da model User, definida no relacionamento ai faz um select com essa condição.
+       $teste = Auth::user();
+       $teste = $teste->empresas;
+       dd($teste);
+       
+        
 
         $dados = [
             'ofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
@@ -43,7 +52,7 @@ class OfertasController extends Controller
             return view('pagina.oferta', $dados);
         }
 
-            return view('pagina.oferta', $dados);
+        return view('pagina.oferta', $dados);
     }
 
 
@@ -51,16 +60,13 @@ class OfertasController extends Controller
 
     public function botao_registrar_oferta(request $request)
     {
-        $user_id = Auth::id();
-        $data = $request->data;
-        $empresa_id = auth()->user()->empresa_id;
-
-        if (MeuServico::Verificar($data) == true) {
+        if (MeuServico::Verificar($request->data) == true) {
             $dados = $request->all();
-            $dados['empresa_id'] = $empresa_id;
-            $dados['user_id'] = $user_id;
+            $dados['user_id'] = Auth::id(); // acessa o ID do usuario Autenticado
+            $dados['empresa_id'] = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
             ofertas::create($dados);
+
             Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
@@ -72,19 +78,14 @@ class OfertasController extends Controller
 
     public function botao_excluir_oferta(request $request)
     {
-        $data = $request->data;
-        $verificar = MeuServico::Verificar($data);
 
-        if ($verificar) {
+        if (MeuServico::Verificar($request->data)) {
             $destroy = $request->id;
             ofertas::destroy($destroy);
             Session()->flash('sucesso',  'Item Apagado com Sucesso');
         } else {
             Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
-            return $this->filter_page(MeuServico::post_filter($request));
+        return $this->filter_page(MeuServico::post_filter($request));
     }
-
-
-
 }

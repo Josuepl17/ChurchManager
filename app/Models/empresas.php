@@ -9,4 +9,6 @@ class empresas extends Model
 {
     use HasFactory;
     protected $fillable = ['razao', 'cnpj', 'id'];
+
+
 }
