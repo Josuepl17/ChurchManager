@@ -19,6 +19,32 @@ class CaixasController extends Controller
 {
     /*Caixa*/
 
+    public function filter_page(Request $request)
+    {
+        $dataIni = $request->dataini ?? '1900-01-01';
+        $dataFi = $request->datafi ?? '5000-01-01';
+
+        $empresa_id = auth()->user()->empresa_id;
+
+        $dados = [
+            'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'saldo' => 'totalofertas' + 'totaldizimos' - 'totaldespesas',
+            'datanow' => Carbon::now()->format('Y-m-d'),
+            'dataini' => $request->dataini,
+            'datafi' => $request->datafi
+        ];
+
+
+        if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
+            unset($dados['dataini'], $dados['datafi']);
+            return view('pagina.despesas', $dados);
+        }
+
+        return view('pagina.caixa', $dados);
+    }
+
     public function caixa()
     {
         $totalofertas = ofertas::query()->sum('valor');

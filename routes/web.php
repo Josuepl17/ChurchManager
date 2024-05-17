@@ -52,7 +52,7 @@ Route::POST('/destroy/despesas/id', [DespesasController::class, 'botao_excluir_d
 Route::post('/filtrar/despesas', [DespesasController::class, 'filter_page']);
 
                                 /*Caixa*/
-Route::get('/caixa', [CaixasController::class, 'caixa']);
+Route::get('/caixa', [CaixasController::class, 'filter_page']);
 Route::get('/relatorio', [CaixasController::class, 'relatorio']);
 Route::get('/fpdf', [CaixasController::class, 'fpdf']);
 Route::post('/filtro/pdf', [CaixasController::class, 'filtrarrelatorio']);

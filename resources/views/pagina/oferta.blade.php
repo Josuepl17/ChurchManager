@@ -251,15 +251,19 @@
                 /* oculta o elemento da tela */
             }
         }
+
+        .altura{
+            height: 100%;
+        }
 </style>
 
 
 <div class="table2">
     <div class="filtro">
         <form action="/filtrar/ofertas" method="get">
-            <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
-            <input type="date" name="datafi" id="datafi" value="{{ isset($dataini) ? $dataini : '' }}" required>
-            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
+            <input class="altura" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+            <input class="altura" type="date" name="datafi" id="datafi" value="{{ isset($dataini) ? $dataini : '' }}" required>
+            <input class="altura" type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
         </form>
 
 
