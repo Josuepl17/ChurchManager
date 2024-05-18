@@ -13,9 +13,10 @@ class MeuServico
 
     public static function Verificar($data)
     {
-
-        $primeiroregistro = caixas::value('dataini') ?? '';
-        $ultimoregistro = caixas::latest('datafi')->first();
+        $empresa_id = auth()->user()->empresa_id;
+        $primeiroregistro = caixas::where('empresa_id', $empresa_id)->value('dataini') ?? '';
+        
+        $ultimoregistro = caixas::where('empresa_id', $empresa_id)->latest('datafi')->first();
         $ultimo = $ultimoregistro->datafi ?? '';
 
         if ($data > $primeiroregistro  && $data > $ultimo) {

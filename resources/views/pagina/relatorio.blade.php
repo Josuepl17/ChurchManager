@@ -213,8 +213,8 @@
             <form action="/filtro/pdf" method="post" require>
                 @csrf
 
-                <input type="date" name="dataini" id="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}" required>
-                <input type="date" name="datafi" id="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}" required>
+                <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+                <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
 
                 <input style="border-radius: 0px;" type="submit" value="Filtrar" require>
             </form>
@@ -275,14 +275,14 @@
         </div>
 
         <div class="botao">
-            <a target="_blank" href="/gerar/{{ isset($dataIni) ? $dataIni : '1000-01-01' }}/{{ isset($dataFi) ? $dataFi : '5000-01-01' }}">Gerar Relatorio</a>
+            <a target="_blank" href="/gerar/{{ isset($dataini) ? $dataini : '1900-01-01'}}/{{ isset($datafi) ? $datafi : '5000-01-01'}}">Gerar Relatorio</a>
 
         </div>
 
         <div id="Caixaregistrar">
             <form action="/fechar" onsubmit="return minhaFuncao()" method="post">
-                <input type="hidden" name="dataini" value="{{ isset($dataIni) ? $dataIni : '' }}">
-                <input type="hidden" name="datafi" value="{{ isset($dataFi) ? $dataFi : '' }}">
+                <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
+                <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
                 <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
                 <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
                 <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
