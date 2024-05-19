@@ -117,4 +117,11 @@ class ControllerIgreja extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function profile(){
+        $empresaath = Auth::user()->empresa_id;
+        $users = User::where('empresa_id', $empresaath)->get();
+        $nomeempresa = empresas::where('id', $empresaath)->first();
+        return view('pagina.telausers')->with('users', $users)->with('nomeempresa', $nomeempresa);
+    }
 }
