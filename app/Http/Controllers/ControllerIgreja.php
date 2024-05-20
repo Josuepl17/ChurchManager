@@ -59,6 +59,10 @@ class ControllerIgreja extends Controller
 
         $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
         $existirusuario = User::where('user', $request->user)->first();
+        if($existirusuario){
+           $senha =  hash::check($request->password, $existirusuario->password);
+        }
+
 
     
         if ($existingEmpresa) {
@@ -66,7 +70,7 @@ class ControllerIgreja extends Controller
             return redirect()->back();
         } 
 
-        if ($existirusuario) {
+        if ($existirusuario != null  && $senha = true ) {
             Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
             return redirect()->back();
         } 
