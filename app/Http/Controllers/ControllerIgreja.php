@@ -40,6 +40,8 @@ class ControllerIgreja extends Controller
 
         $credentials = $request->only('user', 'password');
 
+        $credentials['user'] = strtolower($credentials['user']); // maiusculo ou minusculo
+
         if (Auth::attempt($credentials)) {
             // Autenticação bem-sucedida
             return redirect('/');
@@ -56,24 +58,24 @@ class ControllerIgreja extends Controller
 
     public function cadastro_user(Request $request)
     {
-
+        $dados = $request->all();
         $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
         $existirusuario = User::where('user', $request->user)->first();
         if($existirusuario){
+            $dados = $request->all();
            $senha =  hash::check($request->password, $existirusuario->password);
+            Session()->flash('falha', 'Atenção! Usuario Já Esta Sendo Usado.');
+            return view('login.cadastro')->with('dados', $dados);
         }
 
 
     
         if ($existingEmpresa) {
             Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
-            return redirect()->back();
+            return view('login.cadastro')->with('dados', $dados);
         } 
 
-        if ($existirusuario != null  && $senha = true ) {
-            Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
-            return redirect()->back();
-        } 
+
 
 
 

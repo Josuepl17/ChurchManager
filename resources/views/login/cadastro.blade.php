@@ -208,11 +208,11 @@ body {
   <form action="/cadastro/usuario" method="post" >
   @csrf
     <div class="user-box">
-      <input type="text" name="user" required="">
+      <input type="text" name="user" required="" value="{{  }}">
       <label>Nome</label>
     </div>
     <div class="user-box">
-      <input type="password" name="password" required="">
+      <input type="password" name="password" required="" value="{{ isset($dados->password) }}" >
       <label>Senha</label>
     </div>
     <div class="user-box">
