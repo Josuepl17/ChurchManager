@@ -207,22 +207,24 @@ body {
   <h2>Crie Sua Conta</h2>
   <form action="/cadastro/usuario" method="post" >
   @csrf
+        
     <div class="user-box">
-      <input type="text" name="user" required="" value="{{  }}">
+    <input type="text" name="user" required=""  value="{{ isset($dados->user) }}" >
       <label>Nome</label>
     </div>
     <div class="user-box">
-      <input type="password" name="password" required="" value="{{ isset($dados->password) }}" >
+      <input type="password" name="password" required=""  >
       <label>Senha</label>
     </div>
     <div class="user-box">
-      <input type="text" name="razao" required="">
+      <input type="text" name="razao" required="" value="{{ isset($dados->razao) }}">
       <label>Razão Social</label>
     </div>
     <div class="user-box">
-      <input type="cnpj" name="cnpj" required="">
+      <input type="cnpj" name="cnpj" required="" value="{{ isset($dados->cnpj) }}">
       <label>CNPJ</label>
     </div>
+  
     <a href="">
       <span></span>
       <span></span>

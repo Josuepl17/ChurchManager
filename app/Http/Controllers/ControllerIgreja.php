@@ -62,9 +62,13 @@ class ControllerIgreja extends Controller
         $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
         $existirusuario = User::where('user', $request->user)->first();
         if($existirusuario){
-            $dados = $request->all();
+            $dados = (object) $dados;
+            
+           
+            
            $senha =  hash::check($request->password, $existirusuario->password);
             Session()->flash('falha', 'Atenção! Usuario Já Esta Sendo Usado.');
+            
             return view('login.cadastro')->with('dados', $dados);
         }
 
@@ -110,11 +114,13 @@ class ControllerIgreja extends Controller
 
     public function form_login()
     {
+       
         return view('login.cadastro');
     }
 
     public function form_login_novo()
     {
+        
         return view('login.cadastro_user');
     }
 
