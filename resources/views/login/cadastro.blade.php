@@ -209,7 +209,7 @@ body {
   @csrf
         
     <div class="user-box">
-    <input type="text" name="user" required=""  value="{{ isset($dados->user) }}" >
+    <input type="text" name="user" required=""  value="{{ isset($dados->user) ? $dados->user : '' }}" >
       <label>Nome</label>
     </div>
     <div class="user-box">
@@ -217,11 +217,11 @@ body {
       <label>Senha</label>
     </div>
     <div class="user-box">
-      <input type="text" name="razao" required="" value="{{ isset($dados->razao) }}">
+      <input type="text" name="razao" required="" value="{{ isset($dados->razao) ? $dados->razao : '' }}" >
       <label>Razão Social</label>
     </div>
     <div class="user-box">
-      <input type="cnpj" name="cnpj" required="" value="{{ isset($dados->cnpj) }}">
+      <input type="number" name="cnpj" maxlength="2" required="" value="{{ isset($dados->cnpj) ? $dados->cnpj : '' }}" >
       <label>CNPJ</label>
     </div>
   
@@ -247,6 +247,7 @@ body {
     </div>
     {{ Session::forget('falha') }}
 @endif
-  
+
+
 </body>
 </html>
