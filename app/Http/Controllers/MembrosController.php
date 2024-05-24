@@ -32,7 +32,7 @@ class MembrosController extends Controller
             $indexbusca = membros::whereRaw('LOWER(nome) LIKE ?', ["%".strtolower($dados)."%"])->first();
             
            
-            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa)->with('dadose', $dados);
+            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa)->with('dados', $dados);
 
         }else{
             $index = membros::where('empresa_id', $id_empresa_autenticada)->get();
