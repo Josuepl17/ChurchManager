@@ -18,7 +18,9 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 80%;
+        height: 90%;
+
+
 
 
 
@@ -28,7 +30,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 15px;
+        width: 100%;
+        height: 08%;
+        margin-top: 05px;
 
 
 
@@ -104,6 +108,21 @@
         transition: 0.6;
     }
 
+    table {
+        border-collapse: collapse;
+
+
+        overflow: auto;
+        margin: auto;
+        border-radius: 50px;
+        width: 100%;
+
+        background-color: white;
+        margin-top: 0px;
+        color: black;
+
+    }
+
     td {
 
         border: 1px solid rgba(0, 0, 0, 0.34);
@@ -113,26 +132,9 @@
         margin-bottom: 0px;
     }
 
-    table {
-        border-collapse: collapse;
-
-
-   
-        margin: auto;
-        border-radius: 50px;
-        width: 100%;
-        background-color: white;
-        margin-top: 0px;
-        color: black;
-
-    }
-
-
-
 
     td:hover {
         color: white;
-        
     }
 
 
@@ -147,9 +149,8 @@
         color: white;
         background-color: var(--subtitulos);
         position: sticky;
-        top: -1px;
+        top: 0px;
         padding-top: 5px;
-        
 
     }
 
@@ -187,6 +188,7 @@
     .valortotal p {
         color: black;
         padding-right: 10px;
+
         background-color: white;
 
 
@@ -210,24 +212,15 @@
         border-radius: 0px;
         margin-top: -3px;
 
+
     }
+
 
     .conteudo {
         display: flex;
         width: 100%;
         height: 450px;
         overflow: auto;
-        
-    }
-
-    select {
-        font-size: 15px;
-        border-radius: 10px;
-        padding: 5px;
-    }
-
-    option {
-        font-size: 15px;
     }
 
     .msg {
@@ -255,6 +248,10 @@
                 /* oculta o elemento da tela */
             }
         }
+
+        .altura{
+            height: 100%;
+        }
 </style>
 
 
@@ -263,10 +260,10 @@
     <div class="filtro">
         <form action="/filtrar/despesas" method="post">
         @csrf
-            <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+            <input class="altura" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
 
-            <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+            <input class="altura" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
+            <input class="altura" type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
         </form>
     </div>
 

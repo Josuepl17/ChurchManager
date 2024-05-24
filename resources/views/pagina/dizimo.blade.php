@@ -17,7 +17,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 80%;
+        height: 90%;
 
 
 
@@ -29,7 +29,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 15px;
+        width: 100%;
+        height: 08%;
+        margin-top: 05px;
 
 
 
@@ -113,7 +115,7 @@
         margin: auto;
         border-radius: 50px;
         width: 100%;
-        
+
         background-color: white;
         margin-top: 0px;
         color: black;
@@ -212,17 +214,11 @@
 
     }
 
-    /*.relatorio{
-            display: flex;
-            width: 40%;
-            
-        }*/
 
     .conteudo {
         display: flex;
         width: 100%;
-        min-height: 85%;
-       
+        height: 450px;
         overflow: auto;
     }
 
@@ -251,6 +247,10 @@
                 /* oculta o elemento da tela */
             }
         }
+
+        .altura{
+            height: 100%;
+        }
 </style>
 
 
@@ -259,9 +259,9 @@
 <div class="table2">
     <div class="filtro">
         <form action="/filtrar/dizimo/{{ $membro_id }}/{{ $nome }}" method="get">
-            <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
-            <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-            <input type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px;">
+            <input class="altura" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+            <input class="altura" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
+            <input class="altura" type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
         </form>
     </div>
 

@@ -18,7 +18,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 80%;
+        height: 90%;
 
 
 
@@ -30,7 +30,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 15px;
+        width: 100%;
+        height: 08%;
+        margin-top: 05px;
 
 
 
@@ -213,11 +215,6 @@
 
     }
 
-    /*.relatorio{
-            display: flex;
-            width: 40%;
-            
-        }*/
 
     .conteudo {
         display: flex;

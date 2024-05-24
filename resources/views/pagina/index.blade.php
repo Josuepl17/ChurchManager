@@ -95,9 +95,16 @@
         }
         .conteudo {
         display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 480px;
+        height: 490px;
         overflow: auto;
+    }
+    .barra{
+        display: flex;
+        width: 100%;
+        height: 04%;
+        background-color: var(--titulos);
     }
     </style>
 
@@ -140,7 +147,13 @@
             </tr>
             @endforeach
         </table>
+
+
     </div>
+
+    <div class="barra">
+
+</div>
 
 
 
