@@ -76,9 +76,32 @@
             height: 100%;
             width: 100%;
         }
+
+        .filtro{
+            display: flex;
+            width: 100%;
+            height: 7%;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: var(--titulos);
+        }
+
+        #nav{
+            margin: 0px;
+            padding: 0px;
+           display: flex;
+           justify-content: flex-end;
+           align-items: center;
+        }
     </style>
 
-        
+
+    <div class="filtro">
+<form id="nav" style="margin: 0px;" action="/" method="get">
+    <input style="width: 60%;" type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}" >
+    <input style="font-size: 15px;" type="submit" value="Buscar">
+</form>
+    </div>   
         
  
 

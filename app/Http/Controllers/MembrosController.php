@@ -15,17 +15,31 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class MembrosController extends Controller
 {
     /*membros*/
-    public function index()
+    public function index(Request $request)
     {
         $id_empresa_autenticada = auth()->user()->empresa_id;
-        $index = membros::where('empresa_id', $id_empresa_autenticada)->get();
+        $dados = $request->pesquisa;
         $empresa_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
-        return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa);
+       // dd($dados);
+        if($dados != null){
+            $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%".strtolower($dados)."%"])->get();
+            $indexbusca = membros::whereRaw('LOWER(nome) LIKE ?', ["%".strtolower($dados)."%"])->first();
+            
+           
+            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa)->with('dadose', $dados);
+
+        }else{
+            $index = membros::where('empresa_id', $id_empresa_autenticada)->get();
+            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa);
+        }
+        
+
     }
 
     public function cadastro_membro()
@@ -55,10 +69,9 @@ class MembrosController extends Controller
     }
 
 
-    public function pesquisa (Request $request){
-        $dados = $request->pesquisa;
-       
-        $index = membros::where('nome', 'LIKE', "%{$dados}%")->get();
-        return view('pagina.index')->with('index',  $index);
-    }
+    //public function buscar (Request $request){
+//$dados = $request->pesquisa;
+     //   $index = membros::where('nome', 'LIKE', "%{$dados}%")->get();
+      //  return view('pagina.index')->with('index',  $index);
+   // }
 }

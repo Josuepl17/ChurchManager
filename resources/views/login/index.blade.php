@@ -194,7 +194,7 @@ body {
   @csrf
     <div class="user-box">
       <input type="text" name="user" required="">
-      <label>Nome:</label>
+      <label>Email:</label>
     </div>
     <div class="user-box">
       <input type="password" name="password" required="">

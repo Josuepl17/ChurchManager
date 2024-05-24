@@ -78,3 +78,5 @@ Route::post('/cadastro/user/adicionar', [ControllerIgreja::class, 'adicionar_usu
 Route::get('/logout', [ControllerIgreja::class, 'logout']);
 Route::get('/pesquisa', [MembrosController::class, 'pesquisa']);
 Route::get('/user/profile', [ControllerIgreja::class, 'profile']);
+
+Route::get('/buscar', [MembrosController::class, 'index']);

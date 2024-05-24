@@ -210,7 +210,7 @@ body {
         
     <div class="user-box">
     <input type="text" name="user" required=""  value="{{ isset($dados->user) ? $dados->user : '' }}" >
-      <label>Nome</label>
+      <label>Email</label>
     </div>
     <div class="user-box">
       <input type="password" name="password" required=""  >
