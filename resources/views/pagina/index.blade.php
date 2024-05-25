@@ -106,11 +106,19 @@
         height: 04%;
         background-color: var(--titulos);
     }
+
+    @media(max-width: 640px){
+
+        #nav{
+            display: none;
+        }
+
+        }
     </style>
 
 
     <div class="filtro">
-<form id="nav" style="margin: 0px;" action="/" method="get">
+<form  id="nav" style="margin: 0px;" action="/" method="get">
     <input style="width: 60%;" type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}" >
     <input style="font-size: 15px;" type="submit" value="Buscar">
 </form>
@@ -121,25 +129,25 @@
     <div class="conteudo">
         <table>
             <tr>
-                <th>ID</th>
-                <th>NOME</th>
-                <th>ENDEREÇO</th>
+                <th class="sumir">ID</th>
+                <th style="width: 20%;" >NOME</th>
+                <th class="sumir">ENDEREÇO</th>
                 <th>FUNÇÃO</th>
                 <th>TELEFONE</th>
-                <th style="width: 08%;">X</th>
-                <th style="width: 4%;">X</th>
+                <th class="sumir" style="width: 08%;">X</th>
+                <th class="sumir" style="width: 4%;">X</th>
             </tr>
             @foreach ($index as $ind)
             <tr>
-                <td style="background-color:#0A1626 ; color:white">{{ $ind->id }}</td>
+                <td class="sumir" style="background-color:#0A1626 ; color:white">{{ $ind->id }}</td>
                 <td>{{ $ind->nome }}</td>
-                <td>{{ $ind->endereco }}</td>
+                <td class="sumir" >{{ $ind->endereco }}</td>
                 <td>{{ $ind->funcao }}</td>
                 <td>{{ $ind->telefone }}</td>
-                <td>
+                <td class="sumir" >
                     <form class="formx" action="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}"><button class="inserir">Inserir</button></form>
                 </td>
-                <td>
+                <td class="sumir" >
                     <form action="/destroy/{{$ind->id}}" method="post"><button class="excluir">X</button>
                         @csrf
                     </form>

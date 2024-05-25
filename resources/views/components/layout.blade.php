@@ -8,8 +8,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('\icone.ico') }}" type="image/x-icon">
     <style>
-
-:root {
+        :root {
 
 --titulos: #0a1727;
 --subtitulos: #012841;
@@ -188,7 +187,6 @@ transition: 0.3s;
 input {
 font-size: 18px;
 width: 20%;
-
 height: 75%;
 margin-right: 10px;
 border-radius: 5px;
@@ -244,15 +242,21 @@ border-radius: 0px 0px 10px  10px;
 
 
 #menu-esquerdo{
+    display: none;
     flex-direction: row;
     width: 100%;
     height: 10%;
     align-items: center;
 
- 
-    
    
 }
+
+.sumir{
+    display: none;
+}
+
+
+
 
 #menu-tabela{
     flex-direction: column;
@@ -281,12 +285,7 @@ a{
 
 
 }
-
-
     </style>
-
-
-
 </head>
 
 <body>
@@ -312,7 +311,7 @@ a{
                         <a href="/indexcaixa">Caixa</a>
                         <a href="/user/profile">Usuarios</a>
                         <a href="/cadastro/login/novo">Novo Usuario</a>
-                        <a  href="/logout"><img  src="{{ asset('\sair.png') }}" alt="">&nbspLogout</a>
+                        <a id="logoff" href="/logout"><img  src="{{ asset('\sair.png') }}" alt="">&nbspLogout</a>
                     </div>
                     <div class="conteiner-tabela">
                         @yield('conteudo')
