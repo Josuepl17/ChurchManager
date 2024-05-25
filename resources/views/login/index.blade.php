@@ -181,6 +181,7 @@ body {
   
 }
 
+
   </style>
 
 </head>
@@ -192,12 +193,12 @@ body {
   <form action="/login/if" method="post" >
 
   @csrf
-    <div class="user-box">
-      <input style="background-color: #0C121C;" type="text" name="user" required="">
-      <label>Email:</label>
+    <div  class="user-box">
+      <input autocomplete="off" type="text" name="user" required="">
+      <label >Email:</label>
     </div>
     <div class="user-box">
-      <input type="password" name="password" required="">
+      <input autocomplete="off" type="password" name="password" required="">
       <label>Senha:</label>
       <span>
 
