@@ -170,13 +170,14 @@
     /* Conteiner-Pesquisa-Conteudo */
     
     
-    
+
     
     
     
     input {
     font-size: 18px;
     width: 20%;
+    background: rgba(0,0,0,.5);
     
     height: 75%;
     margin-right: 10px;

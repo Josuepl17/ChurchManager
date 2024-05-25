@@ -193,7 +193,7 @@ body {
 
   @csrf
     <div class="user-box">
-      <input type="text" name="user" required="">
+      <input style="background-color: #0C121C;" type="text" name="user" required="">
       <label>Email:</label>
     </div>
     <div class="user-box">
