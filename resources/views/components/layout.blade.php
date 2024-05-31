@@ -304,7 +304,7 @@ a{
                     <div id="menu-esquerdo">
                         <h1 class="h1-menu">Menu</h1>
                         <a href="/">Home</a>
-                        <a href="/cadastro/membro">Cadastro Membro</a>
+                        
                         <a href="/oferta">Cadastro Oferta</a>
                         <a href="/despesas">Cadastro Despesas</a>
                         <a href="/relatorio">Relatorios</a>

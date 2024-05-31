@@ -118,9 +118,10 @@
 
 
     <div class="filtro">
+        <a style="width: 13%; " href="/cadastro/membro"><button style="font-size: 15px;" >Cadastrar Membro</button></a>
 <form  id="nav" style="margin: 0px;" action="/" method="get">
-    <input style="width: 60%;" type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}" >
-    <input style="font-size: 15px;" type="submit" value="Buscar">
+    <input style="width: 100%;" type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}" >
+    <input  style="font-size: 15px; width:25%" type="submit" value="Buscar">
 </form>
     </div>   
         
