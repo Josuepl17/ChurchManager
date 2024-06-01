@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Faça Login</title>
+ 
   <style>
     html {
   height: 100%;
 }
 body {
+
   margin:0;
   padding:0;
   font-family: sans-serif;
@@ -25,7 +27,11 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  
+  
 }
+
+
 
 .login-box h2 {
   margin: 0 0 30px;
@@ -182,7 +188,22 @@ body {
 }
 
 
+
+@media(max-width: 640px){
+
+  .login-box {
+  transform: scale(2.5);
+  top: 40%;
+  left: 30%;
+}
+
+}
+
+
+
+
   </style>
+  
 
 </head>
 <body>
