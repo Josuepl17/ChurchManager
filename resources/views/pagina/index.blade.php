@@ -148,7 +148,7 @@
                 <td class="sumir" >
                     <form class="formx" action="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}"><button class="inserir">Inserir</button></form>
                 </td>
-                <td class="sumir" >
+                <td >
                     <form action="/destroy/{{$ind->id}}" method="post"><button class="excluir">X</button>
                         @csrf
                     </form>
