@@ -331,7 +331,7 @@
                         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
                         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
 
-    <button style="height: 50px;" type="submit">Registar Despesa</button>
+    <button type="submit">Registar Despesa</button>
 </form>
 
 
