@@ -75,6 +75,7 @@
             color: white;
             height: 100%;
             width: 100%;
+            
         }
 
         .filtro{
@@ -107,6 +108,8 @@
         background-color: var(--titulos);
     }
 
+
+
     @media(max-width: 640px){
 
         #nav{
@@ -118,7 +121,7 @@
 
 
     <div class="filtro">
-        <a style="width: 13%; " href="/cadastro/membro"><button style="font-size: 15px;" >Cadastrar Membro</button></a>
+        <a style="width: 20%; " href="/cadastro/membro"><button style="font-size: 15px; " >Cadastrar Membro</button></a>
 <form  id="nav" style="margin: 0px;" action="/" method="get">
     <input style="width: 100%;" type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}" >
     <input  style="font-size: 15px; width:25%" type="submit" value="Buscar">
@@ -136,7 +139,7 @@
                 <th>FUNÇÃO</th>
                 <th>TELEFONE</th>
                 <th class="sumir" style="width: 08%;">X</th>
-                <th class="sumir" style="width: 4%;">X</th>
+                <th  style="width: 4%;">X</th>
             </tr>
             @foreach ($index as $ind)
             <tr>
@@ -148,7 +151,7 @@
                 <td class="sumir" >
                     <form class="formx" action="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}"><button class="inserir">Inserir</button></form>
                 </td>
-                <td class="sumir" >
+                <td >
                     <form action="/destroy/{{$ind->id}}" method="post"><button class="excluir">X</button>
                         @csrf
                     </form>

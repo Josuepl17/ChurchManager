@@ -100,6 +100,12 @@
             transition: 0.6s;
 
         }
+
+        @media(max-width: 640px){
+            form{
+                width: 95%;
+            }
+        }
     </style>
 
     <div class="geral">
