@@ -26,20 +26,17 @@ class MembrosController extends Controller
         $dados = $request->pesquisa;
         $empresa_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
-       // dd($dados);
-        if($dados != null){
-            $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%".strtolower($dados)."%"])->get();
-            $indexbusca = membros::whereRaw('LOWER(nome) LIKE ?', ["%".strtolower($dados)."%"])->first();
-            
-           
-            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa)->with('dados', $dados);
 
-        }else{
+        if ($dados != null) {
+            $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->get();
+            $indexbusca = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->first();
+
+
+            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa)->with('dados', $dados);
+        } else {
             $index = membros::where('empresa_id', $id_empresa_autenticada)->get();
             return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa);
         }
-        
-
     }
 
     public function cadastro_membro()
@@ -63,15 +60,7 @@ class MembrosController extends Controller
     public function excluir_membro(request $request)
     {
         $destroy = $request->id;
-        //dizimos::where('user_id', $destroy)->forceDelete();
         membros::destroy($destroy);
         return redirect('/');
     }
-
-
-    //public function buscar (Request $request){
-//$dados = $request->pesquisa;
-     //   $index = membros::where('nome', 'LIKE', "%{$dados}%")->get();
-      //  return view('pagina.index')->with('index',  $index);
-   // }
 }

@@ -231,7 +231,7 @@
         border: 1px solid black;
         width: 350px;
         height: 40px;
-        
+
         color: white;
         display: flex;
         justify-content: center;
@@ -241,17 +241,17 @@
     }
 
     @keyframes sumir {
-            to {
-                opacity: 0;
-                /* torna o elemento transparente */
-                visibility: hidden;
-                /* oculta o elemento da tela */
-            }
+        to {
+            opacity: 0;
+            /* torna o elemento transparente */
+            visibility: hidden;
+            /* oculta o elemento da tela */
         }
+    }
 
-        .altura{
-            height: 100%;
-        }
+    .altura {
+        height: 100%;
+    }
 </style>
 
 
@@ -259,7 +259,7 @@
 
     <div class="filtro">
         <form action="/filtrar/despesas" method="post">
-        @csrf
+            @csrf
             <input class="altura" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
 
             <input class="altura" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
@@ -306,6 +306,8 @@
 </div>
 
 
+
+
 <form class="id" action="/registrar/despesas/igreja" method="post">
     @csrf
 
@@ -313,49 +315,34 @@
     <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
     <label for="descricao">Desc:</label require>
-    <select name="descricao" id="descricao" require autocomplete="off">
-        <Option disabled selected></Option>
-        <Option>LIMPEZA</Option>
-        <Option>SALARIO</Option>
-        <Option>FESTIVIDADE</Option>
-        <Option>MANUNTENÇÃO</Option>
-        <Option>DOAÇÃO</Option>
-
-    </select>
+    <input type="text" name="descricao" id="descricao">
 
     <label for="valor">Valor:</label>
     <input style="width: 10%;" class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
 
     <br>
 
-                        <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
-                        <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+    <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
+    <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
 
-    <button style="height: 50px;" type="submit">Registar Despesa</button>
+    <button type="submit">Registar Despesa</button>
 </form>
 
 
 
 
-
-
-
-
-
-
-
 @if (Session::has('sucesso'))
-    <div style="background-color: green;" class="msg">
-        <p>{{ Session::get('sucesso') }}</p>
-    </div>
-    {{ Session::forget('sucesso') }}
+<div style="background-color: green;" class="msg">
+    <p>{{ Session::get('sucesso') }}</p>
+</div>
+{{ Session::forget('sucesso') }}
 @endif
 
 @if (Session::has('falha'))
-    <div style="background-color: red;" class="msg">
-        <p>{{ Session::get('falha') }}</p>
-    </div>
-    {{ Session::forget('falha') }}
+<div style="background-color: red;" class="msg">
+    <p>{{ Session::get('falha') }}</p>
+</div>
+{{ Session::forget('falha') }}
 @endif
 
 
