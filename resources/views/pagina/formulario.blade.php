@@ -43,7 +43,7 @@
 
         select {
             width: 62%;
-            height: 30px;
+            height: 5%;
             border-radius: 5px;
             text-align: center;
 
