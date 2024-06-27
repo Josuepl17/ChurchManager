@@ -139,12 +139,14 @@
         }
 
         #conteiner-conteudo{
-            border: 1px solid black;
+           
             height: 88%;
             width: 98%;
             margin-top: 0.5%;
             background-color: white;
             border-radius: 5px;
+            overflow: auto;
+            
         }
 
         form{
@@ -175,7 +177,7 @@
             #open-menu {
                 display: block;
             position: fixed;
-            top: 20px;
+            top: 08px;
             left: 20px;
             cursor: pointer;
             color: #fff;
@@ -197,6 +199,16 @@
             color: white;
         }
 
+        #conteiner-nav h1{
+            display: none;
+            text-align: end;
+        }
+
+        #conteiner-nav{
+            display: flex;
+            justify-content: flex-end;
+        }
+
 
             }
 
@@ -206,8 +218,8 @@
         <div id="conteiner-geral">
 
             <nav id="conteiner-nav">
-                <h1>Nome da Igreja</h1>
-                <p>Bem Vindo josue</p>
+                <h1>Igreja Batista Fonte De Vida</h1>
+                <p>Bem Vindo Josué !!</p>
             </nav> <!--conteiner-nav-->
 
             <div id="menu-subtable">

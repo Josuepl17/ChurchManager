@@ -11,11 +11,34 @@
 
         --cor-secundaria: #313131e7;
     }
+
+
+    .conteudo {
+        
+        width: 100%; 
+        border-collapse: collapse;
+    }
+
+    .conteudo th, .conteudo td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .conteudo th{
+        background-color: var(--titulos);
+        color: white;
+    }
+
+
+
+
+   
 </style>
 
 @section('botao-tabela')
 
-<a href="/cadastro/membro"><button>Cadastrar Membro</button></a>
+<a href="/cadastro/membro"><button style="padding: 4px;" >Cadastrar Membro</button></a>
 <form id="nav" action="/" method="get">
     <input type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
     <input type="submit" value="Buscar">
@@ -25,43 +48,35 @@
 
 @section('conteudo')
 
-<div class="conteudo">
-    <table>
+
+    <table class="conteudo" >
         <tr>
-            <th class="sumir">ID</th>
+            <th>ID</th>
             <th style="width: 20%;">NOME</th>
-            <th class="sumir">ENDEREÇO</th>
+            <th>ENDEREÇO</th>
             <th>FUNÇÃO</th>
             <th>TELEFONE</th>
-            <th class="sumir" style="width: 08%;">X</th>
+            <th  style="width: 08%;">X</th>
             <th style="width: 4%;">X</th>
         </tr>
         @foreach ($index as $ind)
         <tr>
-            <td class="sumir" style="background-color:#0A1626 ; color:white">{{ $ind->id }}</td>
+            <td  style="background-color:#0A1626 ; color:white">{{ $ind->id }}</td>
             <td>{{ $ind->nome }}</td>
-            <td class="sumir">{{ $ind->endereco }}</td>
+            <td >{{ $ind->endereco }}</td>
             <td>{{ $ind->funcao }}</td>
             <td>{{ $ind->telefone }}</td>
-            <td class="sumir">
-                <form class="formx" action="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}"><button class="inserir">Inserir</button></form>
+            <td style="background-color: green;" >
+                <a style="color: white; font-size:15px; text-decoration: none;" href="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}">Inserir</a>
             </td>
-            <td>
-                <form action="/destroy/{{$ind->id}}" method="post"><button class="excluir">X</button>
-                    @csrf
-                </form>
+            <td style="background-color: red;" >
+
+                <a style="color: white; font-size:15px; text-decoration: none;" href="/destroy/{{$ind->id}}">X</a>
             </td>
         </tr>
         @endforeach
     </table>
-
-
-</div>
-
-<div class="barra">
-
-</div>
-
+    
 
 
 @endsection
