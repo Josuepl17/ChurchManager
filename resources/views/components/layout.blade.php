@@ -165,6 +165,41 @@
             margin-right: 15px;
         }
 
+        #open-menu{
+            display: none;
+        }
+
+
+        @media (max-width: 1050px) {
+            
+            #open-menu {
+                display: block;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        #conteiner-menu {
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s ease;
+            background-color: var(--CorBase);
+            
+        }
+
+        #conteiner-menu a {
+            color: white;
+        }
+
+
+            }
+
     </style>
     </head>
     <body>
@@ -186,6 +221,7 @@
                     <a class="links-menu" href="#">Usuarios</a>
                     <a class="links-menu" href="#">Novo Usuario</a>
                     <a class="links-menu" href="#">Logout</a>
+                    <div id="open-menu">&#9776;</div>
                 </div> <!--Conteiner-menu-->
 
                 <div id="subtable-conteudo">
@@ -208,4 +244,12 @@
 
         </div> <!--menu-subtable-->
     </body>
+    <script>
+        const menu = document.querySelector('#conteiner-menu');
+        const openMenuButton = document.getElementById('open-menu');
+
+        openMenuButton.addEventListener('click', () => {
+            menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
+        });
+    </script>
 </html>
