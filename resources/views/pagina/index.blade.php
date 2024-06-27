@@ -1,7 +1,7 @@
 
 @extends('components.layout')
 
-@section('conteudo')  
+
 @section('titulo', $razao_empresa )
 @section('titulo-nav', $razao_empresa )
   <style>
@@ -119,16 +119,17 @@
         }
     </style>
 
-
-    <div class="filtro">
+@section('botao-tabela')  
+    
         <a style="width: 20%; " href="/cadastro/membro"><button style="font-size: 15px; " >Cadastrar Membro</button></a>
 <form  id="nav" style="margin: 0px;" action="/" method="get">
     <input style="width: 100%;" type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}" >
     <input  style="font-size: 15px; width:25%" type="submit" value="Buscar">
 </form>
-    </div>   
+    
+    @endsection
         
- 
+    @section('conteudo')  
 
     <div class="conteudo">
         <table>
