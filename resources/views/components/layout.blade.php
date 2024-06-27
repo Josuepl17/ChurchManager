@@ -79,7 +79,9 @@
 
 
         #conteiner-subtable{
-
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
             width: 100%;
             height: 07%;
             background-color: var(--subtitulos);
@@ -147,7 +149,6 @@
 
         form{
             display: flex;
-            width: 100%;
             height: 100%;
             justify-content: flex-end;
             align-items: center; 
@@ -160,9 +161,9 @@
             padding: 3px;
         }
 
-
-
-
+        #conteiner-subtable a{
+            margin-right: 15px;
+        }
 
     </style>
     </head>
