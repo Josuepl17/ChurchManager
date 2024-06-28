@@ -315,7 +315,17 @@
     <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
     <label for="descricao">Desc:</label require>
-    <input type="text" name="descricao" id="descricao">
+    <input type="text" list="descricao" name="descricao">
+    <datalist id="descricao">
+        <option value="Oferta Pastor">
+        <option value="Pregador">
+        <option value="Cozinha">
+        <option value="Crianças">
+    </datalist>
+
+
+
+
 
     <label for="valor">Valor:</label>
     <input style="width: 10%;" class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
