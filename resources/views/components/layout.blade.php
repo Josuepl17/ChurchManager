@@ -109,7 +109,7 @@
 
 
    .links-menu:hover{
-           background-color: black;
+           background-color: var(--subtitulos);
            color: white;
            transition: 0.4s;
         }
@@ -148,15 +148,17 @@
             overflow: auto;
             
         }
+        
 
-        form{
+        /* Datas, Botoes e Imputes em cima da tabela */
+        #conteiner-subtable form{
             display: flex;
             height: 100%;
             justify-content: flex-end;
             align-items: center; 
         }
 
-        form input{
+        #conteiner-subtable form input{
             margin-right: 15px;
             font-size: 16px;
             border: 1px solid black;
@@ -166,6 +168,9 @@
         #conteiner-subtable a{
             margin-right: 15px;
         }
+
+
+
 
         #open-menu{
             display: none;
@@ -197,6 +202,13 @@
 
         #conteiner-menu a {
             color: white;
+            
+        }
+
+        #conteiner-menu h1{
+            background-color: white;
+            color: black;
+            height: 7%;
         }
 
         #conteiner-nav h1{
@@ -225,14 +237,14 @@
             <div id="menu-subtable">
                 <div id="conteiner-menu">
                     <h1>Menu Principal</h1>
-                    <a class="links-menu" href="#">Home</a>
-                    <a class="links-menu" href="#">Cadastro Oferta</a>
-                    <a class="links-menu" href="#">Cadastro Despesas</a>
-                    <a class="links-menu" href="#">Relatorios</a>
-                    <a class="links-menu" href="#">Caixa</a>
-                    <a class="links-menu" href="#">Usuarios</a>
-                    <a class="links-menu" href="#">Novo Usuario</a>
-                    <a class="links-menu" href="#">Logout</a>
+                    <a class="links-menu" href="/">Home</a>
+                    <a class="links-menu" href="/oferta">Cadastro Oferta</a>
+                    <a class="links-menu" href="/despesas">Cadastro Despesas</a>
+                    <a class="links-menu" href="/relatorio">Relatorios</a>
+                    <a class="links-menu" href="/indexcaixa">Caixa</a>
+                    <a class="links-menu" href="/user/profile">Usuarios</a>
+                    <a class="links-menu" href="/cadastro/login/novo">Novo Usuario</a>
+                    <a class="links-menu" href="/logout"><img  src="{{ asset('\sair.png') }}" alt="">&nbspLogout</a>
                     <div id="open-menu">&#9776;</div>
                 </div> <!--Conteiner-menu-->
 
