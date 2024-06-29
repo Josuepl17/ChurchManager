@@ -15,7 +15,7 @@
 
     .conteudo {
         
-        width: 1125px; 
+        width: 100%; 
         border-collapse: collapse;
         background-color: white;
     }

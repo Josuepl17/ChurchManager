@@ -180,7 +180,7 @@
         }
 
 
-        @media (max-width: 1300px) {
+        @media (max-width: 600px) {
             
             #open-menu {
             display: block;
