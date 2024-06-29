@@ -15,8 +15,9 @@
 
     .conteudo {
         
-        width: 1154px; 
+        width: 1125px; 
         border-collapse: collapse;
+        background-color: white;
     }
 
     .conteudo th, .conteudo td {
@@ -37,13 +38,17 @@
         height: 1px;
     }
 
-    @media (max-width: 1050px) {
+    @media (max-width: 1300px) {
            .menor{
             width: 90%;
         }
 
         form{
             width: 60%;
+        }
+
+        .conteudo{
+            width: 1250px;
         }
 
     }
@@ -58,7 +63,7 @@
 
 <a href="/cadastro/membro"><button style="padding: 4px;" >Cadastrar Membro</button></a>
 <form action="/" method="get">
-    <input class="menor"  type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
+    <input class="menor"  type="search" name="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
     <input  type="submit" value="Buscar">
 </form>
 

@@ -72,7 +72,7 @@
             flex-direction: row ;
             width: 100%;
             height: 92%;
-            background-color: --;
+            
         }
 
 
@@ -140,12 +140,15 @@
 
         #conteiner-conteudo{
            
+            overflow: auto;
+
             height: 88%;
-            width: 98%;
+            width: 97%;
             margin-top: 0.5%;
             background-color: white;
             border-radius: 5px;
-            overflow: auto;
+            background-color: var(--cor-secundaria);
+           
             
         }
         
@@ -177,10 +180,10 @@
         }
 
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1300px) {
             
             #open-menu {
-                display: block;
+            display: block;
             position: fixed;
             top: 08px;
             left: 20px;
