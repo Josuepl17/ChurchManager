@@ -141,7 +141,7 @@
         #conteiner-conteudo{
            
             height: 88%;
-            width: 98%;
+            max-width: 98%;
             margin-top: 0.5%;
             background-color: white;
             border-radius: 5px;
