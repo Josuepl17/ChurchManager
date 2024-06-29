@@ -37,6 +37,17 @@
         height: 1px;
     }
 
+    @media (max-width: 1050px) {
+           .menor{
+            width: 90%;
+        }
+
+        form{
+            width: 60%;
+        }
+
+    }
+
 
 
 
@@ -46,9 +57,9 @@
 @section('botao-tabela')
 
 <a href="/cadastro/membro"><button style="padding: 4px;" >Cadastrar Membro</button></a>
-<form id="nav" action="/" method="get">
-    <input type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
-    <input type="submit" value="Buscar">
+<form action="/" method="get">
+    <input class="menor"  type="search" name="pesquisa" id="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
+    <input  type="submit" value="Buscar">
 </form>
 
 @endsection

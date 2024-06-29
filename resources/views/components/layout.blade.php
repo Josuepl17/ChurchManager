@@ -34,7 +34,7 @@
         #conteiner-geral{
             
             width: 100%;
-            height:99vh;
+            height:98vh;
             
         }
 
@@ -221,8 +221,7 @@
             justify-content: flex-end;
         }
 
-
-            }
+    }
 
     </style>
     </head>
