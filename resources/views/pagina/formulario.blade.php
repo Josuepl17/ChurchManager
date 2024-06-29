@@ -113,7 +113,7 @@
             @csrf
             
             <label for="nome">Nome:</label>
-            <input class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
+            <input maxlength="30" class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
             <label for="funcao">Função</label>
             <select name="funcao" id="funcao">
                 <Option disabled selected></Option>
@@ -125,10 +125,10 @@
             </select>
 
             <label for="endereco">Endereço:</label>
-            <input class="cad" type="text" name="endereco" id="endereco" autocomplete="off" required>
+            <input class="cad" type="text" name="endereco" id="endereco" autocomplete="off" required maxlength="30" >
 
             <label for="telefone">Telefone:</label>
-            <input class="cad" type="number" name="telefone" id="telefone" autocomplete="off" required>
+            <input  class="cad" type="number" name="telefone" id="telefone" autocomplete="off" required maxlength="10" >
 
             <br>
 
