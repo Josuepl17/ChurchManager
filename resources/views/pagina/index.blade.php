@@ -15,19 +15,26 @@
 
     .conteudo {
         
-        width: 100%; 
+        width: 1154px; 
         border-collapse: collapse;
     }
 
     .conteudo th, .conteudo td {
-        padding: 8px;
+        padding: 5px;
+        
         border: 1px solid #ddd;
         text-align: center;
     }
 
+
+
     .conteudo th{
         background-color: var(--titulos);
         color: white;
+    }
+
+    .conteudo tr{
+        height: 1px;
     }
 
 
@@ -52,12 +59,12 @@
     <table class="conteudo" >
         <tr>
             <th>ID</th>
-            <th style="width: 20%;">NOME</th>
+            <th>NOME</th>
             <th>ENDEREÇO</th>
             <th>FUNÇÃO</th>
             <th>TELEFONE</th>
-            <th  style="width: 08%;">X</th>
-            <th style="width: 4%;">X</th>
+            <th  >X</th>
+            <th >X</th>
         </tr>
         @foreach ($index as $ind)
         <tr>
