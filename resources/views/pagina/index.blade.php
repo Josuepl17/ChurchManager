@@ -38,13 +38,21 @@
         height: 1px;
     }
 
+
+
+
+
     @media (max-width: 1300px) {
            .menor{
             width: 90%;
         }
 
+            #conteiner-subtable a{
+        padding: 2px;
+                }
 
-    }
+
+    } 
 
 
 
@@ -54,7 +62,7 @@
 
 @section('botao-tabela')
 
-<a href="/cadastro/membro"><button style="padding: 4px;" >Cadastrar Membro</button></a>
+<a href="/cadastro/membro"><button style="padding: 4px;" >Inserir</button></a>
 <form action="/" method="get">
     <input class="menor"  type="search" name="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
     <input  type="submit" value="Buscar">
