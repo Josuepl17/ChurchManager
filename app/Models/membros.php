@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class membros extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 'nome', 'funcao', 'endereco', 'telefone', 'empresa_id', 'user_id'];
+    protected $fillable = ['id', 'nome', 'sobrenome', 'funcao', 'endereco', 'telefone', 'empresa_id', 'user_id'];
 
 
     public function dizimos()

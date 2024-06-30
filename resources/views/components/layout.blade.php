@@ -79,6 +79,8 @@
             align-items: center;
             width: 16%;
             height: 100%;
+            min-width: 150px; /*importante para Responsividade*/ /*determina o tanto que o menu pode se diminuir para que a tabela não caia no overflow*/
+
         }
 
         .links {
@@ -90,6 +92,8 @@
             width: 100%;
             height: 5%;
             color: black;
+
+
         }
 
 
@@ -110,6 +114,7 @@
             height: 04%;
             width: 100%;
             border-bottom: 1px solid black;
+            white-space: nowrap;
         }
 
         #subtabela {
@@ -164,7 +169,7 @@
         #conteudo {
             overflow: auto;
             height: 88%;
-            width: 97%;
+            width: 97%; 
             margin-top: 0.5%;
             background-color: white;
             border-radius: 5px;
@@ -175,7 +180,7 @@
 
 /*............... mudanças Telefone................*/
 
-        @media (max-width: 900px) {
+        @media (max-width: 700px) { /* Para diminuir tem que cortar texto */ /*importante para Responsividade*/
 
             #open-menu {
                 display: block;
@@ -195,6 +200,7 @@
                 left: -250px;
                 transition: left 0.3s ease;
                 background-color: var(--CorBase);
+                z-index: 1;
 
             }
 
@@ -218,6 +224,10 @@
                 display: flex;
                 justify-content: flex-end;
             }
+          
+            .remover{ /* CSS criado para remover itens da Tela para Celular*/  
+                display: none; /*importante para Responsividade*/
+            }
 
         }
     </style>
@@ -233,9 +243,9 @@
 
         <div id="menu-subtable">
             <div id="menu">
-                <h1>Menu Principal</h1>
+                <h1>Menu</h1>
                 <a class="links" href="/">Home</a>
-                <a class="links" href="/oferta">Oferta</a>
+                <a class="links" href="/oferta">Ofertas</a>
                 <a class="links" href="/despesas">Despesas</a>
                 <a class="links" href="/relatorio">Relatorios</a>
                 <a class="links" href="/indexcaixa">Caixa</a>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->unsignedBigInteger('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nome');
+            $table->string('sobrenome');
             $table->string('funcao');
             $table->string('endereco');
             $table->string('telefone');

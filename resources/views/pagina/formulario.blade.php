@@ -113,7 +113,11 @@
             @csrf
             
             <label for="nome">Nome:</label>
-            <input maxlength="30" class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
+            <input  class="cad" type="text" name="nome" id="nome" autocomplete="off" required>
+
+            <label for="sobrenome">Sobrenome:</label>
+            <input  class="cad" type="text" name="sobrenome" id="sobrenome" autocomplete="off" required>
+            
             <label for="funcao">Função</label>
             <select name="funcao" id="funcao">
                 <Option disabled selected></Option>

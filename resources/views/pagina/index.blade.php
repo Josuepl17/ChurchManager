@@ -31,12 +31,16 @@
 
     .conteudo th{
         background-color: var(--titulos);
-        color: white;
+        color: white;    
     }
 
-    .conteudo tr{
-        height: 1px;
+    .conteudo tr:first-child{
+        position: sticky;
+        top: 0;
+
     }
+
+
 
 
 
@@ -54,10 +58,6 @@
 
     } 
 
-
-
-
-   
 </style>
 
 @section('botao-tabela')
@@ -75,21 +75,21 @@
 
     <table class="conteudo" >
         <tr>
-            <th>ID</th>
+            <th class="remover" >ID</th>
             <th>NOME</th>
-            <th>ENDEREÇO</th>
-            <th>FUNÇÃO</th>
-            <th>TELEFONE</th>
+           <th class="remover" >ENDEREÇO</th> 
+            <th  >FUNÇÃO</th>
+           <th>TELEFONE</th> 
             <th  >X</th>
             <th >X</th>
         </tr>
         @foreach ($index as $ind)
         <tr>
-            <td  style="background-color:#0A1626 ; color:white">{{ $ind->id }}</td>
+            <td class="remover" style="background-color:#0A1626 ; color:white">{{ $ind->id }}</td>
             <td>{{ $ind->nome }}</td>
-            <td >{{ $ind->endereco }}</td>
-            <td>{{ $ind->funcao }}</td>
-            <td>{{ $ind->telefone }}</td>
+            <td class="remover" >{{ $ind->endereco }}</td> 
+            <td  >{{ $ind->funcao }}</td>
+            <td  >{{ $ind->telefone }}</td> 
             <td style="background-color: green;" >
                 <a style="color: white; font-size:15px; text-decoration: none;" href="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}">Inserir</a>
             </td>
