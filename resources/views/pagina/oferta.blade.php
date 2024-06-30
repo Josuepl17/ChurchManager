@@ -64,6 +64,7 @@
         justify-content: center;
         align-items: center;
         height: 10%;
+        flex-wrap: wrap;
     }
 
     #formulario-registro label, #formulario-registro label, #formulario-registro input, #formulario-registro button{
@@ -128,11 +129,11 @@
 <div id="formulario-registro" >
     <form  action="/registrar/oferta" method="post">
         @csrf
-        <label for="data">Data:</label>
+        
         <input  type="date" name="data" id="data" value="{{ $datanow }}" autocomplete="off" required>
     
-        <label for="valor">Valor:</label>
-        <input  type="text" name="valor" id="valor" autocomplete="off" required>
+
+        <input  type="text" name="valor" id="valor" autocomplete="off" required placeholder="Valor" >
         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
         <button type="submit">Registar Oferta</button>
