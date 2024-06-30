@@ -14,7 +14,7 @@
 
 
     .conteudo {
-        
+        font-size: 14px;
         width: 100%; 
         border-collapse: collapse;
         background-color: white;
@@ -43,13 +43,6 @@
             width: 90%;
         }
 
-        form{
-            width: 60%;
-        }
-
-        .conteudo{
-            width: 1250px;
-        }
 
     }
 

@@ -93,6 +93,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 250px;
+            
             
         }
       .links-menu{
@@ -139,9 +141,7 @@
         }
 
         #conteiner-conteudo{
-           
             overflow: auto;
-
             height: 88%;
             width: 97%;
             margin-top: 0.5%;
@@ -173,14 +173,12 @@
         }
 
 
-
-
         #open-menu{
             display: none;
         }
 
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             
             #open-menu {
             display: block;
