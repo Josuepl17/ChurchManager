@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>@yield('tela')</title>
     <style>
         :root {
             --CorBase: #00042a;
@@ -153,6 +153,7 @@
             font-size: 16px;
             border: 1px solid black;
             padding: 3px;
+           
         }
 
         #subtabela a {
@@ -237,8 +238,8 @@
     <div id="conteiner-geral">
 
         <nav id="conteiner-nav">
-            <h1>Igreja Batista Fonte De Vida</h1>
-            <p>Bem Vindo Josué !!</p>
+            <h1>  @yield('nome_igreja') </h1>
+            <p>Bem Vindo {{ Auth::User()->user }} !</p>
         </nav> <!--conteiner-nav-->
 
         <div id="menu-subtable">

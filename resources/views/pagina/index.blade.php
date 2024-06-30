@@ -1,8 +1,8 @@
 @extends('components.layout')
+@section('tela', 'DIZIMOS' )
+@section('usuario', $razao_empresa )
+@section('nome_igreja', $razao_empresa )
 
-
-@section('titulo', $razao_empresa )
-@section('titulo-nav', $razao_empresa )
 <style>
     :root {
         --titulos: #0A1626;
