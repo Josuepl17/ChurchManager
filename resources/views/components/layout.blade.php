@@ -153,6 +153,7 @@
             font-size: 16px;
             border: 1px solid black;
             padding: 3px;
+            height: 60%;
            
         }
 
@@ -269,6 +270,10 @@
 
 
                 </div> <!--conteudo-->
+
+                <div id="valor-registrar" >
+                    @yield('valor-registrar')
+                </div>
 
             </div> <!--subtabela-conteudo-->
 
