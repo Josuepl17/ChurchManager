@@ -6,7 +6,7 @@
 
 
 <style>
-    :root {
+:root {
         --titulos: #0A1626;
         --subtitulos: #023859;
         --fundos: #0D8AA6;
@@ -14,261 +14,87 @@
         --cor-secundaria: #313131e7;
     }
 
-    .table2 {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 90%;
-
-
-
-
-
-    }
-
-    .id {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 08%;
-        margin-top: 05px;
-
-
-
-
-
-    }
-
-    label {
-        font-size: 20px;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        padding: 10px;
-
-    }
-
-
-
-    .cad {
-        width: 30%;
-        text-transform: uppercase;
-        font-size: 20px;
-        padding: 2px;
-        border: 1px solid black;
-        text-align: center;
-
-
-    }
-
-    .h1m {
-        color: black;
-        font-size: 50px;
-    }
-
-    .id button {
-        margin: 0px;
-        color: black;
-        text-decoration: none;
-
-        padding-bottom: 0;
-        font-size: 20px;
-        width: 180px;
-        height: 40px;
-        border: 3px solid black;
-        background-color: var(--subtitulos);
-        color: white;
-
-
-    }
-
-    .id button:hover {
-        background-color: var(--titulos);
-        color: white;
-
-        transition: 0.6s;
-
-    }
-
-    .excluir {
-        margin: auto;
-        background-color: red;
-        font-size: 20px;
-        height: 100%;
-        width: 100%;
-        margin-top: -2px;
-
-
-    }
-
-
-    .excluir:hover {
-        color: aliceblue;
-
-        background-color: red;
-        transition: 0.6;
-    }
-
-    table {
-        border-collapse: collapse;
-
-
-        overflow: auto;
-        margin: auto;
-        border-radius: 50px;
-        width: 100%;
-
-        background-color: white;
-        margin-top: 0px;
-        color: black;
-
-    }
-
-    td {
-
-        border: 1px solid rgba(0, 0, 0, 0.34);
-        text-align: center;
-        font-size: 18px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-
-    td:hover {
-        color: white;
-    }
-
-
-
-
-    th {
-        border: 1px solid black;
-        border-top: none;
-        border-left: none;
-
-        font-size: 20px;
-        color: white;
-        background-color: var(--subtitulos);
-        position: sticky;
-        top: 0px;
-        padding-top: 5px;
-
-    }
-
-    tr:hover {
-        background-color: var(--fundos);
-        color: white;
-        transition: 0.1s;
-    }
-
-
-
-    .formx {
-
-        display: flex;
-        width: 100%;
-        flex-direction: none;
-        align-items: none;
-        margin-top: none;
-        justify-content: none;
-
-
-
-    }
-
-    .valortotal {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        height: 9%;
-        width: 100%;
-        background-color: var(--titulos);
-
-    }
-
-    .valortotal p {
-        color: black;
-        padding-right: 10px;
-
-        background-color: white;
-
-
-
-    }
-
-    .filtro {
-        display: flex;
-        width: 100%;
-        background-color: var(--titulos);
-        padding-top: 5px;
-        padding-bottom: 5px;
-        height: 7%;
-    }
-
-    .filtro form {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        border-radius: 0px;
-        margin-top: -3px;
-
-
-    }
-
-
     .conteudo {
-        display: flex;
+        font-size: 14px;
+        width: 100%; 
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    .conteudo th, .conteudo td {
+        padding: 5px;
+        
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+
+
+    .conteudo th{
+        background-color: var(--titulos);
+        color: white;    
+    }
+
+    .conteudo tr:first-child{
+        position: sticky;
+        top: 0;
+
+    }
+
+    #conteudo2{
         width: 100%;
-        height: 450px;
+        height: 75%;
         overflow: auto;
     }
 
-    .msg {
-        position: absolute;
-        z-index: 999;
-        right: 25px;
-        top: 16px;
-        border: 1px solid black;
-        width: 350px;
-        height: 40px;
-
-        color: white;
+    #valor-total{
         display: flex;
+        width: 100%;
+        background-color: var(--titulos);
+        color: white;
+        justify-content: flex-end;
+        align-items: center;
+        height: 5%;
+    }
+
+    #formulario-registro{
+        display: flex;
+        width: 100%;
+        background-color: white;
         justify-content: center;
         align-items: center;
-        animation: sumir 6s forwards;
-        border-radius: 0px 20px 0px 20px;
+        height: 20%;
+        flex-wrap: wrap;
     }
 
-    @keyframes sumir {
-        to {
-            opacity: 0;
-            /* torna o elemento transparente */
-            visibility: hidden;
-            /* oculta o elemento da tela */
-        }
+    #formulario-registro label, #formulario-registro label, #formulario-registro input, #formulario-registro button{
+       padding: 10px;
     }
 
-    .altura {
-        height: 100%;
+    #valor-total p {
+        margin-right: 10px;
     }
+
 </style>
 
 
-<div class="table2">
 
-    <div class="filtro">
+@section('botao-tabela')
         <form action="/filtrar/despesas" method="post">
             @csrf
             <input class="altura" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
 
             <input class="altura" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-            <input class="altura" type="submit" value="Filtrar" style="width: 5%; font-size: 15px; border-radius: 0px; ">
+            <input class="altura" type="submit" value="Filtrar" >
         </form>
-    </div>
+@endsection
 
-    <div class="conteudo">
-        <table>
+
+
+
+@section('conteudo')
+        <div id="conteudo2">
+        <table class="conteudo" >
             <tr>
                 <th style="width: 4%;">ID</th>
                 <th>DATA</th>
@@ -294,28 +120,26 @@
             </tr>
             @endforeach
         </table>
-    </div>
+</div>
 
-    <div class="valortotal">
+
+
+    <div id="valor-total">
         <p>VALOR TOTAL: R$
         <p style="color: red;  font-weight: bold;">{{ number_format($totaldespesas, 2, ',', '.') }}</p>
         </p>
     </div>
 
 
-</div>
 
 
 
-
+    <div id="formulario-registro" >
 <form class="id" action="/registrar/despesas/igreja" method="post">
     @csrf
-
-    <label for="data">Data:</label>
     <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
-    <label for="descricao">Desc:</label require>
-    <input type="text" list="descricao" name="descricao">
+    <input type="text" list="descricao" name="descricao" placeholder="Descrição" >
     <datalist id="descricao">
         <option value="Oferta Pastor">
         <option value="Pregador">
@@ -324,24 +148,18 @@
     </datalist>
 
 
-
-
-
-    <label for="valor">Valor:</label>
-    <input style="width: 10%;" class="cad" type="text" name="valor" id="valor" autocomplete="off" required>
-
-    <br>
+    <input  type="number" name="valor" id="valor" autocomplete="off" required placeholder="Valor" >
 
     <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
     <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
 
     <button type="submit">Registar Despesa</button>
 </form>
+</div>
+@endsection
 
 
-
-
-@if (Session::has('sucesso'))
+<!--@if (Session::has('sucesso'))
 <div style="background-color: green;" class="msg">
     <p>{{ Session::get('sucesso') }}</p>
 </div>
@@ -353,7 +171,7 @@
     <p>{{ Session::get('falha') }}</p>
 </div>
 {{ Session::forget('falha') }}
-@endif
+@endif -->
 
 
 
@@ -362,4 +180,3 @@
 
 
 
-@endsection

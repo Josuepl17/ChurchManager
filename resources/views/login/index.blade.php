@@ -189,10 +189,10 @@ body {
 
 
 
-@media(max-width: 640px){
+@media(max-width: 1000px){
 
   .login-box {
-  transform: scale(2.5);
+  transform: scale(2.3);
   top: 40%;
   left: 30%;
 }

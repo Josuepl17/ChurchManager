@@ -43,7 +43,7 @@
 
     #conteudo2{
         width: 100%;
-        height: 85%;
+        height: 75%;
         overflow: auto;
     }
 
@@ -63,12 +63,16 @@
         background-color: white;
         justify-content: center;
         align-items: center;
-        height: 10%;
+        height: 20%;
         flex-wrap: wrap;
     }
 
     #formulario-registro label, #formulario-registro label, #formulario-registro input, #formulario-registro button{
-       padding: 6px;
+       padding: 10px;
+    }
+
+    #valor-total p {
+        margin-right: 10px;
     }
 
 
@@ -121,7 +125,7 @@
 
     <div id="valor-total" >
         <p>VALOR TOTAL: R$
-        <p >{{ number_format($totalofertas, 2, ',', '.') }}</p>
+        <p style="color: green;  font-weight: bold;" >{{ number_format($totalofertas, 2, ',', '.') }}</p>
         </p>
     </div>
 
@@ -129,11 +133,8 @@
 <div id="formulario-registro" >
     <form  action="/registrar/oferta" method="post">
         @csrf
-        
         <input  type="date" name="data" id="data" value="{{ $datanow }}" autocomplete="off" required>
-    
-
-        <input  type="text" name="valor" id="valor" autocomplete="off" required placeholder="Valor" >
+        <input  type="number" name="valor" id="valor" autocomplete="off" required placeholder="Valor" >
         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
         <button type="submit">Registar Oferta</button>

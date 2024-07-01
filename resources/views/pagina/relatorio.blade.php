@@ -54,13 +54,14 @@
             flex-direction: row;
             justify-content: space-around;
             align-items: self-start;
+            flex-wrap: wrap;
 
 
         }
 
         .box {
             border: 1px solid black;
-            width: 19%;
+            width: 250px;
             height: 55%;
             margin-top: 40px;
             box-shadow: 1px 1px 2px black;
@@ -95,20 +96,16 @@
             display: flex;
             width: 100%;
             height: 15%;
-
             justify-content: center;
             align-items: center;
             background-color: var(--subtitulos);
-
         }
 
         nav a {
-
-
             font-size: 17px;
             text-decoration: none;
             color: black;
-            border: 1px solid black;
+            border-right: white 1px solid;
             padding: 6px;
             color: white;
             background-color: var(--cor-secundaria);
@@ -122,14 +119,7 @@
             color: white;
         }
 
-        .box-3 a {
-            text-decoration: none;
-            color: white;
-        }
 
-        .box-3 a:hover {
-            background-color: var(--fundos);
-        }
 
         .filtro {
             padding-top: 10px;
@@ -141,62 +131,15 @@
         }
 
         input {
-            font-size: 20px;
-            border-radius: 10px;
+            font-size: 16px;
+            
         }
 
-        .botao {
-            display: flex;
-            width: 100%;
-            height: 10%;
-            justify-content: center;
 
 
-        }
-
-        .botao a {
-            padding: 20px;
-            border: #0A1626 solid 1px;
-            font-size: 20px;
-            text-decoration: none;
-            background-color: var(--titulos);
-            color: white;
-            border-radius: 10px;
-        }
-
-        .botao a:hover {
-            background-color: var(--fundos);
-
-            transition: 0.4s;
 
 
-        }
 
-        #Caixaregistrar {
-            display: flex;
-            width: 99%;
-            height: 10%;
-            justify-content: flex-end;
-
-        }
-
-        #caixa {
-
-
-            width: 100%;
-            height: 100%;
-            margin-right: 100px;
-        }
-
-        #botao2 {
-            width: 100%;
-            height: 100%;
-            font-size: 25px;
-            padding: 8px;
-            background-color: red;
-            color: white;
-
-        }
     </style>
 </head>
 
@@ -204,10 +147,28 @@
 
     <div class="conteiner">
         <div class="titulo">
-            <h1>Igreja Presbiteriana da Renovação</h1>
+            <h1>Igreja</h1>
         </div>
 
-        <nav> <a href="/">MENU PRINCIPAL</a></nav>
+        <nav>
+             <a href="/">Menu Principal</a>
+
+            <a target="_blank" href="/gerar/{{ isset($dataini) ? $dataini : '1900-01-01'}}/{{ isset($datafi) ? $datafi : '5000-01-01'}}">Gerar Relatorio</a>
+
+        <div id="Caixaregistrar">
+            <form action="/fechar" onsubmit="return minhaFuncao()" method="post">
+                <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
+                <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+                <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
+                <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
+                <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
+                <input type="hidden" name="saldo" value="{{$saldo}}">
+                @csrf
+                <a href=""><input style="background-color: red; color:white;" type="submit" value="Fechar Caixa"></a>
+            </form>
+        </div>
+        
+            </nav>
 
         <div class="filtro">
             <form action="/filtro/pdf" method="post" require>
@@ -218,6 +179,18 @@
 
                 <input style="border-radius: 0px;" type="submit" value="Filtrar" require>
             </form>
+
+
+
+
+
+            
+
+
+
+
+
+
         </div>
 
         <div class="conteiner-colunas">
@@ -274,23 +247,7 @@
 
         </div>
 
-        <div class="botao">
-            <a target="_blank" href="/gerar/{{ isset($dataini) ? $dataini : '1900-01-01'}}/{{ isset($datafi) ? $datafi : '5000-01-01'}}">Gerar Relatorio</a>
 
-        </div>
-
-        <div id="Caixaregistrar">
-            <form action="/fechar" onsubmit="return minhaFuncao()" method="post">
-                <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
-                <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
-                <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
-                <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
-                <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
-                <input type="hidden" name="saldo" value="{{$saldo}}">
-                @csrf
-                <input id="botao2" class="botao" type="submit" value="Fechar Caixa">
-            </form>
-        </div>
 
 
 

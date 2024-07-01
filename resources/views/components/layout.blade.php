@@ -79,7 +79,9 @@
             align-items: center;
             width: 16%;
             height: 100%;
-            min-width: 150px; /*importante para Responsividade*/ /*determina o tanto que o menu pode se diminuir para que a tabela não caia no overflow*/
+            min-width: 150px;
+            /*importante para Responsividade*/
+            /*determina o tanto que o menu pode se diminuir para que a tabela não caia no overflow*/
 
         }
 
@@ -129,7 +131,7 @@
         }
 
 
-/*...................................................................*/
+        /*...................................................................*/
 
         #subtabela-conteudo {
             width: 100%;
@@ -140,7 +142,8 @@
             background-color: var(--fundos);
 
         }
-/*atenção*/
+
+        /*atenção*/
         #subtabela form {
             display: flex;
             height: 100%;
@@ -152,9 +155,9 @@
             margin-right: 15px;
             font-size: 16px;
             border: 1px solid black;
-            padding: 3px;
-            height: 60%;
-           
+            padding: 2px;
+            height: 70%;
+
         }
 
         #subtabela a {
@@ -166,12 +169,12 @@
             display: none;
         }
 
-/*..........................................................*/
+        /*..........................................................*/
 
         #conteudo {
-            overflow: auto;
+            overflow: auto; /*rolagem tela de membros,as demais telas tem suas propiasrolagem */
             height: 88%;
-            width: 97%; 
+            width: 97%;
             margin-top: 0.5%;
             background-color: white;
             border-radius: 5px;
@@ -180,9 +183,11 @@
 
         }
 
-/*............... mudanças Telefone................*/
+        /*............... mudanças Telefone................*/
 
-        @media (max-width: 700px) { /* Para diminuir tem que cortar texto */ /*importante para Responsividade*/
+        @media (max-width: 700px) {
+            /* Para diminuir tem que cortar texto */
+            /*importante para Responsividade*/
 
             #open-menu {
                 display: block;
@@ -226,11 +231,27 @@
                 display: flex;
                 justify-content: flex-end;
             }
-          
-            .remover{ /* CSS criado para remover itens da Tela para Celular*/  
-                display: none; /*importante para Responsividade*/
+
+            .remover {
+                /* CSS criado para remover itens da Tela para Celular*/
+                display: none;
+                /*importante para Responsividade*/
             }
 
+            #subtabela form {
+                display: flex;
+                height: 100%;
+                justify-content: flex-end;
+                align-items: center;
+            }
+
+            #subtabela form input {
+                margin-right: 15px;
+                font-size: 14px;
+                border: 1px solid black;
+                padding: 2px;
+                height: 60%;
+            }
         }
     </style>
 </head>
@@ -239,7 +260,7 @@
     <div id="conteiner-geral">
 
         <nav id="conteiner-nav">
-            <h1>  @yield('nome_igreja') </h1>
+            <h1> @yield('nome_igreja') </h1>
             <p>Bem Vindo {{ Auth::User()->user }} !</p>
         </nav> <!--conteiner-nav-->
 
@@ -271,7 +292,7 @@
 
                 </div> <!--conteudo-->
 
-                <div id="valor-registrar" >
+                <div id="valor-registrar">
                     @yield('valor-registrar')
                 </div>
 

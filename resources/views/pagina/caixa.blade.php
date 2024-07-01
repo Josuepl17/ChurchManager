@@ -16,7 +16,7 @@
 
     td {
 
-        border: 1px solid rgba(0, 0, 0, 0.34);
+        
         text-align: center;
         font-size: 18px;
         margin-top: 0px;
@@ -46,11 +46,10 @@
 
 
     th {
-        border: 1px solid black;
+        border: 1px solid white;
         border-top: none;
         border-left: none;
-
-        font-size: 20px;
+        font-size: 14px;
         color: white;
         background-color: var(--subtitulos);
         position: sticky;
@@ -93,11 +92,11 @@
             <th>ID</th>
             <th style="color: yellow;" >DATA INICIAL</th>
             <th style="color: yellow;" >DATA FINAL</th>
-            <th style="color: rgb(0, 254, 0); " >VALOR DIZIMOS</th>
-            <th style="color: rgb(0, 254, 0);" >VALOR OFERTAS</th>
-            <th style="color:red;" >VALOR DESPESAS</th>
+            <th style="color: rgb(0, 254, 0); " >DIZIMOS</th>
+            <th style="color: rgb(0, 254, 0);" >OFERTAS</th>
+            <th style="color:red;" >DESPESAS</th>
             <th style="color:blue;" >SALDO</th>
-            <th ">X</th>
+            <th >X</th>
         </tr>
 
         @foreach ( $dados as $caixa)
