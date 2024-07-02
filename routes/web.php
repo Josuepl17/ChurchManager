@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MembrosController::class, 'index'])->name('index')->middleware('auth');
 Route::get('/cadastro/membro', [MembrosController::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro']);
-Route::post('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
+Route::get('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
 
                             /*Dizimos Por Usuario*/
 Route::get('/inserir/dizimos/{membro_id}/{nome}', [DizimosController::class, 'filter_page']);

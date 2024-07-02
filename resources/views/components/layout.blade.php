@@ -106,6 +106,32 @@
             transition: 0.4s;
         }
 
+        .conteudo {
+        font-size: 14px;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    .conteudo th, .conteudo td {
+        padding: 5px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+
+
+    .conteudo th{
+        background-color: var(--titulos);
+        color: white;    
+    }
+
+    .conteudo tr:first-child{
+        position: sticky;
+        top: 0;
+
+    }
+
 
         #menu h1 {
             display: flex;
@@ -169,6 +195,7 @@
         #open-menu {
             display: none;
         }
+
 
         
 
