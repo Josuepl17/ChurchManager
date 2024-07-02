@@ -1,6 +1,5 @@
 @extends('components.layout')
 @section('tela', 'Membros' )
-@section('usuario', $razao_empresa )
 @section('nome_igreja', $razao_empresa )
 
 <style>
@@ -13,36 +12,8 @@
     }
 
 
-    .conteudo {
-        font-size: 14px;
-        width: 100%; 
-        border-collapse: collapse;
-        background-color: white;
-    }
-
-    .conteudo th, .conteudo td {
-        padding: 5px;
-        
-        border: 1px solid #ddd;
-        text-align: center;
-    }
 
 
-
-    .conteudo th{
-        background-color: var(--titulos);
-        color: white;    
-    }
-
-    .conteudo tr:first-child{
-        position: sticky;
-        top: 0;
-
-    }
-
-    button{
-        all: unset;
-    }
 
 
 
@@ -61,6 +32,14 @@
 
 
     } 
+
+    td a{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+    }
 
 </style>
 
@@ -98,7 +77,7 @@
                 <a style="color: white; font-size:15px; text-decoration: none;" href="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}">Inserir</a>
             </td>
             <td style="background-color: red;" >
-<button>X</button>
+                <a style="color: white; font-size:15px; text-decoration: none;" href="/destroy/{id}">X</a>
             </td>
         </tr>
         @endforeach

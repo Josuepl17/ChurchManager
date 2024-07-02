@@ -1,8 +1,6 @@
 @extends('components.layout')
-
-@section('conteudo')
-@section('titulo', 'OFERTAS' )
-@section('titulo-nav', 'Ofertas' )
+@section('tela', 'Ofertas' )
+@section('nome_igreja', 'Ofertas' )
 
 
 <style>

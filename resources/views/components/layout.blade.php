@@ -170,6 +170,8 @@
             display: none;
         }
 
+        
+
         /*..........................................................*/
 
         #conteudo {
@@ -193,11 +195,13 @@
             #open-menu {
                 display: block;
                 position: fixed;
-                top: 08px;
+                top: 07px;
                 left: 20px;
                 cursor: pointer;
                 color: #fff;
                 font-size: 24px;
+                transition: left 0.3s ease;
+                
             }
 
             #menu {
@@ -207,19 +211,20 @@
                 top: 0;
                 left: -250px;
                 transition: left 0.3s ease;
-                background-color: var(--CorBase);
+                background-color: white;
                 z-index: 1;
-
+                box-shadow: 15px 2px 2px solid black;
+                
             }
 
             #menu a {
-                color: white;
+                color: black;
 
             }
 
             #menu h1 {
-                background-color: white;
-                color: black;
+                background-color: var(--CorBase);
+                color: white;
                 height: 7%;
             }
 
@@ -253,6 +258,8 @@
                 padding: 2px;
                 height: 60%;
             }
+
+
         }
     </style>
 </head>
@@ -264,9 +271,10 @@
             <h1> @yield('nome_igreja') </h1>
             <p>Bem Vindo {{ Auth::User()->user }} !</p>
         </nav> <!--conteiner-nav-->
-
+        
         <div id="menu-subtable">
             <div id="menu">
+            <div id="open-menu">&#9776;</div>
                 <h1>Menu</h1>
                 <a class="links" href="/">Home</a>
                 <a class="links" href="/oferta">Ofertas</a>
@@ -276,7 +284,7 @@
                 <a class="links" href="/user/profile">Usuarios</a>
                 <a class="links" href="/cadastro/login/novo">Novo Usuario</a>
                 <a class="links" href="/logout"><img src="{{ asset('\sair.png') }}" alt="">&nbspLogout</a>
-                <div id="open-menu">&#9776;</div>
+                
             </div> <!--menu-->
 
             <div id="subtabela-conteudo">
@@ -311,5 +319,21 @@
         menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
     });
 </script>
+
+<script>
+        const button = document.getElementById('open-menu');
+        let isOpen = false; // Verifica se o menu está aberto
+
+        button.addEventListener('click', () => {
+            if (isOpen) {
+                // Volta à posição original
+                button.style.left = '07px';
+            } else {
+                // Move 100px para a direita
+                button.style.left = '44vw';
+            }
+            isOpen = !isOpen; // Alterna o estado do menu
+        });
+    </script>
 
 </html>
