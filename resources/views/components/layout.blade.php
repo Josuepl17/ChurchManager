@@ -106,6 +106,7 @@
             transition: 0.4s;
         }
 
+
         #menu h1 {
             display: flex;
             justify-content: center;

@@ -1,5 +1,5 @@
 @extends('components.layout')
-@section('tela', 'DIZIMOS' )
+@section('tela', 'Membros' )
 @section('usuario', $razao_empresa )
 @section('nome_igreja', $razao_empresa )
 
@@ -38,6 +38,10 @@
         position: sticky;
         top: 0;
 
+    }
+
+    button{
+        all: unset;
     }
 
 
@@ -94,8 +98,7 @@
                 <a style="color: white; font-size:15px; text-decoration: none;" href="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}">Inserir</a>
             </td>
             <td style="background-color: red;" >
-
-                <a style="color: white; font-size:15px; text-decoration: none;" href="/destroy/{{$ind->id}}">X</a>
+<button>X</button>
             </td>
         </tr>
         @endforeach
