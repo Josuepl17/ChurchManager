@@ -222,8 +222,8 @@
             #open-menu {
                 display: block;
                 position: fixed;
-                top: 07px;
-                left: 20px;
+                top: 2%;
+                left: 4%;
                 cursor: pointer;
                 color: #fff;
                 font-size: 24px;
@@ -357,7 +357,7 @@
                 button.style.left = '07px';
             } else {
                 // Move 100px para a direita
-                button.style.left = '44vw';
+                button.style.left = '55vw';
             }
             isOpen = !isOpen; // Alterna o estado do menu
         });

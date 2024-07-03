@@ -47,6 +47,12 @@
         overflow: auto;
     }
 
+    td form button {
+        all: unset;
+        width: 100%;
+        height: 100%;
+    }
+
     #valor-total{
         display: flex;
         width: 100%;
@@ -104,7 +110,7 @@
                 <td style="background-color: var(--titulos);; color:white">{{ $dizimo->id}}</td>
                 <td>{{ \Carbon\Carbon::parse($dizimo->data)->format('d/m/Y') }}</td>
                 <td>R${{ number_format($dizimo->valor, 2, ',', '.') }}</td>
-                <td>
+                <td style="background-color: red; color:white" > 
                     <form method="post" class="formx" action="/dizimos/destoy/id"><button class="excluir">X</button>
                         <input type="hidden" name="data" value="{{$dizimo->data}}">
                         <input type="hidden" name="id" value="{{$dizimo->id}}">

@@ -46,8 +46,8 @@
 
         @media (max-width: 700px) {
             form{
-                width: 75%;
-                 height: 85%;
+                width: 97%;
+                 height: 69%;
             }
         }
     </style>
