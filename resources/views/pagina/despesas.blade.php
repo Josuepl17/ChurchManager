@@ -27,6 +27,12 @@
         text-align: center;
     }
 
+    td form button {
+        all: unset;
+        width: 100%;
+        height: 100%;
+    }
+
 
 
     .conteudo th{
@@ -107,8 +113,8 @@
                 <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>
                 <td>{{$despesa->descricao}}</td>
                 <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
-                <td>
-                    <form method="POST" class="formx" action="/destroy/despesas/id"><button class="excluir">X</button>
+                <td style="background-color: red; color:white" >
+                    <form method="POST" class="formx" action="/destroy/despesas/id"><button>X</button>
                         <input type="hidden" name="data" value="{{$despesa->data}}">
                         <input type="hidden" name="id" value="{{$despesa->id}}">
                         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">

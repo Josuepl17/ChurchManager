@@ -147,7 +147,7 @@
 
     <div class="conteiner">
         <div class="titulo">
-            <h1>Igreja</h1>
+            <h1>{{$razao_empresa}} - Relatorio Geral </h1>
         </div>
 
         <nav>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use App\Http\Controllers\ControllerIgreja;
+use App\Models\empresas;
 use App\Services\MeuServico;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,8 +28,7 @@ class CaixasController extends Controller
         $dataFi = $request->datafi ?? '5000-01-01';
 
         $empresa_id = auth()->user()->empresa_id;
-
-
+   
         $dados = [
             'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
@@ -36,7 +36,8 @@ class CaixasController extends Controller
             'datanow' => Carbon::now()->format('Y-m-d'),
             'qtymembros' => membros::where('empresa_id', $empresa_id)->count(),
             'dataini' => $request->dataini,
-            'datafi' => $request->datafi
+            'datafi' => $request->datafi,
+            'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
         $saldo = $dados['totalofertas'] + $dados['totaldizimos'] - $dados['totaldespesas'];

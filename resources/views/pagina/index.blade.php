@@ -41,6 +41,8 @@
 
     }
 
+    
+
 </style>
 
 @section('botao-tabela')
@@ -77,7 +79,7 @@
                 <a style="color: white; font-size:15px; text-decoration: none;" href="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}">Inserir</a>
             </td>
             <td style="background-color: red;" >
-                <a style="color: white; font-size:15px; text-decoration: none;" href="/destroy/{id}">X</a>
+                <a style="color: white; font-size:15px; text-decoration: none;" href="/destroy/{{$ind->id}}">X</a>
             </td>
         </tr>
         @endforeach
