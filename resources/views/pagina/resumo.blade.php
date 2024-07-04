@@ -60,11 +60,11 @@
         }
 
         .box {
-            border: 1px solid black;
+            
             width: 250px;
             height: 55%;
             margin-top: 40px;
-            box-shadow: 1px 1px 2px black;
+            
 
 
 
@@ -74,7 +74,6 @@
             display: flex;
             width: 100%;
             height: 20%;
-
             font-size: 20px;
             justify-content: center;
             align-items: center;
@@ -86,7 +85,6 @@
             display: flex;
             width: 100%;
             height: 65%;
-
             background-color: white;
             justify-content: center;
             align-items: center;
@@ -164,7 +162,7 @@
                 <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
                 <input type="hidden" name="saldo" value="{{$saldo}}">
                 @csrf
-                <a href=""><input style="background-color: red; color:white;" type="submit" value="Fechar Caixa"></a>
+                <a  href=""><input style="background-color: red; color:white;" type="submit" value="Fechar Caixa"></a>
             </form>
         </div>
         
@@ -177,7 +175,7 @@
                 <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
                 <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
 
-                <input style="border-radius: 0px;" type="submit" value="Filtrar" require>
+                <input type="submit" value="Filtrar" require>
             </form>
 
 

@@ -26,9 +26,8 @@ class CaixasController extends Controller
     {
         $dataIni = $request->dataini ?? '1900-01-01';
         $dataFi = $request->datafi ?? '5000-01-01';
-
         $empresa_id = auth()->user()->empresa_id;
-   
+
         $dados = [
             'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
@@ -41,14 +40,14 @@ class CaixasController extends Controller
         ];
 
         $saldo = $dados['totalofertas'] + $dados['totaldizimos'] - $dados['totaldespesas'];
-        
+
 
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
             unset($dados['dataini'], $dados['datafi']);
-            return view('pagina.relatorio', $dados)->with('saldo', $saldo);
+            return view('pagina.resumo', $dados)->with('saldo', $saldo);
         }
 
-        return view('pagina.relatorio', $dados)->with('saldo', $saldo);
+        return view('pagina.resumo', $dados)->with('saldo', $saldo);
     }
 
 
@@ -76,10 +75,9 @@ class CaixasController extends Controller
 
 
 
-        $pdf = pdf::loadView('pagina.fpdf', $dados);
-        return $pdf->stream('Relatorio.pdf');
+        $pdf = pdf::loadView('relatorios-pdf.relatorioPDF', $dados); /*Carrega os Dados do PDF*/
+        return $pdf->stream('Relatorio.pdf'); /*Gera o PDF*/
     }
-
 
 
 
@@ -102,21 +100,20 @@ class CaixasController extends Controller
 
 
 
-    public function indexcaixa(){
+    public function indexcaixa()
+    {
         $empresa_id = auth()->user()->empresa_id;
         $dados = caixas::where('empresa_id', $empresa_id)->get();
-        
+
         $saldo = caixas::where('empresa_id', $empresa_id)->sum('saldo');;
         return view('pagina.caixa')->with('dados', $dados)->with('saldo', $saldo);
     }
 
-    public function destroy_caixa(Request $request){
+    public function destroy_caixa(Request $request)
+    {
         $destroy = $request->id;
         caixas::destroy($destroy);
-        
+
         return redirect()->back();
     }
-
-
-
 }

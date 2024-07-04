@@ -6,58 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatorio</title>
     <style>
-        h1 {
-            text-align: center;
-        }
+/* Estilos gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        .conteiner {
-            display: flex;
-            margin: auto;
-            width: 50%;
-            justify-content: center;
-        }
+.conteiner {
+    width: 80%;
+    margin: 0 auto;
+}
 
-        table {
-            border-collapse: collapse;
+h1 {
+    color: #333;
+    text-align: center;
+}
 
+hr {
+    margin-bottom: 20px;
+}
 
+/* Estilos da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
-            margin: auto;
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
 
-            width: 100%;
-            background-color: white;
-            margin-top: 0px;
-            color: black;
+th {
+    background-color: #f2f2f2;
+}
 
-        }
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
 
-        td {
+/* Estilos do rodapé */
+p {
+    text-align: center;
+    margin-top: 40px;
+}
 
-            border: 1px solid black;
-            text-align: center;
-            font-size: 18px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
+/* Estilos do totalizador */
+.total {
+    font-weight: bold;
+    text-align: right;
+}
 
-        th {
-            border: 1px solid black;
-            font-size: 20px;
-            color: rgb(0, 0, 0);
-            background-color: var(--subtitulos);
-
-            top: -1px;
-            padding-top: 5px;
-
-        }
-
-        tr {
-            border: 1px solid black;
-        }
-
-        p {
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -189,18 +191,11 @@
 
 
         <table>
-
-
-
             <tr style="border-bottom: 1px solid black;">
                 <th>ID</th>
                 <th>DATA</th>
                 <th>DESCRIÇÃO</th>
                 <th>VALOR</th>
-
-
-
-
             </tr>
 
 
@@ -209,24 +204,15 @@
 
             <tr>
                 <td>{{ $despesa->id}}</td>
-
-
                 <td>{{ \Carbon\Carbon::parse($despesa->data)->format('d/m/Y') }}</td>
                 <td>{{$despesa->descricao}}</td>
                 <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
-
-
-
             </tr>
-
-
 
             @endforeach
 
-
             <tr>
                 <td colspan="4" style="font-weight: bold;">TOTAL: R$ {{ number_format($totaldespesas, 2, ',', '.') }}</td>
-
             </tr>
 
 

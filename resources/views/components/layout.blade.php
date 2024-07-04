@@ -6,15 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('tela')</title>
     <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
-    
-    <style>
-        :root {
-            --CorBase: #00042a;
-            --CorBase2: #222326;
-            --Corbase3: #034159;
-            --Corbase4: #03030394;
-        }
 
+    <style>
         :root {
 
             --titulos: #0a1727;
@@ -34,10 +27,8 @@
         }
 
         #conteiner-geral {
-
             width: 100%;
             height: 98vh;
-
         }
 
 
@@ -56,9 +47,8 @@
 
         #conteiner-nav h1 {
             color: white;
-            
             margin-left: 15px;
-            
+
         }
 
         #conteiner-nav p {
@@ -150,39 +140,19 @@
 
         }
 
-        /*atenção*/
-        #subtabela form {
-            display: flex;
-            height: 100%;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        #subtabela form input {
-            margin-right: 15px;
-            font-size: 16px;
-            border: 1px solid black;
-            padding: 2px;
-            height: 70%;
-
-        }
-
-        #subtabela a {
-            margin-right: 15px;
-        }
-
 
         #open-menu {
             display: none;
         }
 
 
-        
+
 
         /*..........................................................*/
 
         #conteudo {
-            overflow: auto; /*rolagem tela de membros,as demais telas tem suas propiasrolagem */
+            overflow: auto;
+            /*rolagem tela de membros,as demais telas tem suas propiasrolagem */
             height: 88%;
             width: 97%;
             margin-top: 0.5%;
@@ -202,13 +172,12 @@
             #open-menu {
                 display: block;
                 position: fixed;
-                top: 2%;
-                left: 4%;
+                top: 1%;
+                left: 3%;
                 cursor: pointer;
                 color: #fff;
                 font-size: 24px;
-                transition: left 0.3s ease;
-                
+
             }
 
             #menu {
@@ -221,7 +190,7 @@
                 background-color: white;
                 z-index: 1;
                 box-shadow: 15px 2px 2px solid black;
-                
+
             }
 
             #menu a {
@@ -235,15 +204,16 @@
                 height: 7%;
             }
 
+            #conteiner-nav {
+                display: flex;
+                justify-content: flex-end;
+            }
+
             #conteiner-nav h1 {
                 display: none;
                 text-align: end;
             }
 
-            #conteiner-nav {
-                display: flex;
-                justify-content: flex-end;
-            }
 
             .remover {
                 /* CSS criado para remover itens da Tela para Celular*/
@@ -266,7 +236,6 @@
                 height: 60%;
             }
 
-
         }
     </style>
 </head>
@@ -278,10 +247,10 @@
             <h1> @yield('nome_igreja') </h1>
             <p>Bem Vindo {{ Auth::User()->user }} !</p>
         </nav> <!--conteiner-nav-->
-        
+
         <div id="menu-subtable">
             <div id="menu">
-            <div id="open-menu">&#9776;</div>
+                <div id="open-menu">&#9776;</div>
                 <h1>Menu</h1>
                 <a class="links" href="/">Home</a>
                 <a class="links" href="/oferta">Ofertas</a>
@@ -291,7 +260,7 @@
                 <a class="links" href="/user/profile">Usuarios</a>
                 <a class="links" href="/cadastro/login/novo">Novo Usuario</a>
                 <a class="links" href="/logout"><img src="{{ asset('\sair.png') }}" alt="">&nbspLogout</a>
-                
+
             </div> <!--menu-->
 
             <div id="subtabela-conteudo">
@@ -327,20 +296,6 @@
     });
 </script>
 
-<script>
-        const button = document.getElementById('open-menu');
-        let isOpen = false; // Verifica se o menu está aberto
 
-        button.addEventListener('click', () => {
-            if (isOpen) {
-                // Volta à posição original
-                button.style.left = '07px';
-            } else {
-                // Move 100px para a direita
-                button.style.left = '55vw';
-            }
-            isOpen = !isOpen; // Alterna o estado do menu
-        });
-    </script>
 
 </html>

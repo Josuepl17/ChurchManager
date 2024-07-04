@@ -276,10 +276,7 @@ border-radius: 0px 0px 10px  10px;
 
 a{
     border-bottom: none;
-    
     border-right: 1px solid black;
-    
-    
     
 }
 
@@ -307,7 +304,7 @@ a{
                         
                         <a href="/oferta">Cadastro Oferta</a>
                         <a href="/despesas">Cadastro Despesas</a>
-                        <a href="/relatorio">Relatorios</a>
+                        <a href="/relatorio">Resumo</a>
                         <a href="/indexcaixa">Caixa</a>
                         <a href="/user/profile">Usuarios</a>
                         <a href="/cadastro/login/novo">Novo Usuario</a>
