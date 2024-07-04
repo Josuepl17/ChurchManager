@@ -16,6 +16,7 @@ body {
 .conteiner {
     width: 80%;
     margin: 0 auto;
+    page-break-inside: avoid;
 }
 
 h1 {
@@ -67,11 +68,11 @@ p {
 
 
 
-    <h1>Relatorio Dizimos</h1>
-    <hr>
+
 
     <div class="conteiner">
-
+    <h1>Relatorio Dizimos</h1>
+    <hr>
 
         <table>
 
@@ -124,12 +125,12 @@ p {
 
 
 
-    <h1>Relatorio Ofertas</h1>
-    <hr>
+
 
     <div class="conteiner">
 
-
+    <h1>Relatorio Ofertas</h1>
+    <hr>
 
         <table>
 
@@ -183,11 +184,11 @@ p {
 
 
 
-    <h1>Relatorio Despesas</h1>
-    <hr>
+
 
     <div class="conteiner">
-
+    <h1>Relatorio Despesas</h1>
+    <hr>
 
 
         <table>

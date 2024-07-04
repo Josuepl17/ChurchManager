@@ -27,7 +27,7 @@ class DizimosController extends Controller
 
     public function filter_page(Request $request)
     {
-
+       
         $dataIni = $request->dataini ?? '1900-01-01';
         $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = Auth::user()->empresa_id;
@@ -46,17 +46,13 @@ class DizimosController extends Controller
             'nome' => $request->nome
         ];
 
-
-
-
-
-
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
             unset($dados['dataini'], $dados['datafi']);
             return view('pagina.dizimo', $dados);
         }
 
             return view('pagina.dizimo', $dados);
+
     }
 
 

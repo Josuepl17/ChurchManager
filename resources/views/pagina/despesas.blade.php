@@ -65,7 +65,7 @@
         @csrf
         <input class="cad" type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
 
-        <input type="text" list="descricao" name="descricao" placeholder="Descrição">
+        <input type="text" list="descricao" name="descricao" placeholder="Descrição" required>
         <datalist id="descricao">
             <option value="Oferta Pastor">
             <option value="Pregador">

@@ -7,10 +7,13 @@
 <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
 
 @section('botao-tabela')
-        <form action="/filtrar/dizimo/{{ $membro_id }}/{{ $nome }}" method="get">
-            <input class="altura" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
-            <input class="altura" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-            <input class="altura" type="submit" value="Filtrar">
+        <form action="/filtrar/dizimo" method="post">
+        @csrf
+            <input type="hidden" name="membro_id" value="{{ $membro_id }}">
+            <input type="hidden" name="membro_id" value="{{ $nome }}">
+            <input  type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+            <input  type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
+            <input  type="submit" value="Filtrar">
         </form>
 @endsection
 

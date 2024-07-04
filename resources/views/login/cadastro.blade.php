@@ -231,19 +231,19 @@
 
       <div class="user-box">
         <input type="text" name="user" required="" value="{{ isset($dados->user) ? $dados->user : '' }}">
-        <label>Email</label>
+        <label>User:</label>
       </div>
       <div class="user-box">
         <input type="password" name="password" required="">
-        <label>Senha</label>
+        <label>Senha:</label>
       </div>
       <div class="user-box">
         <input type="text" name="razao" required="" value="{{ isset($dados->razao) ? $dados->razao : '' }}">
-        <label>Razão Social</label>
+        <label>Razão Social:</label>
       </div>
       <div class="user-box">
         <input type="number" name="cnpj" maxlength="2" required="" value="{{ isset($dados->cnpj) ? $dados->cnpj : '' }}">
-        <label>CNPJ</label>
+        <label>CNPJ:</label>
       </div>
 
       <a href="">
