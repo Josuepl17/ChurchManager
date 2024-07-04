@@ -1,0 +1,73 @@
+:root {
+        --titulos: #0A1626;
+        --subtitulos: #023859;
+        --fundos: #0D8AA6;
+        --cor-secundaria: #313131e7;
+    }
+
+    table {
+        font-size: 14px;
+        width: 100%; 
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    table th, table td {
+        padding: 5px;
+        
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+
+
+    table th{
+        background-color: var(--titulos);
+        color: white;    
+    }
+
+    table tr:first-child{
+        position: sticky;
+        top: 0;
+
+    }
+
+    #tabela-dados{
+        width: 100%;
+        height: 75%;
+        overflow: auto;
+    }
+
+    td form button {
+        all: unset;
+        width: 100%;
+        height: 100%;
+    }
+
+    #valor-total{
+        display: flex;
+        width: 100%;
+        background-color: var(--titulos);
+        color: white;
+        justify-content: flex-end;
+        align-items: center;
+        height: 5%;
+    }
+
+    #formulario-registro{
+        display: flex;
+        width: 100%;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+        height: 20%;
+        flex-wrap: wrap;
+    }
+
+    #formulario-registro label, #formulario-registro label, #formulario-registro input, #formulario-registro button{
+       padding: 10px;
+    }
+
+    #valor-total p {
+        margin-right: 10px;
+    }

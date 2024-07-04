@@ -96,7 +96,7 @@
         }
 
         #menu{
-            border: 1px solid black;
+            margin-top: 10px;
             display: flex;
             width: 100%;
             min-height: 550px;
@@ -105,11 +105,12 @@
 
         table {
         border-collapse: collapse;
+        
            text-align: center;
             font-size: 20px;
    
         margin: auto;
-        width: 50%;
+        width: 70%;
         background-color: white;
         margin-top: 0px;
         color: black;
@@ -128,11 +129,11 @@
 
 
     th {
-        border: 1px solid black;
+        
         border-top: none;
         border-left: none;
 
-        font-size: 20px;
+        font-size: 16px;
         color: white;
         background-color: var(--subtitulos);
         position: sticky;
@@ -148,6 +149,12 @@
         transition: 0.1s;
     }
 
+    tr {
+        border-bottom: 1px solid black;
+    }
+
+
+
 
 
 
@@ -159,7 +166,7 @@
 
     <div class="conteiner">
         <div class="titulo">
-            <h1>{{$nomeempresa->razao}}</h1>
+            <h3>{{$nomeempresa->razao}}</h3>
         </div>
 
         <nav> <a href="/">MENU PRINCIPAL</a></nav>
@@ -170,8 +177,6 @@
                 <th style="width: 4%;">ID</th>
                 <th>USUARIO</th>
                 
-           
-                <th style="width: 4%;">X</th>
             </tr>
             @foreach ($users as $user)
             <tr>

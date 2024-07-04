@@ -2,87 +2,7 @@
 @section('tela', 'Ofertas' )
 @section('nome_igreja', 'Ofertas' )
 
-
-<style>
-    :root {
-        --titulos: #0A1626;
-        --subtitulos: #023859;
-        --fundos: #0D8AA6;
-
-        --cor-secundaria: #313131e7;
-    }
-
-    .conteudo {
-        font-size: 14px;
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-    }
-
-    .conteudo th,
-    .conteudo td {
-        padding: 5px;
-
-        border: 1px solid #ddd;
-        text-align: center;
-    }
-
-
-
-    .conteudo th {
-        background-color: var(--titulos);
-        color: white;
-    }
-
-    .conteudo tr:first-child {
-        position: sticky;
-        top: 0;
-
-    }
-
-    td form button {
-        all: unset;
-        width: 100%;
-        height: 100%;
-    }
-
-    #conteudo2 {
-        width: 100%;
-        height: 75%;
-        overflow: auto;
-    }
-
-    #valor-total {
-        display: flex;
-        width: 100%;
-        background-color: var(--titulos);
-        color: white;
-        justify-content: flex-end;
-        align-items: center;
-        height: 5%;
-    }
-
-    #formulario-registro {
-        display: flex;
-        width: 100%;
-        background-color: white;
-        justify-content: center;
-        align-items: center;
-        height: 20%;
-        flex-wrap: wrap;
-    }
-
-    #formulario-registro label,
-    #formulario-registro label,
-    #formulario-registro input,
-    #formulario-registro button {
-        padding: 10px;
-    }
-
-    #valor-total p {
-        margin-right: 10px;
-    }
-</style>
+<link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
 
 
 @section('botao-tabela')
@@ -96,8 +16,8 @@
 
 
 @section('conteudo')
-<div id="conteudo2">
-    <table class="conteudo">
+<div id="tabela-dados">
+    <table>
         <tr>
             <th style="width: 4%;">X</th>
             <th>DATA</th>

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('tela')</title>
+    <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
+    
     <style>
         :root {
             --CorBase: #00042a;
@@ -54,7 +56,9 @@
 
         #conteiner-nav h1 {
             color: white;
+            
             margin-left: 15px;
+            
         }
 
         #conteiner-nav p {
@@ -106,31 +110,7 @@
             transition: 0.4s;
         }
 
-        .conteudo {
-        font-size: 14px;
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-    }
 
-    .conteudo th, .conteudo td {
-        padding: 5px;
-        border: 1px solid #ddd;
-        text-align: center;
-    }
-
-
-
-    .conteudo th{
-        background-color: var(--titulos);
-        color: white;    
-    }
-
-    .conteudo tr:first-child{
-        position: sticky;
-        top: 0;
-
-    }
 
 
         #menu h1 {

@@ -147,7 +147,7 @@
 
     <div class="conteiner">
         <div class="titulo">
-            <h1>{{$razao_empresa}} - Relatorio Geral </h1>
+            <h3>{{$razao_empresa}} - Resumo </h3>
         </div>
 
         <nav>
