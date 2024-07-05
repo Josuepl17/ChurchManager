@@ -116,22 +116,23 @@
             font-size: 16px;
             background-color: var(--titulos);
             color: white;
-            height: 04%;
+            height: 05%;
             width: 100%;
-            border-bottom: 1px solid black;
-            white-space: nowrap;
+            border-right: 1px solid white;
+            
         }
 
-        #subtabela {
+        #titulo-pagina{
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
             width: 100%;
-            height: 07%;
-            background-color: var(--subtitulos);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.445);
-
+            height: 04%;
+            background-color: var(--titulos);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.271);
         }
+
 
 
         /*...................................................................*/
@@ -146,20 +147,23 @@
 
         }
 
+        #subtabela {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            height: 07%;
+            background-color: var(--subtitulos);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.445);
+
+        }
+
 
         #open-menu {
             display: none;
         }
 
-        #titulo-pagina{
-            display: flex;
-            width: 100%;
-            height: 04%;
-            background-color: var(--titulos);
-            color: white;
-            justify-content: center;
-            align-items: center;
-        }
+
 
 
 
