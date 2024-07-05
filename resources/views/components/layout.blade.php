@@ -10,10 +10,11 @@
     <style>
         :root {
 
-            --titulos: #0a1727;
+            --titulos: #111826;
             --subtitulos: #012841;
             --fundos: #37383842;
             --cor-secundaria: #5353533d;
+            --cor-terceiro: #260101;
         }
 
         body {
