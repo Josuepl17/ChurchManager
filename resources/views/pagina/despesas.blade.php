@@ -1,6 +1,5 @@
 @extends('components.layout')
-@section('conteudo')
-@section('titulo', 'Despesas' )
+@section('tela', 'Despesas' )
 @section('nome_igreja', 'Despesas' )
 
 <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
@@ -82,19 +81,21 @@
         <button type="submit">Registar Despesa</button>
     </form>
 </div>
-@endsection
 
 
-<!--@if (Session::has('sucesso'))
-<div style="background-color: green;" class="msg">
+
+@if (Session::has('sucesso'))
+<div class="flash-message" style="background-color: rgb(0, 77, 0);">
     <p>{{ Session::get('sucesso') }}</p>
 </div>
 {{ Session::forget('sucesso') }}
 @endif
 
 @if (Session::has('falha'))
-<div style="background-color: red;" class="msg">
+<div class="flash-message" style="background-color: red;">
     <p>{{ Session::get('falha') }}</p>
 </div>
 {{ Session::forget('falha') }}
-@endif -->
+@endif 
+
+@endsection

@@ -18,6 +18,7 @@
            height: 70%;
            border: 1px solid black;
            border-radius: 10px;
+           background-color: white;
         }
         input, button {
             display: flex;
@@ -30,7 +31,7 @@
             text-transform: uppercase;
         }
         button {
-            background-color: blue;
+            background-color: rgb(0, 0, 66);
             color: #fff;
             cursor: pointer;
             
@@ -42,6 +43,7 @@
             height: 100%;
             justify-content: center;
             align-items: center;
+            
         }
 
         @media (max-width: 700px) {

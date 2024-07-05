@@ -32,7 +32,7 @@
         }
 
 
-        #conteiner-nav {
+        #cabecalho {
             display: flex;
             background-color: var(--titulos);
             height: 08%;
@@ -45,13 +45,13 @@
 
         }
 
-        #conteiner-nav h1 {
+        #cabecalho h1 {
             color: white;
             margin-left: 15px;
 
         }
 
-        #conteiner-nav p {
+        #cabecalho p {
             color: white;
             margin-right: 15px;
         }
@@ -70,7 +70,6 @@
         #menu {
             display: flex;
             flex-direction: column;
-            align-items: center;
             width: 16%;
             height: 100%;
             min-width: 150px;
@@ -81,7 +80,7 @@
 
         .links {
             display: flex;
-            justify-content: center;
+            flex-direction: row;
             align-items: center;
             text-decoration: none;
             border-bottom: 1px solid rgba(0, 0, 0, 0.211);
@@ -90,6 +89,13 @@
             color: black;
 
 
+        }
+
+        .links i{
+            margin-left: 10px;
+        }
+        .links p{
+            margin-left: 05px;
         }
 
 
@@ -145,6 +151,17 @@
             display: none;
         }
 
+        #titulo-pagina{
+            display: flex;
+            width: 100%;
+            height: 04%;
+            background-color: var(--titulos);
+            color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+
 
 
 
@@ -153,7 +170,7 @@
         #conteudo {
             overflow: auto;
             /*rolagem tela de membros,as demais telas tem suas propiasrolagem */
-            height: 88%;
+            height: 84%;
             width: 97%;
             margin-top: 0.5%;
             background-color: white;
@@ -162,6 +179,7 @@
 
 
         }
+
 
         /*............... mudanças Telefone................*/
 
@@ -199,17 +217,17 @@
             }
 
             #menu h1 {
-                background-color: var(--CorBase);
+                background-color: var(--titulos);
                 color: white;
                 height: 7%;
             }
 
-            #conteiner-nav {
+            #cabecalho {
                 display: flex;
                 justify-content: flex-end;
             }
 
-            #conteiner-nav h1 {
+            #cabecalho h1 {
                 display: none;
                 text-align: end;
             }
@@ -221,20 +239,6 @@
                 /*importante para Responsividade*/
             }
 
-            #subtabela form {
-                display: flex;
-                height: 100%;
-                justify-content: flex-end;
-                align-items: center;
-            }
-
-            #subtabela form input {
-                margin-right: 15px;
-                font-size: 14px;
-                border: 1px solid black;
-                padding: 2px;
-                height: 60%;
-            }
 
         }
     </style>
@@ -243,50 +247,76 @@
 <body>
     <div id="conteiner-geral">
 
-        <nav id="conteiner-nav">
+        <nav id="cabecalho">
             <h1> @yield('nome_igreja') </h1>
             <p>Bem Vindo {{ Auth::User()->user }} !</p>
-        </nav> <!--conteiner-nav-->
+        </nav> <!--cabecalho-->
 
         <div id="menu-subtable">
+
             <div id="menu">
                 <div id="open-menu">&#9776;</div>
                 <h1>Menu</h1>
-                <a class="links" href="/">Home</a>
-                <a class="links" href="/oferta">Ofertas</a>
-                <a class="links" href="/despesas">Despesas</a>
-                <a class="links" href="/relatorio">Relatorios</a>
-                <a class="links" href="/indexcaixa">Caixa</a>
-                <a class="links" href="/user/profile">Usuarios</a>
-                <a class="links" href="/cadastro/login/novo">Novo Usuario</a>
-                <a class="links" href="/logout"><img src="{{ asset('\sair.png') }}" alt="">&nbspLogout</a>
 
+                <a class="links" href="/">
+                <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>
+                </a>
+
+                <a class="links" href="/oferta">
+                <i class="fa-solid fa-money-bill"></i> &nbsp; <p>Ofertas</p>
+                </a>
+
+                <a class="links" href="/despesas">
+                <i class="fa-solid fa-coins"></i> &nbsp; <p>Despesas</p>
+                </a>
+
+                <a class="links" href="/indexcaixa">
+                <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
+                </a>
+
+                <a class="links" href="/relatorio">
+                <i class="fa-solid fa-book"></i>  &nbsp; <p>Resumo</p>
+                </a>
+
+                <a class="links" href="/user/profile">
+                <i class="fa-solid fa-user"></i> &nbsp; <p>Usuarios</p>
+                </a>
+
+                <a class="links" href="/cadastro/login/novo">
+                <i class="fa-solid fa-people-arrows"></i>  &nbsp; <p>Novo Usuario</p>
+                    
+                </a>
+                <a class="links" href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
+                    
+                </a>
             </div> <!--menu-->
 
+
             <div id="subtabela-conteudo">
+
+            <div id="titulo-pagina" ><h3>Formulario</h3></div>
+
                 <div id="subtabela">
                     @yield('botao-tabela')
                 </div> <!--subtabela-->
+
+
                 <div id="conteudo">
-
-
                     @yield('conteudo')
-
-
-
-
                 </div> <!--conteudo-->
+
 
                 <div id="valor-registrar">
                     @yield('valor-registrar')
                 </div>
 
+
             </div> <!--subtabela-conteudo-->
-
-        </div> <!--conteiner-nav-->
-
+        </div> <!--cabecalho-->
     </div> <!--menu-subtable-->
 </body>
+
 <script>
     const menu = document.querySelector('#menu');
     const openMenuButton = document.getElementById('open-menu');
@@ -297,5 +327,5 @@
 </script>
 
 
-
+<script src="https://kit.fontawesome.com/f3856694cb.js" crossorigin="anonymous"></script>
 </html>

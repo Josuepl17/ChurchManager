@@ -1,89 +1,17 @@
 @extends('components.layout')
-
+@section('tela', 'Caixas Feixados' )
+@section('nome_igreja', 'Caixas Feixados' )
 @section('conteudo')
-@section('titulo', 'CAIXA' )
-@section('titulo-nav', 'Caixa' )
 
 
 <style>
-    .conteudo {
-        width: 100%;
-        height: 90%;
-        border: 1px solid black;
-        overflow: auto;
-     
-    }
 
-    td {
-
-        
-        text-align: center;
-        font-size: 18px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-    table {
-        
-        border-collapse: collapse;
-        margin: auto;
-        border-radius: 50px;
-        width: 100%;
-        background-color: white;
-        margin-top: 0px;
-        color: black;
-
-    }
-
-
-
-
-    td:hover {
-        color: white;
-    }
-
-
-
-
-    th {
-        border: 1px solid white;
-        border-top: none;
-        border-left: none;
-        font-size: 14px;
-        color: white;
-        background-color: var(--subtitulos);
-        position: sticky;
-        top: -1px;
-        padding-top: 5px;
-
-    }
-
-    tr:hover {
-        background-color: var(--fundos);
-        color: white;
-        transition: 0.1s;
-    }
-
-    .valortotal {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 9%;
-            width: 100%;
-            background-color: var(--titulos);
-
-        }
-
-        .valortotal p {
-            color: black;
-            padding-right: 10px;
-
-            background-color: white;
-
-
-
-        }
+#valor-total{
+    margin-top:450px ;
+}
 </style>
+
+
 
 
 <div class="conteudo">
@@ -109,7 +37,7 @@
             <td>R$ {{ number_format($caixa->totaldespesas, 2, ',', '.') }}</td>
             <td>R$ {{ number_format($caixa->saldo, 2, ',', '.') }}</td>
             <td>
-                <form method="post" class="formx" action="/destroy/caixa/{{$caixa->id}}"><button class="excluir">X</button>
+                <form  method="post" class="formx" action="/destroy/caixa/{{$caixa->id}}"><button >X</button>
                     @csrf</form>
             </td>
         </tr>
@@ -122,7 +50,7 @@
    
 </div>
 
-<div class="valortotal">
+<div id="valor-total">
             <p>VALOR TOTAL: R$
             <p style="color: green; font-weight: bold;">{{ number_format($saldo, 2, ',', '.') }}</p>
             </p>

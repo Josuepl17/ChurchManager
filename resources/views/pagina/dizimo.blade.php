@@ -10,7 +10,7 @@
         <form action="/filtrar/dizimo" method="post">
         @csrf
             <input type="hidden" name="membro_id" value="{{ $membro_id }}">
-            <input type="hidden" name="membro_id" value="{{ $nome }}">
+            <input type="hidden" name="nome" value="{{ $nome }}">
             <input  type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
             <input  type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
             <input  type="submit" value="Filtrar">
@@ -74,22 +74,26 @@
     <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
     <button type="submit">Registar Dizimo</button>
 </form>
-</div>
-@endsection
 
-<!--@if (Session::has('sucesso'))
-    <div style="background-color: green;" class="msg">
+</div>
+
+@if (Session::has('sucesso'))
+    <div class="flash-message" style="background-color: rgb(0, 77, 0);" class="msg">
         <p>{{ Session::get('sucesso') }}</p>
     </div>
     {{ Session::forget('sucesso') }}
 @endif
 
 @if (Session::has('falha'))
-    <div style="background-color: red;" class="msg">
+    <div class="flash-message" style="background-color: red;" class="msg">
         <p>{{ Session::get('falha') }}</p>
     </div>
     {{ Session::forget('falha') }}
-@endif -->
+@endif 
+
+@endsection
+
+
 
 
 

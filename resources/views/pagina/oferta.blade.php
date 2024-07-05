@@ -67,21 +67,20 @@
     </form>
 </div>
 
-
-
-<!--@if (Session::has('sucesso'))
-    <div style="background-color: green;" >
+@if (Session::has('sucesso'))
+    <div class="flash-message" style="background-color: rgb(0, 77, 0);">
         <p>{{ Session::get('sucesso') }}</p>
     </div>
     {{ Session::forget('sucesso') }}
-@endif
+    @endif
 
-@if (Session::has('falha'))
-    <div style="background-color: red;" >
+    @if (Session::has('falha'))
+    <div class="flash-message" style="background-color: red;">
         <p>{{ Session::get('falha') }}</p>
     </div>
     {{ Session::forget('falha') }}
-@endif -->
+    @endif
+
 
 
 @endsection
