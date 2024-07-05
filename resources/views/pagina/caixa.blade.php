@@ -1,6 +1,6 @@
 @extends('components.layout')
 @section('tela', 'Caixas Feixados' )
-@section('nome_igreja', 'Caixas Feixados' )
+@section('titulo-pagina', 'Caixas Feixados' )
 @section('conteudo')
 
 

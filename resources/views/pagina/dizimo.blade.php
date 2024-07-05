@@ -2,7 +2,7 @@
 
 @section('conteudo')
 @section('titulo', 'DIZIMOS' )
-@section('nome_igreja', 'Dizimos do ' .  $nome )
+@section('titulo-pagina', 'Dizimos do ' .  $nome )
 
 <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
 

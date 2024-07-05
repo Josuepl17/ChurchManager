@@ -28,7 +28,7 @@
 
         #conteiner-geral {
             width: 100%;
-            height: 98vh;
+            height: 97vh;
         }
 
 
@@ -38,18 +38,13 @@
             height: 08%;
             width: 100%;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             border-bottom: 1px solid rgba(255, 255, 255, 0.271);
-            border-top: 1px solid rgba(255, 255, 255, 0.314);
+            
 
 
         }
 
-        #cabecalho h1 {
-            color: white;
-            margin-left: 15px;
-
-        }
 
         #cabecalho p {
             color: white;
@@ -118,7 +113,7 @@
             color: white;
             height: 05%;
             width: 100%;
-            border-right: 1px solid white;
+            
             
         }
 
@@ -131,6 +126,7 @@
             justify-content: center;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.271);
+            
         }
 
 
@@ -252,7 +248,7 @@
     <div id="conteiner-geral">
 
         <nav id="cabecalho">
-            <h1> @yield('nome_igreja') </h1>
+            
             <p>Bem Vindo {{ Auth::User()->user }} !</p>
         </nav> <!--cabecalho-->
 
@@ -299,7 +295,7 @@
 
             <div id="subtabela-conteudo">
 
-            <div id="titulo-pagina" ><h3>Formulario</h3></div>
+            <div id="titulo-pagina" ><h3>@yield('titulo-pagina')</h3></div>
 
                 <div id="subtabela">
                     @yield('botao-tabela')

@@ -1,6 +1,6 @@
 @extends('components.layout')
 @section('tela', 'Despesas' )
-@section('nome_igreja', 'Despesas' )
+@section('titulo-pagina', 'Despesas' )
 
 <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
 

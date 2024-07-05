@@ -1,6 +1,6 @@
 @extends('components.layout')
 @section('tela', 'Membros' )
-@section('nome_igreja', $razao_empresa )
+@section('titulo-pagina', $razao_empresa )
 
 <style>
     :root {
