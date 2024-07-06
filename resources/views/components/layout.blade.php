@@ -13,7 +13,7 @@
             --titulos: #111826;
             --subtitulos: #012841;
             --fundos: #37383842;
-            --menu: #005c70;
+            --select: #008cac;
         }
 
         body {
@@ -38,13 +38,19 @@
             height: 08%;
             width: 100%;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: space-between;
             border-bottom: 1px solid rgba(255, 255, 255, 0.271);
         }
 
 
         #cabecalho p {
             color: white;
+            margin-left: 15px;
+            text-decoration: underline;
+        }
+
+        #cabecalho img {
+            width: 38px;
             margin-right: 15px;
         }
 
@@ -59,15 +65,28 @@
 
         }
 
+        
+
+
+
+
         #menu {
             display: flex;
             flex-direction: column;
             width: 16%;
             height: 100%;
             min-width: 150px;
+            border-right: 1px solid rgba(0, 0, 0, 0.211);
+            box-sizing: border-box;
             /*importante para Responsividade*/
             /*determina o tanto que o menu pode se diminuir para que a tabela não caia no overflow*/
 
+        }
+
+        tr:hover{
+            background-color: var(--select);
+            color: white;
+            transition: 0.4s;
         }
 
         .links {
@@ -93,7 +112,7 @@
 
 
         .links:hover {
-            background-color: var(--subtitulos);
+            background-color: var(--select);
             color: white;
             transition: 0.4s;
         }
@@ -110,9 +129,12 @@
             color: white;
             height: 07%;
             width: 100%;
+
+            
             
             
         }
+
 
         #titulo-pagina{
             display: flex;
@@ -125,6 +147,8 @@
             font-size: 12px;
             border-radius: 5px;
             margin-top: 0.5%;
+
+            
             
         }
 
@@ -171,12 +195,9 @@
             /*rolagem tela de membros,as demais telas tem suas propiasrolagem */
             height: 84%;
             width: 97%;
-            
             background-color: white;
             border-radius: 5px;
-            
-
-
+        
         }
 
 
@@ -247,8 +268,9 @@
     <div id="conteiner-geral">
 
         <nav id="cabecalho">
-            <img src="/public/logo.png" alt="top">
-            <p>Bem Vindo {{ Auth::User()->user }} !</p>
+        
+            <p>Bem Vindo {{ Auth::User()->user }}</p> &#9776;
+            <img src="{{ asset('logo.png') }}" alt="alt">
         </nav> <!--cabecalho-->
 
         <div id="menu-subtable">

@@ -2,7 +2,7 @@
     --titulos: #0A1626;
     --subtitulos: #023859;
     --fundos: #064654;
-    --menu: #005c70;
+    --select: #008cac;
 }
 
 #subtabela form {
@@ -14,8 +14,7 @@
 
 #subtabela form input {
     margin-right: 15px;
-    font-size: 16px;
-    border: 1px solid black;
+    font-size: 14x;
     padding: 2px;
     height: 70%;
     border-radius: 3px;
