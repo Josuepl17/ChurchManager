@@ -13,8 +13,7 @@
             --titulos: #111826;
             --subtitulos: #012841;
             --fundos: #37383842;
-            --cor-secundaria: #5353533d;
-            --cor-terceiro: #260101;
+            --menu: #005c70;
         }
 
         body {
@@ -110,9 +109,9 @@
             justify-content: center;
             align-items: center;
             font-size: 16px;
-            background-color: var(--titulos);
+            background-color: var(--subtitulos);
             color: white;
-            height: 05%;
+            height: 07%;
             width: 100%;
             
             
@@ -120,13 +119,15 @@
 
         #titulo-pagina{
             display: flex;
-            width: 100%;
+            width: 97%;
             height: 04%;
-            background-color: var(--titulos);
+            background-color: var(--subtitulos);
             color: white;
             justify-content: center;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.271);
+            font-size: 12px;
+            border-radius: 5px;
+            margin-top: 0.5%;
             
         }
 
@@ -173,10 +174,10 @@
             /*rolagem tela de membros,as demais telas tem suas propiasrolagem */
             height: 84%;
             width: 97%;
-            margin-top: 0.5%;
+            
             background-color: white;
             border-radius: 5px;
-            background-color: var(--cor-secundaria);
+            
 
 
         }
@@ -296,12 +297,13 @@
 
             <div id="subtabela-conteudo">
 
-            <div id="titulo-pagina" ><h3>@yield('titulo-pagina')</h3></div>
+            
 
                 <div id="subtabela">
                     @yield('botao-tabela')
                 </div> <!--subtabela-->
-
+                
+                <div id="titulo-pagina" ><h3>@yield('titulo-pagina')</h3></div>
 
                 <div id="conteudo">
                     @yield('conteudo')
