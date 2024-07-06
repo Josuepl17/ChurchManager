@@ -40,9 +40,6 @@
             align-items: center;
             justify-content: flex-end;
             border-bottom: 1px solid rgba(255, 255, 255, 0.271);
-            
-
-
         }
 
 
@@ -250,7 +247,7 @@
     <div id="conteiner-geral">
 
         <nav id="cabecalho">
-            
+            <img src="/public/logo.png" alt="top">
             <p>Bem Vindo {{ Auth::User()->user }} !</p>
         </nav> <!--cabecalho-->
 
