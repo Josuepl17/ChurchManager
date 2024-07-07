@@ -114,6 +114,7 @@ td form button {
    height: 4%;
    animation: fadeOut 3s forwards;
    
+   
 }
 
 @keyframes fadeOut {

@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Faça Login</title>
+  <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
  
   <style>
     html {
   height: 100%;
 }
-body {
 
+body {
   margin:0;
   padding:0;
   font-family: sans-serif;
@@ -30,8 +31,6 @@ body {
   
   
 }
-
-
 
 .login-box h2 {
   margin: 0 0 30px;
@@ -216,7 +215,7 @@ body {
   @csrf
     <div  class="user-box">
       <input autocomplete="off" type="text" name="user" required="">
-      <label >User:</label>
+      <label >Nome:</label>
     </div>
     <div class="user-box">
       <input autocomplete="off" type="password" name="password" required="">

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
-  <title>Animated Login form with glow button | Glowing Login Form</title>
+  <title>Novo Usuario</title>
+  <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
   <style>
     html {
   height: 100%;

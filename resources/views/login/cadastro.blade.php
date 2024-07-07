@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Animated Login form with glow button | Glowing Login Form</title>
+  <title>Novo Cadastro</title>
+  <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
   <style>
     html {
       height: 100%;

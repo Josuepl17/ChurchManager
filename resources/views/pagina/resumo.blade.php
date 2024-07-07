@@ -1,5 +1,5 @@
 @extends('components.layout-tela')
-
+@section('aba-navegacao', 'Resumo')
 
 
 <style>
@@ -80,6 +80,8 @@
     all:unset;
     
 }
+
+
 
 </style>
 </head>

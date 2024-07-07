@@ -121,7 +121,7 @@ class ControllerIgreja extends Controller
     public function form_login_novo()
     {
         
-        return view('login.cadastro_user');
+        return view('login.adicionar_user');
     }
 
     public function logout()
@@ -131,9 +131,12 @@ class ControllerIgreja extends Controller
     }
 
     public function profile(){
-        $empresaath = Auth::user()->empresa_id;
-        $users = User::where('empresa_id', $empresaath)->get();
-        $nomeempresa = empresas::where('id', $empresaath)->first();
-        return view('pagina.telausers')->with('users', $users)->with('nomeempresa', $nomeempresa);
+        $empresa_id = auth()->user()->empresa_id;
+        
+        $users = User::where('empresa_id', $empresa_id)->get();
+      
+        $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
+        return view('pagina.telausers')->with('users', $users)->with('razao_empresa', $razao_empresa);
     }
 }
+

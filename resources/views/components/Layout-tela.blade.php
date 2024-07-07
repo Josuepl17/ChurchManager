@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@yield('aba-navegacao')</title>
+        <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
+        
         <style>
 
         * {
@@ -26,7 +28,7 @@
         }
 
         .titulo {
-            border: 1px solid black;
+            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,7 +39,7 @@
         }
 
         nav {
-            border: 1px solid black;
+            
             display: flex;
             width: 100%;
             height: 5%;
@@ -48,12 +50,17 @@
         }
 
         nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 16px;
+            height: 100%;
             text-decoration: none;
             color: black;
             border-right: white 1px solid;
-            padding: 6px;
             color: white;
+            padding-right: 7px;
+            padding-left: 7px;
             background-color: var(--cor-secundaria);
 
         }
@@ -66,9 +73,10 @@
         #conteudo{
             display: flex;
             width: 100%;
-            height: 80%;
-            border: 1px solid black;
+            height: 84%;
+            
             flex-direction: column;
+            background-color: rgb(192, 192, 192);
         }
 
     </style>

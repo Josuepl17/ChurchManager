@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('components.layout-tela')
+@section('aba-navegacao', 'Usuarios')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Usuarios</title>
     <style>
         * {
             margin: 0px;
             padding: 0px;
-        }
-
-        :root {
-
-            --titulos: #0A1626;
-            --subtitulos: #023859;
-            --fundos: #0D8AA6;
-            --cor-secundaria: #5353533d;
-        }
-
-
-        body {
-            background-color: var(--cor-secundaria);
-        }
-
-        .titulo {
-            border: 1px solid black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 10vh;
-            background-color: #0A1626;
-            color: white;
         }
 
         nav {
@@ -48,146 +20,75 @@
 
 
 
-        nav a {
-
-
-            font-size: 17px;
-            text-decoration: none;
-            color: black;
-            border: 1px solid black;
-            padding: 6px;
-            color: white;
-            background-color: var(--cor-secundaria);
-
-        }
-
-
-
-
-
-
-
-
-        .botao {
+        #tabela-usuarios {
+            
             display: flex;
             width: 100%;
-            height: 10%;
-            justify-content: center;
-
-
-        }
-
-        .botao a {
-            padding: 20px;
-            border: #0A1626 solid 1px;
-            font-size: 20px;
-            text-decoration: none;
-            background-color: var(--titulos);
-            color: white;
-            border-radius: 10px;
-        }
-
-        .botao a:hover {
-            background-color: var(--fundos);
-
-            transition: 0.4s;
-
-
-        }
-
-        #menu{
-            margin-top: 10px;
-            display: flex;
-            width: 100%;
-            min-height: 550px;
-            max-height: 550px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            
         }
 
         table {
-        border-collapse: collapse;
-        
-           text-align: center;
+            border-collapse: collapse;
+            text-align: center;
             font-size: 20px;
-   
-        margin: auto;
-        width: 70%;
-        background-color: white;
-        margin-top: 0px;
-        color: black;
+            width: 40%;
+            background-color: white;
+            margin-top: 0px;
+            color: black;
 
-    }
+        }
 
 
 
 
-    td:hover {
-        color: white;
-        
-    }
+        th {
+            font-size: 14px;
+            color: white;
+            background-color: #0A1626;;
+            position: sticky;
+            top: -1px;
+            padding-top: 5px;
 
 
+        }
+        td{
+            font-size: 15px;
+        }
 
-
-    th {
-        
-        border-top: none;
-        border-left: none;
-
-        font-size: 16px;
-        color: white;
-        background-color: var(--subtitulos);
-        position: sticky;
-        top: -1px;
-        padding-top: 5px;
-        
-
-    }
-
-    tr:hover {
-        background-color: var(--fundos);
-        color: white;
-        transition: 0.1s;
-    }
-
-    tr {
-        border-bottom: 1px solid black;
-    }
-
-
-
-
-
-
-
+        tr {
+            border-bottom: 1px solid black;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="conteiner">
-        <div class="titulo">
-            <h3>{{$nomeempresa->razao}}</h3>
-        </div>
 
-        <nav> <a href="/">MENU PRINCIPAL</a></nav>
 
-    <div id="menu">
-    <table>
-            <tr>
-                <th style="width: 4%;">ID</th>
-                <th>USUARIO</th>
-                
-            </tr>
-            @foreach ($users as $user)
-            <tr>
-                <td style="background-color: var(--titulos); color:white">{{$user->id}}</td>
-         
-                <td>{{$user->user}}</td>
 
-            </tr>
-            @endforeach
-        </table>
-    </div>
+
+        @section('conteudo')
+
+        <div id="tabela-usuarios">
+            <table>
+                <tr>
+                    <th style="width: 4%;">ID</th>
+                    <th>USUARIOS</th>
+                    
+                    
+
+                </tr>
+                @foreach ($users as $user)
+                <tr>
+                    <td style="background-color: var(--titulos); color:white">{{$user->id}}</td>
+                    <td>{{$user->user}}</td>
+                    
+                </tr>
+                @endforeach
+            </table>
+@endsection
 
 
 
