@@ -43,7 +43,8 @@ class OfertasController extends Controller
             'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'dataini' => $request->dataini,
-            'datafi' => $request->datafi
+            'datafi' => $request->datafi,
+            'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
 

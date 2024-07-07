@@ -1,5 +1,6 @@
 @extends('components.layout')
-
+@section('aba-navegador', 'Formulario' )
+@section('titulo-pagina', 'Formulario de Cadastro' )
 @section('conteudo')
 
 
@@ -15,7 +16,7 @@
             align-items: center;
             flex-direction: column;
             width: 55%;
-           height: 70%;
+           height: 90%;
            border: 1px solid black;
            border-radius: 10px;
            background-color: white;
@@ -58,8 +59,7 @@
 <div class="conteudo" >
     <form action="/inserir/membro" method="post">
         @csrf
-        <h2>Formulario de Cadastro</h2>
-        <br>
+        
         <input  type="text" name="nome" id="nome" autocomplete="off" required placeholder="Nome:">
     
         <input type="text" name="sobrenome" id="sobrenome" autocomplete="off" required placeholder="Sobrenome:" >

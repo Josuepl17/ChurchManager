@@ -1,5 +1,5 @@
 @extends('components.layout')
-@section('tela', 'Despesas' )
+@section('aba-navegador', 'Despesas' )
 @section('titulo-pagina', 'Despesas' )
 
 <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
@@ -7,10 +7,10 @@
 @section('botao-tabela')
 <form action="/filtrar/despesas" method="post">
     @csrf
-    <input class="altura" type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+    <input  type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
 
-    <input class="altura" type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-    <input class="altura" type="submit" value="Filtrar">
+    <input  type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
+    <input style="width: 65px;" type="submit" value="Filtrar">
 </form>
 @endsection
 

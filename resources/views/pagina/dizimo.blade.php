@@ -1,7 +1,7 @@
 @extends('components.layout')
 
 @section('conteudo')
-@section('titulo', 'DIZIMOS' )
+@section('aba-navegador', 'DIZIMOS' )
 @section('titulo-pagina', 'Dizimos do ' .  $nome )
 
 <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
             <input type="hidden" name="nome" value="{{ $nome }}">
             <input  type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
             <input  type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
-            <input  type="submit" value="Filtrar">
+            <input style="width: 65px;"  type="submit" value="Filtrar">
         </form>
 @endsection
 

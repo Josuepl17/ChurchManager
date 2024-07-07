@@ -42,7 +42,8 @@ class DizimosController extends Controller
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
             'membro_id' => $request->membro_id,
-            'nome' => $request->nome
+            'nome' => $request->nome,
+            'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {

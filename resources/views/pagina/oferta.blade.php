@@ -1,6 +1,7 @@
 @extends('components.layout')
-@section('tela', 'Ofertas' )
+@section('aba-navegador', 'Ofertas' )
 @section('titulo-pagina', 'Ofertas' )
+
 
 <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
 
@@ -9,7 +10,7 @@
 <form action="/filtrar/ofertas" method="get">
     <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
     <input type="date" name="datafi" id="datafi" value="{{ isset($dataini) ? $dataini : '' }}" required>
-    <input type="submit" value="Filtrar">
+    <input style="width: 65px;" type="submit" value="Filtrar">
 </form>
 @endsection
 
@@ -19,7 +20,7 @@
 <div id="tabela-dados">
     <table>
         <tr>
-            <th style="width: 4%;">X</th>
+            <th style="width: 4%;">ID</th>
             <th>DATA</th>
             <th>VALOR</th>
             <th style="width: 4%;">X</th>

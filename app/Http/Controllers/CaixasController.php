@@ -60,6 +60,7 @@ class CaixasController extends Controller
         $dataIni = $request->dataini ?? '1900-01-01';
         $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = auth()->user()->empresa_id;
+
         $dados = [
             'ofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             'despesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
@@ -70,7 +71,8 @@ class CaixasController extends Controller
             'datanow' => Carbon::now()->format('Y-m-d'),
             'qtymembros' => membros::where('empresa_id', $empresa_id)->count(),
             'dataini' => $request->dataini,
-            'datafi' => $request->datafi
+            'datafi' => $request->datafi,
+            
         ];
 
 
@@ -104,9 +106,10 @@ class CaixasController extends Controller
     {
         $empresa_id = auth()->user()->empresa_id;
         $dados = caixas::where('empresa_id', $empresa_id)->get();
-
+        $empresa_id = auth()->user()->empresa_id;
+        $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
         $saldo = caixas::where('empresa_id', $empresa_id)->sum('saldo');;
-        return view('pagina.caixa')->with('dados', $dados)->with('saldo', $saldo);
+        return view('pagina.caixa')->with('dados', $dados)->with('saldo', $saldo)->with('razao_empresa', $razao_empresa);
     }
 
     public function destroy_caixa(Request $request)

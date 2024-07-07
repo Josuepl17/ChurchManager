@@ -1,20 +1,13 @@
 @extends('components.layout')
-@section('tela', 'Caixas Feixados' )
-@section('titulo-pagina', 'Caixas Feixados' )
+@section('aba-navegador', 'Caixa-Feixados' )
+@section('titulo-pagina', 'Caixa-Feixados' )
+
+<link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
+
+
+
 @section('conteudo')
-
-
-<style>
-
-#valor-total{
-    margin-top:450px ;
-}
-</style>
-
-
-
-
-<div class="conteudo">
+<div id="tabela-dados" >
     <table>
         <tr>
             <th>ID</th>
@@ -55,7 +48,5 @@
             <p style="color: green; font-weight: bold;">{{ number_format($saldo, 2, ',', '.') }}</p>
             </p>
         </div>
-
-
-
 @endsection
+

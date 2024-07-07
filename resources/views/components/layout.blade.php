@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('tela')</title>
+    <title>@yield('aba-navegador')</title>
     <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
 
     <style>
@@ -13,7 +13,7 @@
             --titulos: #111826;
             --subtitulos: #012841;
             --fundos: #37383842;
-            --select: #008cac;
+            --select: #00657c;
         }
 
         body {
@@ -24,6 +24,7 @@
         * {
             padding: 0;
             margin: 0;
+            box-sizing: border-box;
         }
 
         #conteiner-geral {
@@ -42,11 +43,24 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.271);
         }
 
+        #usuario{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        #cabecalho h4{
+            color: white;
+            margin-right: 50px; 
+            margin-left: 15px;
+        }
+
 
         #cabecalho p {
             color: white;
-            margin-left: 15px;
-            text-decoration: underline;
+            
+           
         }
 
         #cabecalho img {
@@ -83,11 +97,7 @@
 
         }
 
-        tr:hover{
-            background-color: var(--select);
-            color: white;
-            transition: 0.4s;
-        }
+
 
         .links {
             display: flex;
@@ -145,11 +155,8 @@
             justify-content: center;
             align-items: center;
             font-size: 12px;
-            border-radius: 5px;
+            border-radius: 4px 4px 0px 0px;
             margin-top: 0.5%;
-
-            
-            
         }
 
 
@@ -196,7 +203,7 @@
             height: 84%;
             width: 97%;
             background-color: white;
-            border-radius: 5px;
+            border-radius: 0px 0px 5px 5px;
         
         }
 
@@ -247,10 +254,13 @@
                 justify-content: flex-end;
             }
 
-            #cabecalho h1 {
+            #cabecalho h4 {
                 display: none;
-                text-align: end;
+                
+                
             }
+
+
 
 
             .remover {
@@ -268,9 +278,11 @@
     <div id="conteiner-geral">
 
         <nav id="cabecalho">
-        
-            <p>Bem Vindo {{ Auth::User()->user }}</p> &#9776;
-            <img src="{{ asset('logo.png') }}" alt="alt">
+            <h4>{{$razao_empresa}}</h4>
+            <div id="usuario" >
+                <p>Bem Vindo {{ Auth::User()->user }}</p> &nbsp; &nbsp;
+                <img src="{{ asset('logo.png') }}" alt="alt">
+            </div>
         </nav> <!--cabecalho-->
 
         <div id="menu-subtable">
