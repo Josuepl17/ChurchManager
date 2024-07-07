@@ -1,173 +1,111 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatorio</title>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        :root {
-
-            --titulos: #0A1626;
-            --subtitulos: #023859;
-            --fundos: #0D8AA6;
-            --cor-secundaria: #5353533d;
-        }
-
-
-        body {
-            background-color: var(--cor-secundaria);
-        }
-
-        .titulo {
-            border: 1px solid black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 10vh;
-            background-color: #0A1626;
-            color: white;
-        }
-
-        nav {
-            border: 1px solid black;
-            display: flex;
-            width: 100%;
-            height: 5vh;
-            justify-content: flex-start;
-            align-items: center;
-            background-color: var(--subtitulos);
-
-        }
-
-        .conteiner-colunas {
-
-            width: 100%;
-            height: 30vh;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: self-start;
-            flex-wrap: wrap;
-
-
-        }
-
-        .box {
-            
-            width: 250px;
-            height: 55%;
-            margin-top: 40px;
-            
+@extends('components.layout-tela')
 
 
 
-        }
+<style>
+    .box {
 
-        .box-1 {
-            display: flex;
-            width: 100%;
-            height: 20%;
-            font-size: 20px;
-            justify-content: center;
-            align-items: center;
-            background-color: #0d1c31f6;
-            color: white;
-        }
-
-        .box-2 {
-            display: flex;
-            width: 100%;
-            height: 65%;
-            background-color: white;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .box-3 {
-            display: flex;
-            width: 100%;
-            height: 15%;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--subtitulos);
-        }
-
-        nav a {
-            font-size: 17px;
-            text-decoration: none;
-            color: black;
-            border-right: white 1px solid;
-            padding: 6px;
-            color: white;
-            background-color: var(--cor-secundaria);
-
-        }
-
-
-
-        nav a:hover {
-            background-color: var(--titulos);
-            color: white;
-        }
-
-
-
-        .filtro {
-            padding-top: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-
-        }
-
-        input {
-            font-size: 16px;
-            
-        }
+        width: 250px;
+        height: 55%;
+        margin-top: 40px;
 
 
 
 
+    }
+
+    .box-1 {
+        display: flex;
+        width: 100%;
+        height: 20%;
+        font-size: 20px;
+        justify-content: center;
+        align-items: center;
+        background-color: #0d1c31f6;
+        color: white;
+    }
+
+    .box-2 {
+        display: flex;
+        width: 100%;
+        height: 65%;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box-3 {
+        display: flex;
+        width: 100%;
+        height: 15%;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--subtitulos);
+    }
 
 
-    </style>
+    nav a:hover {
+        background-color: var(--titulos);
+        color: white;
+    }
+
+
+
+    .filtro {
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .conteiner-colunas {
+
+        width: 100%;
+        height: 35%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: self-start;
+        flex-wrap: wrap;
+    }
+
+    input {
+        font-size: 16px;
+
+    }
+
+#Caixaregistrar form{
+    all:unset;
+    
+}
+
+</style>
 </head>
 
 <body>
 
-    <div class="conteiner">
-        <div class="titulo">
-            <h3>{{$razao_empresa}} - Resumo </h3>
-        </div>
+    @section('navegacao')
 
-        <nav>
-             <a href="/">Menu Principal</a>
+    <a target="_blank" href="/gerar/{{ isset($dataini) ? $dataini : '1900-01-01'}}/{{ isset($datafi) ? $datafi : '5000-01-01'}}">Gerar Relatorio</a>
 
-            <a target="_blank" href="/gerar/{{ isset($dataini) ? $dataini : '1900-01-01'}}/{{ isset($datafi) ? $datafi : '5000-01-01'}}">Gerar Relatorio</a>
+    <div id="Caixaregistrar">
+        <form action="/fechar" onsubmit="return minhaFuncao()" method="post">
+            <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
+            <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+            <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
+            <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
+            <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
+            <input type="hidden" name="saldo" value="{{$saldo}}">
+            @csrf
+            <a href=""><input type="submit" value="Fechar Caixa"></a>
+        </form>
 
-        <div id="Caixaregistrar">
-            <form action="/fechar" onsubmit="return minhaFuncao()" method="post">
-                <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
-                <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
-                <input type="hidden" name="totaldespesas" value="{{$totaldespesas}}">
-                <input type="hidden" name="totaldizimos" value="{{$totaldizimos}}">
-                <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
-                <input type="hidden" name="saldo" value="{{$saldo}}">
-                @csrf
-                <a  href=""><input style="background-color: red; color:white;" type="submit" value="Fechar Caixa"></a>
-            </form>
-        </div>
-        
-            </nav>
+        @endsection
 
+
+        @section('conteudo')
         <div class="filtro">
             <form action="/filtro/pdf" method="post" require>
                 @csrf
@@ -177,19 +115,13 @@
 
                 <input type="submit" value="Filtrar" require>
             </form>
-
-
-
-
-
-            
-
-
-
-
-
-
         </div>
+
+
+
+
+
+
 
         <div class="conteiner-colunas">
             <div class="box">
@@ -244,7 +176,7 @@
             </div>
 
         </div>
-
+        @endsection
 
 
 
