@@ -10,7 +10,6 @@
 
     <style>
         :root {
-
             --titulos: #111826;
             --subtitulos: #012841;
             --fundos: #1e1f1f55;
@@ -33,7 +32,7 @@
             height: 97vh;
         }
 
-
+/*....................................................Parte 1............................................*/
         #cabecalho {
             display: flex;
             background-color: var(--titulos);
@@ -44,24 +43,24 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.271);
         }
 
-        #usuario{
+        #cabecalho #usuario {
             display: flex;
             justify-content: center;
             align-items: center;
-            
+
         }
 
-        #cabecalho h4{
+        #cabecalho h4 {
             color: white;
-            margin-right: 50px; 
+            margin-right: 50px;
             margin-left: 15px;
         }
 
 
         #cabecalho p {
             color: white;
-            
-           
+
+
         }
 
         #cabecalho img {
@@ -69,7 +68,7 @@
             margin-right: 15px;
         }
 
-        /*......................................................*/
+/*....................................................Parte 2............................................*/
 
 
         #menu-subtable {
@@ -79,11 +78,6 @@
             height: 92%;
 
         }
-
-        
-
-
-
 
         #menu {
             display: flex;
@@ -100,7 +94,7 @@
 
 
 
-        .links {
+        #menu .links {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -113,16 +107,17 @@
 
         }
 
-        .links i{
+        #menu .links i {
             margin-left: 10px;
         }
-        .links p{
+
+        #menu .links p {
             margin-left: 05px;
         }
 
 
 
-        .links:hover {
+        #menu .links:hover {
             background-color: var(--select);
             color: white;
             transition: 0.4s;
@@ -143,22 +138,11 @@
         }
 
 
-        #titulo-pagina{
-            display: flex;
-            width: 97%;
-            height: 04%;
-            background-color: var(--subtitulos);
-            color: white;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            border-radius: 4px 4px 0px 0px;
-            margin-top: 0.5%;
-        }
 
 
 
-        /*...................................................................*/
+
+/*....................................................Parte 3............................................*/
 
         #subtabela-conteudo {
             width: 100%;
@@ -181,18 +165,26 @@
 
         }
 
+        #titulo-pagina {
+            display: flex;
+            width: 97%;
+            height: 04%;
+            background-color: var(--subtitulos);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            border-radius: 4px 4px 0px 0px;
+            margin-top: 0.5%;
+        }
+
 
         #open-menu {
             display: none;
         }
 
 
-
-
-
-
-
-        /*..........................................................*/
+/*....................................................Parte 4............................................*/
 
         #conteudo {
             overflow: auto;
@@ -201,7 +193,7 @@
             width: 97%;
             background-color: white;
             border-radius: 0px 0px 5px 5px;
-        
+
         }
 
 
@@ -253,11 +245,9 @@
 
             #cabecalho h4 {
                 display: none;
-                
-                
+
+
             }
-
-
 
 
             .remover {
@@ -276,11 +266,12 @@
 
         <nav id="cabecalho">
             <h4>{{$razao_empresa}}</h4>
-            <div id="usuario" >
+            <div id="usuario">
                 <p>Bem Vindo {{ Auth::User()->user }}</p> &nbsp; &nbsp;
                 <img src="{{ asset('logo.png') }}" alt="alt">
             </div>
         </nav> <!--cabecalho-->
+
 
         <div id="menu-subtable">
 
@@ -289,49 +280,51 @@
                 <h1>Menu</h1>
 
                 <a class="links" href="/">
-                <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>
+                    <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>
                 </a>
 
                 <a class="links" href="/oferta">
-                <i class="fa-solid fa-money-bill"></i> &nbsp; <p>Ofertas</p>
+                    <i class="fa-solid fa-money-bill"></i> &nbsp; <p>Ofertas</p>
                 </a>
 
                 <a class="links" href="/despesas">
-                <i class="fa-solid fa-coins"></i> &nbsp; <p>Despesas</p>
+                    <i class="fa-solid fa-coins"></i> &nbsp; <p>Despesas</p>
                 </a>
 
                 <a class="links" href="/indexcaixa">
-                <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
+                    <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
                 </a>
 
                 <a class="links" href="/relatorio">
-                <i class="fa-solid fa-book"></i>  &nbsp; <p>Resumo</p>
+                    <i class="fa-solid fa-book"></i> &nbsp; <p>Resumo</p>
                 </a>
 
                 <a class="links" href="/user/profile">
-                <i class="fa-solid fa-user"></i> &nbsp; <p>Usuarios</p>
+                    <i class="fa-solid fa-user"></i> &nbsp; <p>Usuarios</p>
                 </a>
 
                 <a class="links" href="/cadastro/login/novo">
-                <i class="fa-solid fa-people-arrows"></i>  &nbsp; <p>Novo Usuario</p>
-                    
+                    <i class="fa-solid fa-people-arrows"></i> &nbsp; <p>Novo Usuario</p>
+
                 </a>
                 <a class="links" href="/logout">
-                <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
-                    
+                    <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
+
                 </a>
             </div> <!--menu-->
 
 
             <div id="subtabela-conteudo">
 
-            
+
 
                 <div id="subtabela">
                     @yield('botao-tabela')
                 </div> <!--subtabela-->
-                
-                <div id="titulo-pagina" ><h3>@yield('titulo-pagina')</h3></div>
+
+                <div id="titulo-pagina">
+                    <h3>@yield('titulo-pagina')</h3>
+                </div> <!--titulo-pagina-->
 
                 <div id="conteudo">
                     @yield('conteudo')
@@ -340,12 +333,12 @@
 
                 <div id="valor-registrar">
                     @yield('valor-registrar')
-                </div>
+                </div > <!--valor-registrar-->
 
 
             </div> <!--subtabela-conteudo-->
-        </div> <!--cabecalho-->
-    </div> <!--menu-subtable-->
+        </div> <!--menu-subtable-->
+    </div> <!--conteiner-geral-->
 </body>
 
 <script>
@@ -359,4 +352,5 @@
 
 
 <script src="https://kit.fontawesome.com/f3856694cb.js" crossorigin="anonymous"></script>
+
 </html>
