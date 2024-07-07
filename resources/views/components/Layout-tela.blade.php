@@ -68,6 +68,7 @@
             width: 100%;
             height: 80%;
             border: 1px solid black;
+            flex-direction: column;
         }
 
     </style>
