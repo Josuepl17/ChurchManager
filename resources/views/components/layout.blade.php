@@ -147,7 +147,7 @@
         #subtabela-conteudo {
             width: 100%;
             height: 100%;
-            display: flex;
+            display: flex; /*usado para alinhar ao centro apenas*/
             flex-direction: column;
             align-items: center;
             background-color: var(--fundos);
@@ -164,6 +164,8 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.445);
 
         }
+/*....................................................Parte 4............................................*/
+
 
         #titulo-pagina {
             display: flex;
@@ -183,8 +185,7 @@
             display: none;
         }
 
-
-/*....................................................Parte 4............................................*/
+/*....................................................Parte 5............................................*/
 
         #conteudo {
             overflow: auto;
