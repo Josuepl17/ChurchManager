@@ -277,8 +277,9 @@
         <div id="menu-subtable">
 
             <div id="menu">
+            
                 <div id="open-menu">&#9776;</div>
-                <h1>Menu</h1>
+                <h1> <i class="fa-solid fa-compass"></i> &nbsp; Menu</h1>
 
                 <a class="links" href="/">
                     <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>

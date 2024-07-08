@@ -6,7 +6,7 @@
     
 }
 
-#subtabela form {
+#subtabela form { /* Filtro por Data */
     display: flex;
     height: 100%;
     justify-content: flex-end;
@@ -17,31 +17,32 @@
     border: none;
     margin-right: 15px;
     font-size: 13px;
-    
     padding: 2px;
     height: 70%;
     border-radius: 3px;
-
 }
 
-#subtabela a {
+#subtabela a { /* Botoes Alem do Filtro */
     margin-right: 15px;
 }
 
+
+
+
+/* Tabela */
 table {
     font-size: 14px;
     width: 100%;
     border-collapse: collapse;
     background-color: white;
-}
-
-table th,
-table td {
-    padding: 5px;
-    text-align: center;
     
 }
 
+table th, table td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+}
 
 
 table th {
@@ -50,21 +51,8 @@ table th {
     
 }
 
-
 tr{
     border-bottom: 1px solid rgba(0, 0, 0, 0.486);
-}
-
-table tr:first-child {
-    position: sticky;
-    top: 0;
-
-}
-
-#tabela-dados {
-    width: 100%;
-    height: 75%;
-    overflow: auto;
 }
 
 td form button {
@@ -73,6 +61,21 @@ td form button {
     height: 100%;
 }
 
+table tr:first-child { /*Fixar no Topo a Primeira Linha da Tabela */
+    position: sticky;
+    top: 0;
+
+}
+
+/* Conteudo Apenas os dados da Tabela */
+#tabela-dados {
+    width: 100%;
+    height: 75%;
+    overflow: auto;
+}
+
+
+/* Div do Valor Total */
 #valor-total {
     display: flex;
     width: 100%;
@@ -83,6 +86,11 @@ td form button {
     height: 5%;
 }
 
+#valor-total p {
+    margin-right: 10px;
+}
+
+/* Formulario de Inserção de Dados */
 #formulario-registro {
     display: flex;
     width: 100%;
@@ -93,17 +101,14 @@ td form button {
     flex-wrap: wrap;
 }
 
-#formulario-registro label,
-#formulario-registro label,
-#formulario-registro input,
-#formulario-registro button {
+#formulario-registro form label,
+#formulario-registro form label,
+#formulario-registro form input,
+#formulario-registro form button {
     padding: 10px;
 }
 
-#valor-total p {
-    margin-right: 10px;
-}
-
+/* Div Conteudo da Flash Mensage */
 .flash-message{
     color: white;
     display: flex;
