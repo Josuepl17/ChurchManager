@@ -75,11 +75,11 @@
     
         <input  type="text" name="endereco" id="endereco" autocomplete="off" required maxlength="30" placeholder="Endereço:" >
     
-        <input  type="number" name="telefone" id="telefone" autocomplete="off" required maxlength="10" placeholder="Telefone:" >
+        <input  type="number" name="telefone"  id="telefone" autocomplete="off" required maxlength="11" placeholder="Telefone:" >
     
         <button  type="submit">Cadastrar</button>
     </form>
 </div>
 
-
 @endsection
+

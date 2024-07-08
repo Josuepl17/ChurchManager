@@ -36,7 +36,7 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 8px;
     text-align: left;
 }
@@ -46,7 +46,7 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 /* Estilos do rodapé */

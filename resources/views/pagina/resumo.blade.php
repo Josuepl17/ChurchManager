@@ -116,6 +116,8 @@
                 <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
 
                 <input type="submit" value="Filtrar" require>
+
+                
             </form>
         </div>
 
