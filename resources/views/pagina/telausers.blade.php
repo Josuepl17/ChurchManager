@@ -65,7 +65,6 @@
 
 <body>
 
-
         @section('conteudo')
 
         <div id="tabela-usuarios">
