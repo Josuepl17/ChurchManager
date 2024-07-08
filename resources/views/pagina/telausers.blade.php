@@ -66,9 +66,6 @@
 <body>
 
 
-
-
-
         @section('conteudo')
 
         <div id="tabela-usuarios">
@@ -89,22 +86,6 @@
                 @endforeach
             </table>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 

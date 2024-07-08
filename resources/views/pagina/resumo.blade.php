@@ -8,10 +8,6 @@
         width: 250px;
         height: 55%;
         margin-top: 40px;
-
-
-
-
     }
 
     .box-1 {

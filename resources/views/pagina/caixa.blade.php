@@ -2,7 +2,7 @@
 @section('aba-navegador', 'Caixa-Feixados' )
 @section('titulo-pagina', 'Caixa-Feixados' )
 
-<link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
+
 
 
 

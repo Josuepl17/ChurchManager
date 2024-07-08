@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('aba-navegador')</title>
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
-    <link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/oferta-dizimo-despesas-caixa.css') }}" rel="stylesheet">
 
     <style>
         :root {

@@ -4,7 +4,7 @@
 @section('aba-navegador', 'DIZIMOS' )
 @section('titulo-pagina', 'Dizimos do ' . $nome )
 
-<link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
+
 
 @section('botao-tabela')
 <form action="/filtrar/dizimo" method="post">

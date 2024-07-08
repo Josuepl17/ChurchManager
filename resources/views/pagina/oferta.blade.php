@@ -2,7 +2,7 @@
 @section('aba-navegador', 'Ofertas' )
 @section('titulo-pagina', 'Ofertas' )
 
-<link href="{{ asset('css/oferta-dizimo-despesas.css') }}" rel="stylesheet">
+
 
 
 @section('botao-tabela')
