@@ -1,5 +1,5 @@
 <?php
-
+// Arquivo Documentado em "OfertasController.php"
 namespace App\Http\Controllers;
 
 
@@ -23,6 +23,7 @@ use PhpParser\Node\Stmt\Else_;
 class DespesasController extends Controller
 {
 
+//......................................................Parte 1................................................//
     public function filter_page(Request $request)
     {
         $dataIni = $request->dataini ?? '1900-01-01';
@@ -48,7 +49,7 @@ class DespesasController extends Controller
         return view('pagina.despesas', $dados);
     }
 
-
+//......................................................Parte 2................................................//
     public function botao_registrar_despesas(request $request)
     {
 
@@ -63,15 +64,13 @@ class DespesasController extends Controller
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
-
         return $this->filter_page(MeuServico::post_filter($request));
     }
 
-
+//......................................................Parte 3................................................//
 
     public function botao_excluir_despesas(request $request)
     {
-
         if (MeuServico::Verificar($request->data)) {
             $destroy = $request->id;
             despesas::destroy($destroy);

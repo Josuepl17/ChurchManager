@@ -72,9 +72,6 @@
                 <tr>
                     <th style="width: 4%;">ID</th>
                     <th>USUARIOS</th>
-                    
-                    
-
                 </tr>
                 @foreach ($users as $user)
                 <tr>

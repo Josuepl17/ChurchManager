@@ -39,10 +39,10 @@
         <td class="remover">{{ $ind->endereco }}</td>
         <td>{{ $ind->funcao }}</td>
         <td>{{ $ind->telefone }}</td>
-        <td style="background-color: green;">
+        <td id="inserir-verde" >
             <a style="color: white; text-decoration: none;" href="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}">Inserir</a>
         </td>
-        <td style="background-color: red;">
+        <td id="X">
             <a style="color: white; text-decoration: none;" href="/destroy/{{$ind->id}}">X</a>
         </td>
     </tr>

@@ -31,11 +31,11 @@ class MembrosController extends Controller
             $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->get();
             $indexbusca = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->first();
 
+            return view('pagina.index', compact('index', 'razao_empresa', 'dados'));
 
-            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa)->with('dados', $dados);
         } else {
             $index = membros::where('empresa_id', $id_empresa_autenticada)->get();
-            return view('pagina.index')->with('index',  $index,)->with('razao_empresa', $razao_empresa);
+            return view('pagina.index', compact('index', 'razao_empresa'));
         }
     }
 
@@ -43,7 +43,7 @@ class MembrosController extends Controller
     {
         $empresa_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
-        return view('pagina.formulario')->with('razao_empresa', $razao_empresa);
+        return view('pagina.formulario', compact('razao_empresa'));
     }
 
     public function botao_inserir_membro(request $request)

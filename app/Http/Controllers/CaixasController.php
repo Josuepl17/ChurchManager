@@ -1,5 +1,5 @@
 <?php
-
+// Arquivo Documentado em "OfertasController.php"
 namespace App\Http\Controllers;
 
 
@@ -22,6 +22,7 @@ class CaixasController extends Controller
 {
     /*Caixa*/
 
+//......................................................Parte 1................................................//
     public function filter_page(Request $request)
     {
         $dataIni = $request->dataini ?? '1900-01-01';
@@ -36,24 +37,20 @@ class CaixasController extends Controller
             'qtymembros' => membros::where('empresa_id', $empresa_id)->count(),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
-            'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
+            'razao_empresa' => empresas::where('id', $empresa_id)->value('razao'),
+
         ];
 
         $saldo = $dados['totalofertas'] + $dados['totaldizimos'] - $dados['totaldespesas'];
 
-
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
             unset($dados['dataini'], $dados['datafi']);
-            return view('pagina.resumo', $dados)->with('saldo', $saldo);
+
+            return view('pagina.resumo', compact('dados', 'saldo'));
         }
-
-        return view('pagina.resumo', $dados)->with('saldo', $saldo);
+        return view('pagina.resumo', compact('dados', 'saldo'));
     }
-
-
-
-
-
+//......................................................Parte 2................................................//
 
     public function gerar(Request $request)
     {
@@ -72,17 +69,15 @@ class CaixasController extends Controller
             'qtymembros' => membros::where('empresa_id', $empresa_id)->count(),
             'dataini' => $request->dataini,
             'datafi' => $request->datafi,
-            
+
         ];
-
-
 
         $pdf = pdf::loadView('relatorios-pdf.relatorioPDF', $dados); /*Carrega os Dados do PDF*/
         return $pdf->stream('Relatorio.pdf'); /*Gera o PDF*/
     }
 
 
-
+//......................................................Parte 3................................................//
 
     public function fechar_caixa(Request $request)
     {
@@ -101,7 +96,7 @@ class CaixasController extends Controller
     }
 
 
-
+//......................................................Parte 4................................................//
     public function indexcaixa()
     {
         $empresa_id = auth()->user()->empresa_id;
@@ -109,14 +104,13 @@ class CaixasController extends Controller
         $empresa_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
         $saldo = caixas::where('empresa_id', $empresa_id)->sum('saldo');;
-        return view('pagina.caixa')->with('dados', $dados)->with('saldo', $saldo)->with('razao_empresa', $razao_empresa);
+        return view('pagina.caixa', compact('dados', 'saldo', 'razao_empresa'));
     }
 
     public function destroy_caixa(Request $request)
     {
         $destroy = $request->id;
         caixas::destroy($destroy);
-
         return redirect()->back();
     }
 }

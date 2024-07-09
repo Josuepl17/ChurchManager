@@ -19,16 +19,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use PhpParser\Node\Expr\FuncCall;
 
-class ControllerIgreja extends Controller
+class ControllerLogin extends Controller
 {
 
-
-
-
     /* LOGIN*/
-
-
-
 
     public function login()
     {
@@ -61,42 +55,41 @@ class ControllerIgreja extends Controller
         $dados = $request->all();
         $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
         $existirusuario = User::where('user', $request->user)->first();
-        if($existirusuario){
+        if ($existirusuario) {
             $dados = (object) $dados;
-            
-           
-            
-           $senha =  hash::check($request->password, $existirusuario->password);
+            $senha =  hash::check($request->password, $existirusuario->password);
             Session()->flash('falha', 'Atenção! Usuario Já Esta Sendo Usado.');
-            
-            return view('login.cadastro')->with('dados', $dados);
+
+            return view('login.cadastro', compact('dados'));
         }
 
 
-    
         if ($existingEmpresa) {
             Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
-            return view('login.cadastro')->with('dados', $dados);
-        } 
+            return view('login.cadastro', compact('dados'));
+        }
 
+        $empresa = empresas::create([
+            'razao' => $request->razao,
+            'cnpj' => $request->cnpj
+        ]);
 
-
-
-
-        $empresa = new empresas();
+        /*$empresa = new empresas();
         $empresa->razao = $request->razao;
         $empresa->cnpj = $request->cnpj;
-        $empresa->save();
+        $empresa->save();*/
 
+        User::create([
+            'user' => $request->user,
+            'password' => Hash::make($request->password),
+            'empresa_id' => $empresa->id
+        ]);
 
-        $user = new User();
+        /*$user = new User();
         $user->user = $request->user;
         $user->password = Hash::make($request->password);
         $user->empresa_id = $empresa->id;
-
-
-
-        $user->save();
+        $user->save();*/
 
         return redirect('/login');
     }
@@ -114,15 +107,15 @@ class ControllerIgreja extends Controller
 
     public function form_login()
     {
-       
         return view('login.cadastro');
     }
 
+
     public function form_login_novo()
     {
-        
         return view('login.adicionar_user');
     }
+
 
     public function logout()
     {
@@ -130,13 +123,11 @@ class ControllerIgreja extends Controller
         return redirect('/login');
     }
 
-    public function profile(){
+    public function profile()
+    {
         $empresa_id = auth()->user()->empresa_id;
-        
         $users = User::where('empresa_id', $empresa_id)->get();
-      
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
-        return view('pagina.telausers')->with('users', $users)->with('razao_empresa', $razao_empresa);
+        return view('pagina.telausers', compact('users', 'razao_empresa'));
     }
 }
-

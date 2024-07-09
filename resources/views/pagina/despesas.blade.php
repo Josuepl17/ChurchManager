@@ -33,7 +33,7 @@
             <td>{{\Carbon\Carbon::parse($despesa->data)->format('d/m/Y')}}</td>
             <td>{{$despesa->descricao}}</td>
             <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
-            <td style="background-color: red; color:white">
+            <td id="X">
                 <form method="POST" class="formx" action="/destroy/despesas/id"><button>X</button>
                     <input type="hidden" name="data" value="{{$despesa->data}}">
                     <input type="hidden" name="id" value="{{$despesa->id}}">
@@ -73,7 +73,7 @@
         </datalist>
 
 
-        <input type="number" name="valor" id="valor" autocomplete="off" required placeholder="Valor">
+        <input type="number" name="valor" step="0.01" id="valor" autocomplete="off" required placeholder="Valor">
 
         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">

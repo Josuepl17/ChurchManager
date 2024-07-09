@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CaixasController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ControllerIgreja;
+use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\DespesasController;
 use App\Http\Controllers\DizimosController;
 use App\Http\Controllers\MembrosController;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*Route::get('/registrar/dizimo', [ControllerIgreja::class, 'regdizimo']);*/
+/*Route::get('/registrar/dizimo', [ControllerLogin::class, 'regdizimo']);*/
 
 
 
@@ -39,11 +39,24 @@ Route::post('/dizimos/destoy/id', [DizimosController::class, 'botao_excluir_dizi
 Route::post('/filtrar/dizimo', [DizimosController::class, 'filter_page']);
 
 
+
+
+
+
                              /*Ofertas*/
-Route::get('/oferta', [OfertasController::class, 'filter_page'])->middleware('auth');
-Route::post('/registrar/oferta', [OfertasController::class, 'botao_registrar_oferta'])->middleware('auth');
-Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_oferta'])->middleware('auth');
-Route::get('/filtrar/ofertas', [OfertasController::class, 'filter_page'])->middleware('auth');
+Route::get('/oferta', [OfertasController::class, 'filter_page'])->middleware('auth'); // Link menu Oferta
+Route::post('/registrar/oferta', [OfertasController::class, 'registrar_oferta'])->middleware('auth'); // Registra Uma oferta
+Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_oferta'])->middleware('auth'); // Apaga uma Oferta 
+Route::get('/filtrar/ofertas', [OfertasController::class, 'filter_page'])->middleware('auth'); // Filtra as Ofertad
+
+
+
+
+
+
+
+
+
 
                             /* Despesas */
 Route::get('/despesas', [DespesasController::class, 'filter_page']);
@@ -65,18 +78,18 @@ Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
 
 
                              /* LOGIN*/
-Route::get('/login', [ControllerIgreja::class, 'login'])->name('login');
-Route::post('/login/if', [ControllerIgreja::class, 'authenticate']);
+Route::get('/login', [ControllerLogin::class, 'login'])->name('login');
+Route::post('/login/if', [ControllerLogin::class, 'authenticate']);
 
-Route::get('/cadastro/login', [ControllerIgreja::class, 'form_login']);
-Route::post('/cadastro/usuario', [ControllerIgreja::class, 'cadastro_user']);
-Route::get('/cadastro/login/novo', [ControllerIgreja::class, 'form_login_novo']);
-Route::post('/cadastro/user/adicionar', [ControllerIgreja::class, 'adicionar_usuario']);
+Route::get('/cadastro/login', [ControllerLogin::class, 'form_login']);
+Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_user']);
+Route::get('/cadastro/login/novo', [ControllerLogin::class, 'form_login_novo']);
+Route::post('/cadastro/user/adicionar', [ControllerLogin::class, 'adicionar_usuario']);
 
 
 
-Route::get('/logout', [ControllerIgreja::class, 'logout']);
+Route::get('/logout', [ControllerLogin::class, 'logout']);
 Route::get('/pesquisa', [MembrosController::class, 'pesquisa']);
-Route::get('/user/profile', [ControllerIgreja::class, 'profile']);
+Route::get('/user/profile', [ControllerLogin::class, 'profile']);
 
 Route::get('/buscar', [MembrosController::class, 'index']);

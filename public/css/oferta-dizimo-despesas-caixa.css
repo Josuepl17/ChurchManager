@@ -27,8 +27,6 @@
 }
 
 
-
-
 /* Tabela */
 table {
     font-size: 14px;
@@ -59,6 +57,34 @@ td form button {
     all: unset;
     width: 100%;
     height: 100%;
+}
+
+#inserir-verde{
+    background-color: rgba(1, 145, 1, 0.896);
+
+}
+
+#inserir-verde a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    
+    
+}
+
+#inserir-verde:hover{
+    background-color: green;
+    transition: 0.2s ease;
+}
+
+#X{
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+}
+
+#X:hover{
+    background-color: red;
+    color: white;
 }
 
 table tr:first-child { /*Fixar no Topo a Primeira Linha da Tabela */

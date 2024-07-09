@@ -29,7 +29,7 @@
             <td style="background-color: var(--titulos) ; color:white">{{ $oferta->id}}</td>
             <td>{{\Carbon\Carbon::parse($oferta->data)->format('d/m/Y')}}</td>
             <td>R$ {{ number_format($oferta->valor, 2, ',', '.') }}</td>
-            <td style="background-color: red; color:white">
+            <td id="X">
                 <form method="post" action="/destroy/ofertas/id"><button>X</button>
                     <input type="hidden" name="data" value="{{$oferta->data}}">
                     <input type="hidden" name="id" value="{{$oferta->id}}">
@@ -60,7 +60,7 @@
     <form action="/registrar/oferta" method="post">
         @csrf
         <input type="date" name="data" id="data" value="{{ $datanow }}" autocomplete="off" required>
-        <input type="number" name="valor" id="valor" autocomplete="off" required placeholder="Valor">
+        <input type="number" step="0.01" name="valor" id="valor" autocomplete="off" required placeholder="Valor">
         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
         <button type="submit">Registar Oferta</button>

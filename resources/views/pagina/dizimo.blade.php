@@ -34,7 +34,7 @@
             <td style="background-color: var(--titulos);; color:white">{{ $dizimo->id}}</td>
             <td>{{ \Carbon\Carbon::parse($dizimo->data)->format('d/m/Y') }}</td>
             <td>R${{ number_format($dizimo->valor, 2, ',', '.') }}</td>
-            <td style="background-color: red; color:white">
+            <td id="X">
                 <form method="post" class="formx" action="/dizimos/destoy/id"><button class="excluir">X</button>
                     <input type="hidden" name="data" value="{{$dizimo->data}}">
                     <input type="hidden" name="id" value="{{$dizimo->id}}">
@@ -69,7 +69,7 @@
         <input type="hidden" name="membro_id" value="{{ $membro_id}}">
         <input type="hidden" name="nome" value="{{ $nome }}">
         <input type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
-        <input type="number" name="valor" id="valor" autocomplete="off" required placeholder="Valor:">
+        <input type="number" name="valor" step="0.01" id="valor" autocomplete="off" required placeholder="Valor:">
         <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
         <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
         <button type="submit">Registar Dizimo</button>
