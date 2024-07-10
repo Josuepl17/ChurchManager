@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+            $table->integer('empresa_id');
             $table->string('user');
             $table->string('password');
             $table->timestamps();

@@ -77,8 +77,6 @@
     
 }
 
-
-
 </style>
 </head>
 
@@ -116,12 +114,6 @@
                 
             </form>
         </div>
-
-
-
-
-
-
 
         <div class="conteiner-colunas">
             <div class="box">
@@ -177,10 +169,6 @@
 
         </div>
         @endsection
-
-
-
-
 
         <script>
             function minhaFuncao() {

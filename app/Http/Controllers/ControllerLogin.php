@@ -10,6 +10,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use App\Models\empresa;
 use App\Models\empresas;
+use App\Models\Relacionamento;
+use App\Models\Relacionamentos;
+use App\Models\relacionamentos as ModelsRelacionamentos;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,14 +34,17 @@ class ControllerLogin extends Controller
 
     public function authenticate(Request $request)
     {
-
         $credentials = $request->only('user', 'password');
 
         $credentials['user'] = strtolower($credentials['user']); // maiusculo ou minusculo
 
         if (Auth::attempt($credentials)) {
             // Autenticação bem-sucedida
-            return redirect('/');
+            
+            $user_id = auth()->user()->id;
+            $dados = relacionamentos::where('user_id', $user_id)->pluck('empresa_id');
+            $empresas = empresas::whereIn('id', $dados)->get();
+            return view('login.selecionar-filial', compact('empresas'));
         }
 
         // Autenticação falhou
@@ -49,12 +55,12 @@ class ControllerLogin extends Controller
 
 
 
-
     public function cadastro_user(Request $request)
     {
         $dados = $request->all();
         $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
         $existirusuario = User::where('user', $request->user)->first();
+
         if ($existirusuario) {
             $dados = (object) $dados;
             $senha =  hash::check($request->password, $existirusuario->password);
@@ -74,24 +80,26 @@ class ControllerLogin extends Controller
             'cnpj' => $request->cnpj
         ]);
 
-        /*$empresa = new empresas();
-        $empresa->razao = $request->razao;
-        $empresa->cnpj = $request->cnpj;
-        $empresa->save();*/
 
-        User::create([
-            'user' => $request->user,
-            'password' => Hash::make($request->password),
-            'empresa_id' => $empresa->id
-        ]);
 
-        /*$user = new User();
+        $user = new User();
         $user->user = $request->user;
         $user->password = Hash::make($request->password);
         $user->empresa_id = $empresa->id;
-        $user->save();*/
+        $user->save();
+
+
+        
+        $rela = new Relacionamentos();
+            $rela->user_id = $user->id;
+            $rela->empresa_id = $empresa->id;
+            $rela->save();
 
         return redirect('/login');
+
+      
+
+
     }
 
     public function adicionar_usuario(Request $request)
@@ -101,6 +109,36 @@ class ControllerLogin extends Controller
         $user->password = Hash::make($request->password);
         $user->empresa_id = auth()->user()->empresa_id;
         $user->save();
+
+        $empresasMarcadas = $request->input('empresas');
+
+        foreach ($empresasMarcadas as $emp){
+            $rela = new Relacionamentos();
+            $rela->user_id = $user->id;
+            $rela->empresa_id = $emp;
+            $rela->save();
+        }
+        
+
+        return redirect('/login');
+    }
+
+    public function cad_empresas(){
+        return view('login.empresa');
+    }
+
+    public function cad_empresas_novo(Request $request){
+
+        $empresa = empresas::create([
+            'razao' => $request->razao,
+            'cnpj' => $request->cnpj
+        ]);
+
+        $rela = new Relacionamentos();
+        $rela->user_id = auth()->user()->id;
+        $rela->empresa_id = $empresa->id;
+        $rela->save();
+        
         return redirect('/login');
     }
 
@@ -113,7 +151,11 @@ class ControllerLogin extends Controller
 
     public function form_login_novo()
     {
-        return view('login.adicionar_user');
+            $user_id = auth()->user()->id;
+            $dados = relacionamentos::where('user_id', $user_id)->pluck('empresa_id');
+            $empresas = empresas::whereIn('id', $dados)->get();
+
+        return view('login.adicionar_user', compact('empresas'));
     }
 
 

@@ -10,6 +10,7 @@ use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use App\Models\empresas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -20,11 +21,21 @@ use PhpParser\Node\Expr\Cast\Object_;
 class MembrosController extends Controller
 {
     /*membros*/
+
+    public function Atualizar(Request $request){
+        
+        User::where('id', auth()->id())->update(['empresa_id' => $request->id]);
+
+        return redirect('/');
+    }
+
     public function index(Request $request)
     {
-        $id_empresa_autenticada = auth()->user()->empresa_id;
+
+
         $dados = $request->pesquisa;
         $empresa_id = auth()->user()->empresa_id;
+       
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
 
         if ($dados != null) {
@@ -34,7 +45,7 @@ class MembrosController extends Controller
             return view('pagina.index', compact('index', 'razao_empresa', 'dados'));
 
         } else {
-            $index = membros::where('empresa_id', $id_empresa_autenticada)->get();
+            $index = membros::where('empresa_id', $empresa_id)->get();
             return view('pagina.index', compact('index', 'razao_empresa'));
         }
     }

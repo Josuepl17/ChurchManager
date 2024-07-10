@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
                             /*Usuarios*/
+Route::get('/entrar/{id}', [MembrosController::class, 'Atualizar'])->middleware('auth');
 Route::get('/', [MembrosController::class, 'index'])->name('index')->middleware('auth');
 Route::get('/cadastro/membro', [MembrosController::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro']);
@@ -80,7 +81,8 @@ Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
                              /* LOGIN*/
 Route::get('/login', [ControllerLogin::class, 'login'])->name('login');
 Route::post('/login/if', [ControllerLogin::class, 'authenticate']);
-
+Route::get('/cadastrar/empresas', [ControllerLogin::class, 'cad_empresas']);
+Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cad_empresas_novo']);
 Route::get('/cadastro/login', [ControllerLogin::class, 'form_login']);
 Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_user']);
 Route::get('/cadastro/login/novo', [ControllerLogin::class, 'form_login_novo']);

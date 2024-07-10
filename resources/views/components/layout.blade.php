@@ -313,6 +313,10 @@
                     <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
 
                 </a>
+
+                <a class="links" href="/cadastrar/empresas">
+                    Cadastrar Empresas
+                </a>
             </div> <!--menu-->
 
 

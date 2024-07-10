@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br" >
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Novo Usuario</title>
+  <title>Faça Login</title>
   <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
+ 
   <style>
     html {
   height: 100%;
 }
+
 body {
   margin:0;
   padding:0;
@@ -26,6 +28,8 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  
+  
 }
 
 .login-box h2 {
@@ -173,83 +177,57 @@ body {
   }
 }
 
-.msg {
-        position: absolute;
-        z-index: 999;
-        right: 25px;
-        top: 16px;
-        border: 1px solid black;
-        width: 350px;
-        height: 40px;
-        
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: sumir 6s forwards;
-        border-radius: 0px 20px 0px 20px;
-    }
+#login{
+  display: flex;
+  width: 100%;
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
+  
+}
 
-    @keyframes sumir {
-            to {
-                opacity: 0;
-                /* torna o elemento transparente */
-                visibility: hidden;
-                /* oculta o elemento da tela */
-            }
-        }
+
+
+@media(max-width: 1000px){
+
+  .login-box {
+  transform: scale(2.3);
+  top: 40%;
+  left: 30%;
+}
+
+}
+
+
+
 
   </style>
+  
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-box">
-  <h2>Adicionando Conta</h2>
-  <form action="/cadastro/user/adicionar" method="post" >
-  @csrf
-    <div class="user-box">
-      <input type="text" name="user" required="">
-      <label>Nome:</label>
-    </div>
-    <div class="user-box">
-      <input type="password" name="password" required="">
-      <label>Senha</label>
-    </div>
 
-    <div style="color: white;">
-    @foreach($empresas as $empresa)
-        <input type="checkbox" name="empresas[]" value="{{ $empresa->id }}" id="empresa_{{ $empresa->id }}">
-        <label for="empresa_{{ $empresa->razao }}">{{ $empresa->razao }}</label>
+<table> 
+    <tr>
+        <th>ID</th>
+        <th>EMPRESA</th>
+        <th>SELECIONAR</th>
+    </tr>
+    @foreach ($empresas as $empresa)
+    <tr>
+        <td>{{ $empresa->id }}</td>
+        <td>{{ $empresa->razao }}</td>
+        <td>
+            <a href="/entrar/{{ $empresa->id }}">Entrar</a>
+        </td>
+    </tr>
     @endforeach
+</table>
+
 </div>
-
-
-
-
-    <a href="">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    <input style="background: none;
-        border: none;
-        padding: 0;
-        font: inherit;
-        cursor: pointer;
-        outline: inherit;
-        color: #03e9f4;
-" type="submit" value="Cadastrar">
-    </a>
-  </form>
-</div>
-
-@if (Session::has('falha'))
-    <div style="background-color: red;" class="msg">
-        <p>{{ Session::get('falha') }}</p>
-    </div>
-    {{ Session::forget('falha') }}
-@endif
+<!-- partial -->
   
 </body>
 </html>

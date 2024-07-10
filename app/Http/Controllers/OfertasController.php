@@ -25,7 +25,7 @@ class OfertasController extends Controller
     //......................................................Parte 1................................................//
     public function filter_page(Request $request)
     {
-
+        
         $dataIni = $request->dataini ?? '1900-01-01'; // Se tem requisção ele usa e não tem o padrão é 1900-01-01 
         $dataFi = $request->datafi ?? '5000-01-01'; // Se tem requisção ele usa e não tem o padrão é 5000-01-01 
         $empresa_id = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
