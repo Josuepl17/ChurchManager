@@ -12,7 +12,8 @@ use App\Models\empresa;
 use App\Models\empresas;
 use App\Models\Relacionamento;
 use App\Models\Relacionamentos;
-use App\Models\relacionamentos as ModelsRelacionamentos;
+use App\Models\user_empresas as ModelsRelacionamentos;
+use App\Models\user_empresas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,7 @@ class ControllerLogin extends Controller
             // Autenticação bem-sucedida
             
             $user_id = auth()->user()->id;
-            $dados = relacionamentos::where('user_id', $user_id)->pluck('empresa_id');
+            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
             $empresas = empresas::whereIn('id', $dados)->get();
             return view('login.selecionar-filial', compact('empresas'));
         }
@@ -90,7 +91,7 @@ class ControllerLogin extends Controller
 
 
         
-        $rela = new Relacionamentos();
+        $rela = new user_empresas();
             $rela->user_id = $user->id;
             $rela->empresa_id = $empresa->id;
             $rela->save();
@@ -113,7 +114,7 @@ class ControllerLogin extends Controller
         $empresasMarcadas = $request->input('empresas');
 
         foreach ($empresasMarcadas as $emp){
-            $rela = new Relacionamentos();
+            $rela = new user_empresas();
             $rela->user_id = $user->id;
             $rela->empresa_id = $emp;
             $rela->save();
@@ -134,7 +135,7 @@ class ControllerLogin extends Controller
             'cnpj' => $request->cnpj
         ]);
 
-        $rela = new Relacionamentos();
+        $rela = new user_empresas();
         $rela->user_id = auth()->user()->id;
         $rela->empresa_id = $empresa->id;
         $rela->save();
@@ -152,7 +153,7 @@ class ControllerLogin extends Controller
     public function form_login_novo()
     {
             $user_id = auth()->user()->id;
-            $dados = relacionamentos::where('user_id', $user_id)->pluck('empresa_id');
+            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
             $empresas = empresas::whereIn('id', $dados)->get();
 
         return view('login.adicionar_user', compact('empresas'));

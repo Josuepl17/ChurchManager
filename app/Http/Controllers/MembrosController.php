@@ -23,7 +23,10 @@ class MembrosController extends Controller
     /*membros*/
 
     public function Atualizar(Request $request){
-        
+
+        $user = Auth::user(); // usuario autenticado 
+        $empresas = $user->empresas; // acesso as empresas ligadas ao meu usuario autenticado 
+        dd($empresas);
         User::where('id', auth()->id())->update(['empresa_id' => $request->id]);
 
         return redirect('/');

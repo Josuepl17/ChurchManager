@@ -23,31 +23,20 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function ofertas()
-    {
-         return $this->hasMany(ofertas::class);
-    }
 
 
-    public function despesas()
-    {
-        return $this->hasMany(despesas::class);
-    }
+
+
 
     public function empresas()
     {
-        return $this->hasMany(empresas::class);
+        return $this->belongsToMany(empresas::class, 'user_empresas', 'user_id', 'empresa_id');
     }
+ 
 
-    public function membros()
-    {
-        return $this->hasMany(membros::class);
-    }
 
-    public function dizimos()
-    {
-        return $this->hasMany(dizimos::class);
-    }
+
+
 
 
     /**

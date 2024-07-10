@@ -10,5 +10,9 @@ class empresas extends Model
     use HasFactory;
     protected $fillable = ['razao', 'cnpj', 'id'];
 
-
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_empresas', 'empresa_id', 'user_id');
+    }
+ 
 }

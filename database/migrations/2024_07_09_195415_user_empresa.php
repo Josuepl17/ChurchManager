@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('relacionamentos', function (Blueprint $table) {
+        Schema::create('user_empresas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('empresa_id'); 
+            $table->unsignedBigInteger('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('empresa_id')->references('id')->on('empresas')->onDelete('cascade'); 
             $table->timestamps();
 
         });
