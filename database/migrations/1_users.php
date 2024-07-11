@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('empresa_id');
+            $table->integer('empresa_id'); // so para selecção de filiais 
             $table->string('user');
             $table->string('password');
             $table->timestamps();
