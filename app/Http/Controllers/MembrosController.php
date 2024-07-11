@@ -51,7 +51,6 @@ class MembrosController extends Controller
 
     public function cadastro_membro()
     {
-        auth()->user()->empresa_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
         return view('pagina.formulario', compact('razao_empresa'));
     }
@@ -59,7 +58,6 @@ class MembrosController extends Controller
     public function botao_inserir_membro(request $request)
     {
         $user_id = Auth::id();
-        auth()->user()->empresa_id = auth()->user()->empresa_id;
         $dados = $request->all();
         $dados['user_id'] = $user_id;
         $dados['empresa_id'] = auth()->user()->empresa_id;
