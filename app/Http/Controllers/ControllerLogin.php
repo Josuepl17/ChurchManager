@@ -37,10 +37,8 @@ class ControllerLogin extends Controller
     {
         $credentials = $request->only('user', 'password');
 
-        $credentials['user'] = strtolower($credentials['user']); // maiusculo ou minusculo
+        if (Auth::attempt(['user' => $credentials['user'], 'password' => $credentials['password']]) || Auth::attempt(['user' => strtoupper($credentials['user']), 'password' => $credentials['password']])) {
 
-        if (Auth::attempt($credentials)) {
-            // Autenticação bem-sucedida
             
             $user_id = auth()->user()->id;
             $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
@@ -65,7 +63,7 @@ class ControllerLogin extends Controller
         if ($existirusuario) {
             $dados = (object) $dados;
             $senha =  hash::check($request->password, $existirusuario->password);
-            Session()->flash('falha', 'Atenção! Usuario Já Esta Sendo Usado.');
+            Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
 
             return view('login.cadastro', compact('dados'));
         }
