@@ -23,44 +23,41 @@ class MembrosController extends Controller
     /*membros*/
 
     public function Atualizar(Request $request){
-        //dd($this->empresas);
+
         User::where('id', auth()->id())->update(['empresa_id' => $request->id]);
-       // $user = Auth::user(); // usuario autenticado 
-       // $user = $user->empresas;
-        //$empresas = $user->empresas; // acesso as empresas ligadas ao meu usuario autenticado 
-        
         return redirect('/');
     }
 
     public function index(Request $request)
     {
+        $empresas_id = auth()->user()->empresa_id;
         $dados = $request->pesquisa;
-        $razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
-        $user = Auth::user();
-
+        $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
+        
         if ($dados != null) {
-            $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', auth()->user()->empresa_id)->get();
-
+            $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
             return view('pagina.index', compact('index', 'razao_empresa', 'dados'));
 
         } else {
-            $index = membros::where('empresa_id', auth()->user()->empresa_id)->get();
+            $index = membros::where('empresa_id', $empresas_id)->get();
             return view('pagina.index', compact('index', 'razao_empresa'));
         }
     }
 
     public function cadastro_membro()
     {
-        $razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
+        $empresas_id = auth()->user()->empresa_id;
+        $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
         return view('pagina.formulario', compact('razao_empresa'));
     }
 
     public function botao_inserir_membro(request $request)
     {
+        $empresas_id = auth()->user()->empresa_id;
         $user_id = Auth::id();
         $dados = $request->all();
         $dados['user_id'] = $user_id;
-        $dados['empresa_id'] = auth()->user()->empresa_id;
+        $dados['empresa_id'] = $empresas_id;
         $dados =  array_map('strtoupper', array_map('strval', $dados));
         membros::create($dados);
         return redirect('/');

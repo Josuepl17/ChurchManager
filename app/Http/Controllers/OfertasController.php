@@ -69,7 +69,7 @@ class OfertasController extends Controller
         return $this->filter_page(MeuServico::post_filter($request)); // Retorna a Função de Filtro Fazendo um Envio do Tipo Request 
     }
 
-    //......................................................Parte 2................................................//
+    //......................................................Parte 3................................................//
 
     public function botao_excluir_oferta(request $request)
     {

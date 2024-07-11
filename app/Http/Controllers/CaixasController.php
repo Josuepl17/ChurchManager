@@ -17,6 +17,7 @@ use App\Http\Controllers\ControllerIgreja;
 use App\Models\empresas;
 use App\Services\MeuServico;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Mailer\Transport\Dsn;
 
 class CaixasController extends Controller
 {
@@ -45,10 +46,10 @@ class CaixasController extends Controller
 
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
             unset($dados['dataini'], $dados['datafi']);
-
-            return view('pagina.resumo', compact('dados', 'saldo'));
+           
+            return view('pagina.resumo')->with('dados', $dados);
         }
-        return view('pagina.resumo', compact('dados', 'saldo'));
+        return view('pagina.resumo')->with('dados', $dados);
     }
 //......................................................Parte 2................................................//
 

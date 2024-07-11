@@ -309,14 +309,18 @@
                     <i class="fa-solid fa-people-arrows"></i> &nbsp; <p>Novo Usuario</p>
 
                 </a>
+
+                <a class="links" href="/cadastrar/empresas">
+                <i class="fa-solid fa-building"></i> &nbsp; <p>Nova Empresa</p>
+                    
+                </a>
+
                 <a class="links" href="/logout">
                     <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
 
                 </a>
 
-                <a class="links" href="/cadastrar/empresas">
-                    Cadastrar Empresas
-                </a>
+                
             </div> <!--menu-->
 
 
