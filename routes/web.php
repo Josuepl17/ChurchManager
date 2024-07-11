@@ -82,6 +82,7 @@ Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
 Route::get('/login', [ControllerLogin::class, 'login'])->name('login');
 Route::post('/login/if', [ControllerLogin::class, 'authenticate']);
 Route::get('/cadastrar/empresas', [ControllerLogin::class, 'cad_empresas']);
+Route::get('/selecionar/filial', [ControllerLogin::class, 'selecionar_filial']);
 Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cad_empresas_novo']);
 Route::get('/cadastro/login', [ControllerLogin::class, 'form_login']);
 Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_user']);

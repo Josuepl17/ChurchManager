@@ -51,6 +51,13 @@ class ControllerLogin extends Controller
         return redirect('/login');
     }
 
+    public function selecionar_filial(){
+         $user_id = auth()->user()->id;
+            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+            $empresas = empresas::whereIn('id', $dados)->get();
+            return view('login.selecionar-filial', compact('empresas'));
+    }
+
 
 
 
@@ -138,7 +145,10 @@ class ControllerLogin extends Controller
         $rela->empresa_id = $empresa->id;
         $rela->save();
         
-        return redirect('/login');
+        $user_id = auth()->user()->id;
+        $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+        $empresas = empresas::whereIn('id', $dados)->get();
+        return view('login.selecionar-filial', compact('empresas'));
     }
 
 

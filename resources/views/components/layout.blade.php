@@ -305,15 +305,19 @@
                     <i class="fa-solid fa-user"></i> &nbsp; <p>Usuarios</p>
                 </a>
 
-                <a class="links" href="/cadastro/login/novo">
-                    <i class="fa-solid fa-people-arrows"></i> &nbsp; <p>Novo Usuario</p>
+                
 
-                </a>
-
-                <a class="links" href="/cadastrar/empresas">
+                <!--<a class="links" href="/cadastrar/empresas">
                 <i class="fa-solid fa-building"></i> &nbsp; <p>Nova Empresa</p>
                     
-                </a>
+                </a> -->
+
+                <a class="links" href="/selecionar/filial">
+                <i class="fa-solid fa-building"></i> &nbsp; <p>Selecionar Filial</p>
+                    
+                </a> 
+
+
 
                 <a class="links" href="/logout">
                     <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>

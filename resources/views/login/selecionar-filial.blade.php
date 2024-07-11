@@ -35,7 +35,7 @@ body {
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
-  color: #fff;
+  color: white;;
   text-align: center;
 }
 
@@ -47,7 +47,7 @@ body {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: white;
   margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid #fff;
@@ -60,7 +60,7 @@ body {
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: white;
   pointer-events: none;
   transition: .5s;
 }
@@ -69,7 +69,7 @@ body {
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #03e9f4;
+  color: white;
   font-size: 12px;
 }
 
@@ -77,7 +77,7 @@ body {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: #03e9f4;
+  color: white;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -89,7 +89,7 @@ body {
 
 .login-box a:hover {
   
-  color: #fff;
+  color: white;;
   border-radius: 5px;
   box-shadow: 0 0 5px #03e9f4,
               0 0 5px #03e9f4,
@@ -198,6 +198,24 @@ body {
 
 }
 
+th, td {
+  color: white;
+  text-align: center;
+  border: 1px solid white;
+  padding: 5px;
+  
+
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+table{
+  border-collapse: collapse;
+}
+
 
 
 
@@ -224,7 +242,10 @@ body {
         </td>
     </tr>
     @endforeach
+    
 </table>
+
+<a  href="/cadastrar/empresas"><p>Nova Empresa</p></a> 
 
 </div>
 <!-- partial -->
