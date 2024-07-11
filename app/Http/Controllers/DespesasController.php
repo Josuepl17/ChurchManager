@@ -28,7 +28,6 @@ class DespesasController extends Controller
     {
         $dataIni = $request->dataini ?? '1900-01-01';
         $dataFi = $request->datafi ?? '5000-01-01';
-
         $empresa_id = auth()->user()->empresa_id;
 
         $dados = [
