@@ -14,5 +14,9 @@ class empresas extends Model
     {
         return $this->belongsToMany(User::class, 'user_empresas', 'empresa_id', 'user_id');
     }
+
+    public function membros (){
+        return $this->hasMany(membros::class, 'empresa_id'); // tem muitos
+    }
  
 }

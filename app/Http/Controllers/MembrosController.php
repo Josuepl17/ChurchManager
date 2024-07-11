@@ -26,7 +26,7 @@ class MembrosController extends Controller
 
         $user = Auth::user(); // usuario autenticado 
         $empresas = $user->empresas; // acesso as empresas ligadas ao meu usuario autenticado 
-        dd($empresas);
+
         User::where('id', auth()->id())->update(['empresa_id' => $request->id]);
 
         return redirect('/');
