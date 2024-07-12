@@ -293,12 +293,12 @@
                     <i class="fa-solid fa-coins"></i> &nbsp; <p>Despesas</p>
                 </a>
 
-                <a class="links" href="/indexcaixa">
-                    <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
-                </a>
-
                 <a class="links" href="/relatorio">
                     <i class="fa-solid fa-book"></i> &nbsp; <p>Resumo</p>
+                </a>
+
+                <a class="links" href="/indexcaixa">
+                    <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
                 </a>
 
                 <a class="links" href="/user/profile">
@@ -306,16 +306,22 @@
                 </a>
 
                 
-
-                <!--<a class="links" href="/cadastrar/empresas">
-                <i class="fa-solid fa-building"></i> &nbsp; <p>Nova Empresa</p>
+                <a class="links" href="/cadastro/login/novo">
+                <i class="fa-solid fa-users"></i> &nbsp; <p>Novo Usuario</p>
                     
-                </a> -->
+                </a> 
 
                 <a class="links" href="/selecionar/filial">
                 <i class="fa-solid fa-building"></i> &nbsp; <p>Selecionar Filial</p>
                     
                 </a> 
+
+                <a class="links" href="/cadastrar/empresas">
+                <i class="fa-solid fa-building-user"></i> &nbsp; <p>Nova Filial</p>
+                    
+                </a> 
+
+
 
 
 

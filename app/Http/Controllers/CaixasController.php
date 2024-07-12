@@ -86,7 +86,7 @@ class CaixasController extends Controller
         if (MeuServico::Verificar($request->dataini) & MeuServico::Verificar($request->datafi)) {
             $dados = $request->except('_token');
             $dados['user_id'] = Auth::id(); //acessa o ID do usuario Autenticado
-            $dados['empresa_id'] = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
+            $dados['empresa_id'] = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado QUE SE ALTERA TODA VEZ QUE ENTRA 
             caixas::create($dados);
             session()->flash('alert', 'Caixa Fechado Com Sucesso');
             return redirect('/relatorio');

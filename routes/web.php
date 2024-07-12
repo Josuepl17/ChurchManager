@@ -40,23 +40,11 @@ Route::post('/dizimos/destoy/id', [DizimosController::class, 'botao_excluir_dizi
 Route::post('/filtrar/dizimo', [DizimosController::class, 'filter_page']);
 
 
-
-
-
-
                              /*Ofertas*/
 Route::get('/oferta', [OfertasController::class, 'filter_page'])->middleware('auth'); // Link menu Oferta
 Route::post('/registrar/oferta', [OfertasController::class, 'registrar_oferta'])->middleware('auth'); // Registra Uma oferta
 Route::post('/destroy/ofertas/id', [OfertasController::class, 'botao_excluir_oferta'])->middleware('auth'); // Apaga uma Oferta 
 Route::get('/filtrar/ofertas', [OfertasController::class, 'filter_page'])->middleware('auth'); // Filtra as Ofertad
-
-
-
-
-
-
-
-
 
 
                             /* Despesas */
@@ -76,23 +64,22 @@ Route::get('/indexcaixa', [CaixasController::class, 'indexcaixa']);
 Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
 
 
-
-
                              /* LOGIN*/
 Route::get('/login', [ControllerLogin::class, 'login'])->name('login');
 Route::post('/login/if', [ControllerLogin::class, 'authenticate']);
-Route::get('/cadastrar/empresas', [ControllerLogin::class, 'cad_empresas']);
-Route::get('/selecionar/filial', [ControllerLogin::class, 'selecionar_filial']);
-Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cad_empresas_novo']);
-Route::get('/cadastro/login', [ControllerLogin::class, 'form_login']);
-Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_user']);
-Route::get('/cadastro/login/novo', [ControllerLogin::class, 'form_login_novo']);
-Route::post('/cadastro/user/adicionar', [ControllerLogin::class, 'adicionar_usuario']);
+Route::get('/cadastro/login', [ControllerLogin::class, 'formulario_usuario_empresa']);
+Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_usuario_empresa']);
 
+Route::get('/cadastro/login/novo', [ControllerLogin::class, 'formulario_adicionar_usuario']);
+Route::post('/cadastro/user/adicionar', [ControllerLogin::class, 'adicionar_usuario']);
+Route::get('/user/profile', [ControllerLogin::class, 'tela_usuarios']);
+
+Route::get('/selecionar/filial', [ControllerLogin::class, 'selecionar_filial']);
+Route::get('/cadastrar/empresas', [ControllerLogin::class, 'formulario_adicionar_empresa']);
+Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cadastro_empresas_nova']);
 
 
 Route::get('/logout', [ControllerLogin::class, 'logout']);
-Route::get('/pesquisa', [MembrosController::class, 'pesquisa']);
-Route::get('/user/profile', [ControllerLogin::class, 'profile']);
 
-Route::get('/buscar', [MembrosController::class, 'index']);
+
+

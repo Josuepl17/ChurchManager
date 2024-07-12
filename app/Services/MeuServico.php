@@ -27,6 +27,9 @@ class MeuServico
     }
 
 
+    
+
+
     // Post de Dados no Formato de Requisição
     public static function post_filter($request)
     {

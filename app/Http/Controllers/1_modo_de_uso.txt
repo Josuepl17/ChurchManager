@@ -1,0 +1,25 @@
+Banco de Dados.
+
+Usuarios X Empresas  = User_empresas
+
+Quando se faz o primeiro cadastro no sistema aonde se coloca o usuário e a empresa o projeto Cria a empresa cria o usuário e depois faz o relacionamento dos ids em uma tabela específica Para que quando eu for logar no sistema ele identificar o meu login(ID) e ver quais relacionamentos eu tenho com quais empresas. A mesma coisa ocorre quando eu vou adicionar um novo usuário ele pega os relacionamentos que eu tenho e permite que eu adicione os mesmos relacionamentos ou só uma parte deles para o novo usuário.
+
+Desta forma ele mantém o relacionamento de um usuário para muitas empresas e uma empresa para muitos usuários
+Desta forma caso outra denominação ou empresa quiser utilizar também o sistema o banco de dados irá pegar um novo ID para o usuário e um novo d para a nova empresa e isso fará com que os dados não se misture nem entre filiais nem entre matrizes diferentes.
+
+Como existe uma tabela específica para o relacionamento dos IDS não era necessário ter uma coluna específica do ID da empresa na tabela de usuários porém foi adicionado para o seguinte Proposta:
+
+Após fazer o login o sistema identificará quais empresas barra filiais pertencem ao seu usuário ele te direcioná para uma página aonde você poderá selecionar a empresa que você quer entrar, Ao selecionar a empresa, O sistema vai dispara O ID Da empresa e atualizará esse id na coluna 'empresa_id' Do tabela de usuários; Para que facilmente em qualquer lugar do código eu possa recuperar o ID da Empresa Selecionada, Com esse Codigo "$empresa_id = auth()->user()->empresa_id;"
+Esse código pega o meu usuário logado E seleciona O ID da empresa que eu escolhi entrar E esse id basicamente é a chave para todas as buscas dentro do sistema pois todas as tabelas filhas tem a coluna "empresa_id" 
+
+Isso faz um filtro mestre para que nenhum outro dado de nenhum outra filial ou nenhum outra matriz seja exibido ou apagado na filial selecionada.
+
+obs Importante: Como calepresa usuário e registro tem o seu próprio ID dentro da sua tabela, Não foi necessário fazer filtros pelo ID da empresa para apagar diretamente registros de uma tabela a partir do seu Id
+
+
+
+        $empresa_id = auth()->user()->empresa_id;
+
+      
+     $totalofertas => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+                                coluna da Tabela/valor a ser filtrado

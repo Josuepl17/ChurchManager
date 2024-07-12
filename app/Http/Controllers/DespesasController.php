@@ -26,7 +26,7 @@ class DespesasController extends Controller
 //......................................................Parte 1................................................//
     public function filter_page(Request $request)
     {
-        $dataIni = $request->dataini ?? '1900-01-01';
+        $dataIni = $request->dataini ?? '1000-01-01';
         $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = auth()->user()->empresa_id;
 
@@ -51,6 +51,7 @@ class DespesasController extends Controller
     }
 
 //......................................................Parte 2................................................//
+
     public function botao_registrar_despesas(request $request)
     {
 
