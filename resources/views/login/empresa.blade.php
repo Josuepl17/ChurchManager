@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -226,7 +226,7 @@
 <body>
   <!-- partial:index.partial.html -->
   <div class="login-box">
-    <h2>Crie Sua Conta</h2>
+    <h2>Nova Filial</h2>
     <form action="/cadastro/empresa/novo" method="get">
       
 
