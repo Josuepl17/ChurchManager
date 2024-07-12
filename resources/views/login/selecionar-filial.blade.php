@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
   <title>Faça Login</title>
@@ -21,7 +21,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
+  width: 600px;
   padding: 40px;
   transform: translate(-50%, -50%);
   background: rgba(0,0,0,.5);
@@ -32,168 +32,16 @@ body {
   
 }
 
-.login-box h2 {
-  margin: 0 0 30px;
-  padding: 0;
-  color: white;;
-  text-align: center;
-}
 
-.login-box .user-box {
-  position: relative;
-}
-
-.login-box .user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: white;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
-}
-.login-box .user-box label {
-  position: absolute;
-  top:0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: white;
-  pointer-events: none;
-  transition: .5s;
-}
-
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: white;
-  font-size: 12px;
-}
-
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: white;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 4px
-}
-
-.login-box a:hover {
-  
-  color: white;;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4,
-              0 0 5px #03e9f4,
-              0 0 5px #03e9f4,
-              0 0 5px #03e9f4;
-}
-
-.login-box a span {
-  position: absolute;
-  display: block;
-}
-
-.login-box a span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
-}
-
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-  50%,100% {
-    left: 100%;
-  }
-}
-
-.login-box a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-  50%,100% {
-    top: 100%;
-  }
-}
-
-.login-box a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-  50%,100% {
-    right: 100%;
-  }
-}
-
-.login-box a span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-  50%,100% {
-    bottom: 100%;
-  }
-}
-
-#login{
-  display: flex;
-  width: 100%;
-  height: 100px;
-  justify-content: space-around;
-  align-items: center;
-  
-}
 
 
 
 @media(max-width: 1000px){
 
   .login-box {
-  transform: scale(2.3);
-  top: 40%;
-  left: 30%;
+  transform: scale(1.5);
+  top: 30%;
+  left: 17%;
 }
 
 }
@@ -207,13 +55,31 @@ th, td {
 
 }
 
+td{
+  background-color: white;
+  color: black;
+}
+
+.tda:hover{
+  background: rgba(0,0,0,.5);
+  transition: 0.6s;
+}
+
+a:hover{
+  color: white;
+}
+
 a{
   text-decoration: none;
-  color: white;
+  color: black;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 table{
   border-collapse: collapse;
+  width: 100%;
 }
 
 
@@ -237,7 +103,7 @@ table{
     <tr>
         <td>{{ $empresa->id }}</td>
         <td>{{ $empresa->razao }}</td>
-        <td>
+        <td class="tda" >
             <a href="/entrar/{{ $empresa->id }}">Entrar</a>
         </td>
     </tr>
@@ -245,7 +111,7 @@ table{
     
 </table>
 
-<a  href="/cadastrar/empresas"><p>Nova Empresa</p></a> 
+
 
 </div>
 <!-- partial -->
