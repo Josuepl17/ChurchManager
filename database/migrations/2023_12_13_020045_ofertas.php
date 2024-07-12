@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('ofertas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('empresa_id');
+            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->date('data');
             $table->decimal('valor', 8, 2);
             $table->timestamps();

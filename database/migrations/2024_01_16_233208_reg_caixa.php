@@ -16,7 +16,10 @@ return new class extends Migration
             $table->date('dataini');
             $table->date('datafi');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->unsignedBigInteger('empresa_id');
+            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->decimal('totalofertas', 8, 2);
             $table->decimal('totaldespesas', 8 , 2);
             $table->decimal('totaldizimos', 8, 2);
