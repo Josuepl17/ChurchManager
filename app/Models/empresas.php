@@ -18,5 +18,21 @@ class empresas extends Model
     public function membros (){
         return $this->hasMany(membros::class, 'empresa_id'); // tem muitos
     }
+
+    public function despesas(){
+       return $this->hasMany(despesas::class, 'empresa_id');
+    }
+
+    public function ofertas(){
+        return $this->hasMany(despesas::class, 'empresa_id');
+    }
+
+    public function dizimos(){
+        return $this->hasMany(despesas::class, 'empresa_id');
+    }
+
+    public function caixas(){
+        return $this->hasMany(despesas::class, 'empresa_id');
+    }
  
 }

@@ -15,4 +15,8 @@ class dizimos extends Model
     {
         return $this->belongsTo(membros::class);
     }
+
+    public function empresas(){
+        return $this->belongsTo(empresas::class);// pertence a
+    }
 }

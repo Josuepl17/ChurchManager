@@ -12,7 +12,9 @@ class ofertas extends Model
 
 
 
-
+    public function empresas(){
+        return $this->belongsTo(empresas::class);// pertence a
+    }
 
   
 

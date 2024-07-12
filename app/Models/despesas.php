@@ -11,7 +11,9 @@ class despesas extends Model
     protected $fillable = ['data', 'descricao', 'valor', 'user_id', 'empresa_id'];
 
 
-
+    public function empresas(){
+        return $this->belongsTo(empresas::class);// pertence a
+    }
 
 
 }
