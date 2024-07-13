@@ -53,11 +53,9 @@ class MembrosController extends Controller
 
     public function botao_inserir_membro(request $request)
     {
-        $empresas_id = auth()->user()->empresa_id;
-        $user_id = Auth::id();
         $dados = $request->all();
-        $dados['user_id'] = $user_id;
-        $dados['empresa_id'] = $empresas_id;
+        $dados['user_id'] = Auth::id();
+        $dados['empresa_id'] = auth()->user()->empresa_id;
         $dados =  array_map('strtoupper', array_map('strval', $dados));
         membros::create($dados);
         return redirect('/');
@@ -67,7 +65,7 @@ class MembrosController extends Controller
     public function excluir_membro(request $request)
     {
         $destroy = $request->id;
-        membros::destroy($destroy);
+        membros::destroy($destroy); //banco de dados com apagar cascade, todos os dizimos desses usuarios vão ter apagados tambem
         return redirect('/');
     }
 }

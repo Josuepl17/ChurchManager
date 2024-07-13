@@ -231,8 +231,12 @@
       @csrf
 
       <div class="user-box">
-        <input type="text" name="user" required="" value="{{ isset($dados->user) ? $dados->user : '' }}">
-        <label>User:</label>
+        <input type="text" name="nome" required="" value="{{ isset($dados->user) ? $dados->user : '' }}">
+        <label>Nome:</label>
+      </div>
+      <div class="user-box">
+        <input type="text" name="email" required="" value="{{ isset($dados->user) ? $dados->email : '' }}">
+        <label>Email:</label>
       </div>
       <div class="user-box">
         <input type="password" name="password" required="">

@@ -55,9 +55,7 @@ class DizimosController extends Controller
             $dados = $request->only('id', 'data', 'valor', 'membro_id');
             $dados['user_id'] = Auth::id();
             $dados['empresa_id'] = Auth::user()->empresa_id;
-
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
-
             dizimos::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
         } else {
@@ -70,10 +68,7 @@ class DizimosController extends Controller
 
     public function botao_excluir_dizimo(request $request)
     {
-        $data = $request->data;
-        $verificar = MeuServico::Verificar($data);
-
-        if ($verificar) {
+        if (MeuServico::Verificar($request->data)) {
             $destroy = $request->id;
             dizimos::destroy($destroy);
             Session()->flash('sucesso',  'Item Apagado com Sucesso');

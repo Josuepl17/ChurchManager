@@ -42,7 +42,7 @@ class ControllerLogin extends Controller
     {
         $dados = $request->all();
         $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
-        $existirusuario = User::where('user', $request->user)->first();
+        $existirusuario = User::where('user', $request->email)->first();
 
         if ($existirusuario) {
             $dados = (object) $dados;
@@ -62,24 +62,25 @@ class ControllerLogin extends Controller
         ]);
 
         $user = new User();
-        $user->user = $request->user;
+        $user->nome = $request->nome;
+        $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->empresa_id = $empresa->id;
         $user->save();
 
-        $rela = new user_empresas();
-            $rela->user_id = $user->id;
-            $rela->empresa_id = $empresa->id;
-            $rela->save();
-        return redirect('/login');
+        $user_empresas = new user_empresas();
+            $user_empresas->user_id = $user->id;
+            $user_empresas->empresa_id = $empresa->id;
+            $user_empresas->save();
+            return redirect('/login');
 
     }
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('user', 'password');
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt(['user' => $credentials['user'], 'password' => $credentials['password']]) || Auth::attempt(['user' => strtoupper($credentials['user']), 'password' => $credentials['password']])) {
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']]) || Auth::attempt(['user' => strtoupper($credentials['email']), 'password' => $credentials['password']])) {
 
             
             $user_id = auth()->user()->id;
@@ -115,10 +116,10 @@ class ControllerLogin extends Controller
         $empresasMarcadas = $request->input('empresas');
 
         foreach ($empresasMarcadas as $emp){
-            $rela = new user_empresas();
-            $rela->user_id = $user->id;
-            $rela->empresa_id = $emp;
-            $rela->save();
+            $user_empresas = new user_empresas();
+            $user_empresas->user_id = $user->id;
+            $user_empresas->empresa_id = $emp;
+            $user_empresas->save();
         }
         return redirect('/login');
     }
@@ -152,10 +153,10 @@ class ControllerLogin extends Controller
             'cnpj' => $request->cnpj
         ]);
 
-        $rela = new user_empresas();
-        $rela->user_id = auth()->user()->id;
-        $rela->empresa_id = $empresa->id;
-        $rela->save();
+        $user_empresas = new user_empresas();
+        $user_empresas->user_id = auth()->user()->id;
+        $user_empresas->empresa_id = $empresa->id;
+        $user_empresas->save();
         
         $user_id = auth()->user()->id;
         $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
