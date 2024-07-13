@@ -12,6 +12,7 @@
         * {
             margin: 0px;
             padding: 0px;
+            box-sizing: border-box;
         }
 
         :root {
@@ -46,6 +47,7 @@
             justify-content: flex-start;
             align-items: center;
             background-color: var(--subtitulos);
+            
 
         }
 
@@ -53,14 +55,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            border: 1px solid white;
+            font-size: 15px;
             height: 100%;
             text-decoration: none;
             color: black;
-            border-right: white 1px solid;
             color: white;
-            padding-right: 7px;
             padding-left: 7px;
+            padding-right: 7px;
             background-color: var(--cor-secundaria);
 
         }
@@ -73,7 +75,7 @@
         #conteudo{
             display: flex;
             width: 100%;
-            height: 100vh;
+            height: 86%;
             
             flex-direction: column;
             background-color: rgb(192, 192, 192);

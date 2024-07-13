@@ -27,7 +27,7 @@ class CaixasController extends Controller
     public function filter_page(Request $request)
     {
         $dataIni = $request->dataini ?? '1000-01-01';
-        $dataFi = $request->datafi ?? '40000-01-01';
+        $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = auth()->user()->empresa_id;
 
         $dados = [
