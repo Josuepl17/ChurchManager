@@ -15,6 +15,7 @@ body {
   padding:0;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
+  box-sizing: border-box;
 }
 
 .login-box {
@@ -49,11 +50,12 @@ body {
 th, td {
   color: white;
   text-align: center;
-  border: 1px solid white;
+  border: 1px solid black;
   padding: 5px;
   
-
 }
+
+
 
 td{
   background-color: white;
@@ -61,7 +63,7 @@ td{
 }
 
 .tda:hover{
-  background: rgba(0,0,0,.5);
+  background: green;
   transition: 0.6s;
 }
 

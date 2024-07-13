@@ -214,7 +214,7 @@ body {
 
   @csrf
     <div  class="user-box">
-      <input autocomplete="off" type="text" name="user" required="">
+      <input autocomplete="off" type="text" name="email" required="">
       <label >Nome:</label>
     </div>
     <div class="user-box">
