@@ -7,9 +7,9 @@
 @section('botao-tabela')
 <form action="/filtrar/despesas" method="post">
     @csrf
-    <input  type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
+    <input  type="date" name="dataini" id="dataini" value="{{Session()->get('dataini')}}" required>
 
-    <input  type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
+    <input  type="date" name="datafi" id="datafi" value="{{Session()->get('datafi')}}" required>
     <input style="width: 65px;" type="submit" value="Filtrar">
 </form>
 @endsection
@@ -37,8 +37,8 @@
                 <form method="POST" class="formx" action="/destroy/despesas/id"><button>X</button>
                     <input type="hidden" name="data" value="{{$despesa->data}}">
                     <input type="hidden" name="id" value="{{$despesa->id}}">
-                    <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
-                    <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+                    <input type="hidden" name="dataini" value="{{Session()->get('dataini')}}">
+                    <input type="hidden" name="datafi" value="{{Session()->get('datafi')}}">
                     @csrf
                 </form>
             </td>
@@ -75,8 +75,8 @@
 
         <input type="number" name="valor" step="0.01" id="valor" autocomplete="off" required placeholder="Valor">
 
-        <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
-        <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+        <input type="hidden" name="dataini" value="{{Session()->get('dataini')}}">
+        <input type="hidden" name="datafi" value="{{Session()->get('datafi')}}">
 
         <button type="submit">Registar Despesa</button>
     </form>
