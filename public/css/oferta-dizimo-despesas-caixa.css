@@ -49,9 +49,7 @@ table th {
     
 }
 
-tr{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.486);
-}
+
 
 td form button {
     all: unset;
@@ -89,10 +87,19 @@ td form button {
 
 table tr:first-child { /*Fixar no Topo a Primeira Linha da Tabela */
     position: sticky;
-    top: 0;
+    top: -1
+}
+
+::-webkit-scrollbar{
+    width: 8px;
 
 }
 
+::-webkit-scrollbar-thumb{
+    background-color: var(--select);
+    border-radius: 5px;
+   
+}
 /* Conteudo Apenas os dados da Tabela */
 #tabela-dados {
     width: 100%;
