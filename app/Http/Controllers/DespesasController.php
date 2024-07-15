@@ -51,7 +51,6 @@ public function filtro(Request $request){
 }
     public function botao_registrar_despesas(request $request)
     {
-
         if (MeuServico::Verificar($request->data) == true) {
             $dados = $request->all();
             $dados['user_id'] = Auth::id(); //acessa o ID do usuario Autenticado

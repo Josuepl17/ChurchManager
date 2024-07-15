@@ -7,8 +7,8 @@
 
 @section('botao-tabela')
 <form action="/filtrar/ofertas" method="get">
-    <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
-    <input type="date" name="datafi" id="datafi" value="{{ isset($dataini) ? $dataini : '' }}" required>
+    <input type="date" name="dataini" id="dataini" value="{{Session()->get('dataini')}}" required>
+    <input type="date" name="datafi" id="datafi" value="{{Session()->get('datafi')}}" required>
     <input style="width: 65px;" type="submit" value="Filtrar">
 </form>
 @endsection
@@ -33,8 +33,8 @@
                 <form method="post" action="/destroy/ofertas/id"><button>X</button>
                     <input type="hidden" name="data" value="{{$oferta->data}}">
                     <input type="hidden" name="id" value="{{$oferta->id}}">
-                    <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
-                    <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+                    <input type="hidden" name="dataini" value="{{Session()->get('dataini')}}">
+                    <input type="hidden" name="datafi" value="{{Session()->get('datafi')}}">
                     @csrf
                 </form>
             </td>
@@ -61,8 +61,8 @@
         @csrf
         <input type="date" name="data" id="data" value="{{ $datanow }}" autocomplete="off" required>
         <input type="number" step="0.01" name="valor" id="valor" autocomplete="off" required placeholder="Valor">
-        <input type="hidden" name="dataini" value="{{ isset($dataini) ? $dataini : '' }}">
-        <input type="hidden" name="datafi" value="{{ isset($datafi) ? $datafi : '' }}">
+        <input type="hidden" name="dataini" value="{{Session()->get('dataini')}}">
+        <input type="hidden" name="datafi" value="{{Session()->get('datafi')}}">
         <button type="submit">Registar Oferta</button>
     </form>
 </div>

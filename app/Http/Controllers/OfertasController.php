@@ -23,11 +23,11 @@ class OfertasController extends Controller
 {
     /*Ofertas*/
     //......................................................Parte 1................................................//
-    public function filter_page(Request $request)
+    public function filter_page()
     {
         
-        $dataIni = $request->dataini ?? '1900-01-01'; // Se tem requisção ele usa e não tem o padrão é 1900-01-01 
-        $dataFi = $request->datafi ?? '5000-01-01'; // Se tem requisção ele usa e não tem o padrão é 5000-01-01 
+        $dataIni = Session()->get('dataini') ?? '1000-01-01'; // Se tem requisção ele usa e não tem o padrão é 1900-01-01 
+        $dataFi = Session()->get('datafi') ?? '5000-01-01'; // Se tem requisção ele usa e não tem o padrão é 5000-01-01 
         $empresa_id = Auth::user()->empresa_id; // acessa o dado da coluna do usuario conectado
 
 
@@ -35,22 +35,21 @@ class OfertasController extends Controller
             'ofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
-            'dataini' => $request->dataini,
-            'datafi' => $request->datafi,
             'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
-        // Verifica se veio com a Data Padrão, ele remove da Variavel acima a variavel data para Não exibir Na Pagina 
-        if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
-            unset($dados['dataini'], $dados['datafi']);
-            return view('pagina.oferta', $dados);
-        } else // Senão for a Data Padrão, Ele retorna a Pagina Com a data Que veio na requisição
-            return view('pagina.oferta', $dados);
+        return view('pagina.oferta', $dados);
     }
 
 
 
     //......................................................Parte 2................................................//
+
+    public function filtro (Request $request){
+        Session()->flash('dataini', $request->dataini);
+        Session()->flash('datafi', $request->datafi);
+        return redirect('/oferta');
+    }
 
     public function registrar_oferta(request $request)
     {
@@ -65,8 +64,11 @@ class OfertasController extends Controller
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado'); // Retorna Falha
         }
+        
+        Session()->flash('dataini', $request->dataini);
+        Session()->flash('datafi', $request->datafi);
 
-        return $this->filter_page(MeuServico::post_filter($request)); // Retorna a Função de Filtro Fazendo um Envio do Tipo Request 
+        return redirect('/oferta');
     }
 
     //......................................................Parte 3................................................//
@@ -80,6 +82,9 @@ class OfertasController extends Controller
         } else {
             Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
-        return $this->filter_page(MeuServico::post_filter($request)); // Retorna a Função de Filtro Fazendo um Envio do Tipo Request 
+
+        Session()->flash('dataini', $request->dataini);
+        Session()->flash('datafi', $request->datafi);
+        return redirect('/oferta');
     }
 }
