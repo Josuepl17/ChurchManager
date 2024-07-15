@@ -24,31 +24,34 @@ class DespesasController extends Controller
 {
 
 //......................................................Parte 1................................................//
-    public function filter_page()
+    public function filter_page(Request $request)
     {
-        $dataIni = Session()->get('dataini') ?? '1000-01-01';
-        $dataFi = Session()->get('datafi') ?? '5000-01-01';
+        $dataIni = $request->dataini ?? '1000-01-01';
+        $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = auth()->user()->empresa_id;
-    
+
+       
+
         $dados = [
             'despesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
+            'dataini' => $request->dataini,
+            'datafi' => $request->datafi,
             'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
+
+
+        if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
+            unset($dados['dataini'], $dados['datafi']);
+            return view('pagina.despesas', $dados);
+        }
 
         return view('pagina.despesas', $dados);
     }
 
-
-
 //......................................................Parte 2................................................//
 
-public function filtro(Request $request){
-    Session()->flash('dataini', $request->dataini);
-    Session()->flash('datafi', $request->datafi);
-    return redirect('/despesas');
-}
     public function botao_registrar_despesas(request $request)
     {
 
@@ -63,12 +66,7 @@ public function filtro(Request $request){
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
-
-        Session()->flash('dataini', $request->dataini);
-        Session()->flash('datafi', $request->datafi);
-        
-        return redirect('/despesas');
-
+        return $this->filter_page(MeuServico::post_filter($request));
     }
 
 //......................................................Parte 3................................................//
@@ -82,8 +80,6 @@ public function filtro(Request $request){
         } else {
             Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
-        Session()->flash('dataini', $request->dataini);
-        Session()->flash('datafi', $request->datafi);
-        return redirect('/despesas');
+        return $this->filter_page(MeuServico::post_filter($request));
     }
 }
