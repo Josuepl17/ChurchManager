@@ -34,14 +34,9 @@ class MembrosController extends Controller
         $dados = $request->pesquisa;
         $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
         
-        if ($dados != null) {
             $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
             return view('pagina.index', compact('index', 'razao_empresa', 'dados'));
 
-        } else {
-            $index = membros::where('empresa_id', $empresas_id)->get();
-            return view('pagina.index', compact('index', 'razao_empresa'));
-        }
     }
 
     public function cadastro_membro()
