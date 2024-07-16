@@ -213,6 +213,10 @@ body {
       <label>Nome:</label>
     </div>
     <div class="user-box">
+      <input type="text" name="email" required="">
+      <label>Email:</label>
+    </div>
+    <div class="user-box">
       <input type="password" name="password" required="">
       <label>Senha</label>
     </div>

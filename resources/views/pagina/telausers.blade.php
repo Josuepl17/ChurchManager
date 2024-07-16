@@ -82,6 +82,10 @@ table{
   width: 100%;
 }
 
+p{
+  color: black;
+}
+
 
 
 
@@ -102,9 +106,7 @@ table{
                 @foreach ($users as $user)
                 <tr>
                     <td style="background-color: var(--titulos); color:white">{{$user->id}}</td>
-                    <td>{{$user->user}}</td>
-                  
-                    
+                    <td>{{$user->nome}}</td>
                 </tr>
                 @endforeach
             </table>

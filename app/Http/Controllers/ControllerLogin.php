@@ -109,7 +109,8 @@ class ControllerLogin extends Controller
     public function adicionar_usuario(Request $request)
     {
         $user = new User();
-        $user->user = $request->user;
+        $user->nome = $request->user;
+        $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->empresa_id = auth()->user()->empresa_id;
         $user->save();
