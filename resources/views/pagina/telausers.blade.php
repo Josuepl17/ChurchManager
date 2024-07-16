@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Faça Login</title>
   <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
- 
+
   <style>
     html {
   height: 100%;
@@ -28,8 +28,8 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-  
-  
+
+
 }
 
 
@@ -51,7 +51,7 @@ th, td {
   text-align: center;
   border: 1px solid white;
   padding: 5px;
-  
+
 
 }
 
@@ -86,11 +86,27 @@ p{
   color: black;
 }
 
+a{
+    color: white;
+    text-decoration: none;
 
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#botoes{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: flex-end;
+    text-align: end;
+}
 
 
   </style>
-  
+
 
 </head>
 <body>
@@ -101,7 +117,7 @@ p{
                 <tr>
                     <th style="width: 4%;">ID</th>
                     <th>USUARIOS</th>
-               
+
                 </tr>
                 @foreach ($users as $user)
                 <tr>
@@ -110,11 +126,15 @@ p{
                 </tr>
                 @endforeach
             </table>
+            <br>
+            <div id="botoes">
+                <a href="">Adicionar Usuario</a>
+            </div>
 
 
 
 </div>
 <!-- partial -->
-  
+
 </body>
 </html>

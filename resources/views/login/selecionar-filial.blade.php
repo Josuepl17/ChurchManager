@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Faça Login</title>
   <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
- 
+
   <style>
     html {
   height: 100%;
@@ -29,8 +29,8 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-  
-  
+
+
 }
 
 
@@ -52,7 +52,7 @@ th, td {
   text-align: center;
   border: 1px solid black;
   padding: 5px;
-  
+
 }
 
 
@@ -65,10 +65,17 @@ td{
 .tda:hover{
   background: green;
   transition: 0.6s;
+
+}
+
+.tda{
+    width: 10%;
+    background: rgba(0, 128, 0, 0.577);
 }
 
 a:hover{
   color: white;
+
 }
 
 a{
@@ -88,14 +95,14 @@ table{
 
 
   </style>
-  
+
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-box">
 
-<table> 
+<table>
     <tr>
         <th>ID</th>
         <th>EMPRESA</th>
@@ -110,13 +117,13 @@ table{
         </td>
     </tr>
     @endforeach
-    
+
 </table>
 
 
 
 </div>
 <!-- partial -->
-  
+
 </body>
 </html>
