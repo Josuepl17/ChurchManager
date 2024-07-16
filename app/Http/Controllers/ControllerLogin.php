@@ -54,7 +54,7 @@ class ControllerLogin extends Controller
         if ($existingEmpresa) {
             Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
             return view('login.cadastro', compact('dados'));
-        } 
+        }
 
         $empresa = empresas::create([
             'razao' => $request->razao,
@@ -79,10 +79,10 @@ class ControllerLogin extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
-       
+
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']]) || Auth::attempt(['email' => strtoupper($credentials['email']), 'password' => $credentials['password']])) {
 
-            
+
             $user_id = auth()->user()->id;
             $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
             $empresas = empresas::whereIn('id', $dados)->get();
@@ -125,6 +125,8 @@ class ControllerLogin extends Controller
         return redirect('/login');
     }
 
+    
+
     public function tela_usuarios()
     {
         $empresa_id = auth()->user()->empresa_id;
@@ -158,7 +160,7 @@ class ControllerLogin extends Controller
         $user_empresas->user_id = auth()->user()->id;
         $user_empresas->empresa_id = $empresa->id;
         $user_empresas->save();
-        
+
         $user_id = auth()->user()->id;
         $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
         $empresas = empresas::whereIn('id', $dados)->get();
