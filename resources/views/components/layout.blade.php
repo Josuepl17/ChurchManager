@@ -306,10 +306,10 @@
                 </a>
 
                 
-                <a class="links" href="/cadastro/login/novo">
+               <!-- <a class="links" href="/cadastro/login/novo">
                 <i class="fa-solid fa-users"></i> &nbsp; <p>Novo Usuario</p>
                     
-                </a> 
+                </a> -->
 
                 <a class="links" href="/selecionar/filial">
                 <i class="fa-solid fa-building"></i> &nbsp; <p>Selecionar Filial</p>

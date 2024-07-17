@@ -89,20 +89,15 @@ p{
 a{
     color: white;
     text-decoration: none;
-
+    text-align: end;
+    
 }
 
 a:hover{
     text-decoration: underline;
+    
 }
 
-#botoes{
-    display: flex;
-    width: 100%;
-    height: 10%;
-    justify-content: flex-end;
-    text-align: end;
-}
 
 
   </style>
@@ -127,9 +122,9 @@ a:hover{
                 @endforeach
             </table>
             <br>
-            <div id="botoes">
-                <a href="">Adicionar Usuario</a>
-            </div>
+
+                <a href="/cadastro/login/novo">Adicionar Usuario</a>
+
 
 
 

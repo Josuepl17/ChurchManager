@@ -106,22 +106,34 @@ class ControllerLogin extends Controller
         return view('login.adicionar_user', compact('empresas'));
     }
 
+
     public function adicionar_usuario(Request $request)
     {
-        $user = new User();
-        $user->nome = $request->user;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->empresa_id = auth()->user()->empresa_id;
-        $user->save();
-        $empresasMarcadas = $request->input('empresas');
+        $existirusuario = User::where('email', $request->email)->first();
 
-        foreach ($empresasMarcadas as $emp){
-            $user_empresas = new user_empresas();
-            $user_empresas->user_id = $user->id;
-            $user_empresas->empresa_id = $emp;
-            $user_empresas->save();
+        if ($existirusuario) {
+            Session()->flash('falha',  'Email Já cadastrado');
+             return redirect('/cadastro/login/novo');
+        } else{
+            $user = new User();
+            $user->nome = $request->user;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->empresa_id = auth()->user()->empresa_id;
+            $user->save();
+
+            $empresasMarcadas = $request->input('empresas');
+
+            foreach ($empresasMarcadas as $emp){
+                $user_empresas = new user_empresas();
+                $user_empresas->user_id = $user->id;
+                $user_empresas->empresa_id = $emp;
+                $user_empresas->save();
+            }
         }
+
+        
+
         return redirect('/login');
     }
 
