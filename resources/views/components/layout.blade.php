@@ -197,6 +197,37 @@
 
         }
 
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #000;
+            z-index: 9999;
+        }
+
+        .spinner {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        
+
 
         /*............... mudanças Telefone................*/
 
@@ -260,10 +291,14 @@
 
         }
     </style>
-</head>
 
-<body>
-    <div id="conteiner-geral">
+<!--<div id="preloader">
+        <div class="spinner"></div>
+    </div>
+</head>-->
+
+<body >
+    <div id="conteiner-geral"  >
 
         <nav id="cabecalho">
             <h4>{{$razao_empresa}}</h4>
@@ -369,6 +404,20 @@
         menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
     });
 </script>
+
+<!--<script> 
+        document.addEventListener("DOMContentLoaded", function() {
+            var loadingScreen = document.getElementById("preloader");
+            var content = document.getElementById("conteiner-geral");
+
+            
+            setTimeout(function() {
+                loadingScreen.style.display = "none";
+                content.style.display = "block";
+            }); 
+        });
+ 
+</script> -->
 
 
 <script src="https://kit.fontawesome.com/f3856694cb.js" crossorigin="anonymous"></script>
