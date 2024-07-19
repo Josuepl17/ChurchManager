@@ -30,6 +30,14 @@ class User extends Authenticatable
         return $this->belongsToMany(empresas::class, 'user_empresas', 'user_id', 'empresa_id');
     }
 
+    public static function rules()
+    {
+        return [
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ];
+    }
+
 
  
 

@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use App\Models\caixas;
+use App\Models\empresas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Stmt\If_;
@@ -46,6 +48,25 @@ class MeuServico
         ]);
 
         return $newRequest;
+
+    }
+
+    public static function verificar_login($request){
+        if (User::where('email', $request->email)->first()){
+            return true;
+        } else{
+            return false;
+        }
+
+    }
+
+
+    public static function verificar_empresa($request){
+        if (empresas::where('cnpj', $request->cnpj)->first()){
+            return true;
+        } else{
+            return false;
+        }
 
     }
 }

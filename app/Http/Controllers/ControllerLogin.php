@@ -15,6 +15,7 @@ use App\Models\Relacionamentos;
 use App\Models\user_empresas as ModelsRelacionamentos;
 use App\Models\user_empresas;
 use App\Models\User;
+use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -41,17 +42,14 @@ class ControllerLogin extends Controller
     public function cadastro_usuario_empresa(Request $request)
     {
         $dados = $request->all();
-       $existingEmpresa = empresas::where('cnpj', $request->cnpj)->first();
-        $existirusuario = User::where('email', $request->email)->first();
 
-        if ($existirusuario) {
+        if (MeuServico::verificar_login($request)) {
             $dados = (object) $dados;
-            $senha =  hash::check($request->password, $existirusuario->password);
             Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
             return view('login.cadastro', compact('dados'));
         }
 
-        if ($existingEmpresa) {
+        if (MeuServico::verificar_empresa($request)) {
             Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
             return view('login.cadastro', compact('dados'));
         }
@@ -69,10 +67,10 @@ class ControllerLogin extends Controller
         $user->save();
 
         $user_empresas = new user_empresas();
-            $user_empresas->user_id = $user->id;
-            $user_empresas->empresa_id = $empresa->id;
-            $user_empresas->save();
-            return redirect('/login');
+        $user_empresas->user_id = $user->id;
+        $user_empresas->empresa_id = $empresa->id;
+        $user_empresas->save();
+        return redirect('/login');
 
     }
 
@@ -111,7 +109,7 @@ class ControllerLogin extends Controller
     {
         $existirusuario = User::where('email', $request->email)->first();
 
-        if ($existirusuario) {
+        if (MeuServico::verificar_login($request)) {
             Session()->flash('falha',  'Email Já cadastrado');
              return redirect('/cadastro/login/novo');
         } else{
