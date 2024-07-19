@@ -303,7 +303,7 @@
         <nav id="cabecalho">
             <h4>{{$razao_empresa}}</h4>
             <div id="usuario">
-                <p>Bem Vindo {{ Auth::User()->user }}</p> &nbsp; &nbsp;
+                <p>Bem Vindo {{ Auth::User()->nome }}</p> &nbsp; &nbsp;
                 <img src="{{ asset('logo.png') }}" alt="alt">
             </div>
         </nav> <!--cabecalho-->

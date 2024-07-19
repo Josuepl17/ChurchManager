@@ -34,10 +34,10 @@ Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro'
 Route::get('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
 
                             /*Dizimos Por Usuario*/
-Route::get('/inserir/dizimos/{membro_id}/{nome}', [DizimosController::class, 'filter_page']);
+Route::get('/filtrar/dizimos', [DizimosController::class, 'filtro']);
 Route::post('/registrar/dizimo', [DizimosController::class, 'botao_registrar_dizimo']);
 Route::post('/dizimos/destoy/id', [DizimosController::class, 'botao_excluir_dizimo']);
-Route::post('/filtrar/dizimo', [DizimosController::class, 'filter_page']);
+Route::get('/tela/dizimos', [DizimosController::class, 'filter_page']);
 
 
                              /*Ofertas*/

@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 
 class DizimosController extends Controller
@@ -22,32 +23,38 @@ class DizimosController extends Controller
     /*Dizimos Por Usuario*/
 
 //......................................................Parte 1................................................//
-    public function filter_page(Request $request)
-    {
-        $dataIni = $request->dataini ?? '1900-01-01';
-        $dataFi = $request->datafi ?? '5000-01-01';
-        $empresa_id = Auth::user()->empresa_id;
-        $membro_id = $request->membro_id;
+public $membro_id;
 
+    public function filter_page()
+    {
+
+        $dataIni = Session()->get('dataini') ?? '1000-01-01';
+        $dataFi = Session()->get('datafi') ?? '5000-01-01';
+        $empresa_id = Auth::user()->empresa_id;
+        $membro_id = Session()->get('membro_id');
+       
+      
         $dados = [
             'dizimos' => dizimos::where('empresa_id' , $empresa_id)->where('membro_id', $membro_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
-            'dataini' => $request->dataini,
-            'datafi' => $request->datafi,
-            'membro_id' => $request->membro_id,
-            'nome' => $request->nome, // Nome Dizimista
             'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
-        if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
-            unset($dados['dataini'], $dados['datafi']);
-            return view('pagina.dizimo', $dados);
-        }
             return view('pagina.dizimo', $dados);
     }
 
 //......................................................Parte 2................................................//
+
+        public function filtro(Request $request){
+            Session()->put('dataini', $request->dataini);
+            Session()->put('datafi', $request->datafi);
+            Session()->put('membro_id', $request->membro_id);
+            Session()->put('nome', $request->nome);
+            return redirect('/tela/dizimos');
+        }
+
+
 
     public function botao_registrar_dizimo(request $request)
     {
@@ -61,7 +68,7 @@ class DizimosController extends Controller
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
-            return $this->filter_page(MeuServico::post_filter($request));
+            return redirect('/tela/dizimos');
         }
 
 //......................................................Parte 3................................................//
@@ -75,7 +82,8 @@ class DizimosController extends Controller
         } else {
             Session()->flash('falha',  'Falha ao apagar item, Caixa Fechado');
         }
-        return $this->filter_page(MeuServico::post_filter($request));
+           
+            return redirect('/tela/dizimos');
     }
 }
 
