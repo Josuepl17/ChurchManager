@@ -74,6 +74,8 @@
     {{ Session::forget('sucesso') }}
     @endif
 
+    
+
     @if (Session::has('falha'))
     <div class="flash-message" style="background-color: red;">
         <p>{{ Session::get('falha') }}</p>

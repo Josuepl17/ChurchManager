@@ -8,12 +8,12 @@
 
 
 @section('botao-tabela')
-<form action="/filtrar/dizimos" method="get">
-    
+<form action="/inserir/dizimos" method="post">
+@csrf   
     <input type="hidden" name="membro_id" value="{{Session()->get('membro_id')}}">
     <input type="hidden" name="nome" value="{{Session()->get('nome')}}">
-    <input type="date" name="dataini" id="dataini" value="{{Session()->get('dataini')}}" required>
-    <input type="date" name="datafi" id="datafi" value="{{Session()->get('datafi')}}" required>
+    <input type="date" name="dataini" id="dataini" value="{{Session()->get('dataini_d')}}" required>
+    <input type="date" name="datafi" id="datafi" value="{{Session()->get('datafi_d')}}" required>
     <input style="width: 65px;" type="submit" value="Filtrar">
 </form>
 @endsection
@@ -40,8 +40,8 @@
                     <input type="hidden" name="data" value="{{$dizimo->data}}">
                     <input type="hidden" name="id" value="{{$dizimo->id}}">
                     <input type="hidden" name="membro_id" value="{{$dizimo->membro_id}}">
-                    <input type="hidden" name="dataini" value="{{Session()->get('dataini')}}">
-                    <input type="hidden" name="datafi" value="{{Session()->get('datafi')}}">
+                    <input type="hidden" name="dataini" value="{{Session()->get('dataini_d')}}">
+                    <input type="hidden" name="datafi" value="{{Session()->get('datafi_d')}}">
                     <input type="hidden" name="nome" value="{{Session()->get('nome')}}">
 
                     @csrf
@@ -71,8 +71,8 @@
         <input type="hidden" name="nome" value="{{Session()->get('nome')}}">
         <input type="date" name="data" id="data" value="{{$datanow}}" autocomplete="off" required>
         <input type="number" name="valor" step="0.01" id="valor" autocomplete="off" required placeholder="Valor:">
-        <input type="hidden" name="dataini" value="{{Session()->get('dataini')}}">
-        <input type="hidden" name="datafi" value="{{Session()->get('datafi')}}">
+        <input type="hidden" name="dataini" value="{{Session()->get('dataini_d')}}">
+        <input type="hidden" name="datafi" value="{{Session()->get('datafi_d')}}">
         <button type="submit">Registar Dizimo</button>
     </form>
 </div> <!--formulario-registro-->

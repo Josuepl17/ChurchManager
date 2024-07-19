@@ -28,8 +28,8 @@ public $membro_id;
     public function filter_page()
     {
 
-        $dataIni = Session()->get('dataini') ?? '1000-01-01';
-        $dataFi = Session()->get('datafi') ?? '5000-01-01';
+        $dataIni = Session()->get('dataini_d') ?? '1000-01-01';
+        $dataFi = Session()->get('datafi_d') ?? '5000-01-01';
         $empresa_id = Auth::user()->empresa_id;
         $membro_id = Session()->get('membro_id');
        
@@ -47,8 +47,8 @@ public $membro_id;
 //......................................................Parte 2................................................//
 
         public function filtro(Request $request){
-            Session()->put('dataini', $request->dataini);
-            Session()->put('datafi', $request->datafi);
+            Session()->put('dataini_d', $request->dataini);
+            Session()->put('datafi_d', $request->datafi);
             Session()->put('membro_id', $request->membro_id);
             Session()->put('nome', $request->nome);
             return redirect('/tela/dizimos');

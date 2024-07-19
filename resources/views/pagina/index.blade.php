@@ -40,7 +40,12 @@
         <td>{{ $ind->funcao }}</td>
         <td>{{ $ind->telefone }}</td>
         <td id="inserir-verde" >
-            <a style="color: white; text-decoration: none;" href="/inserir/dizimos/{{ $ind->id }}/{{ $ind->nome }}">Inserir</a>
+            <form action="/inserir/dizimos" method="post">
+            @csrf
+            <input type="hidden" name="membro_id" value="{{$ind->id}}">
+            <input type="hidden" name="nome" value="{{$ind->nome}}">
+            <input type="submit" value="Inserir">
+            </form>
         </td>
         <td id="X">
             <a style="color: white; text-decoration: none;" href="/destroy/{{$ind->id}}">X</a>
