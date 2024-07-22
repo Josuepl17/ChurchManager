@@ -2,7 +2,7 @@
 // Arquivo Documentado em "OfertasController.php"
 namespace App\Http\Controllers;
 
-
+use App\Mail\EnvioEmail;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class DizimosController extends Controller
 {
@@ -65,6 +66,7 @@ public $membro_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
             dizimos::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
+            Mail::send(new EnvioEmail($dados));
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }

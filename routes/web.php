@@ -8,8 +8,11 @@ use App\Http\Controllers\DizimosController;
 use App\Http\Controllers\MembrosController;
 use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\User;
+use App\Mail\EnvioEmail;
 use GuzzleHttp\Middleware;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Routing\Controller as RoutingController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,5 +84,11 @@ Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cadastro_empresas
 
 Route::get('/logout', [ControllerLogin::class, 'logout']);
 
+
+Route::get('/email', function(){
+    Mail::send(new EnvioEmail());
+    Session()->flash('sucesso', 'Email Enviado Com Sucesso');
+    return redirect('/oferta');
+});
 
 

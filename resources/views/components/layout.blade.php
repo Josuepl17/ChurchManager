@@ -320,7 +320,7 @@
                     <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>
                 </a>
 
-                <a class="links" href="/oferta">
+                <a class="links" href="/email">
                     <i class="fa-solid fa-money-bill"></i> &nbsp; <p>Ofertas</p>
                 </a>
 
