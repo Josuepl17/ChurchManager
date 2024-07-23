@@ -320,7 +320,7 @@
                     <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>
                 </a>
 
-                <a class="links" href="/email">
+                <a class="links" href="/oferta">
                     <i class="fa-solid fa-money-bill"></i> &nbsp; <p>Ofertas</p>
                 </a>
 
@@ -353,6 +353,11 @@
 
                 <a class="links" href="/cadastrar/empresas">
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Nova Filial</p>
+                    
+                </a> 
+
+                <a class="links" href="/lista/presencas">
+                <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>
                     
                 </a> 
 

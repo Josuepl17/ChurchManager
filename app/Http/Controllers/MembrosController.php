@@ -63,4 +63,13 @@ class MembrosController extends Controller
         membros::destroy($destroy); //banco de dados com apagar cascade, todos os dizimos desses usuarios vão ter apagados tambem
         return redirect('/');
     }
+
+    public function lista_presenca(){
+        $membros = membros::all();
+        $empresa_id = Auth::user();
+        
+        $razao_empresa = $empresa_id->empresas->first();
+        
+        return view('pagina.formulario_presenca', compact('membros', 'razao_empresa'));
+    }
 }

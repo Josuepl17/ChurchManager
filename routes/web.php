@@ -35,6 +35,7 @@ Route::get('/', [MembrosController::class, 'index'])->name('index')->middleware(
 Route::get('/cadastro/membro', [MembrosController::class, 'cadastro_membro']);
 Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro']);
 Route::get('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
+Route::get('/lista/presencas', [MembrosController::class, 'lista_presenca']);
 
                             /*Dizimos Por Usuario*/
 Route::post('/inserir/dizimos', [DizimosController::class, 'filtro']);
@@ -85,10 +86,6 @@ Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cadastro_empresas
 Route::get('/logout', [ControllerLogin::class, 'logout']);
 
 
-Route::get('/email', function(){
-    Mail::send(new EnvioEmail());
-    Session()->flash('sucesso', 'Email Enviado Com Sucesso');
-    return redirect('/oferta');
-});
+
 
 

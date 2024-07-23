@@ -22,6 +22,7 @@ class EnvioEmail extends Mailable
     {
         $this->email = $request;
         $this->email = (object) $this->email;
+        
     }
 
     /**
@@ -42,7 +43,7 @@ class EnvioEmail extends Mailable
        
         $this->to('safejp@outlook.com', 'Josue Lima');
         return new Content(
-            view: 'pagina.email', with: ['email' => $this->email],
+            view: 'emails.email-dizimo', with: ['email' => $this->email],
         );
     }
 

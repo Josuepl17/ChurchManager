@@ -7,6 +7,11 @@
         width: 100%;
         /* Para o Input diminuir no momento em que a tela o espremer*/
     }
+
+    #inserir-verde form input{
+        all: unset;
+
+    }
 </style>
 
 @section('botao-tabela')
