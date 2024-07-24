@@ -75,6 +75,8 @@ Route::get('/cadastro/login', [ControllerLogin::class, 'formulario_usuario_empre
 Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_usuario_empresa']);
 
 Route::get('/cadastro/login/novo', [ControllerLogin::class, 'formulario_adicionar_usuario']);
+Route::get('/editar/user/{user_id}', [ControllerLogin::class, 'formulario_editar_usuario']);
+Route::post('/editar/user', [ControllerLogin::class, 'update_user']);
 Route::post('/cadastro/user/adicionar', [ControllerLogin::class, 'adicionar_usuario']);
 Route::get('/user/profile', [ControllerLogin::class, 'tela_usuarios']);
 

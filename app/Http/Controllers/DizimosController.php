@@ -69,9 +69,9 @@ public $membro_id;
             Session()->flash('sucesso', 'Item criado com Sucesso');
            // JobsEnvioEmail::dispatch($dados);
           // Mail::send(new EnvioEmail($dados));
-          JobsEnvioEmail::dispatch($dados);
-          $command = 'php artisan queue:work';
-$output = shell_exec($command);
+         JobsEnvioEmail::dispatch($dados)->delay(now()->addSeconds('1'));
+         
+
 
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');

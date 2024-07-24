@@ -104,9 +104,43 @@ class ControllerLogin extends Controller
         return view('login.adicionar_user', compact('empresas'));
     }
 
+    public function formulario_editar_usuario(Request $request)
+    {
+            $user_id = auth()->user()->id;
+            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+            $empresas = empresas::whereIn('id', $dados)->get();
+
+            $user_editar = User::find($request->user_id);
+        
+        return view('login.editar_user', compact('empresas', 'user_editar'));
+    }
+
+    public function update_user(Request $request){
+        $user = User::find($request->user_id);
+        user_empresas::where('user_id', $user->id)->delete();
+        
+        $user->user = $request->user;
+        $user->email = $request->email;
+        $user->password = $request->password;
+    
+
+        $empresasMarcadas = $request->empresas;
+
+        foreach ($empresasMarcadas as $emp){
+            $user_empresas = new user_empresas();
+            $user_empresas->user_id = $user->id;
+            $user_empresas->empresa_id = $emp;
+            $user_empresas->save();
+        }
+        return $this->tela_usuarios();
+    }
+
+
+
 
     public function adicionar_usuario(Request $request)
     {
+        
         $existirusuario = User::where('email', $request->email)->first();
 
         if (MeuServico::verificar_login($request)) {

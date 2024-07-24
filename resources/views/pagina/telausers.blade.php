@@ -98,6 +98,18 @@ a:hover{
     
 }
 
+.tda:hover{
+  background: green;
+  transition: 0.6s;
+  color: white;
+
+}
+
+.tda{
+    width: 10%;
+    background: rgba(0, 128, 0, 0.577);
+}
+
 
 
   </style>
@@ -112,18 +124,21 @@ a:hover{
                 <tr>
                     <th style="width: 4%;">ID</th>
                     <th>USUARIOS</th>
+                    <th style="width: 20%;" >X</th>
 
                 </tr>
                 @foreach ($users as $user)
                 <tr>
                     <td style="background-color: var(--titulos); color:white">{{$user->id}}</td>
                     <td>{{$user->nome}}</td>
+                    <td class="tda" ><a href="/editar/user/{{$user->id}}">Editar</a></td>
                 </tr>
                 @endforeach
             </table>
             <br>
-
+                
                 <a href="/cadastro/login/novo">Adicionar Usuario</a>
+                <a href="/">Voltar</a>
 
 
 

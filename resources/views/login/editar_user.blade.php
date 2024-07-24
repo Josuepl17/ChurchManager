@@ -206,7 +206,7 @@ body {
 <!-- partial:index.partial.html -->
 <div class="login-box">
   <h2>Adicionando Conta</h2>
-  <form action="/cadastro/user/adicionar" method="post" >
+  <form action="/editar/user" method="post" >
   @csrf
     <div class="user-box">
       <input type="text" name="user" required="" value="{{ isset($user_editar->nome) ? $user_editar->nome : '' }}">
@@ -219,6 +219,8 @@ body {
     <div class="user-box">
       <input type="password" name="password" required="" value="{{ isset($user_editar->password) ? $user_editar->password : '' }}" >
       <label>Senha</label>
+
+      <input type="hidden" name="user_id" id="user_id" value="{{$user_editar->id}}">
     </div>
 
     <div style="color: white;">
@@ -243,7 +245,7 @@ body {
         cursor: pointer;
         outline: inherit;
         color: #03e9f4;
-" type="submit" value="Cadastrar">
+" type="submit" value="Atualizar">
     </a>
   </form>
 </div>
