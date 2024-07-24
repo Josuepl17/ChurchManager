@@ -2,6 +2,7 @@
 // Arquivo Documentado em "OfertasController.php"
 namespace App\Http\Controllers;
 
+use App\Events\FilaEmail;
 use App\Jobs\EnvioEmail as JobsEnvioEmail;
 use App\Mail\EnvioEmail;
 use App\Models\caixas;
@@ -11,6 +12,7 @@ use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use App\Models\empresas;
+use App\Models\Jobs;
 use App\Services\MeuServico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,10 +69,11 @@ public $membro_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
             dizimos::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
+            
            // JobsEnvioEmail::dispatch($dados);
           // Mail::send(new EnvioEmail($dados));
-         JobsEnvioEmail::dispatch($dados)->delay(now()->addSeconds('1'));
-         
+         //JobsEnvioEmail::dispatch($dados)->delay(now()->addSeconds('1'));
+         event(new FilaEmail($dados));
 
 
         } else {
