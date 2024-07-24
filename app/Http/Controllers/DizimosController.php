@@ -70,15 +70,18 @@ public $membro_id;
             dizimos::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
             
+            
            // JobsEnvioEmail::dispatch($dados);
-          // Mail::send(new EnvioEmail($dados));
+           Mail::send(new EnvioEmail($dados));
          //JobsEnvioEmail::dispatch($dados)->delay(now()->addSeconds('1'));
-         event(new FilaEmail($dados));
+      //   dispatch(new JobsEnvioEmail($dados))->onQueue('redis');
 
 
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
         }
+
+    
             return redirect('/tela/dizimos');
         }
 
