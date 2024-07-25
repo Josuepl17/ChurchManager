@@ -335,7 +335,8 @@
                 <a class="links" href="/indexcaixa">
                     <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
                 </a>
-
+                
+                @admin
                 <a class="links" href="/user/profile">
                     <i class="fa-solid fa-user"></i> &nbsp; <p>Usuarios</p>
                 </a>
@@ -345,16 +346,18 @@
                 <i class="fa-solid fa-users"></i> &nbsp; <p>Novo Usuario</p>
                     
                 </a> -->
-
+                
                 <a class="links" href="/selecionar/filial">
                 <i class="fa-solid fa-building"></i> &nbsp; <p>Selecionar Filial</p>
                     
                 </a> 
+                
 
                 <a class="links" href="/cadastrar/empresas">
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Nova Filial</p>
                     
                 </a> 
+                @endadmin
 
                 <a class="links" href="/lista/presencas">
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>

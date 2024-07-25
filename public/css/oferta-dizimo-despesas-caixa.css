@@ -87,7 +87,7 @@ td form button {
 
 table tr:first-child { /*Fixar no Topo a Primeira Linha da Tabela */
     position: sticky;
-    top: -1
+    top: -1;
 }
 
 ::-webkit-scrollbar{

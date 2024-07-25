@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('email')->unique(); //login
             $table->string('password');// login
+            $table->string('nivel')->nullable();
             $table->timestamps();
 
             

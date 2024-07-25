@@ -64,6 +64,7 @@ class ControllerLogin extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->empresa_id = $empresa->id;
+        $user->nivel = 'admin';
         $user->save();
 
         $user_empresas = new user_empresas();
@@ -174,7 +175,9 @@ class ControllerLogin extends Controller
     public function tela_usuarios()
     {
         $empresa_id = auth()->user()->empresa_id;
-        $users = User::where('empresa_id', $empresa_id)->get();
+        $users = User::where('empresa_id', $empresa_id)
+             ->where('id', '!=', auth()->user()->id)
+             ->get();
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
         return view('pagina.telausers', compact('users', 'razao_empresa'));
     }

@@ -69,7 +69,7 @@ class MembrosController extends Controller
         $empresa_id = Auth::user();
         
         $razao_empresa = $empresa_id->empresas->first();
-        
+        $razao_empresa = $razao_empresa->razao;
         return view('pagina.formulario_presenca', compact('membros', 'razao_empresa'));
     }
 }

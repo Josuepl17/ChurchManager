@@ -232,11 +232,11 @@
 
       <div class="user-box">
         <input type="text" name="nome" required="" value="{{ isset($dados->user) ? $dados->user : '' }}">
-        <label>Nome:</label>
+        <label>Usuario Adm:</label>
       </div>
       <div class="user-box">
-        <input type="text" name="email" required="" value="{{ isset($dados->user) ? $dados->email : '' }}">
-        <label>Email:</label>
+        <input type="text" name="email" required="" value="{{ isset($dados->email) ? $dados->email : '' }}">
+        <label>Email Adm:</label>
       </div>
       <div class="user-box">
         <input type="password" name="password" required="">
