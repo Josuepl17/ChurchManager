@@ -353,10 +353,10 @@
                 </a> 
                 
 
-                <a class="links" href="/cadastrar/empresas">
+                <!--<a class="links" href="/cadastrar/empresas">
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Nova Filial</p>
                     
-                </a> 
+                </a> -->
                 @endadmin
 
                 <a class="links" href="/lista/presencas">

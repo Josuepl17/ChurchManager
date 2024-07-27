@@ -110,6 +110,23 @@ a:hover{
     background: rgba(0, 128, 0, 0.577);
 }
 
+#cadastro{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button a{
+color: blue;
+text-decoration: none;
+color: black;
+}
+
+button a:hover {
+color: blue;
+text-decoration: none;
+}
+
 
 
   </style>
@@ -137,8 +154,10 @@ a:hover{
             </table>
             <br>
                 
-                <a href="/cadastro/login/novo">Adicionar Usuario</a>
-                <a href="/">Voltar</a>
+                <div id="cadastro" >
+                  <button><a href="/cadastro/login/novo">Adicionar Usuario</a></button>
+                  <button><a href="/">Voltar</a></button>
+                </div>
 
 
 

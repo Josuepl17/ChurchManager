@@ -50,7 +50,7 @@ body {
 th, td {
   color: white;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 5px;
 
 }
@@ -78,9 +78,9 @@ a:hover{
 
 }
 
-a{
+td a{
   text-decoration: none;
-  color: black;
+  color: white;
   display: block;
   width: 100%;
   height: 100%;
@@ -91,7 +91,22 @@ table{
   width: 100%;
 }
 
+#cadastro{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 
+button a{
+color: blue;
+text-decoration: none;
+color: black;
+}
+
+button a:hover {
+color: blue;
+
+}
 
 
   </style>
@@ -119,7 +134,8 @@ table{
     @endforeach
 
 </table>
-
+<br>
+<div id="cadastro" ><button><a href="/cadastrar/empresas">Cadastro Nova Filial</a></button></div>
 
 
 </div>
