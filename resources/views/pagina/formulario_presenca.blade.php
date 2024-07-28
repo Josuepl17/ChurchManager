@@ -21,14 +21,14 @@
 
 @section('conteudo')
 
-<form @action="" method="post">
+<form action="/presenca" method="post">
 <div id="header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
     <input type="text" name="evento" id="evento" placeholder="Evento" style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
     <input type="date" name="data" id="data" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
     <input type="submit" value="Enviar" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
 </div>
 
-<div id="tabela-dados" style="width: 45%; overflow-x: auto; margin-top: 20px; margin:auto; height: 410px;" >
+<div id="tabela-dados" style="width: 45%; overflow-x: auto; margin-top: 20px; margin:auto; height: 75%;" >
     <table style="width: 100%; border-collapse: collapse;">
         <thead>
             <tr style="position: sticky;

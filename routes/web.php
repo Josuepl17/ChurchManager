@@ -11,6 +11,8 @@ use App\Http\Controllers\User;
 use App\Mail\EnvioEmail;
 use GuzzleHttp\Middleware;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -87,7 +89,10 @@ Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cadastro_empresas
 
 Route::get('/logout', [ControllerLogin::class, 'logout']);
 
-
+Route::post('/presenca', function(HttpRequest $request){
+    
+    dd($request->all());
+});
 
 
 
