@@ -167,7 +167,7 @@ class ControllerLogin extends Controller
 
         
 
-        return redirect('/login');
+        return redirect('/user/profile');
     }
 
     
