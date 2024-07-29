@@ -71,8 +71,8 @@ public $membro_id;
             Session()->flash('sucesso', 'Item criado com Sucesso');
             
             
-           // JobsEnvioEmail::dispatch($dados);
-           Mail::send(new EnvioEmail($dados));
+            JobsEnvioEmail::dispatch($dados);
+          // Mail::send(new EnvioEmail($dados));
          //JobsEnvioEmail::dispatch($dados)->delay(now()->addSeconds('1'));
       //   dispatch(new JobsEnvioEmail($dados))->onQueue('redis');
 

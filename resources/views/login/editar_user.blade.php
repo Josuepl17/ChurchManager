@@ -217,8 +217,7 @@ body {
       <label>Email:</label>
     </div>
     <div class="user-box">
-      <input type="password" name="password" required="" value="{{ isset($user_editar->password) ? $user_editar->password : '' }}" >
-      <label>Senha</label>
+
 
       <input type="hidden" name="user_id" id="user_id" value="{{$user_editar->id}}">
     </div>
