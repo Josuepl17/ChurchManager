@@ -135,8 +135,9 @@ color: blue;
 
 </table>
 <br>
+@admin
 <div id="cadastro" ><button><a href="/cadastrar/empresas">Cadastro Nova Filial</a></button></div>
-
+@endadmin
 
 </div>
 <!-- partial -->

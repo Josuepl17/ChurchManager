@@ -108,6 +108,11 @@ a:hover{
 .tda{
     width: 10%;
     background: rgba(0, 128, 0, 0.577);
+    
+}
+
+.tda a {
+  text-align: center;
 }
 
 #cadastro{
@@ -115,6 +120,7 @@ a:hover{
   display: flex;
   justify-content: flex-end;
 }
+
 
 button a{
 color: blue;

@@ -223,10 +223,12 @@ body {
     </div>
 
     <div style="color: white;">
-    @foreach($empresas as $empresa)
-        <input type="checkbox" name="empresas[]" value="{{ $empresa->id }}" id="empresa_{{ $empresa->id }}">
-        <label for="empresa_{{ $empresa->razao }}">{{ $empresa->razao }}</label>
-    @endforeach
+    @foreach ($empresas as $empresa)
+    <input type="checkbox" name="empresas[]" value="{{ $empresa->id }}" id="empresa_{{ $empresa->id }}"
+    {{ in_array($empresa->id, $empresasSelecionadas) ? 'checked' : '' }}>
+    <label for="empresa_{{ $empresa->razao }}">{{ $empresa->razao }}</label>
+@endforeach
+
 </div>
 
 
@@ -250,7 +252,7 @@ body {
 </div>
 
 @if (Session::has('falha'))
-    <div style="background-color: red;" class="msg">
+    <div style="color:red" class="msg">
         <p>{{ Session::get('falha') }}</p>
     </div>
     {{ Session::forget('falha') }}

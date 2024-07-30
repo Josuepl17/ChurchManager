@@ -251,6 +251,13 @@
         <label>CNPJ:</label>
       </div>
 
+      @if (Session::has('falha'))
+    <div>
+        <p style="color:red;" >{{ Session::get('falha') }}</p>
+    </div>
+    {{ Session::forget('falha') }}
+@endif
+
       <a href="">
         <span></span>
         <span></span>
@@ -267,12 +274,7 @@
       </a>
     </form>
   </div>
-  @if (Session::has('falha'))
-  <div style="background-color: red;" class="msg">
-    <p>{{ Session::get('falha') }}</p>
-  </div>
-  {{ Session::forget('falha') }}
-  @endif
+
 
 
 </body>

@@ -215,11 +215,19 @@ body {
     <div class="user-box">
       <input type="text" name="email" required="" value="{{ isset($user_editar->email) ? $user_editar->email : '' }}">
       <label>Email:</label>
+
     </div>
     <div class="user-box">
       <input type="password" name="password" required="" value="{{ isset($user_editar->password) ? $user_editar->password : '' }}" >
       <label>Senha</label>
     </div>
+
+    @if (Session::has('falha'))
+    <div>
+        <p style="color:red;" >{{ Session::get('falha') }}</p>
+    </div>
+    {{ Session::forget('falha') }}
+@endif
 
     <div style="color: white;">
     @foreach($empresas as $empresa)
@@ -248,12 +256,7 @@ body {
   </form>
 </div>
 
-@if (Session::has('falha'))
-    <div style="background-color: red;" class="msg">
-        <p>{{ Session::get('falha') }}</p>
-    </div>
-    {{ Session::forget('falha') }}
-@endif
+
   
 </body>
 </html>

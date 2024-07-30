@@ -112,13 +112,15 @@ class ControllerLogin extends Controller
             $empresas = empresas::whereIn('id', $dados)->get();
 
             $user_editar = User::find($request->user_id);
-        
-        return view('login.editar_user', compact('empresas', 'user_editar'));
+           // dd($user_editar);
+           $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
+           // dd($empresasSelecionadas);
+        return view('login.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
     }
 
     public function update_user(Request $request){
         $user = User::find($request->user_id);
-        user_empresas::where('user_id', $user->id)->delete();
+        $deletar = user_empresas::where('user_id', $request->user_id)->delete();
         
         $user->user = $request->user;
         $user->email = $request->email;
@@ -174,11 +176,13 @@ class ControllerLogin extends Controller
 
     public function tela_usuarios()
     {
-        $empresa_id = auth()->user()->empresa_id;
-        $users = User::where('empresa_id', $empresa_id)
+        $user_id = auth()->user()->id;
+        $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id'); // peguei as empresas relacionadas ao meu usuario.
+        $empresas = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas 
+        $users = User::whereIn('id', $empresas)
              ->where('id', '!=', auth()->user()->id)
-             ->get();
-        $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
+             ->get(); // busquei 
+        $razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
         return view('pagina.telausers', compact('users', 'razao_empresa'));
     }
 
@@ -186,8 +190,8 @@ class ControllerLogin extends Controller
 
         public function selecionar_filial(){
             $user_id = auth()->user()->id;
-               $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-               $empresas = empresas::whereIn('id', $dados)->get();
+               $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+               $empresas = empresas::whereIn('id', $relacionamentos)->get();
                return view('login.selecionar-filial', compact('empresas'));
        }
 
