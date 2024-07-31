@@ -72,19 +72,19 @@ Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
 
                              /* LOGIN*/
 Route::get('/login', [ControllerLogin::class, 'login'])->name('login');
-Route::post('/login/if', [ControllerLogin::class, 'authenticate']);
+Route::post('/login/if', [ControllerLogin::class, 'autenticar_usuario']);
 Route::get('/cadastro/login', [ControllerLogin::class, 'formulario_usuario_empresa']);
 Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_usuario_empresa']);
 
 Route::get('/cadastro/login/novo', [ControllerLogin::class, 'formulario_adicionar_usuario']);
 Route::get('/editar/user/{user_id}', [ControllerLogin::class, 'formulario_editar_usuario']);
-Route::post('/editar/user', [ControllerLogin::class, 'update_user']);
+Route::post('/editar/user', [ControllerLogin::class, 'editar_usuario']);
 Route::post('/cadastro/user/adicionar', [ControllerLogin::class, 'adicionar_usuario']);
 Route::get('/user/profile', [ControllerLogin::class, 'tela_usuarios']);
 
 Route::get('/selecionar/filial', [ControllerLogin::class, 'selecionar_filial']);
 Route::get('/cadastrar/empresas', [ControllerLogin::class, 'formulario_adicionar_empresa']);
-Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'cadastro_empresas_nova']);
+Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'adicionar_empresa']);
 
 
 Route::get('/logout', [ControllerLogin::class, 'logout']);

@@ -75,7 +75,7 @@ class ControllerLogin extends Controller
 
     }
 
-    public function authenticate(Request $request)
+    public function autenticar_usuario(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -96,6 +96,19 @@ class ControllerLogin extends Controller
 
     //......................................................Usuario................................................//
 
+    public function tela_usuarios()
+    {
+        $user_id = auth()->user()->id;
+        $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id'); // peguei as empresas relacionadas ao meu usuario.
+        $empresas = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas 
+        $users = User::whereIn('id', $empresas)
+             ->where('id', '!=', auth()->user()->id)
+             ->get(); // busquei 
+
+        //$razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
+        return view('pagina.telausers', compact('users'));
+    }
+
     public function formulario_adicionar_usuario()
     {
             $user_id = auth()->user()->id;
@@ -104,42 +117,6 @@ class ControllerLogin extends Controller
 
         return view('login.adicionar_user', compact('empresas'));
     }
-
-    public function formulario_editar_usuario(Request $request)
-    {
-            $user_id = auth()->user()->id;
-            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-            $empresas = empresas::whereIn('id', $dados)->get();
-
-            $user_editar = User::find($request->user_id);
-           // dd($user_editar);
-           $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
-           // dd($empresasSelecionadas);
-        return view('login.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
-    }
-
-    public function update_user(Request $request){
-        $user = User::find($request->user_id);
-        $deletar = user_empresas::where('user_id', $request->user_id)->delete();
-        
-        $user->user = $request->user;
-        $user->email = $request->email;
-        $user->password = $request->password;
-    
-
-        $empresasMarcadas = $request->empresas;
-
-        foreach ($empresasMarcadas as $emp){
-            $user_empresas = new user_empresas();
-            $user_empresas->user_id = $user->id;
-            $user_empresas->empresa_id = $emp;
-            $user_empresas->save();
-        }
-        return $this->tela_usuarios();
-    }
-
-
-
 
     public function adicionar_usuario(Request $request)
     {
@@ -158,7 +135,7 @@ class ControllerLogin extends Controller
             $user->save();
 
             $empresasMarcadas = $request->input('empresas');
-
+           // dd($empresasMarcadas);
             foreach ($empresasMarcadas as $emp){
                 $user_empresas = new user_empresas();
                 $user_empresas->user_id = $user->id;
@@ -167,63 +144,96 @@ class ControllerLogin extends Controller
             }
         }
 
-        
-
         return redirect('/user/profile');
     }
 
+
+
+
+    public function formulario_editar_usuario(Request $request)
+    {
+            $user_id = auth()->user()->id;
+            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+            $empresas = empresas::whereIn('id', $dados)->get();
+
+            $user_editar = User::find($request->user_id);
+           // dd($user_editar);
+           $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
+           // dd($empresasSelecionadas);
+        return view('login.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
+    }
+
+    public function editar_usuario(Request $request){
+        $user = User::find($request->user_id);
+        $deletar = user_empresas::where('user_id', $request->user_id)->delete();
+        
+        $user->user = $request->user;
+        $user->email = $request->email;
+        $user->password = $request->password;
+    
+        $empresasMarcadas = $request->empresas;
+
+        foreach ($empresasMarcadas as $emp){
+            $user_empresas = new user_empresas();
+            $user_empresas->user_id = $user->id;
+            $user_empresas->empresa_id = $emp;
+            $user_empresas->save();
+        }
+        return $this->tela_usuarios();
+    }
+
+
+
+
+
+
     
 
-    public function tela_usuarios()
-    {
-        $user_id = auth()->user()->id;
-        $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id'); // peguei as empresas relacionadas ao meu usuario.
-        $empresas = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas 
-        $users = User::whereIn('id', $empresas)
-             ->where('id', '!=', auth()->user()->id)
-             ->get(); // busquei 
 
-        $razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
-        return view('pagina.telausers', compact('users', 'razao_empresa'));
-    }
 
 //......................................................EMPRESAS................................................//
 
         public function selecionar_filial(){
             $user_id = auth()->user()->id;
-               $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-               $empresas = empresas::whereIn('id', $relacionamentos)->get();
-               return view('login.selecionar-filial', compact('empresas'));
+            $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+            $empresas = empresas::whereIn('id', $relacionamentos)->get();
+            return view('login.selecionar-filial', compact('empresas'));
        }
 
 
     public function formulario_adicionar_empresa(){
-            $user_id = auth()->user()->id;
+        $user_id = auth()->user()->id;
         $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id'); // peguei as empresas relacionadas ao meu usuario.
-        $empresas = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas 
-        $users = User::whereIn('id', $empresas)
+        $users_id = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas 
+        $users = User::whereIn('id', $users_id)
              ->where('id', '!=', auth()->user()->id)
              ->get(); // busquei 
            
         return view('login.empresa', compact('users'));
     }
 
-    public function cadastro_empresas_nova(Request $request){
-
+    public function adicionar_empresa(Request $request){
+        // adicionar verificação se CNPJ ja foi cadastrado
         $empresa = empresas::create([
             'razao' => $request->razao,
             'cnpj' => $request->cnpj
         ]);
 
+        $usuariosMarcados = $request->input('user');
+     
+        foreach ($usuariosMarcados as $user){
+            $user_empresas = new user_empresas();
+            $user_empresas->user_id = $user;
+            $user_empresas->empresa_id = $empresa->id;
+            $user_empresas->save();
+        }
+        //relacionando usuario ADM  
         $user_empresas = new user_empresas();
         $user_empresas->user_id = auth()->user()->id;
         $user_empresas->empresa_id = $empresa->id;
         $user_empresas->save();
 
-        $user_id = auth()->user()->id;
-        $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-        $empresas = empresas::whereIn('id', $dados)->get();
-        return view('login.selecionar-filial', compact('empresas'));
+        return $this->selecionar_filial();
     }
 
 //......................................................Logaut................................................//

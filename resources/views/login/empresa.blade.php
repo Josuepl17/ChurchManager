@@ -244,7 +244,7 @@
 
       <div style="color: white;">
     @foreach ($users as $user)
-    <input type="checkbox" name="user[]" value="{{ $user->id }}" id="user_{{ $user->id }}">
+    <input type="checkbox" name="user[]"  value="{{ $user->id }}" id="user_id{{ $user->id }}">
     <label for="user_{{ $user->nome }}">{{ $user->nome }}</label>
     @endforeach
 
