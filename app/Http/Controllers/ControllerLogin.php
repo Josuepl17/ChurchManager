@@ -182,6 +182,7 @@ class ControllerLogin extends Controller
         $users = User::whereIn('id', $empresas)
              ->where('id', '!=', auth()->user()->id)
              ->get(); // busquei 
+
         $razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
         return view('pagina.telausers', compact('users', 'razao_empresa'));
     }
@@ -197,7 +198,14 @@ class ControllerLogin extends Controller
 
 
     public function formulario_adicionar_empresa(){
-        return view('login.empresa');
+            $user_id = auth()->user()->id;
+        $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id'); // peguei as empresas relacionadas ao meu usuario.
+        $empresas = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas 
+        $users = User::whereIn('id', $empresas)
+             ->where('id', '!=', auth()->user()->id)
+             ->get(); // busquei 
+           
+        return view('login.empresa', compact('users'));
     }
 
     public function cadastro_empresas_nova(Request $request){
