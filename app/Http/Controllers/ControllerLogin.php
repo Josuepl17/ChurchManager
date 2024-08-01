@@ -120,7 +120,7 @@ class ControllerLogin extends Controller
 
     public function adicionar_usuario(Request $request)
     {
-        
+
         $existirusuario = User::where('email', $request->email)->first();
 
         if (MeuServico::verificar_login($request)) {
@@ -213,7 +213,15 @@ class ControllerLogin extends Controller
     }
 
     public function adicionar_empresa(Request $request){
-        // adicionar verificação se CNPJ ja foi cadastrado
+
+        $request->validate([
+            'user' => 'required|array|min:1',
+        ], [
+            'user.required' => 'Você deve selecionar pelo menos uma empresa.',
+            'user.min' => 'Você deve selecionar pelo menos uma empresa.',
+        ]);
+
+
         $empresa = empresas::create([
             'razao' => $request->razao,
             'cnpj' => $request->cnpj

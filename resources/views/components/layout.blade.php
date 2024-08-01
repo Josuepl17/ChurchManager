@@ -346,6 +346,8 @@
                 <i class="fa-solid fa-users"></i> &nbsp; <p>Novo Usuario</p>
                     
                 </a> -->
+
+                @endadmin
                 
                 <a class="links" href="/selecionar/filial">
                 <i class="fa-solid fa-building"></i> &nbsp; <p>Selecionar Filial</p>
@@ -357,7 +359,7 @@
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Nova Filial</p>
                     
                 </a> -->
-                @endadmin
+                
 
                 <a class="links" href="/lista/presencas">
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>

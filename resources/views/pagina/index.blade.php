@@ -6,9 +6,16 @@
     input[type=search] {
         width: 100%;
         /* Para o Input diminuir no momento em que a tela o espremer*/
+       
+    }
+
+   * {
+   box-sizing: border-box;     
+
     }
 
     #inserir-verde form input{
+      
         all: unset;
 
     }
@@ -49,7 +56,7 @@
             @csrf
             <input type="hidden" name="membro_id" value="{{$ind->id}}">
             <input type="hidden" name="nome" value="{{$ind->nome}}">
-            <input type="submit" value="Inserir">
+            <input style="width: 100%; height: 100%; color:white;" type="submit" value="Inserir">
             </form>
         </td>
         <td id="X">

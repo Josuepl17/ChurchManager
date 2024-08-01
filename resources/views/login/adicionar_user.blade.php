@@ -219,7 +219,9 @@ body {
     </div>
     <div class="user-box">
       <input type="password" name="password" required="" value="{{ isset($user_editar->password) ? $user_editar->password : '' }}" >
+
       <label>Senha</label>
+
     </div>
 
     @if (Session::has('falha'))
@@ -234,7 +236,15 @@ body {
         <input type="checkbox" name="empresas[]" value="{{ $empresa->id }}" id="empresa_{{ $empresa->id }}">
         <label for="empresa_{{ $empresa->razao }}">{{ $empresa->razao }}</label>
     @endforeach
+
+    @error('empresas')
+      <div>
+        <p style="color: red;" >{{ $message }}</p>
+      </div>
+        @enderror
 </div>
+
+
 
 
 

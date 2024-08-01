@@ -162,6 +162,7 @@ text-decoration: none;
                 
                 <div id="cadastro" >
                   <button><a href="/cadastro/login/novo">Adicionar Usuario</a></button>
+                  <br>
                   <button><a href="/">Voltar</a></button>
                 </div>
 

@@ -248,6 +248,7 @@
     <label for="user_{{ $user->nome }}">{{ $user->nome }}</label>
     @endforeach
 
+
 </div>
 
       <a href="">
