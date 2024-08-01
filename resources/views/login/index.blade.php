@@ -29,7 +29,6 @@ body {
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
   
-  
 }
 
 .login-box h2 {
@@ -54,6 +53,7 @@ body {
   outline: none;
   background: transparent;
 }
+
 .login-box .user-box label {
   position: absolute;
   top:0;
@@ -73,109 +73,7 @@ body {
   font-size: 12px;
 }
 
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: #03e9f4;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 4px
-}
 
-.login-box a:hover {
-  
-  color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4,
-              0 0 5px #03e9f4,
-              0 0 5px #03e9f4,
-              0 0 5px #03e9f4;
-}
-
-.login-box a span {
-  position: absolute;
-  display: block;
-}
-
-.login-box a span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
-}
-
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-  50%,100% {
-    left: 100%;
-  }
-}
-
-.login-box a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-  50%,100% {
-    top: 100%;
-  }
-}
-
-.login-box a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-  50%,100% {
-    right: 100%;
-  }
-}
-
-.login-box a span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-  50%,100% {
-    bottom: 100%;
-  }
-}
 
 #login{
   display: flex;
@@ -198,6 +96,49 @@ body {
 
 }
 
+button{
+  all: unset;
+  border: 1px solid rgba(255, 255, 255, 0.503);
+  padding: 08px 20px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+button:hover{
+  
+  background-color: #03e9f4;
+  color: black;
+  transition: 0.6s;
+}
+
+#alinhar-esquerda{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  
+}
+
+#cadastre-se{
+  all: unset;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.503);
+  padding: 08px 20px;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #141e30;
+}
+
+#cadastre-se:hover{
+
+  background-color: #03e9f4;
+  color: black;
+  transition: 0.6s;
+}
+
 
 
 
@@ -209,7 +150,7 @@ body {
 <!-- partial:index.partial.html -->
 <div class="login-box">
   <h2>Login</h2>
-  
+
   <form action="/login/if" method="post" >
 
   @csrf
@@ -221,43 +162,27 @@ body {
       <input autocomplete="off" type="password" name="password" required="">
       <label>Senha:</label>
       <span>
+      </div>
 
-      @if (Session::has('falha'))
-
-        <p style="color: red;" >{{ Session::get('falha') }}</p>
-        {{ Session::forget('falha') }}
-
-    @endif
-
-
-      </span>
-    </div>
-    <div id="login">
-      <a href="">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <input style="background: none;
-        border: none;
-        padding: 0;
-        font: inherit;
-        cursor: pointer;
-        outline: inherit;
-        color: #03e9f4;
-" type="submit" value="Login">
-      </a>
-      <a href="/cadastro/login">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <p style="font-size: 8px;" >Cadastro Usuario</p>
-      </a>
-    </div>
-  </form>
-</div>
-<!-- partial -->
   
+<div id="alinhar-esquerda" >
+<button type="submit">Login</button>
+<button><a style="all: unset;" href="">Esqueci Minha Senha</a></button>
+</div>
+  </form>
+
+  </div>
+<br>
+
+
+<!-- partial -->
+@if (Session::has('falha'))
+
+<p style="color: red;" >{{ Session::get('falha') }}</p>
+{{ Session::forget('falha') }}
+
+@endif
+
+<a id="cadastre-se" style="text-decoration: none;" href="/cadastro/login">Cadastrar-se</a>
 </body>
 </html>
