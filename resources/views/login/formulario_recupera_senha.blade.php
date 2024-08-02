@@ -151,7 +151,7 @@ button:hover{
 <div class="login-box">
   <h2>Recupere Sua Senha</h2>
 
-  <form action="/login/if" method="post" >
+  <form action="/recupere/senha" method="get" >
 
   @csrf
     <div  class="user-box">

@@ -17,14 +17,14 @@ class EnvioEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $email;
+    public $codigo;
     public $email_destinatario;
     public function __construct($request)
     {
-        $this->email = $request;
+        $this->codigo = $request;
         $this->email_destinatario = auth()->user()->email;
-        $this->email = (object) $this->email;
-        
+        $this->codigo = (object) $this->codigo;
+        dd($this->codigo);
     }
 
     /**
@@ -43,9 +43,9 @@ class EnvioEmail extends Mailable
     public function content(): Content
     {
        
-        $this->to($this->email_destinatario, 'Josue Lima');
+        $this->to('josuep.l@outlook.com', 'Josue Lima');
         return new Content(
-            view: 'emails.email-dizimo', with: ['email' => $this->email],
+            view: 'emails.email-dizimo', with: ['email' => $this->codigo],
         );
     }
 

@@ -18,10 +18,10 @@ class EnvioEmail implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public $email;
+    public $codigo;
     public function __construct($request)
     {
-        $this->email = $request;
+        $this->codigo = $request;
     }
 
     /**
@@ -29,6 +29,6 @@ class EnvioEmail implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::send(new MailEnvioEmail($this->email));
+        Mail::send(new MailEnvioEmail($this->codigo));
     }
 }

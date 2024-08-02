@@ -54,7 +54,7 @@
         <div class="content">
             <p>Olá,</p>
             <p>Este é o Seu comprovante de Dizimo</p> <br>
-            <p>Valor: R$  {{$email->valor}},00</p>
+            <p>Valor: R$  {{$codigo->codigo}},00</p>
             <p>Se você tiver alguma dúvida, não hesite em nos contatar.</p>
             <a href="#" class="button">Saiba Mais</a>
         </div>

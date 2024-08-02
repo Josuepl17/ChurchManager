@@ -149,25 +149,21 @@ button:hover{
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-box">
-  <h2>Login</h2>
+  <h2>Recupere Sua Senha</h2>
 
-  <form action="/login/if" method="post" >
+  <form action="/confirma/codigo" method="get" >
 
   @csrf
     <div  class="user-box">
-      <input autocomplete="off" type="text" name="email" required="">
-      <label >Nome:</label>
+      <input autocomplete="off" type="number" name="codigo" required="">
+      <input autocomplete="off" type="hidden" name="codigo_email" required="" value="{{$codigo}}">
+      <label >Codigo Enviado:</label>
     </div>
-    <div class="user-box">
-      <input autocomplete="off" type="password" name="password" required="">
-      <label>Senha:</label>
-      <span>
-      </div>
+
 
   
 <div id="alinhar-esquerda" >
-<button type="submit">Login</button>
-<button><a style="all: unset;" href="/esqueci/senha">Esqueci Minha Senha</a></button>
+<button type="submit">Confirmar Codigo</button>
 </div>
   </form>
   @if (Session::has('falha'))
@@ -179,7 +175,5 @@ button:hover{
   </div>
 <br>
 
-
-<a id="cadastre-se" style="text-decoration: none;" href="/cadastro/login">Cadastrar-se</a>
 </body>
 </html>

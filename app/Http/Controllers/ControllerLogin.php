@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\EnvioEmail;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
@@ -234,6 +235,18 @@ class ControllerLogin extends Controller
     {
         Auth::logout();
         return redirect('/login');
+    }
+
+
+
+    public function gera_codigo(Request $request){
+        if(User::where('email', $request->email)->first()){
+            $codigo = rand(100000, 999999);
+            EnvioEmail::dispatch($codigo);
+            return view('login.formulario_codigo_recupera', compact('codigo'));
+        }else{
+            dd('Não existe esse email');
+        }
     }
 
 

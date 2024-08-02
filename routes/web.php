@@ -16,7 +16,7 @@ use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User as ModelsUser;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,3 +96,12 @@ Route::post('/presenca', function(HttpRequest $request){
 
 
 
+Route::get('/esqueci/senha', function(){
+    return view('login.formulario_recupera_senha');
+});
+
+Route::get('/recupere/senha', [ControllerLogin::class, 'gera_codigo']);
+
+Route::get('/confirma/codigo', function(Request $request){
+    dd($request->all());
+});
