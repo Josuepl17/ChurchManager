@@ -170,18 +170,15 @@ button:hover{
 <button><a style="all: unset;" href="">Esqueci Minha Senha</a></button>
 </div>
   </form>
-
-  </div>
-<br>
-
-
-<!-- partial -->
-@if (Session::has('falha'))
+  @if (Session::has('falha'))
 
 <p style="color: red;" >{{ Session::get('falha') }}</p>
 {{ Session::forget('falha') }}
 
 @endif
+  </div>
+<br>
+
 
 <a id="cadastre-se" style="text-decoration: none;" href="/cadastro/login">Cadastrar-se</a>
 </body>

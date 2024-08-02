@@ -91,11 +91,6 @@ table{
   width: 100%;
 }
 
-#cadastro{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
 
 button a{
 color: blue;
@@ -106,6 +101,28 @@ color: black;
 button a:hover {
 color: blue;
 
+}
+
+#cadastre-se{
+  all: unset;
+  border: 1px solid rgba(255, 255, 255, 0.503);
+  padding: 08px 20px;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #141e30;
+}
+
+#cadastre-se:hover{
+
+  background-color: #03e9f4;
+  color: black;
+  transition: 0.6s;
+}
+
+#alinhar{
+  display: flex;
+  justify-content: space-evenly;
 }
 
 
@@ -135,11 +152,14 @@ color: blue;
 
 </table>
 <br>
-@admin
-<div id="cadastro" ><button><a href="/cadastrar/empresas">Cadastro Nova Filial</a></button></div>
-<br>
-@endadmin
-<div id="cadastro" ><button><a href="/">Voltar</a></button></div>
+<div id="alinhar" >
+  @admin
+  
+  <a id="cadastre-se" style="text-decoration: none;" href="/cadastrar/empresas">Cadastro Nova Filial</a>
+  <br>
+  @endadmin
+  <a id="cadastre-se" style="text-decoration: none;" href="/">Voltar</a>
+</div>
 
 
 </div>
