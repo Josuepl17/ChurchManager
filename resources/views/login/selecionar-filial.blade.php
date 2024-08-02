@@ -109,8 +109,9 @@ color: blue;
   padding: 08px 20px;
   color: white;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #141e30;
+ margin-right: 6px
 }
 
 #cadastre-se:hover{
@@ -122,7 +123,7 @@ color: blue;
 
 #alinhar{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 }
 
 

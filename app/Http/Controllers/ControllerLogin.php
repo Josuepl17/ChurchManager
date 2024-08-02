@@ -78,17 +78,9 @@ class ControllerLogin extends Controller
     public function autenticar_usuario(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']]) || Auth::attempt(['email' => strtoupper($credentials['email']), 'password' => $credentials['password']])) {
-
-
-            $user_id = auth()->user()->id;
-            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-            $empresas = empresas::whereIn('id', $dados)->get();
-            return view('login.selecionar-filial', compact('empresas'));
+            return redirect('/selecionar/filial');
         }
-
-        // Autenticação falhou
         Session()->flash('falha',  'Login Incorreto');
         return redirect('/login');
     }
@@ -106,7 +98,7 @@ class ControllerLogin extends Controller
              ->get(); // busquei 
 
         //$razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
-        return view('pagina.telausers', compact('users'));
+        return view('login.tela-usuarios', compact('users'));
     }
 
     public function formulario_adicionar_usuario()
@@ -114,16 +106,13 @@ class ControllerLogin extends Controller
             $user_id = auth()->user()->id;
             $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
             $empresas = empresas::whereIn('id', $dados)->get();
-
-        return view('login.adicionar_user', compact('empresas'));
+            return view('login.adicionar_user', compact('empresas'));
     }
 
     public function adicionar_usuario(Request $request)
     {
 
-        $existirusuario = User::where('email', $request->email)->first();
-
-        if (MeuServico::verificar_login($request)) {
+       if (MeuServico::verificar_login($request)) {
             Session()->flash('falha',  'Email Já cadastrado');
              return redirect('/cadastro/login/novo');
         } else{
@@ -135,7 +124,7 @@ class ControllerLogin extends Controller
             $user->save();
 
             $empresasMarcadas = $request->input('empresas');
-           // dd($empresasMarcadas);
+
             foreach ($empresasMarcadas as $emp){
                 $user_empresas = new user_empresas();
                 $user_empresas->user_id = $user->id;
@@ -155,21 +144,18 @@ class ControllerLogin extends Controller
             $user_id = auth()->user()->id;
             $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
             $empresas = empresas::whereIn('id', $dados)->get();
-
             $user_editar = User::find($request->user_id);
-           // dd($user_editar);
-           $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
-           // dd($empresasSelecionadas);
-        return view('login.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
+            $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
+             return view('login.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
     }
 
     public function editar_usuario(Request $request){
         $user = User::find($request->user_id);
-        $deletar = user_empresas::where('user_id', $request->user_id)->delete();
+        user_empresas::where('user_id', $request->user_id)->delete(); // nunca pode ser do adm
         
         $user->user = $request->user;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->save();
     
         $empresasMarcadas = $request->empresas;
 
@@ -179,15 +165,12 @@ class ControllerLogin extends Controller
             $user_empresas->empresa_id = $emp;
             $user_empresas->save();
         }
-        return $this->tela_usuarios();
+        return redirect('/user/profile');
     }
 
 
 
 
-
-
-    
 
 
 
@@ -209,7 +192,7 @@ class ControllerLogin extends Controller
              ->where('id', '!=', auth()->user()->id)
              ->get(); // busquei 
            
-        return view('login.empresa', compact('users'));
+        return view('login.adicionar-filial', compact('users'));
     }
 
     public function adicionar_empresa(Request $request){
@@ -241,7 +224,7 @@ class ControllerLogin extends Controller
         $user_empresas->empresa_id = $empresa->id;
         $user_empresas->save();
 
-        return $this->selecionar_filial();
+        return redirect('/selecionar/filial');
     }
 
 //......................................................Logaut................................................//

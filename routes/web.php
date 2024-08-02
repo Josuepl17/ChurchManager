@@ -60,7 +60,7 @@ Route::POST('/destroy/despesas/id', [DespesasController::class, 'botao_excluir_d
 Route::post('/filtrar/despesas', [DespesasController::class, 'filtro']);
 
                                 /*Caixa*/
-//Route::get('/caixa', [CaixasController::class, 'filter_page']);
+
 Route::get('/relatorio', [CaixasController::class, 'filter_page']);
 Route::get('/fpdf', [CaixasController::class, 'fpdf']);
 Route::post('/filtro/pdf', [CaixasController::class, 'filter_page']);
@@ -71,21 +71,21 @@ Route::post('/destroy/caixa/{id}', [CaixasController::class, 'destroy_caixa']);
 
 
                              /* LOGIN*/
-Route::get('/login', [ControllerLogin::class, 'login'])->name('login');
-Route::post('/login/if', [ControllerLogin::class, 'autenticar_usuario']);
-Route::get('/cadastro/login', [ControllerLogin::class, 'formulario_usuario_empresa']);
-Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_usuario_empresa']);
-
+Route::get('/login', [ControllerLogin::class, 'login'])->name('login'); // formulario de login do usuario
+Route::post('/login/if', [ControllerLogin::class, 'autenticar_usuario']);// login do usuario
+Route::get('/cadastro/login', [ControllerLogin::class, 'formulario_usuario_empresa']); // formulario de login ADM x Empresa
+Route::post('/cadastro/usuario', [ControllerLogin::class, 'cadastro_usuario_empresa']); // Cadastro do Formulario Login x Empresa
+//----------------------------------USUARIOS---------------------------------------//
+Route::get('/user/profile', [ControllerLogin::class, 'tela_usuarios']);
 Route::get('/cadastro/login/novo', [ControllerLogin::class, 'formulario_adicionar_usuario']);
+Route::post('/cadastro/user/adicionar', [ControllerLogin::class, 'adicionar_usuario']);
 Route::get('/editar/user/{user_id}', [ControllerLogin::class, 'formulario_editar_usuario']);
 Route::post('/editar/user', [ControllerLogin::class, 'editar_usuario']);
-Route::post('/cadastro/user/adicionar', [ControllerLogin::class, 'adicionar_usuario']);
-Route::get('/user/profile', [ControllerLogin::class, 'tela_usuarios']);
 
+//--------------------------------FILIAL--------------------------------------------//
 Route::get('/selecionar/filial', [ControllerLogin::class, 'selecionar_filial']);
 Route::get('/cadastrar/empresas', [ControllerLogin::class, 'formulario_adicionar_empresa']);
 Route::get('/cadastro/empresa/novo', [ControllerLogin::class, 'adicionar_empresa']);
-
 
 Route::get('/logout', [ControllerLogin::class, 'logout']);
 

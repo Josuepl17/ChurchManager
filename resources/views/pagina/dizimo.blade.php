@@ -36,7 +36,8 @@
             <td>{{ \Carbon\Carbon::parse($dizimo->data)->format('d/m/Y') }}</td>
             <td>R${{ number_format($dizimo->valor, 2, ',', '.') }}</td>
             <td id="X">
-                <form method="post" class="formx" action="/dizimos/destoy/id"><button class="excluir">X</button>
+                <form method="post"  action="/dizimos/destoy/id">
+                    <button class="excluir">X</button>
                     <input type="hidden" name="data" value="{{$dizimo->data}}">
                     <input type="hidden" name="id" value="{{$dizimo->id}}">
                     <input type="hidden" name="membro_id" value="{{$dizimo->membro_id}}">
