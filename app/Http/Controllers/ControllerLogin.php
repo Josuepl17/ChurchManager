@@ -172,11 +172,6 @@ class ControllerLogin extends Controller
     }
 
 
-
-
-
-
-
 //......................................................EMPRESAS................................................//
 
         public function selecionar_filial(){

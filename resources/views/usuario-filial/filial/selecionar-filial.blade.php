@@ -49,7 +49,7 @@ body {
 th, td {
   color: white;
   text-align: center;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.567);
   padding: 5px;
 
 
@@ -93,10 +93,7 @@ a{
     
 }
 
-a:hover{
-    text-decoration: underline;
-    
-}
+
 
 .tda:hover{
   background: green;
@@ -122,17 +119,28 @@ a:hover{
 }
 
 
-button a{
-color: blue;
-text-decoration: none;
-color: black;
+#botao-link{
+  all: unset;
+  border: 1px solid rgba(255, 255, 255, 0.503);
+  padding: 08px 20px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #141e30;
+ margin-right: 6px
 }
 
-button a:hover {
-color: blue;
-text-decoration: none;
+#botao-link:hover{
+
+  background-color: #03e9f4;
+  color: black;
+  transition: 0.6s;
 }
 
+#alinhar{
+  display: flex;
+  justify-content: flex-end;
+}
 
 
   </style>
@@ -144,29 +152,31 @@ text-decoration: none;
 <div class="login-box">
 
 <table>
-                <tr>
-                    <th style="width: 4%;">ID</th>
-                    <th>USUARIOS</th>
-                    <th style="width: 20%;" >X</th>
+    <tr>
+        <th>ID</th>
+        <th>EMPRESA</th>
+        <th>SELECIONAR</th>
+    </tr>
+    @foreach ($empresas as $empresa)
+    <tr>
+        <td>{{ $empresa->id }}</td>
+        <td>{{ $empresa->razao }}</td>
+        <td class="tda" >
+            <a href="/entrar/{{ $empresa->id }}">Entrar</a>
+        </td>
+    </tr>
+    @endforeach
 
-                </tr>
-                @foreach ($users as $user)
-                <tr>
-                    <td style="background-color: var(--titulos); color:white">{{$user->id}}</td>
-                    <td>{{$user->nome}}</td>
-                    <td class="tda" ><a href="/editar/user/{{$user->id}}">Editar</a></td>
-                </tr>
-                @endforeach
-            </table>
-            <br>
-                
-                <div id="cadastro" >
-                  <button><a href="/cadastro/login/novo">Adicionar Usuario</a></button>
-                  <br>
-                  <button><a href="/">Menu Principal</a></button>
-                </div>
-
-
+</table>
+<br>
+<div id="alinhar" >
+  @admin
+  
+  <a id="botao-link" style="text-decoration: none;" href="/cadastrar/empresas">Cadastro Nova Filial</a>
+  <br>
+  @endadmin
+  <a id="botao-link" style="text-decoration: none;" href="/">Menu Principal</a>
+</div>
 
 
 </div>

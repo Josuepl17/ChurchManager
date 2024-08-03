@@ -15,7 +15,6 @@ body {
   padding:0;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
-  box-sizing: border-box;
 }
 
 .login-box {
@@ -50,12 +49,11 @@ body {
 th, td {
   color: white;
   text-align: center;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.567);
   padding: 5px;
 
+
 }
-
-
 
 td{
   background-color: white;
@@ -63,24 +61,17 @@ td{
 }
 
 .tda:hover{
-  background: green;
+  background: rgba(0,0,0,.5);
   transition: 0.6s;
-
-}
-
-.tda{
-    width: 10%;
-    background: rgba(0, 128, 0, 0.577);
 }
 
 a:hover{
   color: white;
-
 }
 
-td a{
+a{
   text-decoration: none;
-  color: white;
+  color: black;
   display: block;
   width: 100%;
   height: 100%;
@@ -91,19 +82,44 @@ table{
   width: 100%;
 }
 
-
-button a{
-color: blue;
-text-decoration: none;
-color: black;
+p{
+  color: black;
 }
 
-button a:hover {
-color: blue;
+a{
+    color: white;
+    text-decoration: none;
+    text-align: end;
+    
+}
+
+
+
+.tda:hover{
+  background: green;
+  transition: 0.6s;
+  color: white;
 
 }
 
-#cadastre-se{
+.tda{
+    width: 10%;
+    background: rgba(0, 128, 0, 0.577);
+    
+}
+
+.tda a {
+  text-align: center;
+}
+
+#alinhar{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+#botao-link{
   all: unset;
   border: 1px solid rgba(255, 255, 255, 0.503);
   padding: 08px 20px;
@@ -114,17 +130,15 @@ color: blue;
  margin-right: 6px
 }
 
-#cadastre-se:hover{
+#botao-link:hover{
 
   background-color: #03e9f4;
   color: black;
   transition: 0.6s;
 }
 
-#alinhar{
-  display: flex;
-  justify-content: flex-end;
-}
+
+
 
 
   </style>
@@ -136,31 +150,29 @@ color: blue;
 <div class="login-box">
 
 <table>
-    <tr>
-        <th>ID</th>
-        <th>EMPRESA</th>
-        <th>SELECIONAR</th>
-    </tr>
-    @foreach ($empresas as $empresa)
-    <tr>
-        <td>{{ $empresa->id }}</td>
-        <td>{{ $empresa->razao }}</td>
-        <td class="tda" >
-            <a href="/entrar/{{ $empresa->id }}">Entrar</a>
-        </td>
-    </tr>
-    @endforeach
+                <tr>
+                    <th style="width: 4%;">ID</th>
+                    <th>USUARIOS</th>
+                    <th style="width: 20%;" >X</th>
 
-</table>
-<br>
-<div id="alinhar" >
-  @admin
-  
-  <a id="cadastre-se" style="text-decoration: none;" href="/cadastrar/empresas">Cadastro Nova Filial</a>
-  <br>
-  @endadmin
-  <a id="cadastre-se" style="text-decoration: none;" href="/">Menu Principal</a>
-</div>
+                </tr>
+                @foreach ($users as $user)
+                <tr>
+                    <td style="background-color: var(--titulos); color:white">{{$user->id}}</td>
+                    <td>{{$user->nome}}</td>
+                    <td class="tda" ><a href="/editar/user/{{$user->id}}">Editar</a></td>
+                </tr>
+                @endforeach
+            </table>
+            <br>
+                
+                <div id="alinhar" >
+                  <a id="botao-link"  href="/cadastro/login/novo">Adicionar Usuario</a>
+                  <br>
+                  <a id="botao-link" href="/">Menu Principal</a>
+                </div>
+
+
 
 
 </div>
