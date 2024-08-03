@@ -97,7 +97,7 @@ Route::post('/presenca', function(HttpRequest $request){
 
 
 Route::get('/esqueci/senha', function(){
-    return view('usuario-filial/atualiza-usuario.formulario_recupera_senha');
+    return view('usuario-filial/atualiza-usuario.envia-codigo');
 });
 
 Route::get('/recupere/senha', [ControllerLogin::class, 'gera_codigo']);

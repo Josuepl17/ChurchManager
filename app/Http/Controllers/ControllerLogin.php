@@ -34,12 +34,12 @@ class ControllerLogin extends Controller
 
     public function login()
     {
-        return view('usuario-filial/login.index');
+        return view('usuario-filial/login.login');
     }
 
     public function formulario_usuario_empresa()
     {
-        return view('usuario-filial/login.cadastro');
+        return view('usuario-filial/login.cadastro-user-filial');
     }
 
     public function cadastro_usuario_empresa(Request $request)
@@ -49,12 +49,12 @@ class ControllerLogin extends Controller
         if (MeuServico::verificar_login($request)) {
             $dados = (object) $dados;
             Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
-            return view('usuario-filial/login.cadastro', compact('dados'));
+            return view('usuario-filial/login.cadastro-user-filial', compact('dados'));
         }
 
         if (MeuServico::verificar_empresa($request)) {
             Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
-            return view('usuario-filial/login.cadastro', compact('dados'));
+            return view('usuario-filial/login.cadastro-user-filial', compact('dados'));
         }
 
         $empresa = empresas::create([
@@ -101,7 +101,7 @@ class ControllerLogin extends Controller
              ->get(); // busquei 
 
         //$razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
-        return view('usuario-filial/usuario.tela-usuarios', compact('users'));
+        return view('usuario-filial/usuario.tela-user', compact('users'));
     }
 
     public function formulario_adicionar_usuario()
@@ -190,7 +190,7 @@ class ControllerLogin extends Controller
              ->where('id', '!=', auth()->user()->id)
              ->get(); // busquei 
            
-        return view('usuario-filial/filial.adicionar-filial', compact('users'));
+        return view('usuario-filial/filial.cadastro-filial', compact('users'));
     }
 
     public function adicionar_empresa(Request $request){
@@ -235,7 +235,7 @@ class ControllerLogin extends Controller
         if($usuario){
             $codigo = rand(100000, 999999);
             Mail::send(new MailEnvioEmail($codigo, $request->email));
-            return view('usuario-filial/atualiza-usuario.formulario_codigo_recupera', compact('codigo', 'user_id'));
+            return view('usuario-filial/atualiza-usuario.confirma-codigo', compact('codigo', 'user_id'));
         }else{
             dd('Não existe esse email');
         }
