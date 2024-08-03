@@ -47,9 +47,9 @@ class CaixasController extends Controller
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
             unset($dados['dataini'], $dados['datafi']);
            
-            return view('pagina.resumo', $dados)->with('saldo', $saldo);
+            return view('paginas.resumo', $dados)->with('saldo', $saldo);
         }
-        return view('pagina.resumo', $dados)->with('saldo', $saldo);
+        return view('paginas.resumo', $dados)->with('saldo', $saldo);
     }
 //......................................................Parte 2................................................//
 
@@ -105,7 +105,7 @@ class CaixasController extends Controller
         $empresa_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', $empresa_id)->value('razao');
         $saldo = caixas::where('empresa_id', $empresa_id)->sum('saldo');;
-        return view('pagina.caixa', compact('dados', 'saldo', 'razao_empresa'));
+        return view('paginas.caixa', compact('dados', 'saldo', 'razao_empresa'));
     }
 
     public function destroy_caixa(Request $request)

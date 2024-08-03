@@ -37,7 +37,7 @@ class DespesasController extends Controller
             'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
-        return view('pagina.despesas', $dados);
+        return view('paginas.despesas', $dados);
     }
 
 

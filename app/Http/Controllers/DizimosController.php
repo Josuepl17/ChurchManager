@@ -45,7 +45,7 @@ public $membro_id;
             'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
-            return view('pagina.dizimo', $dados);
+            return view('paginas.dizimo', $dados);
     }
 
 //......................................................Parte 2................................................//

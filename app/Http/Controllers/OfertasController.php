@@ -38,7 +38,7 @@ class OfertasController extends Controller
             'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
 
-        return view('pagina.oferta', $dados);
+        return view('paginas.oferta', $dados);
     }
 
 
