@@ -293,6 +293,19 @@
                 /*importante para Responsividade*/
             }
 
+            @media print{
+
+                nav{
+                    display: none;
+                }
+                
+                #menu{
+                    display: none;
+                }
+
+
+            }
+
 
         }
     </style>
@@ -453,5 +466,19 @@
   } else {
      console.error("Service workers are not supported.");
   }
+</script>
+
+<script>
+    document.getElementById('botao-instalar').addEventListener('click', function() {
+    // Solicitar a instalação do PWA
+    if (window.matchMedia('(display-mode: browser)').matches) {
+        // Se estiver no navegador, forçar a instalação
+        window.addEventListener('beforeinstallprompt', (event) => {
+            // Mostrar o prompt de instalação
+            event.prompt();
+        });
+    }
+});
+
 </script>
 </html>
