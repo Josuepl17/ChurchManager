@@ -34,12 +34,12 @@ class ControllerLogin extends Controller
 
     public function login()
     {
-        return view('login.index');
+        return view('usuario-filial/login.index');
     }
 
     public function formulario_usuario_empresa()
     {
-        return view('login.cadastro');
+        return view('usuario-filial/login.cadastro');
     }
 
     public function cadastro_usuario_empresa(Request $request)
@@ -49,12 +49,12 @@ class ControllerLogin extends Controller
         if (MeuServico::verificar_login($request)) {
             $dados = (object) $dados;
             Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
-            return view('login.cadastro', compact('dados'));
+            return view('usuario-filial/login.cadastro', compact('dados'));
         }
 
         if (MeuServico::verificar_empresa($request)) {
             Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
-            return view('login.cadastro', compact('dados'));
+            return view('usuario-filial/login.cadastro', compact('dados'));
         }
 
         $empresa = empresas::create([
@@ -101,7 +101,7 @@ class ControllerLogin extends Controller
              ->get(); // busquei 
 
         //$razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
-        return view('login.tela-usuarios', compact('users'));
+        return view('usuario-filial/usuario.tela-usuarios', compact('users'));
     }
 
     public function formulario_adicionar_usuario()
@@ -109,7 +109,7 @@ class ControllerLogin extends Controller
             $user_id = auth()->user()->id;
             $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
             $empresas = empresas::whereIn('id', $dados)->get();
-            return view('login.adicionar_user', compact('empresas'));
+            return view('usuario-filial/usuario.adicionar_user', compact('empresas'));
     }
 
     public function adicionar_usuario(Request $request)
@@ -149,7 +149,7 @@ class ControllerLogin extends Controller
             $empresas = empresas::whereIn('id', $dados)->get();
             $user_editar = User::find($request->user_id);
             $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
-             return view('login.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
+             return view('usuario-filial/usuario.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
     }
 
     public function editar_usuario(Request $request){
@@ -178,7 +178,7 @@ class ControllerLogin extends Controller
             $user_id = auth()->user()->id;
             $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
             $empresas = empresas::whereIn('id', $relacionamentos)->get();
-            return view('login.selecionar-filial', compact('empresas'));
+            return view('usuario-filial/filial.selecionar-filial', compact('empresas'));
        }
 
 
@@ -190,7 +190,7 @@ class ControllerLogin extends Controller
              ->where('id', '!=', auth()->user()->id)
              ->get(); // busquei 
            
-        return view('login.adicionar-filial', compact('users'));
+        return view('usuario-filial/filial.adicionar-filial', compact('users'));
     }
 
     public function adicionar_empresa(Request $request){
@@ -243,7 +243,7 @@ class ControllerLogin extends Controller
         if($usuario){
             $codigo = rand(100000, 999999);
             Mail::send(new MailEnvioEmail($codigo, $request->email));
-            return view('login.formulario_codigo_recupera', compact('codigo', 'user_id'));
+            return view('usuario-filial/atualiza-usuario.formulario_codigo_recupera', compact('codigo', 'user_id'));
         }else{
             dd('Não existe esse email');
         }
@@ -254,7 +254,7 @@ class ControllerLogin extends Controller
             $user_id = $request->usuario;
             $user = User::find($user_id);
             
-            return view('login.atualizar_usuario', compact('user'));
+            return view('usuario-filial/atualiza-usuario.atualizar_usuario', compact('user'));
 
 
         } else{

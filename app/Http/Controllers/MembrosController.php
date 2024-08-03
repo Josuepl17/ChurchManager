@@ -35,7 +35,7 @@ class MembrosController extends Controller
         $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
         
             $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
-            return view('pagina.index', compact('index', 'razao_empresa', 'dados'));
+            return view('paginas.index', compact('index', 'razao_empresa', 'dados'));
 
     }
 
@@ -43,7 +43,7 @@ class MembrosController extends Controller
     {
         $empresas_id = auth()->user()->empresa_id;
         $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
-        return view('pagina.formulario', compact('razao_empresa'));
+        return view('paginas.formulario', compact('razao_empresa'));
     }
 
     public function botao_inserir_membro(request $request)
@@ -70,6 +70,6 @@ class MembrosController extends Controller
         
         $razao_empresa = $empresa_id->empresas->first();
         $razao_empresa = $razao_empresa->razao;
-        return view('pagina.formulario_presenca', compact('membros', 'razao_empresa'));
+        return view('paginas.formulario_presenca', compact('membros', 'razao_empresa'));
     }
 }
