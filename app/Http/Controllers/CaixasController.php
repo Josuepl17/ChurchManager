@@ -66,11 +66,6 @@ class CaixasController extends Controller
             'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
-            'datanow' => Carbon::now()->format('Y-m-d'),
-            'qtymembros' => membros::where('empresa_id', $empresa_id)->count(),
-            'dataini' => $request->dataini,
-            'datafi' => $request->datafi,
-
         ];
 
         $pdf = pdf::loadView('relatorios-pdf.relatorioPDF', $dados); /*Carrega os Dados do PDF*/
