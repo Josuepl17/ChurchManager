@@ -225,15 +225,7 @@ class ControllerLogin extends Controller
         return redirect('/selecionar/filial');
     }
 
-//......................................................Logaut................................................//
-
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login');
-    }
-
+//......................................................RECUPERA................................................//
 
 
     public function gera_codigo(Request $request){
@@ -272,6 +264,14 @@ class ControllerLogin extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+        return redirect('/login');
+    }
+
+//......................................................LOGIN................................................//
+
+    public function logout()
+    {
+        Auth::logout();
         return redirect('/login');
     }
 
