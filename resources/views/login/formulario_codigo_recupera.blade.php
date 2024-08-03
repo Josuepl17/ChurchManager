@@ -157,6 +157,7 @@ button:hover{
     <div  class="user-box">
       <input autocomplete="off" type="number" name="codigo" required="">
       <input autocomplete="off" type="hidden" name="codigo_email" required="" value="{{$codigo}}">
+      <input autocomplete="off" type="hidden" name="usuario" required="" value="{{$user_id}}">
       <label >Codigo Enviado:</label>
     </div>
 

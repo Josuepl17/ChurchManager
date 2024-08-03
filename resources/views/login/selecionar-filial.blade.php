@@ -159,7 +159,7 @@ color: blue;
   <a id="cadastre-se" style="text-decoration: none;" href="/cadastrar/empresas">Cadastro Nova Filial</a>
   <br>
   @endadmin
-  <a id="cadastre-se" style="text-decoration: none;" href="/">Voltar</a>
+  <a id="cadastre-se" style="text-decoration: none;" href="/">Menu Principal</a>
 </div>
 
 

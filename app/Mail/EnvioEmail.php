@@ -18,13 +18,14 @@ class EnvioEmail extends Mailable
      * Create a new message instance.
      */
     public $codigo;
-    public $email_destinatario;
-    public function __construct($request)
+    public $email;
+    public function __construct($codigo, $email)
     {
-        $this->codigo = $request;
-        $this->email_destinatario = auth()->user()->email;
-        $this->codigo = (object) $this->codigo;
-        dd($this->codigo);
+        $this->codigo = $codigo;
+        $this->email = $email;
+        
+        
+        
     }
 
     /**
@@ -33,7 +34,7 @@ class EnvioEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'IPDR - Mangue',
+            subject: 'Codigo Verificação',
         );
     }
 
@@ -43,7 +44,7 @@ class EnvioEmail extends Mailable
     public function content(): Content
     {
        
-        $this->to('josuep.l@outlook.com', 'Josue Lima');
+        $this->to($this->email, 'Codigo Verificação');
         return new Content(
             view: 'emails.email-dizimo', with: ['email' => $this->codigo],
         );

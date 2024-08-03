@@ -102,6 +102,6 @@ Route::get('/esqueci/senha', function(){
 
 Route::get('/recupere/senha', [ControllerLogin::class, 'gera_codigo']);
 
-Route::get('/confirma/codigo', function(Request $request){
-    dd($request->all());
-});
+Route::get('/confirma/codigo', [ControllerLogin::class, 'confirma_codigo']);
+
+Route::post('/atualizar/user', [ControllerLogin::class, 'atualizar_usuario']);

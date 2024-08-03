@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\EnvioEmail;
+use App\Mail\EnvioEmail as MailEnvioEmail;
 use App\Models\caixas;
 use App\Models\despesas;
 use App\Models\ofertas;
@@ -23,6 +24,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Expr\FuncCall;
 
 class ControllerLogin extends Controller
@@ -240,13 +242,42 @@ class ControllerLogin extends Controller
 
 
     public function gera_codigo(Request $request){
-        if(User::where('email', $request->email)->first()){
+        $usuario = User::where('email', $request->email)->first();
+        $user_id = $usuario->id;
+     
+        if($usuario){
             $codigo = rand(100000, 999999);
-            EnvioEmail::dispatch($codigo);
-            return view('login.formulario_codigo_recupera', compact('codigo'));
+            Mail::send(new MailEnvioEmail($codigo, $request->email));
+            return view('login.formulario_codigo_recupera', compact('codigo', 'user_id'));
         }else{
             dd('Não existe esse email');
         }
+    }
+
+    public function confirma_codigo(Request $request){
+        if ($request->codigo == $request->codigo_email){
+            $user_id = $request->usuario;
+            $user = User::find($user_id);
+            
+            return view('login.atualizar_usuario', compact('user'));
+
+
+        } else{
+            dd('deu errado');
+        }
+    }
+
+
+
+    public function atualizar_usuario(Request $request){
+        $user = User::find($request->user_id);
+        
+        $user->nome = $request->user;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect('/login');
     }
 
 
