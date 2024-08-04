@@ -9,8 +9,9 @@
   <style>
 
 
+
     #cadastre-se {
-      all: unset;
+      user-select: auto;
       position: absolute;
       right: 20px;
       top: 20px;
