@@ -17,37 +17,43 @@
       @csrf
 
       <div class="user-box">
-        <input type="text" name="nome" required="" value="{{ isset($dados->user) ? $dados->user : '' }}">
+        <input type="text" name="nome" required="" value="{{ old('nome') }}">
         <label>Nome:</label>
       </div>
+
       <div class="user-box">
-        <input type="text" name="email" required="" value="{{ isset($dados->email) ? $dados->email : '' }}">
+        <input type="text" name="email" id="email" required="" value="{{ old('email') }}">
         <label>Email:</label>
+        @error('email')
+        <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+            @enderror
       </div>
+
       <div class="user-box">
         <input type="password" name="password" required="">
         <label>Senha:</label>
+        @error('password')
+        <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+            @enderror
       </div>
+
       <div class="user-box">
-        <input type="text" name="razao" required="" value="{{ isset($dados->razao) ? $dados->razao : '' }}">
+        <input type="text" name="razao" required="" value="{{ old('razao') }}">
         <label>Razão Social:</label>
       </div>
+      
       <div class="user-box">
-        <input type="number" name="cnpj" maxlength="2" required="" value="{{ isset($dados->cnpj) ? $dados->cnpj : '' }}">
+        <input type="number" name="cnpj" required="" value="{{ old('cnpj') }}">
         <label>CNPJ:</label>
+        @error('cnpj')
+        <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+            @enderror
       </div>
 
-      @if (Session::has('falha'))
-    <div>
-        <p style="color:red;" >{{ Session::get('falha') }}</p>
-    </div>
-    {{ Session::forget('falha') }}
-@endif
+      <div id="alinhar-esquerda">
+        <button type="submit">Cadastrar</button>
 
-<div id="alinhar-esquerda" >
-<button type="submit">Cadastrar</button>
-
-</div>
+      </div>
     </form>
 
   </div>

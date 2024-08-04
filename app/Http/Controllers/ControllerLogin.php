@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormFilialUsers;
 use App\Jobs\EnvioEmail;
 use App\Mail\EnvioEmail as MailEnvioEmail;
 use App\Models\caixas;
@@ -42,19 +43,16 @@ class ControllerLogin extends Controller
         return view('usuario-filial/login.cadastro-user-filial');
     }
 
-    public function cadastro_usuario_empresa(Request $request)
+    public function cadastro_usuario_empresa(FormFilialUsers $request)
     {
         $dados = $request->all();
 
         if (MeuServico::verificar_login($request)) {
-            $dados = (object) $dados;
-            Session()->flash('falha', 'Atenção! Usuario Já Cadastrado.');
-            return view('usuario-filial/login.cadastro-user-filial', compact('dados'));
+            return back()->withInput()->withErrors(['email' => 'Esse Email Já Está Cadastrado']);
         }
 
         if (MeuServico::verificar_empresa($request)) {
-            Session()->flash('falha', 'Atenção! Empresa Já Cadastrada.');
-            return view('usuario-filial/login.cadastro-user-filial', compact('dados'));
+            return back()->withInput()->withErrors(['email' => 'Esse CNPJ Já Está Cadastrado']);
         }
 
         $empresa = empresas::create([
@@ -195,13 +193,13 @@ class ControllerLogin extends Controller
 
     public function adicionar_empresa(Request $request){
 
-        $request->validate([
-            'user' => 'required|array|min:1',
-        ], [
-            'user.required' => 'Você deve selecionar pelo menos uma empresa.',
-            'user.min' => 'Você deve selecionar pelo menos uma empresa.',
-        ]);
 
+
+        if (MeuServico::verificar_empresa($request)){
+
+            dd('empresa ja existe');
+            
+        }
 
         $empresa = empresas::create([
             'razao' => $request->razao,
