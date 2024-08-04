@@ -23,10 +23,9 @@ class FormFilialUsers extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'cnpj' => 'required|min:14|max:18', // Considerando que o CNPJ pode ter pontos e traços
+            'email' => 'email',
+            'cnpj' => 'min:14|max:18', // Considerando que o CNPJ pode ter pontos e traços
             'password' => [
-                'required',
                 'string',
                 'min:8', // Mínimo de 8 caracteres
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormFilial;
 use App\Http\Requests\FormFilialUsers;
 use App\Jobs\EnvioEmail;
 use App\Mail\EnvioEmail as MailEnvioEmail;
@@ -31,7 +32,7 @@ use PhpParser\Node\Expr\FuncCall;
 class ControllerLogin extends Controller
 {
 
-//......................................................LOGIN E AUTH................................................//
+    //......................................................LOGIN E AUTH................................................//
 
     public function login()
     {
@@ -73,7 +74,6 @@ class ControllerLogin extends Controller
         $user_empresas->empresa_id = $empresa->id;
         $user_empresas->save();
         return redirect('/login');
-
     }
 
     public function autenticar_usuario(Request $request)
@@ -95,8 +95,8 @@ class ControllerLogin extends Controller
         $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id'); // peguei as empresas relacionadas ao meu usuario.
         $empresas = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas
         $users = User::whereIn('id', $empresas)
-             ->where('id', '!=', auth()->user()->id)
-             ->get(); // busquei
+            ->where('id', '!=', auth()->user()->id)
+            ->get(); // busquei
 
         //$razao_empresa = empresas::where('id', auth()->user()->empresa_id)->value('razao');
         return view('usuario-filial/usuario.tela-user', compact('users'));
@@ -104,29 +104,28 @@ class ControllerLogin extends Controller
 
     public function formulario_adicionar_usuario()
     {
-            $user_id = auth()->user()->id;
-            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-            $empresas = empresas::whereIn('id', $dados)->get();
-            return view('usuario-filial/usuario.adicionar_user', compact('empresas'));
+        $user_id = auth()->user()->id;
+        $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+        $empresas = empresas::whereIn('id', $dados)->get();
+        return view('usuario-filial/usuario.adicionar_user', compact('empresas'));
     }
 
-    public function adicionar_usuario(Request $request)
+    public function adicionar_usuario(FormFilialUsers $request)
     {
+        if (MeuServico::verificar_login($request)) {
 
-       if (MeuServico::verificar_login($request)) {
-            Session()->flash('falha',  'Email Já cadastrado');
-             return redirect('/cadastro/login/novo');
-        } else{
-            $user = new User();
-            $user->nome = $request->user;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->empresa_id = auth()->user()->empresa_id;
-            $user->save();
+            return back()->withInput()->withErrors(['email' => 'Esse Email Já Está Cadastrado']);
+        }
+        $user = new User();
+        $user->nome = $request->user;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->empresa_id = auth()->user()->empresa_id;
+        $user->save();
 
-            $empresasMarcadas = $request->input('empresas');
 
-            foreach ($empresasMarcadas as $emp){
+        if ($empresasMarcadas = $request->input('empresas')) {
+            foreach ($empresasMarcadas as $emp) {
                 $user_empresas = new user_empresas();
                 $user_empresas->user_id = $user->id;
                 $user_empresas->empresa_id = $emp;
@@ -142,63 +141,90 @@ class ControllerLogin extends Controller
 
     public function formulario_editar_usuario(Request $request)
     {
-            $user_id = auth()->user()->id;
-            $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-            $empresas = empresas::whereIn('id', $dados)->get();
-            $user_editar = User::find($request->user_id);
-            $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
-             return view('usuario-filial/usuario.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
+        $user_id = auth()->user()->id;
+        $dados = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+        $empresas = empresas::whereIn('id', $dados)->get();
+        $user_editar = User::find($request->user_id);
+        $empresasSelecionadas = user_empresas::where('user_id', $user_editar->id)->pluck('empresa_id')->toArray();
+        return view('usuario-filial/usuario.editar_user', compact('empresas', 'user_editar', 'empresasSelecionadas'));
     }
 
-    public function editar_usuario(Request $request){
+    public function editar_usuario(FormFilialUsers $request)
+    {
         $user = User::find($request->user_id);
-        user_empresas::where('user_id', $request->user_id)->delete(); // nunca pode ser do adm
-
-        $user->user = $request->user;
-        $user->email = $request->email;
-        $user->save();
-
-        $empresasMarcadas = $request->empresas;
-
-        foreach ($empresasMarcadas as $emp){
-            $user_empresas = new user_empresas();
-            $user_empresas->user_id = $user->id;
-            $user_empresas->empresa_id = $emp;
-            $user_empresas->save();
+    
+        // Verifica se o email atual é diferente do novo email
+        if ($user->email != $request->email) {
+            // Verifica se o novo email já está cadastrado no banco
+            
+    
+            if (MeuServico::verificar_login($request)) {
+                // Se o novo email já está cadastrado, retorna um erro
+                return back()->withInput()->withErrors(['email' => 'Esse Novo Email Já Está Cadastrado']);
+            } else {
+                // Se o novo email não está cadastrado, atualiza o usuário
+                user_empresas::where('user_id', $request->user_id)->delete(); // nunca pode ser do adm
+    
+                $user->nome = $request->nome;
+                $user->email = $request->email;
+                $user->save();
+    
+                if ($empresasMarcadas = $request->empresas) {
+                    foreach ($empresasMarcadas as $emp) {
+                        $user_empresas = new user_empresas();
+                        $user_empresas->user_id = $user->id;
+                        $user_empresas->empresa_id = $emp;
+                        $user_empresas->save();
+                    }
+                }
+            }
+        } else {
+            // Se o email é igual, apenas atualiza os outros dados
+            $user->nome = $request->nome;
+            $user->save();
+    
+            if ($empresasMarcadas = $request->empresas) {
+                foreach ($empresasMarcadas as $emp) {
+                    $user_empresas = new user_empresas();
+                    $user_empresas->user_id = $user->id;
+                    $user_empresas->empresa_id = $emp;
+                    $user_empresas->save();
+                }
+            }
         }
+    
         return redirect('/user/profile');
     }
 
 
-//......................................................EMPRESAS................................................//
+    //......................................................EMPRESAS................................................//
 
-        public function selecionar_filial(){
-            $user_id = auth()->user()->id;
-            $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
-            $empresas = empresas::whereIn('id', $relacionamentos)->get();
-            return view('usuario-filial/filial.selecionar-filial', compact('empresas'));
-       }
+    public function selecionar_filial()
+    {
+        $user_id = auth()->user()->id;
+        $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id');
+        $empresas = empresas::whereIn('id', $relacionamentos)->get();
+        return view('usuario-filial/filial.selecionar-filial', compact('empresas'));
+    }
 
 
-    public function formulario_adicionar_empresa(){
+    public function formulario_adicionar_empresa()
+    {
         $user_id = auth()->user()->id;
         $relacionamentos = user_empresas::where('user_id', $user_id)->pluck('empresa_id'); // peguei as empresas relacionadas ao meu usuario.
         $users_id = user_empresas::whereIn('empresa_id', $relacionamentos)->pluck('user_id'); // peguei todos os usuarios relacionados as empresas
         $users = User::whereIn('id', $users_id)
-             ->where('id', '!=', auth()->user()->id)
-             ->get(); // busquei
+            ->where('id', '!=', auth()->user()->id)
+            ->get(); // busquei
 
         return view('usuario-filial/filial.cadastro-filial', compact('users'));
     }
 
-    public function adicionar_empresa(Request $request){
+    public function adicionar_empresa(FormFilialUsers $request)
+    {
 
-
-
-        if (MeuServico::verificar_empresa($request)){
-
-            dd('empresa ja existe');
-            
+        if (MeuServico::verificar_empresa($request)) {
+            return back()->withInput()->withErrors(['cnpj' => 'Esse CNPJ Já Está Cadastrado']);
         }
 
         $empresa = empresas::create([
@@ -206,14 +232,15 @@ class ControllerLogin extends Controller
             'cnpj' => $request->cnpj
         ]);
 
-        $usuariosMarcados = $request->input('user');
-
-        foreach ($usuariosMarcados as $user){
-            $user_empresas = new user_empresas();
-            $user_empresas->user_id = $user;
-            $user_empresas->empresa_id = $empresa->id;
-            $user_empresas->save();
+        if ($usuariosMarcados = $request->input('user')) { // se existir dados
+            foreach ($usuariosMarcados as $user) {
+                $user_empresas = new user_empresas();
+                $user_empresas->user_id = $user;
+                $user_empresas->empresa_id = $empresa->id;
+                $user_empresas->save();
+            }
         }
+
         //relacionando usuario ADM
         $user_empresas = new user_empresas();
         $user_empresas->user_id = auth()->user()->id;
@@ -223,38 +250,39 @@ class ControllerLogin extends Controller
         return redirect('/selecionar/filial');
     }
 
-//......................................................RECUPERA................................................//
+    //......................................................RECUPERA................................................//
 
 
-    public function gera_codigo(Request $request){
+    public function gera_codigo(Request $request)
+    {
         $usuario = User::where('email', $request->email)->first();
         $user_id = $usuario->id;
 
-        if($usuario){
+        if ($usuario) {
             $codigo = rand(100000, 999999);
             Mail::send(new MailEnvioEmail($codigo, $request->email));
             return view('usuario-filial/atualiza-usuario.confirma-codigo', compact('codigo', 'user_id'));
-        }else{
+        } else {
             dd('Não existe esse email');
         }
     }
 
-    public function confirma_codigo(Request $request){
-        if ($request->codigo == $request->codigo_email){
+    public function confirma_codigo(Request $request)
+    {
+        if ($request->codigo == $request->codigo_email) {
             $user_id = $request->usuario;
             $user = User::find($user_id);
 
             return view('usuario-filial/atualiza-usuario.atualizar_usuario', compact('user'));
-
-
-        } else{
+        } else {
             dd('deu errado');
         }
     }
 
 
 
-    public function atualizar_usuario(Request $request){
+    public function atualizar_usuario(Request $request)
+    {
         $user = User::find($request->user_id);
 
         $user->nome = $request->user;
@@ -265,14 +293,11 @@ class ControllerLogin extends Controller
         return redirect('/login');
     }
 
-//......................................................LOGIN................................................//
+    //......................................................LOGIN................................................//
 
     public function logout()
     {
         Auth::logout();
         return redirect('/login');
     }
-
-
-
 }
