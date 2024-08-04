@@ -91,6 +91,7 @@ body {
 
 button, a {
   all: unset;
+  cursor: default;
   border: 1px solid rgba(255, 255, 255, 0.503);
   padding: 08px 20px;
   color: white;

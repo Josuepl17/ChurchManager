@@ -11,7 +11,6 @@
 
 
     #cadastre-se {
-      user-select: auto;
       position: absolute;
       right: 20px;
       top: 20px;
@@ -22,7 +21,6 @@
       font-size: 16px;
       background-color: #141e30;
     }
-
 
 
     #cadastre-se:hover {
