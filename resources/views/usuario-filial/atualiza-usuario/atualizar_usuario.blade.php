@@ -12,20 +12,26 @@
 <body>
     <!-- partial:index.partial.html -->
     <div class="login-box">
-        <h2>Adicionando Conta</h2>
+        <h2>Atualize Sua Conta</h2>
         <form action="/atualizar/user" method="post">
             @csrf
             <div class="user-box">
-                <input type="text" name="user" required="" value="{{ isset($user->nome) ? $user->nome : '' }}">
+                <input type="text" name="user" required="" value="{{ old('user')}}">
                 <label>Nome:</label>
             </div>
             <div class="user-box">
-                <input type="text" name="email" required="" value="{{ isset($user->email) ? $user->email : '' }}">
+                <input type="text" name="email" required="" value="{{ old('email')}}">
                 <label>Email:</label>
+                @error('email')
+                <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+                @enderror
             </div>
             <div class="user-box">
-                <input type="password" name="password" required="" >
+                <input type="password" name="password" required="">
                 <label>Nova Senha:</label>
+                @error('password')
+                <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+                @enderror
             </div>
 
             <input type="hidden" name="user_id" id="user_id" value="{{$user->id}}">
@@ -36,13 +42,8 @@
     </div>
 
 
-    @if (Session::has('falha'))
-    <div style="color:red" class="msg">
-        <p>{{ Session::get('falha') }}</p>
-    </div>
-    {{ Session::forget('falha') }}
-    @endif
 
 </body>
+TODO:UPDATE
 
 </html>
