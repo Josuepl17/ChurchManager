@@ -96,12 +96,14 @@ Route::post('/presenca', function(HttpRequest $request){
 
 
 
-Route::get('/esqueci/senha', function(){
-    return view('usuario-filial/atualiza-usuario.envia-codigo');
-});
+Route::get('/esqueci/senha', [ControllerLogin::class, 'esqueci_senha']);
 
 Route::get('/recupere/senha', [ControllerLogin::class, 'gera_codigo']);
 
+Route::get('/recebe/codigo', [ControllerLogin::class, 'recebe_codigo']);
+
 Route::get('/confirma/codigo', [ControllerLogin::class, 'confirma_codigo']);
+
+Route::post('/form/atualiza/usuario', [ControllerLogin::class, 'form_atualiza_usuario']);
 
 Route::post('/atualizar/user', [ControllerLogin::class, 'atualizar_usuario']);

@@ -253,6 +253,11 @@ class ControllerLogin extends Controller
     //......................................................RECUPERA................................................//
 
 
+    public function esqueci_senha(){
+
+        return view('usuario-filial/atualiza-usuario.envia-codigo');
+    }
+
     public function gera_codigo(Request $request)
     {
         $usuario = User::where('email', $request->email)->first();
@@ -261,10 +266,14 @@ class ControllerLogin extends Controller
         if ($usuario) {
             $codigo = rand(100000, 999999);
             Mail::send(new MailEnvioEmail($codigo, $request->email));
-            return view('usuario-filial/atualiza-usuario.confirma-codigo', compact('codigo', 'user_id'));
+            return redirect('/recebe/codigo');
         } else {
             dd('Não existe esse email');
         }
+    }
+
+    public function recebe_codigo(){
+        return view('usuario-filial/atualiza-usuario.confirma-codigo');
     }
 
     public function confirma_codigo(Request $request)
@@ -272,11 +281,15 @@ class ControllerLogin extends Controller
         if ($request->codigo == $request->codigo_email) {
             $user_id = $request->usuario;
             $user = User::find($user_id);
-
-            return view('usuario-filial/atualiza-usuario.atualizar_usuario', compact('user'));
+            return redirect('/form/atualiza/usuario');
+            
         } else {
             dd('deu errado');
         }
+    }
+
+    public function form_atualiza_usuario(){
+        return view('usuario-filial/atualiza-usuario.atualizar_usuario');
     }
 
 
@@ -289,7 +302,6 @@ class ControllerLogin extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-
         return redirect('/login');
     }
 
