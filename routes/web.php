@@ -95,15 +95,11 @@ Route::post('/presenca', function(HttpRequest $request){
 });
 
 
-
+// recupere a senha//
 Route::get('/esqueci/senha', [ControllerLogin::class, 'esqueci_senha']);
-
 Route::post('/recupere/senha', [ControllerLogin::class, 'gera_codigo']);
-
 Route::get('/recebe/codigo', [ControllerLogin::class, 'recebe_codigo']);
-
 Route::post('/confirma/codigo', [ControllerLogin::class, 'confirma_codigo']);
-
 Route::get('/form/atualiza/usuario', [ControllerLogin::class, 'form_atualiza_usuario']);
-
 Route::post('/atualizar/user', [ControllerLogin::class, 'atualizar_usuario']);
+

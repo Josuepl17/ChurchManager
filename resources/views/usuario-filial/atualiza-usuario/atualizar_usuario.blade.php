@@ -16,11 +16,11 @@
         <form action="/atualizar/user" method="post">
             @csrf
             <div class="user-box">
-                <input type="text" name="user" required="" value="{{ old('user')}}">
+                <input type="text" name="user" required="" value="{{ old('user', $user->nome)}}">
                 <label>Nome:</label>
             </div>
             <div class="user-box">
-                <input type="text" name="email" required="" value="{{ old('email')}}">
+                <input type="text" name="email" required="" value="{{ old('email', $user->email)}}">
                 <label>Email:</label>
                 @error('email')
                 <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
@@ -34,7 +34,7 @@
                 @enderror
             </div>
 
-            <input type="hidden" name="user_id" id="user_id" value="{{$user->id}}">
+
 
             <button type="submit">Atualizar</button>
 

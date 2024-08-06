@@ -13,12 +13,15 @@
 <div class="login-box">
   <h2>Recupere Sua Senha</h2>
 
-  <form action="/recupere/senha" method="get" >
+  <form action="/recupere/senha" method="post" >
 
   @csrf
     <div  class="user-box">
-      <input autocomplete="off" type="text" name="email" required="">
+      <input autocomplete="off" type="text" name="email" required="" value="{{ old('email')}}">
       <label >Email:</label>
+      @error('email')
+                <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+                @enderror
     </div>
 
 
@@ -27,12 +30,7 @@
 <button type="submit">Enviar Codigo</button>
 </div>
   </form>
-  @if (Session::has('falha'))
 
-<p style="color: red;" >{{ Session::get('falha') }}</p>
-{{ Session::forget('falha') }}
-
-@endif
   </div>
 <br>
 

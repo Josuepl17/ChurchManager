@@ -24,9 +24,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use PhpParser\Node\Expr\Cast\Object_;
 use PhpParser\Node\Expr\FuncCall;
 
 class ControllerLogin extends Controller
@@ -258,17 +260,20 @@ class ControllerLogin extends Controller
         return view('usuario-filial/atualiza-usuario.envia-codigo');
     }
 
-    public function gera_codigo(Request $request)
+    public function gera_codigo(FormFilialUsers $request)
     {
-        $usuario = User::where('email', $request->email)->first();
-        $user_id = $usuario->id;
+        //$usuario = User::where('email', $request->email)->first();
+        
 
-        if ($usuario) {
+        if (MeuServico::verificar_login($request)) {
+            $user_id = User::where('email', $request->email)->first();
             $codigo = rand(100000, 999999);
+            Session()->put('codigo', $codigo);
+            Session()->put('user_id', $user_id );
             Mail::send(new MailEnvioEmail($codigo, $request->email));
             return redirect('/recebe/codigo');
         } else {
-            dd('Não existe esse email');
+            return back()->withInput()->withErrors(['email' => 'Esse email Não Está Cadastrado']);
         }
     }
 
@@ -276,33 +281,40 @@ class ControllerLogin extends Controller
         return view('usuario-filial/atualiza-usuario.confirma-codigo');
     }
 
-    public function confirma_codigo(Request $request)
+    public function confirma_codigo(FormFilialUsers $request)
     {
-        if ($request->codigo == $request->codigo_email) {
-            $user_id = $request->usuario;
-            $user = User::find($user_id);
+        if ($request->codigo == Session()->get('codigo')) {
+            session()->forget('codigo');
             return redirect('/form/atualiza/usuario');
-            
         } else {
-            dd('deu errado');
+            return back()->withInput()->withErrors(['codigo' => 'Codigo Incorreto!']);
         }
     }
 
     public function form_atualiza_usuario(){
-        return view('usuario-filial/atualiza-usuario.atualizar_usuario');
+        $user = User::find(Session()->get('user_id'))->first();
+        
+        return view('usuario-filial/atualiza-usuario.atualizar_usuario', compact('user'));
     }
 
 
 
-    public function atualizar_usuario(Request $request)
+    public function atualizar_usuario(FormFilialUsers $request)
     {
-        $user = User::find($request->user_id);
+        $user = User::find(Session()->get('user_id'))->first();
+        if ($user->email != $request->email){
+            if ( User::where('email',  $request->email)->first()){
+                return back()->withInput()->withErrors(['email' => 'Novo email Já Cadastrado']);
+            }     
+        }
 
-        $user->nome = $request->user;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return redirect('/login');
+        Session()->flush();
+            $user->nome = $request->user;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return redirect('/login');
+
     }
 
     //......................................................LOGIN................................................//
@@ -312,4 +324,6 @@ class ControllerLogin extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    
 }
