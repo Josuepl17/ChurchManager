@@ -9,15 +9,16 @@
        
     }
 
+
+
    * {
    box-sizing: border-box;     
 
     }
 
     #inserir-verde form input{
-      
         all: unset;
-
+        padding: 5px;
     }
 </style>
 

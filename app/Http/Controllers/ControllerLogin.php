@@ -78,13 +78,13 @@ class ControllerLogin extends Controller
         return redirect('/login');
     }
 
-    public function autenticar_usuario(Request $request)
+    public function autenticar_usuario(FormFilialUsers $request)
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']]) || Auth::attempt(['email' => strtoupper($credentials['email']), 'password' => $credentials['password']])) {
             return redirect('/selecionar/filial');
         }
-        Session()->flash('falha',  'Login Incorreto');
+        return back()->withInput()->withErrors(['login' => 'Login Incorreto.']);
         return redirect('/login');
     }
 
@@ -324,6 +324,8 @@ class ControllerLogin extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    
 
     
 }

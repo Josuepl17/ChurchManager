@@ -45,10 +45,19 @@
       <div class="user-box">
         <input autocomplete="off" type="text" name="email" required="">
         <label>Nome:</label>
+        @error('email')
+        <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+            @enderror
       </div>
       <div class="user-box">
         <input autocomplete="off" type="password" name="password" required="">
         <label>Senha:</label>
+        @error('password')
+        <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+            @enderror
+            @error('login')
+            <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
+                @enderror
         <span>
       </div>
 
@@ -59,16 +68,13 @@
       </div>
 
     </form>
-    @if (Session::has('falha'))
 
-    <p style="color: red;">{{ Session::get('falha') }}</p>
-    {{ Session::forget('falha') }}
 
-    @endif
+
   </div>
   <br>
 
   <a id="cadastre-se" style="text-decoration: none;" href="/cadastro/login">Cadastrar-se</a>
 </body>
-TODO: UPDATE
+
 </html>
