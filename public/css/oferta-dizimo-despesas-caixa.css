@@ -60,6 +60,7 @@ td form button {
 }
 
 #inserir-verde{
+    width: 10%;
     background-color: rgba(1, 145, 1, 0.896);
 
 }

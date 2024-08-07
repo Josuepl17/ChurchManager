@@ -42,8 +42,7 @@ class CaixasController extends Controller
 
         ];
 
-        Session::put('dados', $dados);
-        $dados = Session::get('dados');
+        
         
         $saldo = $dados['totalofertas'] + $dados['totaldizimos'] - $dados['totaldespesas'];
 
@@ -62,8 +61,15 @@ class CaixasController extends Controller
         $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = auth()->user()->empresa_id;
 
-        $dados = Session::get('dados');
-        
+        $dados = [
+            'ofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'despesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'dizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
+            'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+            'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
+        ];
+
         $pdf = pdf::loadView('relatorios-pdf.relatorioPDF', $dados); /*Carrega os Dados do PDF*/
         return $pdf->stream('Relatorio.pdf'); /*Gera o PDF*/
     }

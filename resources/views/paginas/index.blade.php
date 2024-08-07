@@ -9,6 +9,12 @@
        
     }
 
+   #inserir-verde input[type=submit] {
+    
+        all: unset;
+       
+    }
+
 
 
    * {
