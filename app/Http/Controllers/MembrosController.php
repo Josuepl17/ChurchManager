@@ -33,7 +33,7 @@ class MembrosController extends Controller
         $empresas_id = auth()->user()->empresa_id;
         $dados = $request->pesquisa;
         $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
-        
+
             $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
             return view('paginas.index', compact('index', 'razao_empresa', 'dados'));
 
@@ -67,9 +67,11 @@ class MembrosController extends Controller
     public function lista_presenca(){
         $membros = membros::all();
         $empresa_id = Auth::user();
-        
+
         $razao_empresa = $empresa_id->empresas->first();
         $razao_empresa = $razao_empresa->razao;
         return view('paginas.formulario_presenca', compact('membros', 'razao_empresa'));
     }
+
+    
 }
