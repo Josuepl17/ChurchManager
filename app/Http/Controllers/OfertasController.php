@@ -46,8 +46,6 @@ class OfertasController extends Controller
     //......................................................Parte 2................................................//
 
     public function filtro (Request $request){
-        session()->forget('dataini');
-        session()->forget('datafi');
         Session()->flash('dataini', $request->dataini);
         Session()->flash('datafi', $request->datafi);
         return redirect('/oferta');

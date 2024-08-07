@@ -89,6 +89,8 @@ class CaixasController extends Controller
             session()->flash('alert', 'Atenção!! Falha ao Fechar Caixa');
             return redirect('/relatorio');
         }
+
+    
     }
 
 

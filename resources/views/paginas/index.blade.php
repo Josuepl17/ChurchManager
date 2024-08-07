@@ -16,10 +16,9 @@
 
     }
 
-    #inserir-verde form input{
-        all: unset;
-        padding: 5px;
-    }
+
+
+
 </style>
 
 @section('botao-tabela')
