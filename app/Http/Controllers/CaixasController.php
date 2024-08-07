@@ -18,7 +18,7 @@ use App\Models\empresas;
 use App\Services\MeuServico;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Mailer\Transport\Dsn;
-
+use Illuminate\Support\Facades\Session;
 class CaixasController extends Controller
 {
     /*Caixa*/
@@ -30,7 +30,7 @@ class CaixasController extends Controller
         $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = auth()->user()->empresa_id;
 
-        $dados = [
+         $dados = [
             'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
@@ -42,6 +42,9 @@ class CaixasController extends Controller
 
         ];
 
+        Session::put('dados', $dados);
+        $dados = Session::get('dados');
+        
         $saldo = $dados['totalofertas'] + $dados['totaldizimos'] - $dados['totaldespesas'];
 
         if ($dataIni == '1900-01-01' && $dataFi == '5000-01-01') {
@@ -59,15 +62,8 @@ class CaixasController extends Controller
         $dataFi = $request->datafi ?? '5000-01-01';
         $empresa_id = auth()->user()->empresa_id;
 
-        $dados = [
-            'ofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
-            'despesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
-            'dizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
-            'totalofertas' => ofertas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
-            'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
-            'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
-        ];
-
+        $dados = Session::get('dados');
+        
         $pdf = pdf::loadView('relatorios-pdf.relatorioPDF', $dados); /*Carrega os Dados do PDF*/
         return $pdf->stream('Relatorio.pdf'); /*Gera o PDF*/
     }

@@ -67,7 +67,6 @@ class MembrosController extends Controller
     public function lista_presenca(){
         $membros = membros::all();
         $empresa_id = Auth::user();
-
         $razao_empresa = $empresa_id->empresas->first();
         $razao_empresa = $razao_empresa->razao;
         return view('paginas.formulario_presenca', compact('membros', 'razao_empresa'));

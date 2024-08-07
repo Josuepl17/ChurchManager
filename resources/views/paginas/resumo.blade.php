@@ -105,7 +105,6 @@
         <div class="filtro">
             <form action="/filtro/pdf" method="post" require>
                 @csrf
-
                 <input type="date" name="dataini" id="dataini" value="{{ isset($dataini) ? $dataini : '' }}" required>
                 <input type="date" name="datafi" id="datafi" value="{{ isset($datafi) ? $datafi : '' }}" required>
 

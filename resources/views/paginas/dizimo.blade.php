@@ -40,11 +40,6 @@
                     <button class="excluir">X</button>
                     <input type="hidden" name="data" value="{{$dizimo->data}}">
                     <input type="hidden" name="id" value="{{$dizimo->id}}">
-                    <input type="hidden" name="membro_id" value="{{$dizimo->membro_id}}">
-                    <input type="hidden" name="dataini" value="{{Session()->get('dataini_d')}}">
-                    <input type="hidden" name="datafi" value="{{Session()->get('datafi_d')}}">
-                    <input type="hidden" name="nome" value="{{Session()->get('nome')}}">
-
                     @csrf
                 </form>
             </td>
