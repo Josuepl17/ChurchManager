@@ -72,4 +72,14 @@
     @endforeach
 </table>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.links-1');
+            links.forEach(link => {
+                link.style.backgroundColor = '#00657c';
+                link.style.color = 'white';
+            });
+        });
+    </script>
+
 @endsection

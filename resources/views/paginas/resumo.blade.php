@@ -184,6 +184,16 @@
             }
         </script>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.links-4');
+            links.forEach(link => {
+                link.style.backgroundColor = '#00657c';
+                link.style.color = 'white';
+            });
+        });
+    </script>
+
 
 
 

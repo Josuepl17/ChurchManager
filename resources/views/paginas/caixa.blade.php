@@ -48,5 +48,15 @@
             <p style="color: green; font-weight: bold;">{{ number_format($saldo, 2, ',', '.') }}</p>
             </p>
         </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.links-5');
+            links.forEach(link => {
+                link.style.backgroundColor = '#00657c';
+                link.style.color = 'white';
+            });
+        });
+    </script>
 @endsection
 

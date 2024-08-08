@@ -18,7 +18,7 @@
             --titulos: #111826;
             --subtitulos: #012841;
             --fundos: #1e1f1f55;
-            --select: #00657c;
+            --select:  #00657c;
         }
 
         body {
@@ -99,7 +99,7 @@
 
 
 
-        #menu .links {
+        #menu .links, #menu .links-1, #menu .links-2, #menu .links-3, #menu .links-4, #menu .links-5, #menu .links-6, #menu .links-7, #menu .links-8, #menu .links-9 {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -108,21 +108,17 @@
             width: 100%;
             height: 5%;
             color: black;
-
-
         }
 
-        #menu .links i {
+        #menu .links i, #menu .links-1 i, #menu .links-2 i, #menu .links-3 i, #menu .links-4 i, #menu .links-5 i, #menu .links-6 i, #menu .links-7 i, #menu .links-8 i, #menu .links-9 i {
             margin-left: 10px;
         }
 
-        #menu .links p {
-            margin-left: 05px;
+        #menu .links p, #menu .links-1 p, #menu .links-2 p, #menu .links-3 p, #menu .links-4 p, #menu .links-5 p, #menu .links-6 p, #menu .links-7 p, #menu .links-8 p, #menu .links-9 p {
+            margin-left: 5px;
         }
 
-
-
-        #menu .links:hover {
+        #menu .links:hover, #menu .links-1:hover, #menu .links-2:hover, #menu .links-3:hover, #menu .links-4:hover, #menu .links-5:hover, #menu .links-6:hover, #menu .links-7:hover, #menu .links-8:hover, #menu .links-9:hover {
             background-color: var(--select);
             color: white;
             transition: 0.4s;
@@ -334,28 +330,28 @@
                 <div id="open-menu">&#9776;</div>
                 <h1> <i class="fa-solid fa-compass"></i> &nbsp; Menu</h1>
 
-                <a class="links" href="/">
+                <a class="links-1" href="/">
                     <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>
                 </a>
 
-                <a class="links" href="/oferta">
+                <a class="links-2" href="/oferta">
                     <i class="fa-solid fa-money-bill"></i> &nbsp; <p>Ofertas</p>
                 </a>
 
-                <a class="links" href="/despesas">
+                <a class="links-3" href="/despesas">
                     <i class="fa-solid fa-coins"></i> &nbsp; <p>Despesas</p>
                 </a>
 
-                <a class="links" href="/relatorio">
+                <a class="links-4" href="/relatorio">
                     <i class="fa-solid fa-book"></i> &nbsp; <p>Resumo</p>
                 </a>
 
-                <a class="links" href="/indexcaixa">
+                <a class="links-5" href="/indexcaixa">
                     <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
                 </a>
                 
                 @admin
-                <a class="links" href="/user/profile">
+                <a class="links-6" href="/user/profile">
                     <i class="fa-solid fa-user"></i> &nbsp; <p>Usuarios</p>
                 </a>
 
@@ -367,7 +363,7 @@
 
                 @endadmin
                 
-                <a class="links" href="/selecionar/filial">
+                <a class="links-7" href="/selecionar/filial">
                 <i class="fa-solid fa-building"></i> &nbsp; <p>Selecionar Filial</p>
                     
                 </a> 
@@ -379,7 +375,7 @@
                 </a> -->
                 
 
-                <a class="links" href="/lista/presencas">
+                <a class="links-8" href="/lista/presencas">
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>
                     
                 </a> 
@@ -388,7 +384,7 @@
 
 
 
-                <a class="links" href="/logout">
+                <a class="links-9" href="/logout">
                     <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
 
                 </a>
