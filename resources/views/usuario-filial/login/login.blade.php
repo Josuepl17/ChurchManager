@@ -43,7 +43,7 @@
 
       @csrf
       <div class="user-box">
-        <input autocomplete="off" type="text" name="email" required="">
+        <input autocomplete="off" type="text" name="email" required="" value="{{old('email')}}" >
         <label>Nome:</label>
         @error('email')
         <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
