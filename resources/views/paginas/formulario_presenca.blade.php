@@ -38,14 +38,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($membros as $membro)
-            <tr>
-                <td style="border: 1px solid #ddd; padding: 8px;">{{$membro->nome}} {{$membro->sobrenome}}</td>
-                <td style="border: 1px solid #ddd; padding: 8px;">
-                    <input type="checkbox" name="presenca[{{$membro->id}}]" id="presenca_{{$membro->id}}" value="P">
-                </td>
-            </tr>
-            @endforeach
+        @foreach ($membros as $membro)
+    <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">{{$membro->nome}} {{$membro->sobrenome}}</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">
+            <input type="checkbox" name="presenca[]" id="presenca{{$membro->id}}" value="{{$membro->id}}">
+        </td>
+    </tr>
+@endforeach
         </tbody>
     </table>
     @csrf

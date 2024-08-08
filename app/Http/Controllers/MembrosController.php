@@ -10,6 +10,7 @@ use App\Models\membros;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use App\Models\empresas;
+use App\Models\Eventos;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,12 +65,38 @@ class MembrosController extends Controller
         return redirect('/');
     }
 
-    public function lista_presenca(){
+
+    public function eventos() {
+        $empresa_id = Auth::user();
+        $razao_empresa = $empresa_id->empresas->first();
+        $razao_empresa = $razao_empresa->razao;
+        return view('paginas.eventos', compact('razao_empresa'));
+    }
+
+    public function presença_evento(){
         $membros = membros::all();
         $empresa_id = Auth::user();
         $razao_empresa = $empresa_id->empresas->first();
         $razao_empresa = $razao_empresa->razao;
         return view('paginas.formulario_presenca', compact('membros', 'razao_empresa'));
+    }
+
+    public function regitrar_presenca(Request $request) {
+
+        $membros = membros::where(Auth::user()->empresa_id)->count();
+        dd($membros);
+
+        $evento = Eventos::create([
+            'evento' => $request->input('evento'),
+            'data' => $request->input('data'),
+        ]);
+
+        // Registro da presença dos membros
+        foreach ($request->input('presenca') as $membroId) {
+            $evento->membros()->attach($membroId);
+        }
+
+
     }
 
     

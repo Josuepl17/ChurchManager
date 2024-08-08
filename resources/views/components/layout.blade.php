@@ -375,7 +375,7 @@
                 </a> -->
                 
 
-                <a class="links-8" href="/lista/presencas">
+                <a class="links-8" href="/eventos">
                 <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>
                     
                 </a> 
