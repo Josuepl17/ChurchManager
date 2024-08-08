@@ -16,7 +16,10 @@ class membros extends Model
         return $this->hasMany(dizimos::class);
     }
 
-    public function empresas(){
-        return $this->belongsTo(empresas::class);// pertence a
+    public function empresas()
+    {
+        return $this->belongsTo(empresas::class); // pertence a
     }
+
+
 }

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\membros;
 use App\Models\usuarios;
+use Database\Factories\MembroFactory;
 use Database\Factories\usuariosFactory;
 use Illuminate\Database\Seeder;
 
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        membros::factory(30)->create();
+        MembroFactory::factory()->count(50)->create();
        // usuariosFactory::factory(50)->create();
 
         // \App\Models\User::factory()->create([
