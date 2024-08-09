@@ -21,7 +21,7 @@
 
 @section('conteudo')
 
-<form action="/presenca" method="post">
+<form action="/presenca/evento" method="post">
 <div id="header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
     <input type="text" name="evento" id="evento" placeholder="Evento" style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
     <input type="date" name="data" id="data" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">

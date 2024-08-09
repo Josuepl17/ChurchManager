@@ -39,7 +39,7 @@ Route::post('/inserir/membro', [MembrosController::class, 'botao_inserir_membro'
 Route::get('/destroy/{id}', [MembrosController::class, 'excluir_membro']);
 Route::get('/eventos', [MembrosController::class, 'eventos']);
 Route::get('/lista/presencas', [MembrosController::class, 'presença_evento']);
-Route::post('/presenca', [MembrosController::class, 'regitrar_presenca']);
+Route::post('/presenca/evento', [MembrosController::class, 'regitrar_presenca']);
 
                             /*Dizimos Por Usuario*/
 Route::post('/inserir/dizimos', [DizimosController::class, 'filtro']);

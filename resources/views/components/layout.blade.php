@@ -342,6 +342,11 @@
                     <i class="fa-solid fa-coins"></i> &nbsp; <p>Despesas</p>
                 </a>
 
+                <a class="links-8" href="/eventos">
+                <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>
+                    
+                </a> 
+
                 <a class="links-4" href="/relatorio">
                     <i class="fa-solid fa-book"></i> &nbsp; <p>Resumo</p>
                 </a>
@@ -375,10 +380,7 @@
                 </a> -->
                 
 
-                <a class="links-8" href="/eventos">
-                <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>
-                    
-                </a> 
+
 
 
 

@@ -26,23 +26,31 @@
             <th>FALTANTES</th>
             
         </tr>
- 
+        @foreach ($eventos as $evento)
         <tr>
-            <td style="background-color: var(--titulos); color:white"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td style="background-color: var(--titulos); color:white">{{$evento->id}}</td>
+            <td>{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+            <td>{{$evento->evento}}</td>
+            <td>{{$evento->presentes}}</td>
+            <td>{{$evento->faltantes}}</td>
             </td>
         </tr>
-
+            @endforeach
     </table>
 </div>
 
 
 
 
-
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.links-8');
+            links.forEach(link => {
+                link.style.backgroundColor = '#00657c';
+                link.style.color = 'white';
+            });
+        });
+    </script>
 
 
 

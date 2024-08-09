@@ -11,6 +11,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\dizimos;
 use App\Models\empresas;
 use App\Models\Eventos;
+use App\Models\Eventos_presencas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,7 +71,8 @@ class MembrosController extends Controller
         $empresa_id = Auth::user();
         $razao_empresa = $empresa_id->empresas->first();
         $razao_empresa = $razao_empresa->razao;
-        return view('paginas.eventos', compact('razao_empresa'));
+        $eventos = Eventos::where('empresa_id', auth()->user()->empresa_id)->get();
+        return view('paginas.eventos', compact('razao_empresa', 'eventos'));
     }
 
     public function presença_evento(){
@@ -83,18 +85,31 @@ class MembrosController extends Controller
 
     public function regitrar_presenca(Request $request) {
 
-        $membros = membros::where(Auth::user()->empresa_id)->count();
-        dd($membros);
+        $membros = membros::where('empresa_id', Auth::user()->empresa_id)->count();
+        $presentes = $request->input('presenca');
+        $presentes = count($presentes);
+        $faltantes = $membros - $presentes;
 
         $evento = Eventos::create([
+            'user_id' => Auth::id(),
+            'empresa_id' => auth()->user()->empresa_id,
             'evento' => $request->input('evento'),
             'data' => $request->input('data'),
+            'presentes' => $presentes,
+            'faltantes' => $faltantes
         ]);
 
-        // Registro da presença dos membros
-        foreach ($request->input('presenca') as $membroId) {
-            $evento->membros()->attach($membroId);
+            
+        foreach ($request->input('presenca') as $presente){
+            $presenca = new Eventos_presencas();
+            $presenca->evento_id = $evento->id;
+            $presenca->membro_id = $presente;
+            $presenca->save();
         }
+
+      
+
+        dd('deu certo');
 
 
     }
