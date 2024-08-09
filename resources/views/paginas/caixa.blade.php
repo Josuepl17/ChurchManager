@@ -53,8 +53,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const links = document.querySelectorAll('.links-5');
             links.forEach(link => {
-                link.style.backgroundColor = '#00657c';
-                link.style.color = 'white';
+                link.style.backgroundColor = 'rgb(228, 228, 228)';
+                link.style.color = 'black';
             });
         });
     </script>

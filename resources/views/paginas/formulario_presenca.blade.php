@@ -55,4 +55,14 @@
         
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.links-8');
+            links.forEach(link => {
+                link.style.backgroundColor = 'rgb(228, 228, 228)';
+                link.style.color = 'black';
+            });
+        });
+    </script>
+
 @endsection

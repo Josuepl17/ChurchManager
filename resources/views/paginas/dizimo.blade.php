@@ -89,4 +89,14 @@
 {{ Session::forget('falha') }}
 @endif
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.links-1');
+            links.forEach(link => {
+                link.style.backgroundColor = 'rgb(228, 228, 228)';
+                link.style.color = 'black';
+            });
+        });
+    </script>
+
 @endsection
