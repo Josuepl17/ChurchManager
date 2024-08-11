@@ -107,9 +107,9 @@ class MembrosController extends Controller
             $presenca->save();
         }
 
-      
+      return redirect( '/eventos');
 
-        dd('deu certo');
+        
 
 
     }

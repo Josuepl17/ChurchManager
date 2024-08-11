@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Novo Usuario</title>
+    <title>Atualize seu Usuario</title>
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <link href="{{ asset('css/usuario-filial.css') }}" rel="stylesheet">
 

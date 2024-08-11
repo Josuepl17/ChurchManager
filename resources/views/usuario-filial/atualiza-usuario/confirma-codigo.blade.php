@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Faça Login</title>
+  <title>Confirme seu Codigo</title>
   <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
   <link href="{{ asset('css/usuario-filial.css') }}" rel="stylesheet">
   

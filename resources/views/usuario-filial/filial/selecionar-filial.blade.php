@@ -2,8 +2,9 @@
 <html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
-  <title>Faça Login</title>
+  <title>Selecione a Filial</title>
   <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
+ 
 
   <style>
     html {
@@ -154,7 +155,7 @@ a{
 <table>
     <tr>
         <th>ID</th>
-        <th>EMPRESA</th>
+        <th>FILIAL</th>
         <th>SELECIONAR</th>
     </tr>
     @foreach ($empresas as $empresa)
