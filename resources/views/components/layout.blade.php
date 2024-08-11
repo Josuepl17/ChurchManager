@@ -408,19 +408,6 @@
 
                 </a>
 
-
-                <!--<a class="links" href="/cadastrar/empresas">
-                <i class="fa-solid fa-building-user"></i> &nbsp; <p>Nova Filial</p>
-                    
-                </a> -->
-
-
-
-
-
-
-
-
                 <a class="links-9" href="/logout">
                     <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
 

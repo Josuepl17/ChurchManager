@@ -51,26 +51,7 @@
 
         }
 
-        nav a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid white;
-            font-size: 15px;
-            height: 100%;
-            text-decoration: none;
-            color: black;
-            color: white;
-            padding-left: 7px;
-            padding-right: 7px;
-            background-color: var(--cor-secundaria);
 
-        }
-
-        nav a:hover {
-            background-color: var(--titulos);
-            color: white;
-        }
 
         #conteudo{
             display: flex;

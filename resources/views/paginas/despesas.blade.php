@@ -68,11 +68,10 @@
 
         <input type="text" list="descricao" name="descricao" placeholder="Descrição" required>
         <datalist id="descricao">
-            <option value="Oferta Pastor">
-            <option value="Pregador">
-            <option value="Cozinha">
-            <option value="Crianças">
-        </datalist>
+            @foreach ($descricao as $desc)
+            <option value="{{$desc->descricao_despesas}}">
+            @endforeach
+        </datalist  >
 
 
         <input type="number" name="valor" step="0.01" id="valor" autocomplete="off" required placeholder="Valor">

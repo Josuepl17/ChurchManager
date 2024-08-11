@@ -40,10 +40,7 @@
     }
 
 
-    nav a:hover {
-        background-color: var(--titulos);
-        color: white;
-    }
+
 
 
 
@@ -77,6 +74,24 @@
     
 }
 
+button, a {
+  all: unset;
+  cursor: default;
+  border: 1px solid rgba(255, 255, 255, 0.503);
+  padding: 04px 20px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-right: 10px;
+
+}
+
+button:hover, a:hover {
+  background-color: #03e9f4;
+  color: black;
+  transition: 0.6s;
+}
+
 </style>
 </head>
 
@@ -95,7 +110,7 @@
             <input type="hidden" name="totalofertas" value="{{$totalofertas}}">
             <input type="hidden" name="saldo" value="{{$saldo}}">
             @csrf
-            <a href=""><input type="submit" value="Fechar Caixa"></a>
+           <button style="background-color: red;" type="submit">Fechar Caixa</button>
         </form>
 
         @endsection

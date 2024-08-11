@@ -23,7 +23,7 @@
         <label>Razão Social:</label>
       </div>
       <div class="user-box">
-        <input type="number" name="cnpj" required="" value="{{ old('cnpj') }}">
+        <input type="text" name="cnpj" required="" value="{{ old('cnpj') }}" oninput="formatCNPJ(this)" >
         <label>CNPJ:</label>
         @error('cnpj')
         <p style="color: red; font-size:13px; margin-top:-18px;">{{ $message }}</p>
@@ -49,6 +49,24 @@
     </form>
   </div>
 
+  <script>
+  function formatCNPJ(cnpjField) {
+    let cnpj = cnpjField.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+
+    if (cnpj.length > 14) {
+        cnpj = cnpj.substring(0, 14); // Limita ao tamanho máximo de 14 dígitos
+    }
+
+    // Formata o CNPJ
+    cnpj = cnpj.replace(/^(\d{2})(\d)/, "$1.$2");
+    cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+    cnpj = cnpj.replace(/\.(\d{3})(\d)/, ".$1/$2");
+    cnpj = cnpj.replace(/(\d{4})(\d)/, "$1-$2");
+
+    cnpjField.value = cnpj;
+}
+
+</script>
 
 </body>
 

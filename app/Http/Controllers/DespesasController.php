@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\caixas;
+use App\Models\Descricao_despesas;
 use App\Models\despesas;
 use App\Models\ofertas;
 use App\Models\membros;
@@ -31,6 +32,7 @@ class DespesasController extends Controller
         $empresa_id = auth()->user()->empresa_id;
     
         $dados = [
+            'descricao' => Descricao_despesas::where('empresa_id', auth()->user()->empresa_id)->orderBy('id', 'desc')->take(10)->get(),
             'despesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
             'totaldespesas' => despesas::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
@@ -51,6 +53,14 @@ public function filtro(Request $request){
 }
     public function botao_registrar_despesas(request $request)
     {
+
+        if(Descricao_despesas::where('descricao_despesas', $request->descricao)->first() == null){
+            $descricao = new Descricao_despesas();
+            $descricao->empresa_id = auth()->user()->empresa_id;
+            $descricao->descricao_despesas = $request->descricao;
+            $descricao->save();
+        }
+
         if (MeuServico::Verificar($request->data) == true) {
             $dados = $request->all();
             $dados['user_id'] = Auth::id(); //acessa o ID do usuario Autenticado

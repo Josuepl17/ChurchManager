@@ -7,10 +7,6 @@
 @section('botao-tabela')
 <a href="/lista/presencas"><button style="padding: 5px;">Inserir</button></a>
 
-<form action="/" method="get">
-    <input type="search" name="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
-    <input type="submit" value="Buscar">
-</form>
 
 @endsection
 
