@@ -7,6 +7,7 @@
     <title>@yield('aba-navegador')</title>
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <link href="{{ asset('css/oferta-dizimo-despesas-caixa.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/impressao.css') }}" rel="print">
 
     <!-- PWA  -->
     <meta name="theme-color" content="#6777ef" />
@@ -333,10 +334,36 @@
             }
 
 
+        }
 
+        @media print {
+            #menu {
+                display: none;
+            }
 
+            #cabecalho{
+                display: none;
+            }
 
+            #subtabela{
+                display: none;
+            }
 
+            #titulo-pagina{
+                display: none;
+            }
+
+            #valor-registrar{
+                display: none;
+            }
+
+            #titulo-pagina{
+                font-size: 50px;
+            }
+
+            #formulario-registro{
+                display: none;
+            }
 
         }
     </style>
