@@ -24,7 +24,8 @@ class MembrosController extends Controller
 {
     /*membros*/
 
-    public function Atualizar(Request $request){
+    public function Atualizar(Request $request)
+    {
 
         User::where('id', auth()->id())->update(['empresa_id' => $request->id]);
         return redirect('/');
@@ -36,9 +37,19 @@ class MembrosController extends Controller
         $dados = $request->pesquisa;
         $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
 
-            $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
-            return view('paginas.index', compact('index', 'razao_empresa', 'dados'));
 
+        $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
+
+        $qtdEventos = count(Eventos::all());
+
+
+
+
+
+
+
+
+        return view('paginas.index', compact('index', 'razao_empresa', 'dados', 'qtdEventos'));
     }
 
     public function cadastro_membro()
@@ -67,7 +78,8 @@ class MembrosController extends Controller
     }
 
 
-    public function eventos() {
+    public function eventos()
+    {
         $empresa_id = Auth::user();
         $razao_empresa = $empresa_id->empresas->first();
         $razao_empresa = $razao_empresa->razao;
@@ -75,7 +87,8 @@ class MembrosController extends Controller
         return view('paginas.eventos', compact('razao_empresa', 'eventos'));
     }
 
-    public function presença_evento(){
+    public function presença_evento()
+    {
         $membros = membros::all();
         $empresa_id = Auth::user();
         $razao_empresa = $empresa_id->empresas->first();
@@ -83,12 +96,14 @@ class MembrosController extends Controller
         return view('paginas.formulario_presenca', compact('membros', 'razao_empresa'));
     }
 
-    public function regitrar_presenca(Request $request) {
+    public function regitrar_presenca(Request $request)
+    {
 
         $membros = membros::where('empresa_id', Auth::user()->empresa_id)->count();
         $presentes = $request->input('presenca');
         $presentes = count($presentes);
         $faltantes = $membros - $presentes;
+
 
         $evento = Eventos::create([
             'user_id' => Auth::id(),
@@ -99,20 +114,17 @@ class MembrosController extends Controller
             'faltantes' => $faltantes
         ]);
 
-            
-        foreach ($request->input('presenca') as $presente){
+
+        foreach ($request->input('presenca') as $presente) {
             $presenca = new Eventos_presencas();
             $presenca->evento_id = $evento->id;
             $presenca->membro_id = $presente;
             $presenca->save();
+            $membros = membros::find($presente);
+            $membros->presenca += 1;
+            $membros->save(); 
         }
 
-      return redirect( '/eventos');
-
-        
-
-
+        return redirect('/eventos');
     }
-
-    
 }

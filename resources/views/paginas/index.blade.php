@@ -6,25 +6,21 @@
     input[type=search] {
         width: 100%;
         /* Para o Input diminuir no momento em que a tela o espremer*/
-       
+
     }
 
-   #inserir-verde input[type=submit] {
-    
+    #inserir-verde input[type=submit] {
+
         all: unset;
-       
-    }
-
-
-
-   * {
-   box-sizing: border-box;     
 
     }
 
 
 
+    * {
+        box-sizing: border-box;
 
+    }
 </style>
 
 @section('botao-tabela')
@@ -47,6 +43,7 @@
         <th class="remover">ENDEREÇO</th>
         <th>FUNÇÃO</th>
         <th>TELEFONE</th>
+        <th>PRESENÇA %</th>
         <th>X</th>
         <th>X</th>
     </tr>
@@ -57,12 +54,15 @@
         <td class="remover">{{ $ind->endereco }}</td>
         <td>{{ $ind->funcao }}</td>
         <td>{{ $ind->telefone }}</td>
-        <td id="inserir-verde" >
+        <td>
+    {{ isset($ind->presenca) && $qtdEventos > 0 ? round(($ind->presenca / $qtdEventos) * 100) : 0 }}%
+</td>
+        <td id="inserir-verde">
             <form action="/inserir/dizimos" method="post">
-            @csrf
-            <input type="hidden" name="membro_id" value="{{$ind->id}}">
-            <input type="hidden" name="nome" value="{{$ind->nome}}">
-            <input style="width: 100%; height: 100%; color:white;" type="submit" value="Inserir">
+                @csrf
+                <input type="hidden" name="membro_id" value="{{$ind->id}}">
+                <input type="hidden" name="nome" value="{{$ind->nome}}">
+                <input style="width: 100%; height: 100%; color:white;" type="submit" value="Inserir">
             </form>
         </td>
         <td id="X">
@@ -73,13 +73,13 @@
 </table>
 
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('.links-1');
-            links.forEach(link => {
-                link.style.backgroundColor = 'rgb(228, 228, 228)';
-                link.style.color = 'black';
-            });
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.links-1');
+        links.forEach(link => {
+            link.style.backgroundColor = 'rgb(228, 228, 228)';
+            link.style.color = 'black';
         });
-    </script>
+    });
+</script>
 
 @endsection

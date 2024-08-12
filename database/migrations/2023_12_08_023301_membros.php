@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('empresa_id');
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nome');
+            $table->integer('presenca')->nullable();
             $table->string('sobrenome');
             $table->string('funcao');
             $table->string('endereco');
