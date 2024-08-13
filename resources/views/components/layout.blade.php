@@ -337,31 +337,37 @@
         }
 
         @media print {
+
+            *{
+                color: black;
+                
+            }
             #menu {
                 display: none;
             }
 
-            #cabecalho{
+            #cabecalho {
                 display: none;
             }
 
-            #subtabela{
+            #subtabela {
                 display: none;
             }
 
-            #titulo-pagina{
+            title {
                 display: none;
             }
 
-            #valor-registrar{
-                display: none;
-            }
 
-            #titulo-pagina{
+            #valor-registrar {
                 font-size: 50px;
             }
 
-            #formulario-registro{
+            #titulo-pagina p {
+                font-size: 50px;
+            }
+
+            #formulario-registro {
                 display: none;
             }
 
@@ -462,7 +468,7 @@
 
 
                 <div id="valor-registrar">
-                    @yield('valor-registrar')
+                    <p>@yield('valor-registrar')</p>
                 </div> <!--valor-registrar-->
 
 
