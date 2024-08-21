@@ -120,6 +120,12 @@
             color: black;
         }
 
+        i{
+            width: 09%;
+        }
+
+        
+
         #menu .links i,
         #menu .links-1 i,
         #menu .links-2 i,
@@ -131,6 +137,9 @@
         #menu .links-8 i,
         #menu .links-9 i {
             margin-left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #menu .links p,
@@ -235,6 +244,11 @@
             background-color: white;
             border-radius: 0px 0px 5px 5px;
 
+        }
+
+        i img{
+            width: 20px;
+           
         }
 
         #preloader {
@@ -372,6 +386,8 @@
             }
 
         }
+
+
     </style>
 
     <!--<div id="preloader">
@@ -396,36 +412,37 @@
             <div id="menu">
 
                 <div id="open-menu">&#9776;</div>
-                <h1> <i class="fa-solid fa-compass"></i> &nbsp; Menu</h1>
+                <h1>
+                     <i class="fa-solid fa-compass"></i>
+                      &nbsp; Menu</h1>
 
                 <a class="links-1" href="/">
-                    <i class="fa-solid fa-house"></i> &nbsp; <p>Home</p>
+                    <i ><img src="{{ asset('botao-home.png') }}" alt=""></i> &nbsp; <p>Home</p>
                 </a>
 
                 <a class="links-2" href="/oferta">
-                    <i class="fa-solid fa-money-bill"></i> &nbsp; <p>Ofertas</p>
+                <i ><img src="{{ asset('dinheiro.png') }}" alt=""></i> &nbsp; <p>Ofertas</p>
                 </a>
 
                 <a class="links-3" href="/despesas">
-                    <i class="fa-solid fa-coins"></i> &nbsp; <p>Despesas</p>
+                <i ><img src="{{ asset('despesas.png') }}" alt=""></i> &nbsp; <p>Despesas</p>
                 </a>
 
                 <a class="links-8" href="/eventos">
-                    <i class="fa-solid fa-building-user"></i> &nbsp; <p>Presença</p>
-
+                <i ><img src="{{ asset('comparecimento.png') }}" alt=""></i> &nbsp; <p>Presença</p>
                 </a>
 
                 <a class="links-4" href="/relatorio">
-                    <i class="fa-solid fa-book"></i> &nbsp; <p>Resumo</p>
+                <i ><img src="{{ asset('pago.png') }}" alt=""></i> &nbsp; <p>Resumo</p>
                 </a>
 
                 <a class="links-5" href="/indexcaixa">
-                    <i class="fa-solid fa-briefcase"></i> &nbsp; <p>Caixa</p>
+                <i ><img src="{{ asset('contrato.png') }}" alt=""></i> &nbsp; <p>Caixa</p>
                 </a>
 
                 @admin
                 <a class="links-6" href="/user/profile">
-                    <i class="fa-solid fa-user"></i> &nbsp; <p>Usuarios</p>
+                <i ><img src="{{ asset('sombra-de-usuario-masculino.png') }}" alt=""></i> &nbsp; <p>Usuarios</p>
                 </a>
 
 
@@ -437,12 +454,12 @@
                 @endadmin
 
                 <a class="links-7" href="/selecionar/filial">
-                    <i class="fa-solid fa-building"></i> &nbsp; <p>Selecionar Filial</p>
+                <i ><img src="{{ asset('companhia.png') }}" alt=""></i> &nbsp; <p>Selecionar Filial</p>
 
                 </a>
 
                 <a class="links-9" href="/logout">
-                    <i class="fa-solid fa-right-from-bracket"></i> &nbsp; <p>Logout</p>
+                <i ><img src="{{ asset('simbolo-de-logout.png') }}" alt=""></i> &nbsp; <p>Logaut</p>
 
                 </a>
 
