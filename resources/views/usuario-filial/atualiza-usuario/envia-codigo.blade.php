@@ -13,7 +13,7 @@
 <div class="login-box">
   <h2>Recupere Sua Senha</h2>
 
-  <form id="form" action="/recupere/senha" method="post" >
+  <form  action="/recupere/senha" method="post" >
 
   @csrf
     <div  class="user-box">
@@ -36,7 +36,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("form");
+    var form = document.getElementsByTagName("form")[0];
     var loader = document.getElementById("loader");
 
     form.addEventListener("submit", function() {

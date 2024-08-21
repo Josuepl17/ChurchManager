@@ -40,7 +40,7 @@
   <div class="login-box">
     <h2>Entre</h2>
 
-    <form id="form" action="/login/if" method="post">
+    <form  action="/login/if" method="post">
 
       @csrf
       <div class="user-box">
@@ -80,7 +80,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("form");
+    var form = document.getElementsByTagName("form")[0];
     var loader = document.getElementById("loader");
 
     form.addEventListener("submit", function() {
