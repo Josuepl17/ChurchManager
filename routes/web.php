@@ -26,8 +26,8 @@ use App\Models\User as ModelsUser;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-/*Route::get('/registrar/dizimo', [ControllerLogin::class, 'regdizimo']);*/
+
+Route::get('/registrar/dizimo', [ControllerLogin::class, 'regdizimo']);*/
 
 
 

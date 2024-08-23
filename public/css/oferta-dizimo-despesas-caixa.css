@@ -105,16 +105,7 @@ table tr:first-child { /*Fixar no Topo a Primeira Linha da Tabela */
     top: -1;
 }
 
-::-webkit-scrollbar{
-    width: 8px;
 
-}
-
-::-webkit-scrollbar-thumb{
-    background-color: var(--select);
-    border-radius: 5px;
-   
-}
 /* Conteudo Apenas os dados da Tabela */
 #tabela-dados {
     width: 100%;

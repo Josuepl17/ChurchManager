@@ -83,8 +83,14 @@ class ControllerLogin extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']]) || Auth::attempt(['email' => strtoupper($credentials['email']), 'password' => $credentials['password']])) {
             return redirect('/selecionar/filial');
+        } else{
+            if(MeuServico::verificar_login($request)){
+                return back()->withInput()->withErrors(['login' => 'Login Incorreto.']);
+            } else{
+                return back()->withInput()->withErrors(['login' => 'Usuario Não Existe..']);
+            }
         }
-        return back()->withInput()->withErrors(['login' => 'Login Incorreto.']);
+       
         return redirect('/login');
     }
 

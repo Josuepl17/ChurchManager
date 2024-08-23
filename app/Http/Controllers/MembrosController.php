@@ -41,14 +41,6 @@ class MembrosController extends Controller
         $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
 
         $qtdEventos = count(Eventos::all());
-
-
-
-
-
-
-
-
         return view('paginas.index', compact('index', 'razao_empresa', 'dados', 'qtdEventos'));
     }
 
