@@ -69,7 +69,6 @@ public $membro_id;
             $dados['valor'] = str_replace(',', '.', $dados['valor']);
             dizimos::create($dados);
             Session()->flash('sucesso', 'Item criado com Sucesso');
-            JobsEnvioEmail::dispatch($dados);
 
         } else {
             Session()->flash('falha',  'Falha ao criar item, Caixa Fechado');
@@ -95,6 +94,5 @@ public $membro_id;
 
 
 }
-
 
 
