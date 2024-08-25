@@ -480,7 +480,7 @@
                 </div> <!--titulo-pagina-->
 
                 <div id="conteudo">
-                    @yield('conteudo')
+                    <--!@yield('conteudo')
                 </div> <!--conteudo-->
 
 

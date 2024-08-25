@@ -28,7 +28,7 @@
 <a href="/cadastro/membro"><button style="padding: 5px;">Inserir</button></a>
 
 <form action="/" method="get">
-    <input type="search" name="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
+    <input wire:model="index" type="search" name="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
     <input type="submit" value="Buscar">
 </form>
 @endsection
