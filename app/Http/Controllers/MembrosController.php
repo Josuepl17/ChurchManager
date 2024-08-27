@@ -38,10 +38,10 @@ class MembrosController extends Controller
         $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
 
 
-        $index = membros::whereRaw('LOWER(nome) LIKE ?', ["%" . strtolower($dados) . "%"])->where('empresa_id', $empresas_id)->get();
 
-        $qtdEventos = count(Eventos::all());
-        return view('paginas.index', compact('index', 'razao_empresa', 'dados', 'qtdEventos'));
+
+        
+        return view('paginas.index', compact('razao_empresa'));
     }
 
     public function cadastro_membro()
