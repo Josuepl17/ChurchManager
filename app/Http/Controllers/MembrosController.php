@@ -37,9 +37,6 @@ class MembrosController extends Controller
         $dados = $request->pesquisa;
         $razao_empresa = empresas::where('id', $empresas_id)->value('razao');
 
-
-
-
         
         return view('paginas.index', compact('razao_empresa'));
     }
