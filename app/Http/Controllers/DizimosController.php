@@ -39,8 +39,8 @@ public $membro_id;
        
       
         $dados = [
-            'dizimos' => dizimos::where('empresa_id' , $empresa_id)->where('membro_id', $membro_id)->whereBetween('data', [$dataIni, $dataFi])->get(),
-            'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('data', [$dataIni, $dataFi])->get()->sum('valor'),
+            'dizimos' => dizimos::where('empresa_id' , $empresa_id)->where('membro_id', $membro_id)->whereBetween('datereg', [$dataIni, $dataFi])->get(),
+            'totaldizimos' => dizimos::where('empresa_id', $empresa_id)->whereBetween('datereg', [$dataIni, $dataFi])->get()->sum('valor'),
             'datanow' => Carbon::now()->format('Y-m-d'),
             'razao_empresa' => empresas::where('id', $empresa_id)->value('razao')
         ];
@@ -62,7 +62,7 @@ public $membro_id;
 
     public function botao_registrar_dizimo(request $request)
     {
-        if (MeuServico::Verificar($request->data) == true) {
+        if (MeuServico::Verificar($request->datereg) == true) {
             $dados = $request->only('id', 'data', 'valor', 'membro_id');
             $dados['user_id'] = Auth::id();
             $dados['empresa_id'] = Auth::user()->empresa_id;
@@ -81,7 +81,7 @@ public $membro_id;
 
     public function botao_excluir_dizimo(request $request)
     {
-        if (MeuServico::Verificar($request->data)) {
+        if (MeuServico::Verificar($request->datereg)) {
             $destroy = $request->id;
             dizimos::destroy($destroy);
             Session()->flash('sucesso',  'Item Apagado com Sucesso');
