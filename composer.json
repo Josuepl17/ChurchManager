@@ -12,7 +12,10 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+<<<<<<< HEAD
         "livewire/livewire": "3.0",
+=======
+>>>>>>> parent of 7a8f3ab (top)
         "predis/predis": "^2.2"
     },
     "require-dev": {

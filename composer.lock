@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "956ab3c857f210bc6fc73625b633f6a5",
+=======
+    "content-hash": "21d64e42307f482d8dd022f517dc39f6",
+>>>>>>> parent of 7a8f3ab (top)
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2024,6 +2028,7 @@
             "time": "2024-01-28T23:22:08+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "livewire/livewire",
             "version": "v3.0.0",
             "source": {
@@ -2097,6 +2102,8 @@
             "time": "2023-08-24T15:33:35+00:00"
         },
         {
+=======
+>>>>>>> parent of 7a8f3ab (top)
             "name": "masterminds/html5",
             "version": "2.9.0",
             "source": {

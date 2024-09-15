@@ -27,6 +27,13 @@
 @section('botao-tabela')
 @livewire('busca-membros')
 
+<<<<<<< HEAD
+=======
+<form action="/" method="get">
+    <input type="search" name="pesquisa" value="{{ isset($dados) ? $dados : '' }}">
+    <input type="submit" value="Buscar">
+</form>
+>>>>>>> parent of 7a8f3ab (top)
 @endsection
 
 
